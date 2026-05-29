@@ -489,6 +489,223 @@ footer {
 footer div:nth-child(2) { text-align: center; }
 footer div:nth-child(3) { text-align: right; }
 
+    .pricing-motion-wrap{
+      width:min(1120px, 100%);
+      margin: 10px auto 0;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 30%, rgba(182,51,38,.16), transparent 20%),
+        radial-gradient(circle at 80% 26%, rgba(51,95,140,.12), transparent 18%),
+        linear-gradient(180deg, rgba(238,233,223,.03), rgba(238,233,223,.015));
+      overflow:hidden;
+      position:relative;
+      min-height: 320px;
+    }
+
+    .pricing-motion-wrap::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border:1px solid rgba(238,233,223,.10);
+      pointer-events:none;
+    }
+
+    .pricing-motion{
+      position:relative;
+      height:320px;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .money-plate{
+      position:absolute;
+      left:50%;
+      bottom:42px;
+      width:420px;
+      height:98px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      border:1px solid rgba(238,233,223,.10);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(238,233,223,.06), transparent 62%);
+      box-shadow:
+        0 0 0 18px rgba(238,233,223,.015),
+        0 0 0 44px rgba(238,233,223,.01);
+    }
+
+    .money-orbit{
+      position:absolute;
+      left:50%;
+      top:50%;
+      border:1px solid rgba(238,233,223,.10);
+      border-radius:50%;
+      transform:translate(-50%, -50%);
+      animation: orbitSpin linear infinite;
+    }
+
+    .orbit-1{
+      width:360px;
+      height:360px;
+      opacity:.36;
+      animation-duration:22s;
+    }
+
+    .orbit-2{
+      width:250px;
+      height:250px;
+      opacity:.24;
+      animation-duration:16s;
+      animation-direction:reverse;
+    }
+
+    .orbit-3{
+      width:150px;
+      height:150px;
+      opacity:.18;
+      animation-duration:10s;
+    }
+
+    .money-node{
+      position:absolute;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:rgba(185,154,91,.82);
+      box-shadow:0 0 14px rgba(185,154,91,.18);
+      animation: nodePulse 2.8s ease-in-out infinite;
+    }
+
+    .node-a{ left:22%; top:26%; animation-delay:0s; }
+    .node-b{ right:24%; top:20%; animation-delay:.6s; }
+    .node-c{ left:31%; bottom:28%; animation-delay:1.2s; }
+    .node-d{ right:30%; bottom:24%; animation-delay:1.8s; }
+
+    .money-stack{
+      position:absolute;
+      bottom:78px;
+      display:flex;
+      flex-direction:column-reverse;
+      gap:6px;
+      animation: stackFloat 4.8s ease-in-out infinite;
+    }
+
+    .money-stack span{
+      display:block;
+      width:74px;
+      height:14px;
+      border-radius:999px;
+      border:1px solid rgba(185,154,91,.34);
+      background:
+        linear-gradient(180deg, rgba(238,233,223,.16), rgba(185,154,91,.10)),
+        rgba(185,154,91,.12);
+      box-shadow:0 1px 0 rgba(238,233,223,.10) inset;
+    }
+
+    .stack-1{
+      left:24%;
+      animation-delay:0s;
+    }
+
+    .stack-1 span:nth-child(1){ width:62px; }
+    .stack-1 span:nth-child(2){ width:66px; }
+    .stack-1 span:nth-child(3){ width:70px; }
+    .stack-1 span:nth-child(4){ width:74px; }
+
+    .stack-2{
+      left:50%;
+      transform:translateX(-50%);
+      animation-delay:.7s;
+    }
+
+    .stack-2 span:nth-child(1){ width:66px; }
+    .stack-2 span:nth-child(2){ width:69px; }
+    .stack-2 span:nth-child(3){ width:72px; }
+    .stack-2 span:nth-child(4){ width:75px; }
+    .stack-2 span:nth-child(5){ width:78px; }
+    .stack-2 span:nth-child(6){ width:82px; }
+
+    .stack-3{
+      right:24%;
+      animation-delay:1.4s;
+    }
+
+    .stack-3 span:nth-child(1){ width:58px; }
+    .stack-3 span:nth-child(2){ width:64px; }
+    .stack-3 span:nth-child(3){ width:70px; }
+
+    .money-beam{
+      position:absolute;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(238,233,223,.28), transparent);
+      animation: beamSlide 5.8s ease-in-out infinite;
+      opacity:.8;
+    }
+
+    .beam-1{
+      left:19%;
+      top:30%;
+      width:180px;
+      transform:rotate(18deg);
+      animation-delay:0s;
+    }
+
+    .beam-2{
+      right:18%;
+      top:36%;
+      width:160px;
+      transform:rotate(-16deg);
+      animation-delay:1.2s;
+    }
+
+    .beam-3{
+      left:50%;
+      bottom:112px;
+      width:220px;
+      transform:translateX(-50%);
+      animation-delay:2.2s;
+    }
+
+    .money-chip{
+      position:absolute;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid rgba(51,95,140,.34);
+      background:
+        radial-gradient(circle at 35% 35%, rgba(238,233,223,.30), transparent 32%),
+        rgba(51,95,140,.16);
+      animation: chipDrift 7s ease-in-out infinite;
+    }
+
+    .chip-1{ left:18%; top:44%; animation-delay:0s; }
+    .chip-2{ right:16%; top:48%; animation-delay:1.3s; }
+    .chip-3{ left:49%; top:18%; animation-delay:2.1s; }
+
+    @keyframes orbitSpin{
+      from{ transform:translate(-50%, -50%) rotate(0deg); }
+      to{ transform:translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes nodePulse{
+      0%,100%{ transform:scale(1); opacity:.75; }
+      50%{ transform:scale(1.28); opacity:1; }
+    }
+
+    @keyframes stackFloat{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+
+    @keyframes beamSlide{
+      0%,100%{ opacity:.18; transform:translateX(0) rotate(var(--rot, 0deg)); }
+      50%{ opacity:.82; transform:translateX(16px) rotate(var(--rot, 0deg)); }
+    }
+
+    @keyframes chipDrift{
+      0%,100%{ transform:translateY(0) translateX(0); opacity:.56; }
+      50%{ transform:translateY(-16px) translateX(8px); opacity:1; }
+    }
+
 @media (max-width: 1050px) {
   header { grid-template-columns: 1fr auto; }
   nav { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; }
@@ -518,6 +735,29 @@ footer div:nth-child(3) { text-align: right; }
   .hero-copy + .hero-feature .poster { min-height: 420px; }
   .hero-actions, .price-grid, .editorial, .cta-line, footer { grid-template-columns: 1fr; }
   footer div:nth-child(2), footer div:nth-child(3) { text-align: left; }
+
+        .pricing-motion-wrap{
+        min-height:260px;
+      }
+
+      .pricing-motion{
+        height:260px;
+      }
+
+      .money-plate{
+        width:280px;
+        height:72px;
+        bottom:34px;
+      }
+
+      .orbit-1{ width:250px; height:250px; }
+      .orbit-2{ width:180px; height:180px; }
+      .orbit-3{ width:110px; height:110px; }
+
+      .money-stack span{
+        height:12px;
+      }
+
 }
 
 .hero-solo {
@@ -688,5 +928,111 @@ footer div:nth-child(3) { text-align: right; }
 
   .hero-solo .hero-buttons {
     justify-content: flex-start;
+  }
+}
+/* Pricing animation final cleanup */
+
+.pricing-motion-wrap {
+  border-color: var(--line-light);
+  background:
+    radial-gradient(circle at 18% 30%, rgba(182, 51, 38, .14), transparent 22%),
+    radial-gradient(circle at 80% 26%, rgba(238, 233, 223, .07), transparent 20%),
+    linear-gradient(180deg, rgba(238, 233, 223, .035), rgba(238, 233, 223, .015));
+}
+
+.money-chip {
+  border-color: rgba(185, 154, 91, .28);
+  background:
+    radial-gradient(circle at 35% 35%, rgba(238, 233, 223, .26), transparent 32%),
+    rgba(185, 154, 91, .10);
+}
+
+/* Keeps animated stacks from losing their horizontal position */
+
+.money-stack {
+  --stack-x: 0px;
+  transform: translateX(var(--stack-x));
+}
+
+.stack-2 {
+  --stack-x: -50%;
+}
+
+/* Keeps beams from losing rotation/centering during animation */
+
+.money-beam {
+  --beam-x: 0px;
+  --rot: 0deg;
+}
+
+.beam-1 {
+  --rot: 18deg;
+}
+
+.beam-2 {
+  --rot: -16deg;
+}
+
+.beam-3 {
+  --beam-x: -50%;
+}
+
+@keyframes stackFloat {
+  0%, 100% {
+    transform: translateX(var(--stack-x, 0px)) translateY(0);
+  }
+
+  50% {
+    transform: translateX(var(--stack-x, 0px)) translateY(-8px);
+  }
+}
+
+@keyframes beamSlide {
+  0%, 100% {
+    opacity: .18;
+    transform: translateX(calc(var(--beam-x, 0px) + 0px)) rotate(var(--rot, 0deg));
+  }
+
+  50% {
+    opacity: .82;
+    transform: translateX(calc(var(--beam-x, 0px) + 16px)) rotate(var(--rot, 0deg));
+  }
+}
+
+/* Mobile tightening */
+
+@media (max-width: 720px) {
+  .pricing-motion-wrap {
+    margin-top: 8px;
+  }
+
+  .stack-1 {
+    left: 15%;
+  }
+
+  .stack-3 {
+    right: 15%;
+  }
+
+  .money-node {
+    width: 8px;
+    height: 8px;
+  }
+
+  .money-chip {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .money-orbit,
+  .money-node,
+  .money-stack,
+  .money-beam,
+  .money-chip {
+    animation: none !important;
   }
 }
