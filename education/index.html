@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+education_html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,12 +16,14 @@
       --edu-muted: rgba(238,233,223,.68);
       --edu-line: rgba(238,233,223,.18);
       --edu-blue: #2d5f8f;
+      --edu-paper: #f1eadf;
+      --edu-paper-line: rgba(7,7,7,.15);
     }
 
     body {
       background:
-        radial-gradient(circle at 18% 0%, rgba(182,51,38,.28), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(45,95,143,.18), transparent 24%),
+        radial-gradient(circle at 18% 0%, rgba(182,51,38,.24), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(45,95,143,.16), transparent 24%),
         linear-gradient(180deg, #060606, #0a0a0a 55%, #050505);
       color: var(--edu-cream);
     }
@@ -27,6 +31,10 @@
     header {
       background: rgba(6,6,6,.92);
       border-bottom: 1px solid var(--edu-line);
+    }
+
+    footer {
+      border-top: 1px solid var(--edu-line);
     }
 
     .button:hover {
@@ -45,28 +53,62 @@
     .edu-hero {
       min-height: calc(100vh - 82px);
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      place-items: center;
+      padding: clamp(34px, 5vw, 78px) clamp(24px, 4vw, 64px);
       border-bottom: 1px solid var(--edu-line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-hero::before {
+      content: "";
+      position: absolute;
+      inset: clamp(18px, 3vw, 46px);
+      border: 1px solid rgba(238,233,223,.14);
+      pointer-events: none;
+    }
+
+    .edu-hero::after {
+      content: "";
+      position: absolute;
+      width: min(46vw, 620px);
+      height: min(46vw, 620px);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(182,51,38,.18), transparent 68%);
+      animation: eduPulse 7s ease-in-out infinite;
+      pointer-events: none;
     }
 
     .edu-hero-copy {
-      padding: clamp(38px, 5vw, 82px) clamp(24px, 4vw, 64px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 54px;
+      width: min(1180px, 100%);
+      display: grid;
+      gap: clamp(74px, 12vh, 150px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .edu-hero-copy > div:first-child {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 18px;
     }
 
     .edu-hero-copy h1 {
       margin: 0;
-      max-width: 980px;
-      font-size: clamp(60px, 8vw, 150px);
-      line-height: .8;
+      max-width: 1100px;
+      font-size: clamp(64px, 9vw, 168px);
+      line-height: .78;
       letter-spacing: -.095em;
       text-transform: uppercase;
     }
 
     .edu-hero-bottom {
+      width: min(800px, 100%);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 28px;
@@ -77,7 +119,6 @@
 
     .edu-hero-bottom p {
       margin: 0;
-      max-width: 650px;
       color: var(--edu-muted);
       font-size: clamp(18px, 2vw, 28px);
       line-height: 1.14;
@@ -91,70 +132,6 @@
       justify-content: flex-end;
     }
 
-    .hero-library {
-      padding: 18px;
-      border-left: 1px solid var(--edu-line);
-      display: grid;
-      background: #090909;
-    }
-
-    .library-screen {
-      position: relative;
-      min-height: 100%;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid var(--edu-line);
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(182,51,38,.42), transparent 34%),
-        radial-gradient(circle at 72% 28%, rgba(238,233,223,.2), transparent 16%),
-        #0d0d0d;
-    }
-
-    .library-screen::before {
-      content: "";
-      position: absolute;
-      inset: 24px;
-      border: 1px solid rgba(238,233,223,.16);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .library-screen::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, transparent 0 20%, rgba(238,233,223,.04) 20% 20.4%, transparent 20.4% 100%),
-        repeating-linear-gradient(0deg, transparent 0 58px, rgba(238,233,223,.035) 58px 59px);
-      pointer-events: none;
-    }
-
-    .library-screen h2 {
-      position: relative;
-      z-index: 3;
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(46px, 6vw, 116px);
-      line-height: .8;
-      letter-spacing: -.09em;
-      text-transform: uppercase;
-    }
-
-    .screen-meta {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: rgba(238,233,223,.62);
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
     .edu-section {
       padding: clamp(36px, 5vw, 78px) clamp(24px, 4vw, 58px);
       border-bottom: 1px solid var(--edu-line);
@@ -162,7 +139,7 @@
 
     .section-head {
       display: grid;
-      grid-template-columns: 210px 1fr auto;
+      grid-template-columns: 210px minmax(0, 1fr) auto;
       gap: 28px;
       align-items: end;
       margin-bottom: 22px;
@@ -170,283 +147,177 @@
 
     .section-head h2 {
       margin: 0;
-      max-width: 900px;
-      font-size: clamp(38px, 5vw, 96px);
+      max-width: 980px;
+      font-size: clamp(38px, 5.2vw, 102px);
       line-height: .82;
       letter-spacing: -.085em;
       text-transform: uppercase;
     }
 
-    .feature-learning {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      border: 1px solid var(--edu-line);
-      background: rgba(238,233,223,.035);
-    }
-
-    .feature-video {
-      min-height: 520px;
-      padding: clamp(24px, 4vw, 52px);
-      border-right: 1px solid var(--edu-line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(182,51,38,.2), transparent 24%),
-        linear-gradient(145deg, rgba(20,20,20,.96), rgba(5,5,5,.96));
-    }
-
-    .feature-video::before {
-      content: "";
-      position: absolute;
-      inset: 28px;
-      border: 1px solid rgba(238,233,223,.14);
-      pointer-events: none;
-    }
-
-    .feature-video::after {
-      content: "▶";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 88px;
-      height: 88px;
-      border: 1px solid rgba(238,233,223,.42);
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: rgba(238,233,223,.84);
-      font-size: 28px;
-      padding-left: 4px;
-    }
-
-    .feature-video h3 {
-      position: relative;
-      z-index: 2;
+    .section-note {
       margin: 0;
-      max-width: 820px;
-      font-size: clamp(46px, 6vw, 116px);
-      line-height: .8;
-      letter-spacing: -.09em;
-      text-transform: uppercase;
-    }
-
-    .feature-copy {
-      min-height: 520px;
-      padding: clamp(24px, 4vw, 52px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .feature-copy h3 {
-      margin: 0;
-      max-width: 620px;
-      font-size: clamp(38px, 4.8vw, 92px);
-      line-height: .82;
-      letter-spacing: -.085em;
-      text-transform: uppercase;
-    }
-
-    .feature-copy p {
-      margin: 0;
+      max-width: 420px;
       color: var(--edu-muted);
-      line-height: 1.32;
-      font-size: 16px;
+      line-height: 1.28;
+      font-size: 14px;
+      text-align: right;
     }
 
-    .media-row {
+    .edu-row {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: minmax(260px, 23vw);
+      grid-auto-columns: minmax(290px, 27vw);
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       border-top: 1px solid var(--edu-line);
       border-left: 1px solid var(--edu-line);
+      background: rgba(238,233,223,.025);
     }
 
-    .media-card {
-      min-height: 370px;
-      padding: 18px;
-      border-right: 1px solid var(--edu-line);
-      border-bottom: 1px solid var(--edu-line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: rgba(238,233,223,.035);
-      scroll-snap-align: start;
-      position: relative;
-      overflow: hidden;
-      transition: transform .22s ease, background .22s ease;
+    .edu-row::-webkit-scrollbar {
+      height: 10px;
     }
 
-    .media-card:hover {
-      transform: translateY(-4px);
-      background: rgba(238,233,223,.07);
-    }
-
-    .media-card::before {
-      content: "";
-      position: absolute;
-      inset: 16px;
-      border: 1px solid rgba(238,233,223,.12);
-      opacity: 0;
-      transition: opacity .22s ease;
-      pointer-events: none;
-    }
-
-    .media-card:hover::before {
-      opacity: 1;
-    }
-
-    .media-thumb {
-      min-height: 170px;
-      margin: -18px -18px 20px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(135deg, rgba(182,51,38,.32), transparent 40%),
-        #111;
-      border-bottom: 1px solid var(--edu-line);
-      color: rgba(238,233,223,.72);
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      position: relative;
-    }
-
-    .media-thumb::after {
-      content: "▶";
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(238,233,223,.35);
+    .edu-row::-webkit-scrollbar-thumb {
+      background: rgba(238,233,223,.18);
       border-radius: 999px;
-      display: grid;
-      place-items: center;
-      padding-left: 3px;
-      font-size: 14px;
     }
 
-    .media-card h3 {
-      margin: 0 0 14px;
-      font-size: clamp(26px, 3vw, 54px);
-      line-height: .86;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-    }
-
-    .media-card p {
-      margin: 0 0 16px;
-      color: var(--edu-muted);
-      font-size: 14px;
-      line-height: 1.3;
-    }
-
-    .embed-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--edu-line);
-      border-left: 1px solid var(--edu-line);
-    }
-
-    .embed-card {
-      min-height: 520px;
-      padding: 18px;
-      border-right: 1px solid var(--edu-line);
-      border-bottom: 1px solid var(--edu-line);
-      display: flex;
-      flex-direction: column;
-      background: rgba(238,233,223,.035);
-    }
-
-    .embed-window {
-      flex: 1;
-      min-height: 380px;
-      border: 1px dashed rgba(238,233,223,.24);
-      display: grid;
-      place-items: center;
-      padding: 22px;
-      text-align: center;
-      color: rgba(238,233,223,.58);
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      background:
-        radial-gradient(circle at 50% 24%, rgba(238,233,223,.08), transparent 20%),
-        #0e0e0e;
-    }
-
-    .embed-card h3 {
-      margin: 18px 0 10px;
-      font-size: clamp(28px, 3vw, 56px);
-      line-height: .86;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-    }
-
-    .embed-card p {
-      margin: 0;
-      color: var(--edu-muted);
-      font-size: 14px;
-      line-height: 1.3;
-    }
-
-    .download-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--edu-line);
-      border-left: 1px solid var(--edu-line);
-    }
-
-    .download-card {
-      min-height: 290px;
+    .lesson-card {
+      min-height: 430px;
       padding: 20px;
       border-right: 1px solid var(--edu-line);
       border-bottom: 1px solid var(--edu-line);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: rgba(238,233,223,.035);
-      transition: background .22s ease, color .22s ease;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(238,233,223,.05), transparent 44%),
+        #090909;
+      color: var(--edu-cream);
+      scroll-snap-align: start;
+      transition: transform .22s ease, background .22s ease;
     }
 
-    .download-card:hover {
-      background: var(--edu-cream);
-      color: var(--edu-black);
+    .lesson-card:hover {
+      transform: translateY(-4px);
+      background:
+        radial-gradient(circle at 50% 24%, rgba(182,51,38,.24), transparent 22%),
+        #111;
     }
 
-    .download-card:hover .edu-kicker,
-    .download-card:hover p {
-      color: rgba(6,6,6,.68);
+    .lesson-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(238,233,223,.12);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .22s ease;
     }
 
-    .download-card h3 {
+    .lesson-card:hover::before {
+      opacity: 1;
+    }
+
+    .lesson-top {
+      display: grid;
+      gap: 14px;
+    }
+
+    .lesson-token {
+      width: 92px;
+      height: 92px;
+      border-radius: 999px;
+      border: 1px solid rgba(238,233,223,.34);
+      display: grid;
+      place-items: center;
+      color: rgba(238,233,223,.74);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: rgba(238,233,223,.045);
+    }
+
+    .lesson-card h3 {
       margin: 0;
-      font-size: clamp(28px, 3vw, 58px);
-      line-height: .84;
+      font-size: clamp(32px, 3.8vw, 72px);
+      line-height: .82;
       letter-spacing: -.08em;
       text-transform: uppercase;
+      position: relative;
+      z-index: 2;
     }
 
-    .download-card p {
-      margin: 0 0 16px;
+    .lesson-card p {
+      margin: 0 0 18px;
       color: var(--edu-muted);
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.3;
+      position: relative;
+      z-index: 2;
     }
 
-    .account-panel {
+    .lesson-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .screenwriting-card {
+      background:
+        linear-gradient(90deg, rgba(238,233,223,.06) 0 1px, transparent 1px),
+        repeating-linear-gradient(0deg, transparent 0 28px, rgba(238,233,223,.06) 28px 29px),
+        #090909;
+      background-size: 72px 100%, 100% 100%;
+    }
+
+    .screenwriting-card:hover {
+      background:
+        linear-gradient(90deg, rgba(182,51,38,.38) 0 1px, transparent 1px),
+        repeating-linear-gradient(0deg, transparent 0 28px, rgba(238,233,223,.08) 28px 29px),
+        #101010;
+      background-size: 72px 100%, 100% 100%;
+    }
+
+    .matter-card {
+      background:
+        radial-gradient(circle at 76% 22%, rgba(45,95,143,.22), transparent 22%),
+        linear-gradient(180deg, rgba(238,233,223,.05), transparent 44%),
+        #090909;
+    }
+
+    .matter-card:hover {
+      background:
+        radial-gradient(circle at 76% 22%, rgba(182,51,38,.28), transparent 22%),
+        radial-gradient(circle at 24% 72%, rgba(45,95,143,.18), transparent 20%),
+        #101010;
+    }
+
+    .coming-card {
+      background:
+        repeating-linear-gradient(90deg, rgba(238,233,223,.035) 0 1px, transparent 1px 58px),
+        repeating-linear-gradient(0deg, rgba(238,233,223,.025) 0 1px, transparent 1px 46px),
+        #080808;
+    }
+
+    .blog-row .lesson-card {
+      min-height: 360px;
+    }
+
+    .platform-panel {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border: 1px solid var(--edu-line);
       background: rgba(238,233,223,.035);
     }
 
-    .account-copy {
-      min-height: 360px;
+    .platform-copy {
+      min-height: 340px;
       padding: clamp(24px, 4vw, 52px);
       border-right: 1px solid var(--edu-line);
       display: flex;
@@ -454,7 +325,7 @@
       justify-content: space-between;
     }
 
-    .account-copy h2 {
+    .platform-copy h2 {
       margin: 0;
       max-width: 820px;
       font-size: clamp(42px, 5vw, 96px);
@@ -463,14 +334,14 @@
       text-transform: uppercase;
     }
 
-    .account-copy p {
+    .platform-copy p {
       margin: 0;
       max-width: 620px;
       color: var(--edu-muted);
       line-height: 1.32;
     }
 
-    .account-links {
+    .platform-links {
       padding: clamp(24px, 4vw, 52px);
       display: flex;
       flex-direction: column;
@@ -519,70 +390,70 @@
       color: var(--edu-black);
     }
 
+    @keyframes eduPulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(.92);
+        opacity: .52;
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: .9;
+      }
+    }
+
     @media (max-width: 1050px) {
-      .edu-hero,
       .section-head,
-      .feature-learning,
-      .account-panel,
+      .platform-panel,
       .edu-cta-line {
         grid-template-columns: 1fr;
       }
 
-      .hero-library,
-      .feature-video,
-      .account-copy {
-        border-left: 0;
+      .section-note {
+        text-align: left;
+      }
+
+      .platform-copy {
         border-right: 0;
-        border-top: 1px solid var(--edu-line);
+        border-bottom: 1px solid var(--edu-line);
       }
 
-      .embed-grid,
-      .download-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .media-row {
-        grid-auto-columns: minmax(260px, 46vw);
+      .edu-row {
+        grid-auto-columns: minmax(290px, 48vw);
       }
     }
 
     @media (max-width: 720px) {
-      .edu-hero-copy,
+      .edu-hero,
       .edu-section,
       .edu-cta {
         padding-left: 18px;
         padding-right: 18px;
       }
 
-      .edu-hero-bottom,
-      .embed-grid,
-      .download-grid {
+      .edu-hero {
+        place-items: start center;
+        padding-top: 70px;
+      }
+
+      .edu-hero-copy > div:first-child {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .edu-hero-bottom {
         grid-template-columns: 1fr;
+        margin: 0;
       }
 
       .edu-actions {
         justify-content: flex-start;
       }
 
-      .media-row {
+      .edu-row {
         grid-auto-columns: 84vw;
       }
-
-      .library-screen,
-      .feature-video,
-      .feature-copy {
-        min-height: 420px;
-      }
     }
-
-        .edu-hero {
-      grid-template-columns: 1fr;
-    }
-
-    .edu-hero-copy {
-      max-width: 1280px;
-    }
-    
   </style>
 </head>
 
@@ -612,176 +483,214 @@
       <div class="edu-hero-copy">
         <div>
           <p class="edu-kicker">Matter Education</p>
-          <h1>A media library for indie creators.</h1>
+          <h1>Learn the work behind the release.</h1>
         </div>
 
         <div class="edu-hero-bottom">
-          <p>Videos, short-form lessons, social posts, downloads, and blog paths for filmmakers learning the release side.</p>
+          <p>Screenwriting lessons, marketing and distribution notes, blog posts, and podcast conversations for indie creators.</p>
           <div class="edu-actions">
-            <a class="button" href="#library">Browse library</a>
-            <a class="button" href="../blog/index.html">Read blog</a>
+            <a class="button" href="#screenwriting">Screenwriting</a>
+            <a class="button" href="#marketing-distribution">Marketing / Distribution</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="edu-section" id="library">
+    <section class="edu-section" id="screenwriting">
       <div class="section-head">
-        <p class="edu-kicker">Featured Lesson</p>
-        <h2>Start here.</h2>
-        <a class="button" href="../blog/index.html">Go deeper</a>
+        <p class="edu-kicker">Written by Charlie</p>
+        <h2>Screenwriting education.</h2>
+        <p class="section-note">Live now on TikTok.</p>
       </div>
 
-      <article class="feature-learning">
-        <a class="feature-video" href="#">
-          <p class="edu-kicker">Video slot</p>
-          <h3>Featured YouTube lesson.</h3>
-          <p class="edu-kicker">Embed or link video</p>
-        </a>
-
-        <div class="feature-copy">
-          <div>
-            <p class="edu-kicker">Current focus</p>
-            <h3>Film marketing, release planning, and project health.</h3>
+      <div class="edu-row">
+        <article class="lesson-card screenwriting-card">
+          <div class="lesson-top">
+            <div class="lesson-token">TikTok</div>
+            <h3>Writing the page.</h3>
           </div>
-          <p>Use this area for the newest video or the best starting point for the community. Add a YouTube embed, a direct link, or a custom thumbnail.</p>
-          <a class="button" href="#">Watch lesson</a>
+          <div>
+            <p>Screenwriting notes from Written by Charlie. Structure, scene work, character, and the craft of getting ideas onto the page.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">View channel</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card screenwriting-card">
+          <div class="lesson-top">
+            <div class="lesson-token">TikTok</div>
+            <h3>Script craft.</h3>
+          </div>
+          <div>
+            <p>Lessons for writers building scenes, tightening drafts, and learning how story choices shape the final project.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Watch posts</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card screenwriting-card">
+          <div class="lesson-top">
+            <div class="lesson-token">TikTok</div>
+            <h3>From idea to draft.</h3>
+          </div>
+          <div>
+            <p>Practical writing guidance for moving from loose concept to pages that can be shaped, edited, and finished.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Open TikTok</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="edu-section" id="marketing-distribution">
+      <div class="section-head">
+        <p class="edu-kicker">Matter TikTok</p>
+        <h2>Marketing and distribution education.</h2>
+        <p class="section-note">Short-form lessons from Matter.</p>
+      </div>
+
+      <div class="edu-row">
+        <article class="lesson-card matter-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Matter</div>
+            <h3>Project health.</h3>
+          </div>
+          <div>
+            <p>Short lessons on checking the project before building the campaign around it.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">View Matter TikTok</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card matter-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Matter</div>
+            <h3>Release planning.</h3>
+          </div>
+          <div>
+            <p>Notes on rollout, positioning, audience clarity, and the decisions that shape an independent release.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">Watch lessons</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card matter-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Matter</div>
+            <h3>The 4 P’s.</h3>
+          </div>
+          <div>
+            <p>Matter’s framework for reading the story, process, product, and audience path before release.</p>
+            <div class="lesson-actions">
+              <a class="button" href="../about/index.html#framework">Learn framework</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="edu-section">
+      <div class="section-head">
+        <p class="edu-kicker">Written Education</p>
+        <h2>Blog posts.</h2>
+        <a class="button" href="../blog/index.html">View all</a>
+      </div>
+
+      <div class="edu-row blog-row">
+        <article class="lesson-card coming-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Blog</div>
+            <h3>Project health before release.</h3>
+          </div>
+          <div>
+            <p>Written notes on how Matter reads a project before marketing and distribution begins.</p>
+            <div class="lesson-actions">
+              <a class="button" href="../blog/index.html">Read blog</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card coming-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Blog</div>
+            <h3>Marketing starts with story.</h3>
+          </div>
+          <div>
+            <p>Written education on positioning, audience clarity, and campaign decisions.</p>
+            <div class="lesson-actions">
+              <a class="button" href="../blog/index.html">View posts</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card coming-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Blog</div>
+            <h3>Distribution basics.</h3>
+          </div>
+          <div>
+            <p>Plain-language notes on release paths, packaging, submissions, and planning.</p>
+            <div class="lesson-actions">
+              <a class="button" href="../blog/index.html">Browse blog</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="edu-section">
+      <div class="section-head">
+        <p class="edu-kicker">Podcast Education</p>
+        <h2>Conversations as lessons.</h2>
+        <p class="section-note">Coming soon.</p>
+      </div>
+
+      <div class="edu-row">
+        <article class="lesson-card coming-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Soon</div>
+            <h3>Matter: The Podcast.</h3>
+          </div>
+          <div>
+            <p>Podcast episodes will be added here once conversations begin releasing.</p>
+            <div class="lesson-actions">
+              <a class="button" href="../podcast/index.html">Podcast page</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lesson-card coming-card">
+          <div class="lesson-top">
+            <div class="lesson-token">Apply</div>
+            <h3>Bring insight.</h3>
+          </div>
+          <div>
+            <p>Filmmakers, editors, producers, writers, actors, programmers, marketers, and creative workers can apply.</p>
+            <div class="lesson-actions">
+              <a class="button" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">Apply</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="edu-section">
+      <div class="platform-panel">
+        <div class="platform-copy">
+          <p class="edu-kicker">Platforms</p>
+          <h2>Follow the active education channels.</h2>
+          <p>YouTube education is not live yet. For now, education lives through Written by Charlie, Matter TikTok, the blog, and upcoming podcast conversations.</p>
         </div>
-      </article>
-    </section>
 
-    <section class="edu-section">
-      <div class="section-head">
-        <p class="edu-kicker">Video Library</p>
-        <h2>Full lessons and breakdowns.</h2>
-        <a class="button" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
-      </div>
-
-      <div class="media-row">
-        <article class="media-card">
-          <div class="media-thumb">YouTube Embed</div>
-          <div>
-            <h3>Release Planning</h3>
-            <p>Placeholder for a full video about planning the release path.</p>
-            <a class="button" href="#">Watch</a>
-          </div>
-        </article>
-
-        <article class="media-card">
-          <div class="media-thumb">YouTube Embed</div>
-          <div>
-            <h3>Project Health</h3>
-            <p>Placeholder for a full video about checking the project before marketing.</p>
-            <a class="button" href="#">Watch</a>
-          </div>
-        </article>
-
-        <article class="media-card">
-          <div class="media-thumb">YouTube Embed</div>
-          <div>
-            <h3>Positioning</h3>
-            <p>Placeholder for a full video about clarifying the story before rollout.</p>
-            <a class="button" href="#">Watch</a>
-          </div>
-        </article>
-
-        <article class="media-card">
-          <div class="media-thumb">YouTube Embed</div>
-          <div>
-            <h3>Distribution Basics</h3>
-            <p>Placeholder for a full video about realistic release options.</p>
-            <a class="button" href="#">Watch</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="edu-section">
-      <div class="section-head">
-        <p class="edu-kicker">Social Lessons</p>
-        <h2>Short-form education.</h2>
-        <a class="button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
-      </div>
-
-      <div class="embed-grid">
-        <article class="embed-card">
-          <div class="embed-window">Paste TikTok embed here</div>
-          <h3>TikTok Post</h3>
-          <p>Use for quick lessons, creator tips, or short explanations.</p>
-        </article>
-
-        <article class="embed-card">
-          <div class="embed-window">Paste Instagram embed here</div>
-          <h3>Instagram Reel</h3>
-          <p>Use for reels, carousel education, or visual breakdowns.</p>
-        </article>
-
-        <article class="embed-card">
-          <div class="embed-window">Paste YouTube Short embed here</div>
-          <h3>YouTube Short</h3>
-          <p>Use for short-form videos tied to the larger education library.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="edu-section">
-      <div class="section-head">
-        <p class="edu-kicker">Downloads</p>
-        <h2>Documents for creators.</h2>
-        <a class="button" href="../blog/index.html">Related posts</a>
-      </div>
-
-      <div class="download-grid">
-        <a class="download-card" href="#">
-          <span class="edu-kicker">PDF</span>
-          <h3>Release Checklist</h3>
-          <div>
-            <p>Downloadable guide placeholder.</p>
-            <span class="button">Download</span>
-          </div>
-        </a>
-
-        <a class="download-card" href="#">
-          <span class="edu-kicker">PDF</span>
-          <h3>Press Kit Starter</h3>
-          <div>
-            <p>Downloadable template placeholder.</p>
-            <span class="button">Download</span>
-          </div>
-        </a>
-
-        <a class="download-card" href="#">
-          <span class="edu-kicker">Worksheet</span>
-          <h3>4 P’s Worksheet</h3>
-          <div>
-            <p>Project health worksheet placeholder.</p>
-            <span class="button">Download</span>
-          </div>
-        </a>
-
-        <a class="download-card" href="#">
-          <span class="edu-kicker">Template</span>
-          <h3>Campaign Planner</h3>
-          <div>
-            <p>Rollout planning template placeholder.</p>
-            <span class="button">Download</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="edu-section">
-      <div class="account-panel">
-        <div class="account-copy">
-          <p class="edu-kicker">Matter Accounts</p>
-          <h2>Connect the library to the platforms.</h2>
-          <p>Link Matter’s social accounts here so the education page can pull attention toward current lessons, posts, and conversations.</p>
-        </div>
-
-        <div class="account-links">
-          <a class="button" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
-          <a class="button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
-          <a class="button" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <div class="platform-links">
+          <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Written by Charlie</a>
+          <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">Matter TikTok</a>
+          <a class="button" href="https://www.youtube.com/@MATTER_FILM" target="_blank" rel="noreferrer">Matter YouTube</a>
           <a class="button" href="../blog/index.html">Blog</a>
         </div>
       </div>
@@ -789,10 +698,10 @@
 
     <section class="edu-cta">
       <p class="edu-kicker">Education</p>
-      <h2>Need more detail?</h2>
+      <h2>Start where the work is.</h2>
       <div class="edu-cta-line">
-        <p>The blog gives Matter space to go deeper on topics introduced in videos and social posts.</p>
-        <a class="button" href="../blog/index.html">Read the blog</a>
+        <p>For screenwriting, follow Written by Charlie. For marketing and distribution, follow Matter.</p>
+        <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Start learning</a>
       </div>
     </section>
   </main>
@@ -804,3 +713,8 @@
   </footer>
 </body>
 </html>
+'''
+
+out_path = Path('/mnt/data/education-index-redesign.html')
+out_path.write_text(education_html, encoding='utf-8')
+print(f"Created {out_path}")
