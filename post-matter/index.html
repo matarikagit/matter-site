@@ -526,8 +526,8 @@
       border-right: 0;
     }
 
-    .filmstrip-section {
-      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+       .filmstrip-section {
+      padding: clamp(42px, 6vw, 92px) clamp(24px, 4vw, 58px);
       border-bottom: 1px solid var(--line);
       background: var(--black);
       color: var(--cream);
@@ -539,15 +539,15 @@
       grid-template-columns: 220px 1fr;
       gap: 30px;
       align-items: end;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
 
     .filmstrip-head h2 {
       margin: 0;
-      max-width: 900px;
-      font-size: clamp(38px, 5vw, 96px);
-      line-height: .82;
-      letter-spacing: -.085em;
+      max-width: 980px;
+      font-size: clamp(44px, 6vw, 118px);
+      line-height: .8;
+      letter-spacing: -.09em;
       text-transform: uppercase;
     }
 
@@ -555,10 +555,11 @@
       position: relative;
       border-top: 1px solid var(--line-light);
       border-bottom: 1px solid var(--line-light);
-      padding: 34px 0;
+      padding: 42px 0;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       cursor: grab;
+      scroll-behavior: smooth;
     }
 
     .filmstrip-wrap:active {
@@ -581,12 +582,12 @@
       left: 0;
       right: 0;
       display: block;
-      height: 18px;
+      height: 22px;
       background:
         repeating-linear-gradient(
           90deg,
-          rgba(238, 233, 223, .18) 0 16px,
-          transparent 16px 32px
+          rgba(238, 233, 223, .22) 0 18px,
+          transparent 18px 36px
         );
       z-index: 3;
       pointer-events: none;
@@ -594,31 +595,27 @@
 
     .filmstrip-wrap::before {
       top: 0;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .filmstrip-wrap::after {
       bottom: 0;
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
     .filmstrip-track {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: minmax(320px, 38vw);
-      gap: 14px;
+      grid-auto-columns: minmax(420px, 46vw);
+      gap: 18px;
       width: max-content;
-      animation: filmDrift 34s linear infinite;
-    }
-
-    .filmstrip-wrap:hover .filmstrip-track {
-      animation-play-state: paused;
+      will-change: transform;
     }
 
     .film-frame {
       margin: 0;
       aspect-ratio: 16 / 9;
-      border: 1px solid rgba(238, 233, 223, .2);
+      border: 1px solid rgba(238, 233, 223, .22);
       background: #101010;
       overflow: hidden;
       scroll-snap-align: start;
@@ -628,8 +625,8 @@
     .film-frame::before {
       content: "";
       position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(238, 233, 223, .12);
+      inset: 14px;
+      border: 1px solid rgba(238, 233, 223, .14);
       z-index: 2;
       pointer-events: none;
     }
@@ -639,23 +636,13 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      filter: saturate(.9) contrast(1.04);
+      filter: saturate(.92) contrast(1.05);
       transition: transform .35s ease, filter .35s ease;
     }
 
     .film-frame:hover img {
       transform: scale(1.035);
-      filter: saturate(1.08) contrast(1.08);
-    }
-
-    @keyframes filmDrift {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-22%);
-      }
+      filter: saturate(1.1) contrast(1.08);
     }
 
     @media (max-width: 900px) {
@@ -664,11 +651,10 @@
       }
 
       .filmstrip-track {
-        grid-auto-columns: 82vw;
-        animation: none;
+        grid-auto-columns: 86vw;
       }
     }
-    
+
   </style>
 </head>
 
@@ -737,40 +723,8 @@
         <h2>Images from the cut.</h2>
       </div>
 
-      <div class="filmstrip-wrap">
-        <div class="filmstrip-track">
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-1.jpg" alt="Post-Matter project still 01">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-2.jpg" alt="Post-Matter project still 02">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-3.jpg" alt="Post-Matter project still 03">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-4.jpg" alt="Post-Matter project still 04">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-5.jpg" alt="Post-Matter project still 05">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-6.jpg" alt="Post-Matter project still 06">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-7.jpg" alt="Post-Matter project still 07">
-          </figure>
-
-          <figure class="film-frame">
-            <img src="../assets/img/post-stills/still-8.jpg" alt="Post-Matter project still 08">
-          </figure>
-        </div>
+      <div class="filmstrip-wrap" id="postFilmstrip">
+        <div class="filmstrip-track" id="postFilmstripTrack"></div>
       </div>
     </section>
 
@@ -881,5 +835,85 @@
     <div>Philadelphia, PA</div>
     <div><a href="../contact/index.html">Contact</a></div>
   </footer>
+  <script>
+    const filmstripWrap = document.getElementById("postFilmstrip");
+    const filmstripTrack = document.getElementById("postFilmstripTrack");
+
+    const stillCount = 55;
+    const stills = Array.from({ length: stillCount }, (_, index) => index + 1);
+
+    function shuffleImages(array) {
+      const shuffled = [...array];
+
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
+      }
+
+      return shuffled;
+    }
+
+    function createFilmFrame(number) {
+      const frame = document.createElement("figure");
+      frame.className = "film-frame";
+
+      const image = document.createElement("img");
+      image.src = `../assets/img/post-stills/still-${number}.jpg`;
+      image.alt = `Post-Matter project still ${number}`;
+      image.loading = "lazy";
+
+      frame.appendChild(image);
+      return frame;
+    }
+
+    function buildFilmstrip() {
+      const randomizedStills = shuffleImages(stills);
+
+      randomizedStills.forEach((number) => {
+        filmstripTrack.appendChild(createFilmFrame(number));
+      });
+
+      randomizedStills.forEach((number) => {
+        filmstripTrack.appendChild(createFilmFrame(number));
+      });
+    }
+
+    buildFilmstrip();
+
+    let autoScrollActive = true;
+    let animationFrameId;
+
+    function autoScrollFilmstrip() {
+      if (autoScrollActive && filmstripWrap) {
+        filmstripWrap.scrollLeft += 0.55;
+
+        const halfwayPoint = filmstripWrap.scrollWidth / 2;
+
+        if (filmstripWrap.scrollLeft >= halfwayPoint) {
+          filmstripWrap.scrollLeft = 0;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(autoScrollFilmstrip);
+    }
+
+    filmstripWrap.addEventListener("mouseenter", () => {
+      autoScrollActive = false;
+    });
+
+    filmstripWrap.addEventListener("mouseleave", () => {
+      autoScrollActive = true;
+    });
+
+    filmstripWrap.addEventListener("touchstart", () => {
+      autoScrollActive = false;
+    }, { passive: true });
+
+    filmstripWrap.addEventListener("touchend", () => {
+      autoScrollActive = true;
+    });
+
+    autoScrollFilmstrip();
+  </script>
 </body>
 </html>
