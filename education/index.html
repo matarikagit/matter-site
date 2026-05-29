@@ -761,65 +761,86 @@
   </footer>
 
   <script>
-    const screenwritingTikToks = [
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535842659047410999",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535842513282665783",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535444955217677582",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535444182534475022",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535443595843685646",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535246053491117367",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535244703311121719",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7535244536725916983",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534343654660410638",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534342922188229902",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534342735919189261",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534120578823785758",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534113135729347870",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7534112982012349727",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7530265737055784247",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7530265169981705486",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7530264853890600206",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529909153918160183",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529909026356825399",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529908983197404429",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529502800355642637",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529502843372424462",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529501797984046350",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529192375684435255",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7529191227351256375",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528867157564853559",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528866923191356686",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528866602608020749",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528547474676387102",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528461132919524622",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528382834659052813",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528065206606433549",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528064004812655927",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7528064001960381709",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7527639737725766926",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7527639438793493815",
-      "https://www.tiktok.com/@writtenbycharlie2/video/7527639248095169805"
+        const screenwritingTikToks = [
+      {
+        title: "Start With the Core Idea.",
+        description: "A screenwriting lesson on clarifying what the story is actually about before building the draft.",
+        category: "Concept",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535842659047410999"
+      },
+      {
+        title: "The Page Comes First.",
+        description: "A writing note about treating the script as the foundation for the entire project.",
+        category: "Drafting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535842513282665783"
+      },
+      {
+        title: "Scene Work.",
+        description: "A craft post for thinking through what each scene needs to do.",
+        category: "Scenes",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535444955217677582"
+      },
+      {
+        title: "Character Choices.",
+        description: "A screenwriting post about how character decisions shape story momentum.",
+        category: "Character",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535444182534475022"
+      },
+      {
+        title: "Build the Draft.",
+        description: "A practical lesson for getting ideas out of your head and onto the page.",
+        category: "Drafting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535443595843685646"
+      },
+      {
+        title: "Tighten the Writing.",
+        description: "A post about cutting, focusing, and making the draft cleaner.",
+        category: "Revision",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535246053491117367"
+      },
+      {
+        title: "Write With Intention.",
+        description: "A craft note on making story choices feel deliberate.",
+        category: "Craft",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535244703311121719"
+      },
+      {
+        title: "From Idea to Script.",
+        description: "A writing lesson for moving from a loose concept into screenplay form.",
+        category: "Process",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7535244536725916983"
+      },
+      {
+        title: "Make the Scene Matter.",
+        description: "A screenwriting note about making every scene earn its place.",
+        category: "Scenes",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534343654660410638"
+      },
+      {
+        title: "Find the Story Engine.",
+        description: "A lesson on what keeps the script moving forward.",
+        category: "Structure",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534342922188229902"
+      }
     ];
 
-    const screenwritingDescriptions = [
-      "A screenwriting lesson from Written by Charlie.",
-      "A craft note for writers building stronger pages.",
-      "A practical writing post for indie creators."
-    ];
+  
 
     function getTikTokVideoId(url) {
       const match = url.match(/video\/(\d+)/);
       return match ? match[1] : "";
     }
 
-    function buildTikTokCarousel(containerId, links, label) {
+      function buildTikTokCarousel(containerId, posts, label) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      const uniqueLinks = [...new Set(links)];
+      const uniquePosts = posts.filter((post, index, self) =>
+        index === self.findIndex((item) => item.url === post.url)
+      );
 
-      uniqueLinks.forEach((url, index) => {
-        const videoId = getTikTokVideoId(url);
+      uniquePosts.forEach((post) => {
+        const videoId = getTikTokVideoId(post.url);
         const card = document.createElement("article");
         card.className = "tiktok-card";
 
@@ -828,12 +849,12 @@
 
         const blockquote = document.createElement("blockquote");
         blockquote.className = "tiktok-embed";
-        blockquote.cite = url;
+        blockquote.cite = post.url;
         blockquote.dataset.videoId = videoId;
 
         const section = document.createElement("section");
         const fallbackLink = document.createElement("a");
-        fallbackLink.href = url;
+        fallbackLink.href = post.url;
         fallbackLink.target = "_blank";
         fallbackLink.rel = "noreferrer";
         fallbackLink.textContent = "Watch on TikTok";
@@ -847,20 +868,20 @@
 
         const kicker = document.createElement("p");
         kicker.className = "edu-kicker";
-        kicker.textContent = label;
+        kicker.textContent = post.category || label;
 
         const title = document.createElement("h3");
-        title.textContent = `Screenwriting post ${String(index + 1).padStart(2, "0")}.`;
+        title.textContent = post.title;
 
         const description = document.createElement("p");
-        description.textContent = screenwritingDescriptions[index % screenwritingDescriptions.length];
+        description.textContent = post.description;
 
         const actions = document.createElement("div");
         actions.className = "lesson-actions";
 
         const button = document.createElement("a");
         button.className = "button";
-        button.href = url;
+        button.href = post.url;
         button.target = "_blank";
         button.rel = "noreferrer";
         button.textContent = "Open post";
