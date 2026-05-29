@@ -305,10 +305,13 @@
 
     .p-card h3 {
       margin: 0;
-      font-size: clamp(34px, 4.2vw, 78px);
+      max-width: 100%;
+      font-size: clamp(34px, 3.4vw, 64px);
       line-height: .82;
-      letter-spacing: -.085em;
+      letter-spacing: -.075em;
       text-transform: uppercase;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .p-card p {
