@@ -479,8 +479,46 @@
         font-size: clamp(46px, 14vw, 88px);
       }
     }
-       .post-hero {
-      grid-template-columns: 1fr;
+          .post-hero {
+      grid-template-columns: .95fr 1.05fr;
+      align-items: stretch;
+    }
+
+    .post-video-panel {
+      padding: 18px;
+      border-left: 1px solid var(--line-light);
+      display: grid;
+      align-items: center;
+    }
+
+    .post-video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(238, 233, 223, .24);
+      background:
+        radial-gradient(circle at 70% 24%, rgba(238, 233, 223, .12), transparent 18%),
+        linear-gradient(135deg, rgba(182, 51, 38, .25), rgba(5, 5, 5, .9)),
+        #101010;
+      overflow: hidden;
+    }
+
+    .post-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 1050px) {
+      .post-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .post-video-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line-light);
+      }
     }
 
     .post-hero-copy {
@@ -488,7 +526,7 @@
       border-right: 0;
     }
 
-    
+
   </style>
 </head>
 
@@ -517,17 +555,29 @@
     <section class="post-hero">
   
 
-      <div class="post-hero-copy">
+          <div class="post-hero-copy">
         <div>
           <p class="eyebrow">Post-Matter</p>
           <h1>Video editing for projects with a cinematic pulse.</h1>
         </div>
 
         <div class="post-hero-bottom">
-          <p>Matter comes from a post-production background, with a focus on final images that feel personal, cinematic, and emotionally clear.</p>
+          <p>Matter comes from a post-production background, with a focus on editing, grading, finishing, and creating images that carry feeling.</p>
           <a class="button" href="../pricing/index.html">View pricing</a>
         </div>
       </div>
+
+      <aside class="post-video-panel">
+        <div class="post-video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/TD6pNwHyfftz5naw"
+            title="Post-Matter video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </aside>
     </section>
 
     <section class="post-section">
