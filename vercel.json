@@ -34,6 +34,12 @@
       "source": "/2026/03/23/why-most-films-fail-before-theyre-even-released-and-how-to-fix-it/",
       "destination": "/blog/post.html?slug=why-most-films-fail-before-theyre-even-released-and-how-to-fix-it",
       "permanent": true
+    },
+
+    {
+      "source": "/category/blog/",
+      "destination": "/blog/index.html",
+      "permanent": true
     }
   ]
 }
