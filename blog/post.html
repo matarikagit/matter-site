@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    :root {
+      --black: #070707;
+      --cream: #eee9df;
+      --paper: #f6f1e8;
+      --red: #b63326;
+      --muted: #736d62;
+      --line: rgba(7, 7, 7, .18);
+    }
+
+    body {
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.035) 0 1px, transparent 1px),
+        linear-gradient(180deg, rgba(7,7,7,.028) 0 1px, transparent 1px),
+        var(--cream);
+      background-size: 48px 48px;
+      color: var(--black);
+    }
+
+    .article-kicker {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .article-hero {
+      min-height: calc(88vh - 82px);
+      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      align-content: space-between;
+      gap: 46px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-hero.has-image {
+      color: var(--cream);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .article-hero.has-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.86), rgba(7,7,7,.42) 58%, rgba(7,7,7,.88)),
+        linear-gradient(135deg, rgba(182,51,38,.44), transparent 42%);
+      z-index: 1;
+    }
+
+    .article-hero.has-image > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .article-top {
+      display: grid;
+      gap: 16px;
+    }
+
+    .article-top h1 {
+      margin: 0;
+      max-width: 1280px;
+      font-size: clamp(62px, 9vw, 172px);
+      line-height: .78;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .article-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 760px) 1fr;
+      gap: 24px;
+      align-items: end;
+      padding-top: 20px;
+      border-top: 1px solid currentColor;
+    }
+
+    .article-bottom p {
+      margin: 0;
+      max-width: 760px;
+      color: inherit;
+      opacity: .78;
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: inherit;
+      opacity: .72;
+    }
+
+    .article-shell {
+      padding: clamp(38px, 6vw, 88px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 820px) 1fr;
+      gap: clamp(22px, 4vw, 58px);
+      align-items: start;
+    }
+
+    .article-side {
+      position: sticky;
+      top: 104px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .article-side a {
+      color: inherit;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+
+    .article-content {
+      font-size: clamp(18px, 1.55vw, 24px);
+      line-height: 1.42;
+      letter-spacing: -.025em;
+      color: #2f2b27;
+    }
+
+    .article-content p {
+      margin: 0 0 1.25em;
+    }
+
+    .article-content h2 {
+      margin: 2.1em 0 .55em;
+      font-size: clamp(36px, 4.5vw, 86px);
+      line-height: .84;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    .article-content blockquote {
+      margin: 2em 0;
+      padding: 24px;
+      border-left: 3px solid var(--red);
+      background: rgba(7,7,7,.045);
+      font-size: clamp(24px, 2.8vw, 42px);
+      line-height: 1.06;
+      letter-spacing: -.055em;
+    }
+
+    .article-content img {
+      width: 100%;
+      display: block;
+      margin: 2em 0;
+      border: 1px solid var(--line);
+    }
+
+    .related-section {
+      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .related-section h2 {
+      margin: 0 0 24px;
+      max-width: 900px;
+      font-size: clamp(42px, 5.5vw, 104px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .related-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1050px) {
+      .article-bottom,
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .article-meta {
+        justify-content: flex-start;
+      }
+
+      .article-side {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .article-hero,
+      .article-shell,
+      .related-section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main id="articleRoot"></main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="../contact/index.html">Contact</a></div>
+  </footer>
+
+  <script src="./posts.js"></script>
+
+  <script>
+    const articleRoot = document.getElementById("articleRoot");
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+    const post = blogPosts.find((item) => item.slug === slug);
+
+    function renderNotFound() {
+      document.title = "Article Not Found | Matter";
+
+      articleRoot.innerHTML = `
+        <section class="article-hero">
+          <div class="article-top">
+            <p class="article-kicker">Blog</p>
+            <h1>Article not found.</h1>
+          </div>
+
+          <div class="article-bottom">
+            <p>This post may have moved or may not be published yet.</p>
+            <div class="related-actions">
+              <a class="button" href="./index.html">Back to Blog</a>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderContent(content = []) {
+      return content.map((block) => {
+        if (block.type === "heading") {
+          return `<h2>${block.text}</h2>`;
+        }
+
+        if (block.type === "quote") {
+          return `<blockquote>${block.text}</blockquote>`;
+        }
+
+        if (block.type === "image") {
+          return `<img src="${block.src}" alt="${block.alt || ""}">`;
+        }
+
+        return `<p>${block.text}</p>`;
+      }).join("");
+    }
+
+    function renderPost(post) {
+      document.title = `${post.title} | Matter Blog`;
+
+      const heroClass = post.thumbnail ? "article-hero has-image" : "article-hero";
+      const heroStyle = post.thumbnail ? `style="background-image:url('${post.thumbnail}')"` : "";
+
+      articleRoot.innerHTML = `
+        <article>
+          <section class="${heroClass}" ${heroStyle}>
+            <div class="article-top">
+              <p class="article-kicker">${post.category}</p>
+              <h1>${post.title}</h1>
+            </div>
+
+            <div class="article-bottom">
+              <p>${post.blurb}</p>
+              <div class="article-meta">
+                <span>${post.date || ""}</span>
+                <span>${post.author || "Matter"}</span>
+                <span>${post.readTime || ""}</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-shell">
+            <div class="article-layout">
+              <aside class="article-side">
+                <a href="./index.html">Back to Blog</a>
+                <a href="../education/index.html">Education</a>
+                <a href="../contact/index.html">Contact</a>
+              </aside>
+
+              <div class="article-content">
+                ${renderContent(post.content)}
+              </div>
+
+              <aside></aside>
+            </div>
+          </section>
+        </article>
+
+        <section class="related-section">
+          <h2>More notes from Matter.</h2>
+          <div class="related-actions">
+            <a class="button" href="./index.html">Browse Blog</a>
+            <a class="button" href="../education/index.html">Education</a>
+          </div>
+        </section>
+      `;
+    }
+
+    if (!post) {
+      renderNotFound();
+    } else {
+      renderPost(post);
+    }
+  </script>
+</body>
+</html>
