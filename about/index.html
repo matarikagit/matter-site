@@ -551,6 +551,40 @@
         min-height: 360px;
       }
     }
+
+      .about-hero-solo {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero-solo .about-hero-left {
+      border-right: 0;
+      border-bottom: 0;
+    }
+
+    .about-hero-solo .about-hero-left h1 {
+      max-width: 1280px;
+      font-size: clamp(70px, 11vw, 210px);
+    }
+
+    .about-page-nav {
+      background: var(--about-black);
+      color: var(--about-cream);
+      border-top: 0;
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .about-page-nav .about-nav-item {
+      border-right: 1px solid var(--about-light-line);
+    }
+
+    .about-page-nav .board-meta {
+      color: rgba(238,233,223,.66);
+    }
+
+    .about-page-nav .about-nav-item:hover {
+      background: #171717;
+    }
+    
   </style>
 </head>
 
@@ -576,7 +610,7 @@
   </header>
 
   <main>
-    <section class="about-hero">
+       <section class="about-hero about-hero-solo">
       <div class="about-hero-left">
         <div>
           <p class="about-kicker">About Matter</p>
@@ -591,40 +625,26 @@
           </div>
         </div>
       </div>
-
-      <aside class="about-hero-right">
-        <div class="philosophy-board">
-          <div class="board-meta">
-            <span>Framework</span>
-            <span>Project Health</span>
-          </div>
-          <h2>The release does not begin at the upload button.</h2>
-          <div class="board-meta">
-            <span>People / Process / Product / Participation</span>
-            <span>Placement follows</span>
-          </div>
-        </div>
-
-        <div class="about-nav-strip">
-          <a class="about-nav-item" href="#story">
-            <span class="board-meta">01</span>
-            <strong>Story</strong>
-          </a>
-          <a class="about-nav-item" href="#framework">
-            <span class="board-meta">02</span>
-            <strong>4 P’s</strong>
-          </a>
-          <a class="about-nav-item" href="#founder">
-            <span class="board-meta">03</span>
-            <strong>Charlie</strong>
-          </a>
-          <a class="about-nav-item" href="#values">
-            <span class="board-meta">04</span>
-            <strong>Values</strong>
-          </a>
-        </div>
-      </aside>
     </section>
+
+    <nav class="about-nav-strip about-page-nav" aria-label="About page sections">
+      <a class="about-nav-item" href="#story">
+        <span class="board-meta">01</span>
+        <strong>Story</strong>
+      </a>
+      <a class="about-nav-item" href="#framework">
+        <span class="board-meta">02</span>
+        <strong>4 P’s</strong>
+      </a>
+      <a class="about-nav-item" href="#founder">
+        <span class="board-meta">03</span>
+        <strong>Charlie</strong>
+      </a>
+      <a class="about-nav-item" href="#values">
+        <span class="board-meta">04</span>
+        <strong>Values</strong>
+      </a>
+    </nav>
 
     <section class="about-section" id="story">
       <div class="story-panel">
