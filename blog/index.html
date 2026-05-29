@@ -513,9 +513,17 @@
       emptyState.style.display = visiblePosts.length ? "none" : "block";
     }
 
-    renderCategories();
-    renderFeatured();
-    renderPosts();
+    window.blogPostsReady
+      .then(() => {
+        renderCategories();
+        renderFeatured();
+        renderPosts();
+      })
+      .catch((error) => {
+        console.error(error);
+        emptyState.textContent = "Blog posts could not load.";
+        emptyState.style.display = "block";
+      });
   </script>
 </body>
 </html>

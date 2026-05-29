@@ -257,7 +257,8 @@
     const articleRoot = document.getElementById("articleRoot");
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
-    const post = blogPosts.find((item) => item.slug === slug);
+
+    let post = null;
 
     function renderNotFound() {
       document.title = "Article Not Found | Matter";
@@ -348,11 +349,20 @@
       `;
     }
 
-    if (!post) {
-      renderNotFound();
-    } else {
-      renderPost(post);
-    }
+    window.blogPostsReady
+      .then(() => {
+        post = window.blogPosts.find((item) => item.slug === slug);
+
+        if (!post) {
+          renderNotFound();
+        } else {
+          renderPost(post);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        renderNotFound();
+      });
   </script>
 </body>
 </html>
