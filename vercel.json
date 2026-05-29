@@ -1,0 +1,34 @@
+{
+  "redirects": [
+    {
+      "source": "/podcast",
+      "destination": "/under-construction",
+      "permanent": false
+    },
+    {
+      "source": "/podcast/:path*",
+      "destination": "/under-construction",
+      "permanent": false
+    },
+    {
+      "source": "/education",
+      "destination": "/under-construction",
+      "permanent": false
+    },
+    {
+      "source": "/education/:path*",
+      "destination": "/under-construction",
+      "permanent": false
+    },
+    {
+      "source": "/work",
+      "destination": "/under-construction",
+      "permanent": false
+    },
+    {
+      "source": "/work/:path*",
+      "destination": "/under-construction",
+      "permanent": false
+    }
+  ]
+}
