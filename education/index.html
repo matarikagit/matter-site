@@ -1,8 +1,4 @@
-from pathlib import Path
-
-education_html = r'''<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matter Education | Matter Marketing & Distribution</title>
@@ -587,7 +583,16 @@ education_html = r'''<!DOCTYPE html>
       </div>
     </section>
 
-      <section class="edu-section" id="screenwriting">
+    <section class="edu-section" id="screenwriting">
+      <div class="section-head">
+        <p class="edu-kicker">Written by Charlie</p>
+        <h2>Screenwriting education.</h2>
+        <p class="section-note">Live now on TikTok.</p>
+      </div>
+
+      <div class="tiktok-row" id="screenwritingTikTokRow" aria-label="Written by Charlie TikTok carousel"></div>
+    </section>
+
     <section class="edu-section" id="marketing-distribution">
       <div class="section-head">
         <p class="edu-kicker">Matter TikTok</p>
@@ -878,8 +883,3 @@ education_html = r'''<!DOCTYPE html>
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
-'''
-
-out_path = Path('/mnt/data/education-index-redesign.html')
-out_path.write_text(education_html, encoding='utf-8')
-print(f"Created {out_path}")
