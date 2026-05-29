@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-Matter | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .script-body {
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.055) 0 1px, transparent 1px),
+        linear-gradient(180deg, rgba(7,7,7,.045) 0 1px, transparent 1px),
+        var(--cream);
+      background-size: 42px 42px;
+    }
+
+    .pre-hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pre-hero-copy {
+      padding: clamp(36px, 5vw, 76px) clamp(28px, 4.5vw, 68px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .pre-hero-copy h1 {
+      margin-bottom: 0;
+      max-width: 980px;
+      font-size: clamp(54px, 7.4vw, 124px);
+      line-height: .88;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+    }
+
+    .pre-hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .pre-hero-bottom p {
+      margin-bottom: 0;
+      max-width: 590px;
+      font-size: clamp(18px, 1.8vw, 25px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+    }
+
+    .script-panel {
+      padding: 18px;
+      border-left: 1px solid var(--line);
+      display: grid;
+      background: #e5ded0;
+    }
+
+    .script-page {
+      position: relative;
+      min-height: 100%;
+      padding: clamp(28px, 4vw, 54px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 18px 18px 0 rgba(7,7,7,.08);
+      overflow: hidden;
+    }
+
+    .script-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 84px;
+      width: 1px;
+      background: rgba(182, 51, 38, .32);
+    }
+
+    .script-page::after {
+      content: "FADE IN:";
+      position: absolute;
+      top: 32px;
+      right: 34px;
+      color: rgba(7,7,7,.14);
+      font-family: "Courier New", monospace;
+      font-size: clamp(36px, 5vw, 82px);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      transform: rotate(-2deg);
+    }
+
+    .script-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .script-page h2 {
+      margin: 0;
+      max-width: 720px;
+      font-family: "Courier New", monospace;
+      font-size: clamp(38px, 5vw, 86px);
+      line-height: .9;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .script-note {
+      max-width: 440px;
+      margin-left: auto;
+      padding: 18px;
+      border: 1px solid rgba(182, 51, 38, .42);
+      background: rgba(182, 51, 38, .08);
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.28;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pre-section {
+      padding: clamp(38px, 6vw, 86px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pre-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 26px;
+    }
+
+    .pre-head h2 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(40px, 5vw, 92px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .draft-lane {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .draft-card {
+      min-height: 360px;
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(246,241,232,.78);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+
+    .draft-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px dashed rgba(7,7,7,.18);
+      opacity: 0;
+      transform: scale(.98);
+      transition: opacity .22s ease, transform .22s ease;
+      pointer-events: none;
+    }
+
+    .draft-card:hover {
+      background: var(--black);
+      color: var(--cream);
+      transform: translateY(-3px);
+    }
+
+    .draft-card:hover::before {
+      opacity: 1;
+      transform: scale(1);
+      border-color: rgba(238,233,223,.32);
+    }
+
+    .draft-card:hover .label {
+      color: rgba(238,233,223,.58);
+    }
+
+    .draft-card h3 {
+      margin: 0;
+      max-width: 520px;
+      font-size: clamp(34px, 4vw, 76px);
+      line-height: .82;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .draft-card p {
+      margin: 0;
+      max-width: 440px;
+      color: inherit;
+      font-size: 16px;
+      line-height: 1.28;
+    }
+
+    .idea-card:hover h3::after {
+      content: " ?";
+      color: var(--red);
+    }
+
+    .partial-card:hover h3 {
+      text-decoration: underline;
+      text-decoration-thickness: 4px;
+      text-underline-offset: 6px;
+      text-decoration-color: var(--red);
+    }
+
+    .finished-card:hover h3::before {
+      content: "FINAL ";
+      color: rgba(238,233,223,.5);
+    }
+
+    .markup-section {
+      background: var(--black);
+      color: var(--cream);
+      border-bottom-color: var(--line-light);
+    }
+
+    .markup-section .eyebrow,
+    .markup-section .label {
+      color: rgba(238,233,223,.58);
+    }
+
+    .markup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line-light);
+      border-left: 1px solid var(--line-light);
+    }
+
+    .markup-card {
+      min-height: 340px;
+      padding: 22px;
+      border-right: 1px solid var(--line-light);
+      border-bottom: 1px solid var(--line-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+
+    .markup-card::before,
+    .markup-card::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .28s ease, transform .36s ease, filter .36s ease;
+      z-index: -1;
+    }
+
+    .markup-card:hover {
+      background: #131313;
+      transform: translateY(-2px);
+    }
+
+    .markup-card h3 {
+      margin: 0;
+      max-width: 640px;
+      font-size: clamp(42px, 5vw, 96px);
+      line-height: .8;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+      transition: transform .28s ease, filter .28s ease;
+    }
+
+    .markup-card p {
+      margin: 0;
+      max-width: 520px;
+      color: rgba(238,233,223,.74);
+      font-size: 16px;
+      line-height: 1.28;
+      position: relative;
+      z-index: 2;
+    }
+
+    .writing-card::before {
+      inset: 20px 24px auto 24px;
+      height: 110px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 18px,
+          rgba(238,233,223,.18) 18px 20px
+        );
+      transform: translateY(14px);
+    }
+
+    .writing-card::after {
+      width: 2px;
+      height: 110px;
+      right: 28px;
+      top: 88px;
+      background: rgba(238,233,223,.9);
+      transform: scaleY(.15);
+      transform-origin: top;
+      box-shadow: -165px 18px 0 rgba(182,51,38,.8), -40px 58px 0 rgba(182,51,38,.8);
+    }
+
+    .writing-card:hover::before,
+    .writing-card:hover::after {
+      opacity: 1;
+    }
+
+    .writing-card:hover::before {
+      transform: translateY(0);
+    }
+
+    .writing-card:hover::after {
+      transform: scaleY(1);
+      animation: blink-caret 1s steps(1) infinite;
+    }
+
+    .writing-card:hover h3 {
+      transform: translateX(8px);
+    }
+
+    .editing-card::before {
+      left: 22px;
+      right: 22px;
+      top: 52%;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      box-shadow: 0 -64px 0 rgba(182,51,38,.9);
+    }
+
+    .editing-card::after {
+      content: "NOTE";
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      padding: 6px 8px;
+      border: 1px solid rgba(182,51,38,.5);
+      color: rgba(238,233,223,.72);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      background: rgba(182,51,38,.12);
+      transform: translateY(-8px) rotate(-3deg);
+    }
+
+    .editing-card:hover::before,
+    .editing-card:hover::after {
+      opacity: 1;
+    }
+
+    .editing-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .editing-card:hover h3 {
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+      text-decoration: line-through;
+      text-decoration-color: rgba(182,51,38,.9);
+      text-decoration-thickness: 4px;
+    }
+
+    .drafts-card::before {
+      inset: 36px auto auto 36px;
+      width: 62%;
+      height: 62%;
+      background: rgba(238,233,223,.06);
+      border: 1px solid rgba(238,233,223,.24);
+      box-shadow:
+        18px 18px 0 rgba(238,233,223,.08),
+        36px 36px 0 rgba(238,233,223,.05);
+      transform: translate(-6px, 8px) rotate(-2deg);
+    }
+
+    .drafts-card::after {
+      inset: auto 30px 30px auto;
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(182,51,38,.5), transparent 68%);
+      transform: scale(.7);
+      filter: blur(8px);
+    }
+
+    .drafts-card:hover::before,
+    .drafts-card:hover::after {
+      opacity: 1;
+    }
+
+    .drafts-card:hover::before {
+      transform: translate(0, 0) rotate(0deg);
+    }
+
+    .drafts-card:hover::after {
+      transform: scale(1);
+    }
+
+    .drafts-card:hover h3 {
+      transform: translateY(-4px);
+    }
+
+    .focus-card::before {
+      inset: 26px;
+      background:
+        linear-gradient(90deg, rgba(182,51,38,.26) 0 2px, transparent 2px),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 24px,
+          rgba(238,233,223,.12) 24px 25px
+        );
+      background-size: 56px 100%, 100% 100%;
+      border: 1px solid rgba(238,233,223,.18);
+      transform: scale(.96);
+    }
+
+    .focus-card::after {
+      width: 128px;
+      height: 128px;
+      border-radius: 999px;
+      right: 24px;
+      top: 32px;
+      background: radial-gradient(circle, rgba(238,233,223,.24), transparent 68%);
+      filter: blur(8px);
+      transform: scale(.7);
+    }
+
+    .focus-card:hover::before,
+    .focus-card:hover::after {
+      opacity: 1;
+    }
+
+    .focus-card:hover::before {
+      transform: scale(1);
+    }
+
+    .focus-card:hover::after {
+      transform: scale(1);
+    }
+
+    .focus-card:hover h3 {
+      transform: translateY(-6px);
+      letter-spacing: -.095em;
+    }
+
+    @keyframes blink-caret {
+      0%, 45% { opacity: 1; }
+      46%, 100% { opacity: .25; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .markup-card,
+      .markup-card::before,
+      .markup-card::after,
+      .markup-card h3,
+      .draft-card {
+        transition: none;
+        animation: none;
+      }
+
+      .markup-card:hover,
+      .draft-card:hover {
+        transform: none;
+      }
+    }
+
+    .future-strip {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      gap: 30px;
+      align-items: center;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .future-strip h2 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 4.2vw, 82px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .future-strip p {
+      max-width: 520px;
+      margin: 0;
+      color: #3d3831;
+      font-size: 16px;
+      line-height: 1.28;
+    }
+
+    .pre-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .pre-card {
+      min-height: 320px;
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .pre-card:hover {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .pre-card:hover .label {
+      color: rgba(238, 233, 223, .58);
+    }
+
+    .pre-card h3 {
+      margin: 0;
+      max-width: 640px;
+      font-size: clamp(44px, 5vw, 96px);
+      line-height: .8;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .pre-card p {
+      margin: 0 0 18px;
+      max-width: 500px;
+      color: inherit;
+      font-size: 16px;
+      line-height: 1.28;
+    }
+
+    .pre-cta {
+      padding: clamp(44px, 7vw, 110px) clamp(24px, 4vw, 58px);
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    .pre-cta h2 {
+      max-width: 1160px;
+      margin: 0 0 24px;
+      font-size: clamp(56px, 9vw, 160px);
+      line-height: .8;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .pre-cta-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(238, 233, 223, .34);
+    }
+
+    .pre-cta-line p {
+      max-width: 560px;
+      margin: 0;
+      color: rgba(238, 233, 223, .82);
+      font-size: 17px;
+      line-height: 1.28;
+    }
+
+    .pre-cta .button:hover {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    @media (max-width: 1050px) {
+      .pre-hero,
+      .pre-head,
+      .future-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .script-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .script-page {
+        min-height: 460px;
+      }
+
+      .draft-lane,
+      .markup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .pre-hero-copy,
+      .pre-section,
+      .pre-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .pre-hero-bottom,
+      .pre-cards,
+      .pre-cta-line {
+        grid-template-columns: 1fr;
+      }
+
+      .script-page::before {
+        left: 34px;
+      }
+
+      .draft-card,
+      .markup-card,
+      .pre-card {
+        min-height: 260px;
+      }
+
+      .script-page h2 {
+        font-size: clamp(40px, 12vw, 78px);
+      }
+    }
+  </style>
+</head>
+
+<body class="script-body">
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="pre-hero">
+      <div class="pre-hero-copy">
+        <div>
+          <p class="eyebrow">Pre-Matter</p>
+          <h1>Screenplay support before production.</h1>
+        </div>
+
+        <div class="pre-hero-bottom">
+          <p>Bring a script idea, a partial draft, or a finished screenplay. Matter helps move it closer to completion.</p>
+          <a class="button" href="../pricing/index.html">View pricing</a>
+        </div>
+      </div>
+
+      <aside class="script-panel">
+        <div class="script-page">
+          <div class="script-meta">
+            <span>Draft</span>
+            <span>Screenplay</span>
+          </div>
+          <h2>Before the release, there is the page.</h2>
+          <div class="script-note">
+            NOTE: Start where the script actually is. Idea, draft, or polish.
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="pre-section">
+      <div class="pre-head">
+        <p class="eyebrow">Screenplays</p>
+        <h2>For scripts that need shape, polish, or completion.</h2>
+      </div>
+
+      <div class="draft-lane">
+        <article class="draft-card idea-card">
+          <span class="label">Idea</span>
+          <h3>Script Idea</h3>
+          <p>Start with a premise, character direction, or rough concept. Matter helps shape it into a clearer writing path.</p>
+        </article>
+
+        <article class="draft-card partial-card">
+          <span class="label">Draft</span>
+          <h3>Partial Script</h3>
+          <p>Bring unfinished pages, scenes, outlines, or fragments. Matter helps organize what is there and identify what is missing.</p>
+        </article>
+
+        <article class="draft-card finished-card">
+          <span class="label">Polish</span>
+          <h3>Finished Script</h3>
+          <p>Bring a complete draft for editing, tightening, structure notes, dialogue polish, or a stronger final pass.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pre-section markup-section">
+      <div class="pre-head">
+        <p class="eyebrow">Services</p>
+        <h2>Writing and editing, based on what the script needs.</h2>
+      </div>
+
+      <div class="markup-grid">
+        <article class="markup-card writing-card">
+          <span class="label">Writing</span>
+          <h3>Script Writing</h3>
+          <p>For clients who need Matter to help write pages, expand an idea, or move a concept into screenplay form.</p>
+        </article>
+
+        <article class="markup-card editing-card">
+          <span class="label">Editing</span>
+          <h3>Script Editing</h3>
+          <p>For clients who already have pages and need notes, cuts, polish, restructuring, or a cleaner draft.</p>
+        </article>
+
+        <article class="markup-card drafts-card">
+          <span class="label">Passes</span>
+          <h3>Additional Drafts</h3>
+          <p>Additional writing or editing passes can be quoted based on length, deadline, and level of work.</p>
+        </article>
+
+        <article class="markup-card focus-card">
+          <span class="label">Focus</span>
+          <h3>Screenplay First</h3>
+          <p>Pre-Matter currently focuses on screenplay work. Additional pre-production services may be added as Matter expands.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pre-section">
+      <div class="future-strip">
+        <span class="label">Pre-production</span>
+        <h2>Built around the script first.</h2>
+        <p>For now, Pre-Matter is screenplay writing and editing. Future offerings can grow from this foundation.</p>
+      </div>
+    </section>
+
+    <section class="pre-section">
+      <div class="pre-cards">
+        <a class="pre-card" href="../pricing/index.html">
+          <span class="label">Rates</span>
+          <h3>Need the price?</h3>
+          <div>
+            <p>Go to pricing for script editing, script writing, and quote-based passes.</p>
+            <span class="button">View pricing</span>
+          </div>
+        </a>
+
+        <a class="pre-card" href="../education/index.html">
+          <span class="label">Education</span>
+          <h3>Want to learn screenplay writing?</h3>
+          <div>
+            <p>Visit Matter Education for writing lessons and creator resources.</p>
+            <span class="button">View education</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="pre-cta">
+      <p class="eyebrow">Start</p>
+      <h2>Have a script?</h2>
+      <div class="pre-cta-line">
+        <p>Send the idea, pages, or full draft. Matter will respond with the next step.</p>
+        <a class="button" href="../contact/index.html">Contact Matter</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="../contact/index.html">Contact</a></div>
+  </footer>
+</body>
+</html>

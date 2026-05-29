@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matter: The Podcast | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    :root {
+      --podcast-gold: #b99a5b;
+      --podcast-wine: #3b1110;
+      --podcast-ink: #050505;
+      --podcast-cream: #eee9df;
+      --podcast-line: rgba(185,154,91,.28);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 50% -16%, rgba(185,154,91,.18), transparent 34%),
+        linear-gradient(180deg, #080808, #050505 64%, #0b0706);
+      color: var(--podcast-cream);
+    }
+
+    header {
+      background: rgba(5,5,5,.9);
+      border-bottom: 1px solid rgba(185,154,91,.24);
+    }
+
+    .button:hover {
+      background: var(--podcast-cream);
+      color: var(--podcast-ink);
+    }
+
+    .podcast-kicker {
+      margin: 0;
+      color: rgba(185,154,91,.84);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .podcast-hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      place-items: center;
+      padding: clamp(44px, 6vw, 94px) clamp(24px, 4vw, 64px);
+      border-bottom: 1px solid var(--podcast-line);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(185,154,91,.22), transparent 20%),
+        linear-gradient(120deg, rgba(59,17,16,.72), rgba(5,5,5,.86) 46%, rgba(5,5,5,1));
+    }
+
+    .podcast-hero::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(185,154,91,.24);
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .podcast-hero::after {
+      content: "MATTER";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(170px, 28vw, 560px);
+      line-height: .7;
+      letter-spacing: -.12em;
+      font-weight: 900;
+      color: rgba(238,233,223,.035);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+      text-align: center;
+      align-items: center;
+    }
+
+    .hero-inner h1 {
+      max-width: 1180px;
+      margin: 0;
+      font-size: clamp(64px, 9vw, 170px);
+      line-height: .78;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .hero-inner p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(238,233,223,.78);
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+    }
+
+    .hero-actions,
+    .episode-actions,
+    .community-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .podcast-section {
+      padding: clamp(42px, 6vw, 92px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid rgba(185,154,91,.22);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      max-width: 960px;
+      font-size: clamp(40px, 5.3vw, 98px);
+      line-height: .84;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .mission-cards {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      border-top: 1px solid var(--podcast-line);
+      border-left: 1px solid var(--podcast-line);
+    }
+
+    .mission-main,
+    .mission-side {
+      min-height: 430px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--podcast-line);
+      border-bottom: 1px solid var(--podcast-line);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(238,233,223,.035);
+    }
+
+    .mission-main::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(185,154,91,.18);
+      pointer-events: none;
+    }
+
+    .mission-main::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(185,154,91,.22);
+      box-shadow: 0 0 0 42px rgba(185,154,91,.04), 0 0 0 84px rgba(185,154,91,.025);
+    }
+
+    .mission-main h2 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      max-width: 920px;
+      font-size: clamp(46px, 6vw, 118px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .mission-main p,
+    .mission-side p {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0;
+      color: rgba(238,233,223,.74);
+      font-size: 17px;
+      line-height: 1.32;
+    }
+
+    .mission-side {
+      background:
+        linear-gradient(145deg, rgba(59,17,16,.78), rgba(5,5,5,.8)),
+        #090909;
+    }
+
+    .mission-side h3 {
+      margin: 0;
+      font-size: clamp(36px, 4.6vw, 86px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .latest-episode {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      border: 1px solid var(--podcast-line);
+      background: rgba(238,233,223,.035);
+    }
+
+    .episode-copy {
+      min-height: 500px;
+      padding: clamp(24px, 4vw, 52px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--podcast-line);
+    }
+
+    .episode-copy h3 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(48px, 6vw, 114px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .episode-copy p {
+      margin: 0;
+      max-width: 640px;
+      color: rgba(238,233,223,.74);
+      font-size: 17px;
+      line-height: 1.32;
+    }
+
+    .episode-window {
+      min-height: 500px;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(185,154,91,.18), transparent 26%),
+        linear-gradient(145deg, rgba(59,17,16,.72), rgba(5,5,5,.92)),
+        #090909;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .episode-window::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(185,154,91,.28);
+    }
+
+    .episode-window::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      border: 1px solid rgba(238,233,223,.18);
+      box-shadow:
+        0 0 0 34px rgba(238,233,223,.024),
+        0 0 0 68px rgba(238,233,223,.014);
+    }
+
+    .episode-placeholder {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 420px;
+    }
+
+    .episode-placeholder h3 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 4.2vw, 82px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .episode-placeholder p {
+      margin: 0;
+      color: rgba(238,233,223,.68);
+      line-height: 1.3;
+    }
+
+    .guest-board {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      border: 1px solid var(--podcast-line);
+      background: rgba(238,233,223,.035);
+    }
+
+    .guest-board-intro {
+      min-height: 520px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--podcast-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(145deg, rgba(185,154,91,.12), transparent),
+        #070707;
+    }
+
+    .guest-board-intro h2 {
+      margin: 0;
+      font-size: clamp(42px, 5vw, 96px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .guest-board-intro p {
+      margin: 0;
+      color: rgba(238,233,223,.72);
+      line-height: 1.32;
+    }
+
+    .guest-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 42%);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    .guest-card {
+      min-height: 520px;
+      padding: 22px;
+      border-right: 1px solid var(--podcast-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(238,233,223,.06), transparent 44%),
+        #090909;
+      scroll-snap-align: start;
+      transition: transform .22s ease, background .22s ease;
+    }
+
+    .guest-card:hover {
+      transform: translateY(-4px);
+      background:
+        radial-gradient(circle at 50% 24%, rgba(185,154,91,.24), transparent 20%),
+        #101010;
+    }
+
+    .guest-token {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      border: 1px solid rgba(185,154,91,.44);
+      display: grid;
+      place-items: center;
+      color: rgba(185,154,91,.88);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: rgba(185,154,91,.07);
+    }
+
+    .guest-card h3 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 74px);
+      line-height: .82;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .guest-card p {
+      margin: 0 0 18px;
+      color: rgba(238,233,223,.72);
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .apply-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--podcast-line);
+      border-left: 1px solid var(--podcast-line);
+    }
+
+    .apply-card {
+      min-height: 330px;
+      padding: 24px;
+      border-right: 1px solid var(--podcast-line);
+      border-bottom: 1px solid var(--podcast-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(238,233,223,.035);
+      transition: background .22s ease, color .22s ease;
+    }
+
+    .apply-card:hover {
+      background: var(--podcast-cream);
+      color: var(--podcast-ink);
+    }
+
+    .apply-card:hover .podcast-kicker,
+    .apply-card:hover p {
+      color: rgba(7,7,7,.72);
+    }
+
+    .apply-card h3 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(42px, 5vw, 96px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .apply-card p {
+      max-width: 600px;
+      margin: 0 0 18px;
+      color: rgba(238,233,223,.74);
+      line-height: 1.3;
+    }
+
+    .community-panel {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      border: 1px solid var(--podcast-line);
+      background:
+        radial-gradient(circle at 22% 26%, rgba(185,154,91,.16), transparent 24%),
+        rgba(238,233,223,.035);
+    }
+
+    .community-copy {
+      min-height: 360px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--podcast-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .community-copy h2 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(42px, 5vw, 96px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .community-copy p {
+      max-width: 600px;
+      margin: 0;
+      color: rgba(238,233,223,.72);
+      line-height: 1.32;
+    }
+
+    .community-links {
+      align-self: end;
+      padding: 24px;
+      justify-content: flex-start;
+      align-content: end;
+    }
+
+    .standards-panel {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      border: 1px solid var(--podcast-line);
+      background: rgba(238,233,223,.035);
+      overflow: hidden;
+    }
+
+    .standards-mark {
+      min-height: 340px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--podcast-line);
+      background:
+        radial-gradient(circle at center, rgba(185,154,91,.18), transparent 26%),
+        #070707;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .standards-mark::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(185,154,91,.32);
+      box-shadow: 0 0 0 32px rgba(185,154,91,.04);
+    }
+
+    .standards-mark span {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(40px, 5vw, 94px);
+      line-height: .78;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .standards-copy {
+      min-height: 340px;
+      padding: clamp(24px, 4vw, 52px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .standards-copy h2 {
+      margin: 0;
+      font-size: clamp(38px, 4.8vw, 92px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .standards-copy p {
+      margin: 0;
+      color: rgba(238,233,223,.72);
+      line-height: 1.35;
+      font-size: 16px;
+    }
+
+    .podcast-footer-cta {
+      padding: clamp(44px, 7vw, 110px) clamp(24px, 4vw, 58px);
+      background:
+        linear-gradient(120deg, rgba(59,17,16,.98), rgba(5,5,5,.98)),
+        var(--podcast-wine);
+      border-top: 1px solid var(--podcast-line);
+    }
+
+    .podcast-footer-cta h2 {
+      max-width: 1160px;
+      margin: 0 0 24px;
+      font-size: clamp(56px, 9vw, 160px);
+      line-height: .8;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .podcast-cta-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(238,233,223,.24);
+    }
+
+    .podcast-cta-line p {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(238,233,223,.78);
+      font-size: 17px;
+      line-height: 1.28;
+    }
+
+    footer {
+      border-top-color: rgba(185,154,91,.24);
+    }
+
+    @media (max-width: 1050px) {
+      .section-head,
+      .mission-cards,
+      .latest-episode,
+      .guest-board,
+      .apply-grid,
+      .community-panel,
+      .standards-panel,
+      .podcast-cta-line {
+        grid-template-columns: 1fr;
+      }
+
+      .episode-copy,
+      .guest-board-intro,
+      .community-copy,
+      .standards-mark,
+      .mission-main {
+        border-right: 0;
+        border-bottom: 1px solid var(--podcast-line);
+      }
+
+      .guest-rail {
+        grid-auto-columns: minmax(280px, 58vw);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .podcast-hero,
+      .podcast-section,
+      .podcast-footer-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-inner h1,
+      .podcast-footer-cta h2 {
+        font-size: clamp(54px, 15vw, 98px);
+      }
+
+      .guest-rail {
+        grid-auto-columns: 86vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="podcast-hero">
+      <div class="hero-inner">
+        <p class="podcast-kicker">Matter: The Podcast</p>
+        <h1>Conversations for indie film and TV.</h1>
+        <p>A conversation series from Matter Marketing & Distribution featuring filmmakers, creatives, and industry professionals.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">Apply to be a guest</a>
+          <a class="button" href="mailto:charliecooperfilms@gmail.com">Email inquiries</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcast-section">
+      <div class="mission-cards">
+        <article class="mission-main">
+          <p class="podcast-kicker">Purpose</p>
+          <h2>Demystify the work around the work.</h2>
+          <p>The podcast gives indie and entry-level creators a closer look at how projects get made, positioned, released, and supported.</p>
+        </article>
+
+        <article class="mission-side">
+          <p class="podcast-kicker">Conversation standard</p>
+          <h3>Process over promo.</h3>
+          <p>Guests bring real insight from their projects, roles, and creative paths.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="podcast-section">
+      <div class="section-head">
+        <p class="podcast-kicker">Latest Episode</p>
+        <h2>Featured conversation.</h2>
+      </div>
+
+      <article class="latest-episode">
+        <div class="episode-copy">
+          <div>
+            <p class="podcast-kicker">Episode Feature</p>
+            <h3>Replace this with the newest podcast episode.</h3>
+          </div>
+          <p>Use this area for the latest guest, their project, the episode topic, and where viewers can watch or listen.</p>
+          <div class="episode-actions">
+            <a class="button" href="#">Watch episode</a>
+            <a class="button" href="#">Guest project</a>
+            <a class="button" href="../blog/index.html">Related post</a>
+          </div>
+        </div>
+
+        <div class="episode-window">
+          <div class="episode-placeholder">
+            <p class="podcast-kicker">Episode Slot</p>
+            <h3>Video embed / cover art</h3>
+            <p>Place the latest podcast video, thumbnail, or episode cover here.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="podcast-section">
+      <div class="guest-board">
+        <div class="guest-board-intro">
+          <p class="podcast-kicker">Guests / Projects</p>
+          <h2>Explore the people behind the conversations.</h2>
+          <p>Use this as a living showcase for guests, episodes, projects, and ways to support their work.</p>
+        </div>
+
+        <div class="guest-rail" aria-label="Podcast guest showcase carousel">
+          <article class="guest-card">
+            <div class="guest-token">Guest</div>
+            <div>
+              <h3>Guest Name</h3>
+              <p>Short description of who they are, what they do, and what project they brought to the conversation.</p>
+              <div class="episode-actions">
+                <a class="button" href="#">Episode</a>
+                <a class="button" href="#">Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="guest-card">
+            <div class="guest-token">Project</div>
+            <div>
+              <h3>Creator Name</h3>
+              <p>Keep guests discoverable after their episode is no longer the newest feature.</p>
+              <div class="episode-actions">
+                <a class="button" href="#">Episode</a>
+                <a class="button" href="#">Support</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="guest-card">
+            <div class="guest-token">Film</div>
+            <div>
+              <h3>Film Title</h3>
+              <p>Feature a film, series, short, organization, or creative body of work connected to the guest.</p>
+              <div class="episode-actions">
+                <a class="button" href="#">Learn more</a>
+                <a class="button" href="#">Watch</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcast-section">
+      <div class="section-head">
+        <p class="podcast-kicker">Be on the podcast</p>
+        <h2>Bring insight, not just a pitch.</h2>
+      </div>
+
+      <div class="apply-grid">
+        <a class="apply-card" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">
+          <span class="podcast-kicker">Application</span>
+          <h3>Apply directly.</h3>
+          <div>
+            <p>Fill out the guest form thoughtfully so Matter can understand your work and the value of the conversation.</p>
+            <span class="button">Open application</span>
+          </div>
+        </a>
+
+        <a class="apply-card" href="mailto:charliecooperfilms@gmail.com">
+          <span class="podcast-kicker">Inquiries</span>
+          <h3>Email Matter.</h3>
+          <div>
+            <p>For podcast questions, guest ideas, or partnership conversations, contact Charlie directly.</p>
+            <span class="button">Email Charlie</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="podcast-section">
+      <div class="community-panel">
+        <div class="community-copy">
+          <p class="podcast-kicker">Community</p>
+          <h2>Follow the wider Matter conversation.</h2>
+          <p>Connect with Matter across social platforms, education, and written updates.</p>
+        </div>
+
+        <div class="community-links">
+          <a class="button" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
+          <a class="button" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="button" href="../education/index.html">Education</a>
+          <a class="button" href="../blog/index.html">Blog</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcast-section">
+      <div class="standards-panel">
+        <div class="standards-mark">
+          <span>Respect</span>
+        </div>
+        <div class="standards-copy">
+          <p class="podcast-kicker">Standards</p>
+          <h2>Respect for the work matters.</h2>
+          <p>Matter does not tolerate hate speech, harassment, discrimination, or false claims of ownership over work a guest does not have the rights or permission to represent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcast-footer-cta">
+      <p class="podcast-kicker">Matter: The Podcast</p>
+      <h2>Have something real to share?</h2>
+      <div class="podcast-cta-line">
+        <p>Apply to be considered for a remote conversation or future in-person recording in South Philadelphia.</p>
+        <a class="button" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">Apply now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="mailto:charliecooperfilms@gmail.com">Podcast inquiries</a></div>
+  </footer>
+</body>
+</html>

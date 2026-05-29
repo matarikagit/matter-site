@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    :root{
+      --bg:#080808;
+      --bg-soft:#111111;
+      --panel:#121212;
+      --line:rgba(238,233,223,.16);
+      --text:#eee9df;
+      --muted:rgba(238,233,223,.68);
+      --gold:#b99a5b;
+      --red:#b63326;
+      --blue:#335f8c;
+      --green:#55775b;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 16% 0%, rgba(182,51,38,.14), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(51,95,140,.12), transparent 22%),
+        linear-gradient(180deg, #080808, #0a0a0a 45%, #060606);
+      color: var(--text);
+    }
+
+    header{
+      background: rgba(8,8,8,.92);
+      border-bottom: 1px solid var(--line);
+    }
+
+    footer{
+      border-top: 1px solid var(--line);
+    }
+
+    .button:hover{
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .page-kicker{
+      margin:0;
+      color:rgba(238,233,223,.58);
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .pricing-hero{
+      min-height: calc(100vh - 82px);
+      padding: clamp(32px, 5vw, 72px) clamp(20px, 4vw, 58px);
+      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 18px;
+    }
+
+    .hero-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:40px;
+    }
+
+    .hero-copy h1{
+      margin:0;
+      max-width:1000px;
+      font-size: clamp(58px, 8vw, 140px);
+      line-height:.8;
+      letter-spacing:-.09em;
+      text-transform:uppercase;
+    }
+
+    .hero-copy p{
+      margin:0;
+      max-width:700px;
+      color:var(--muted);
+      font-size: clamp(18px, 2vw, 28px);
+      line-height:1.12;
+      letter-spacing:-.03em;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .consult-panel{
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 72% 24%, rgba(238,233,223,.16), transparent 18%),
+        linear-gradient(135deg, rgba(182,51,38,.48), rgba(8,8,8,.58) 40%, rgba(8,8,8,.96)),
+        #111;
+      padding: clamp(22px, 4vw, 44px);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .consult-panel::before{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border:1px solid rgba(238,233,223,.18);
+      pointer-events:none;
+    }
+
+    .consult-panel::after{
+      content:"30–40";
+      position:absolute;
+      right:-10px;
+      bottom:-20px;
+      font-size: clamp(86px, 12vw, 200px);
+      font-weight:900;
+      line-height:.78;
+      letter-spacing:-.12em;
+      color: rgba(238,233,223,.05);
+    }
+
+    .consult-panel h2{
+      position:relative;
+      z-index:2;
+      margin:0;
+      max-width:560px;
+      font-size: clamp(44px, 5vw, 96px);
+      line-height:.82;
+      letter-spacing:-.085em;
+      text-transform:uppercase;
+    }
+
+    .consult-panel p{
+      position:relative;
+      z-index:2;
+      max-width:540px;
+      margin:0;
+      color:rgba(238,233,223,.74);
+      line-height:1.3;
+      font-size:16px;
+    }
+
+    .consult-meta{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:rgba(238,233,223,.62);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .pricing-section{
+      padding: clamp(34px, 5vw, 72px) clamp(20px, 4vw, 58px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns: 180px 1fr auto;
+      gap:24px;
+      align-items:end;
+      margin-bottom:22px;
+    }
+
+    .section-head h2{
+      margin:0;
+      max-width:920px;
+      font-size: clamp(38px, 5vw, 96px);
+      line-height:.84;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+    }
+
+    .section-head p:last-child{
+      margin:0;
+      color:var(--muted);
+      max-width:420px;
+      font-size:14px;
+      line-height:1.28;
+      text-align:right;
+    }
+
+    .tile-row{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(290px, 28vw);
+      gap:14px;
+      overflow-x:auto;
+      padding-bottom:6px;
+      scroll-snap-type:x mandatory;
+    }
+
+    .tile-row::-webkit-scrollbar{
+      height:10px;
+    }
+
+    .tile-row::-webkit-scrollbar-thumb{
+      background:rgba(238,233,223,.16);
+      border-radius:999px;
+    }
+
+    .price-tile{
+      min-height:460px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(238,233,223,.04), rgba(238,233,223,.02));
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+      scroll-snap-align:start;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+      isolation:isolate;
+    }
+
+    .price-tile:hover{
+      transform: translateY(-4px);
+      border-color: rgba(238,233,223,.28);
+      background: linear-gradient(180deg, rgba(238,233,223,.07), rgba(238,233,223,.03));
+    }
+
+    .tile-top{
+      display:grid;
+      gap:10px;
+    }
+
+    .tile-label{
+      color:rgba(238,233,223,.56);
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .price-tile h3{
+      margin:0;
+      font-size: clamp(34px, 4vw, 72px);
+      line-height:.82;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+      max-width:420px;
+      position:relative;
+      z-index:2;
+    }
+
+    .tile-price{
+      font-size: clamp(34px, 4.4vw, 78px);
+      line-height:.84;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+      position:relative;
+      z-index:2;
+    }
+
+    .tile-copy{
+      position:relative;
+      z-index:2;
+      display:grid;
+      gap:14px;
+    }
+
+    .tile-copy p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.3;
+      max-width:420px;
+    }
+
+    .tile-copy ul{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+
+    .tile-copy li{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.25;
+    }
+
+    .tile-copy li::before{
+      content:"• ";
+      color:rgba(238,233,223,.8);
+    }
+
+    .tile-note{
+      color:rgba(238,233,223,.56);
+      font-size:12px;
+      line-height:1.25;
+      font-style:italic;
+    }
+
+    .tile-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* shared animated art layer */
+    .art{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      opacity:.92;
+    }
+
+    /* consultant */
+    .art-consultant::before,
+    .art-consultant::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      border:1px solid rgba(185,154,91,.22);
+      transition:transform .6s ease, opacity .4s ease;
+    }
+    .art-consultant::before{
+      width:140px;height:140px;right:28px;top:38px;
+      box-shadow:0 0 0 24px rgba(185,154,91,.04),0 0 0 48px rgba(185,154,91,.02);
+    }
+    .art-consultant::after{
+      width:9px;height:9px;right:94px;top:104px;background:rgba(185,154,91,.72);border:0;
+    }
+    .price-tile:hover .art-consultant::before{ transform:scale(1.08) rotate(12deg); }
+
+    /* partner */
+    .art-partner::before,
+    .art-partner::after{
+      content:"";
+      position:absolute;
+      background:linear-gradient(90deg, transparent, rgba(51,95,140,.52), transparent);
+      transition:transform .5s ease;
+    }
+    .art-partner::before{ width:150px;height:1px;left:34px;top:118px; }
+    .art-partner::after{ width:1px;height:150px;left:110px;top:44px; background:linear-gradient(180deg, transparent, rgba(51,95,140,.52), transparent); }
+    .art-partner .node1, .art-partner .node2, .art-partner .node3{
+      position:absolute; width:10px;height:10px;border-radius:50%; background:rgba(51,95,140,.75);
+    }
+    .art-partner .node1{ left:34px; top:113px; }
+    .art-partner .node2{ left:105px; top:113px; }
+    .art-partner .node3{ left:105px; top:44px; }
+    .price-tile:hover .art-partner::before{ transform:translateX(16px); }
+    .price-tile:hover .art-partner::after{ transform:translateY(16px); }
+
+    /* manager */
+    .art-manager::before{
+      content:"";
+      position:absolute;
+      right:26px; top:34px;
+      width:160px; height:110px;
+      border:1px solid rgba(182,51,38,.28);
+      box-shadow: 0 0 0 12px rgba(182,51,38,.06);
+    }
+    .art-manager::after{
+      content:"";
+      position:absolute;
+      right:48px; top:58px;
+      width:116px; height:12px;
+      background:linear-gradient(90deg, rgba(182,51,38,.85) 0 22%, rgba(238,233,223,.18) 22% 46%, rgba(182,51,38,.85) 46% 60%, rgba(238,233,223,.18) 60% 100%);
+      transition:transform .45s ease;
+    }
+    .price-tile:hover .art-manager::after{ transform:scaleX(1.1); }
+
+    /* distribution consultant */
+    .art-path::before,
+    .art-path::after{
+      content:"";
+      position:absolute;
+      border:1px dashed rgba(85,119,91,.35);
+      border-radius:999px;
+      transition:transform .6s ease;
+    }
+    .art-path::before{ width:160px;height:92px; right:24px; top:34px; border-radius:100px; }
+    .art-path::after{ width:9px;height:9px; right:92px; top:74px; background:rgba(85,119,91,.82); border:0; }
+    .price-tile:hover .art-path::before{ transform:rotate(8deg) scale(1.06); }
+
+    /* placement */
+    .art-placement::before{
+      content:"";
+      position:absolute;
+      right:50px; top:34px;
+      width:82px; height:82px;
+      border-radius:50% 50% 50% 0;
+      transform:rotate(-45deg);
+      border:1px solid rgba(185,154,91,.38);
+      box-shadow:0 0 0 14px rgba(185,154,91,.05);
+      transition:transform .5s ease;
+    }
+    .art-placement::after{
+      content:"";
+      position:absolute;
+      right:78px; top:62px;
+      width:18px;height:18px;border-radius:50%;
+      background:rgba(185,154,91,.72);
+    }
+    .price-tile:hover .art-placement::before{ transform:rotate(-45deg) translateY(8px); }
+
+    /* release */
+    .art-release::before,
+    .art-release::after{
+      content:"";
+      position:absolute;
+      right:44px; top:50px;
+      border-radius:50%;
+      border:1px solid rgba(238,233,223,.22);
+      transition:transform .55s ease, opacity .55s ease;
+    }
+    .art-release::before{ width:44px;height:44px; }
+    .art-release::after{ width:100px;height:100px; right:16px; top:22px; }
+    .art-release .ring3{
+      position:absolute; right:-10px; top:-4px; width:160px;height:160px; border-radius:50%; border:1px solid rgba(238,233,223,.1);
+      transition:transform .55s ease, opacity .55s ease;
+    }
+    .price-tile:hover .art-release::before,
+    .price-tile:hover .art-release::after,
+    .price-tile:hover .art-release .ring3{ transform:scale(1.08); }
+
+    /* script editing: redline/cut markup, no text */
+    .art-editing::before{
+      content:"";
+      position:absolute;
+      left:28px;
+      top:34px;
+      width:178px;
+      height:118px;
+      border:1px solid rgba(238,233,223,.13);
+      background:
+        linear-gradient(90deg, rgba(182,51,38,.45) 0 2px, transparent 2px),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 20px,
+          rgba(238,233,223,.10) 20px 21px
+        );
+      background-size: 100% 100%;
+      transform:rotate(-1.5deg);
+      transition:transform .45s ease, box-shadow .45s ease;
+    }
+    .art-editing::after{
+      content:"";
+      position:absolute;
+      left:48px;
+      top:76px;
+      width:148px;
+      height:3px;
+      background:rgba(182,51,38,.92);
+      box-shadow:
+        0 32px 0 rgba(182,51,38,.72),
+        46px -18px 0 rgba(182,51,38,.62);
+      transform:scaleX(.46);
+      transform-origin:left;
+      transition:transform .45s ease;
+    }
+    .art-editing .mark{
+      position:absolute;
+      left:158px;
+      top:50px;
+      width:44px;
+      height:44px;
+      border:2px solid rgba(182,51,38,.72);
+      border-left:0;
+      border-bottom:0;
+      transform:rotate(18deg) scale(.72);
+      transition:transform .45s ease;
+    }
+    .price-tile:hover .art-editing::before{
+      transform:rotate(-3deg) translateY(-4px);
+      box-shadow:14px 14px 0 rgba(182,51,38,.08);
+    }
+    .price-tile:hover .art-editing::after{
+      transform:scaleX(1);
+    }
+    .price-tile:hover .art-editing .mark{
+      transform:rotate(18deg) scale(1);
+    }
+
+    /* script writing: typed page / cursor / new lines, no text */
+    .art-writing::before{
+      content:"";
+      position:absolute;
+      left:30px;
+      top:34px;
+      width:176px;
+      height:122px;
+      border:1px solid rgba(238,233,223,.15);
+      background:
+        linear-gradient(90deg, rgba(182,51,38,.36) 0 1px, transparent 1px),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0 18px,
+          rgba(238,233,223,.12) 18px 19px
+        );
+      box-shadow: 12px 12px 0 rgba(238,233,223,.035);
+      transition:transform .45s ease;
+    }
+    .art-writing::after{
+      content:"";
+      position:absolute;
+      left:58px;
+      top:66px;
+      width:118px;
+      height:38px;
+      background:
+        linear-gradient(90deg, rgba(238,233,223,.78), rgba(238,233,223,.78)) 0 0 / 44px 2px no-repeat,
+        linear-gradient(90deg, rgba(238,233,223,.62), rgba(238,233,223,.62)) 0 16px / 82px 2px no-repeat,
+        linear-gradient(90deg, rgba(238,233,223,.48), rgba(238,233,223,.48)) 0 32px / 62px 2px no-repeat;
+      transform:scaleX(.45);
+      transform-origin:left;
+      transition:transform .55s ease;
+    }
+    .art-writing .caret{
+      position:absolute;
+      left:146px;
+      top:94px;
+      width:2px;
+      height:26px;
+      background:rgba(238,233,223,.9);
+      opacity:.95;
+      animation: blink 1.1s steps(1) infinite;
+      transition:transform .45s ease;
+    }
+    .price-tile:hover .art-writing::before{
+      transform:translateY(-4px) rotate(1.5deg);
+    }
+    .price-tile:hover .art-writing::after{
+      transform:scaleX(1);
+    }
+    .price-tile:hover .art-writing .caret{
+      transform:translateX(32px);
+    }
+    @keyframes blink { 50% { opacity:.12; } }
+
+    /* music video: audio wave + cut pulse, no text */
+    .art-music::before{
+      content:"";
+      position:absolute;
+      left:30px;
+      right:30px;
+      top:66px;
+      height:1px;
+      background:rgba(238,233,223,.16);
+    }
+    .art-music .bar{
+      position:absolute;
+      bottom:auto;
+      top:42px;
+      width:10px;
+      border-radius:999px;
+      background:linear-gradient(180deg, rgba(51,95,140,.88), rgba(182,51,38,.74));
+      transition:height .32s ease, transform .32s ease;
+    }
+    .art-music .b1{ left:38px; height:46px; }
+    .art-music .b2{ left:58px; height:82px; top:24px; }
+    .art-music .b3{ left:78px; height:34px; top:48px; }
+    .art-music .b4{ left:98px; height:92px; top:20px; }
+    .art-music .b5{ left:118px; height:54px; top:38px; }
+    .art-music::after{
+      content:"";
+      position:absolute;
+      left:156px;
+      top:34px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:1px solid rgba(51,95,140,.34);
+      box-shadow:0 0 0 16px rgba(51,95,140,.05);
+      transition:transform .35s ease;
+    }
+    .price-tile:hover .art-music .b1{ height:76px; top:28px; }
+    .price-tile:hover .art-music .b2{ height:40px; top:46px; }
+    .price-tile:hover .art-music .b3{ height:92px; top:18px; }
+    .price-tile:hover .art-music .b4{ height:48px; top:42px; }
+    .price-tile:hover .art-music .b5{ height:104px; top:12px; }
+    .price-tile:hover .art-music::after{ transform:scale(1.08); }
+
+    /* mini short: compact timeline blocks, no text */
+    .art-mini::before{
+      content:"";
+      position:absolute;
+      right:28px;
+      top:38px;
+      width:172px;
+      height:98px;
+      border:1px solid rgba(238,233,223,.14);
+      background:
+        linear-gradient(90deg, rgba(182,51,38,.78) 0 18%, transparent 18% 20%, rgba(238,233,223,.18) 20% 38%, transparent 38% 40%, rgba(51,95,140,.58) 40% 58%, transparent 58% 60%, rgba(238,233,223,.18) 60% 78%, transparent 78% 80%, rgba(182,51,38,.58) 80% 100%);
+      background-size:180px 28px;
+      background-position:0 50%;
+      background-repeat:no-repeat;
+      transition:background-position .45s ease, transform .45s ease;
+    }
+    .art-mini::after{
+      content:"";
+      position:absolute;
+      right:112px;
+      top:30px;
+      width:1px;
+      height:116px;
+      background:rgba(238,233,223,.55);
+      transition:transform .45s ease;
+    }
+    .price-tile:hover .art-mini::before{
+      background-position:-24px 50%;
+      transform:translateY(-3px);
+    }
+    .price-tile:hover .art-mini::after{
+      transform:translateX(-24px);
+    }
+
+    /* standard short: stacked scene frames, no text */
+    .art-standard .frame{
+      position:absolute;
+      width:76px;
+      height:50px;
+      border:1px solid rgba(185,154,91,.28);
+      background:
+        radial-gradient(circle at 70% 30%, rgba(238,233,223,.12), transparent 20%),
+        rgba(185,154,91,.055);
+      transition:transform .45s ease, background .45s ease;
+    }
+    .art-standard .f1{ right:122px; top:34px; transform:rotate(-5deg); }
+    .art-standard .f2{ right:78px; top:66px; transform:rotate(3deg); }
+    .art-standard .f3{ right:34px; top:98px; transform:rotate(-2deg); }
+    .art-standard::after{
+      content:"";
+      position:absolute;
+      right:48px;
+      top:48px;
+      width:154px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(185,154,91,.42), transparent);
+      transform:rotate(22deg);
+      opacity:.5;
+      transition:opacity .45s ease;
+    }
+    .price-tile:hover .art-standard .f1{ transform:translate(-12px, 8px) rotate(-8deg); }
+    .price-tile:hover .art-standard .f2{ transform:translate(-6px, 2px) rotate(0deg); }
+    .price-tile:hover .art-standard .f3{ transform:translate(8px, -8px) rotate(5deg); }
+    .price-tile:hover .art-standard::after{ opacity:1; }
+
+    /* feature: widescreen aspect frame / long timeline, no text */
+    .art-feature::before{
+      content:"";
+      position:absolute;
+      left:28px;
+      top:34px;
+      width:196px;
+      height:110px;
+      border:1px solid rgba(238,233,223,.16);
+      background:
+        linear-gradient(180deg, rgba(8,8,8,.8) 0 12%, transparent 12% 88%, rgba(8,8,8,.8) 88% 100%),
+        radial-gradient(circle at 70% 34%, rgba(185,154,91,.22), transparent 18%),
+        linear-gradient(135deg, rgba(182,51,38,.18), rgba(51,95,140,.12));
+      box-shadow: 0 0 24px rgba(185,154,91,.08);
+      transition:transform .45s ease, box-shadow .45s ease;
+    }
+    .art-feature::after{
+      content:"";
+      position:absolute;
+      left:32px;
+      top:160px;
+      width:188px;
+      height:8px;
+      background:
+        linear-gradient(90deg, rgba(238,233,223,.12) 0 20%, transparent 20% 23%, rgba(185,154,91,.6) 23% 42%, transparent 42% 45%, rgba(238,233,223,.12) 45% 70%, transparent 70% 73%, rgba(182,51,38,.55) 73% 100%);
+      transition:background-position .45s ease, transform .45s ease;
+      background-size:240px 8px;
+    }
+    .price-tile:hover .art-feature::before{
+      transform:scale(1.04);
+      box-shadow:0 0 34px rgba(185,154,91,.14);
+    }
+    .price-tile:hover .art-feature::after{
+      background-position:-34px 0;
+      transform:translateY(4px);
+    }
+
+    /* quote */
+    .art-quote::before,
+    .art-quote::after{
+      content:"";
+      position:absolute;
+      width:70px;height:70px;
+      border:1px solid rgba(238,233,223,.14);
+      transition:transform .45s ease;
+    }
+    .art-quote::before{ right:48px; top:38px; }
+    .art-quote::after{ right:22px; top:64px; }
+    .price-tile:hover .art-quote::before{ transform:translate(-8px, 8px); }
+    .price-tile:hover .art-quote::after{ transform:translate(8px, -8px); }
+
+    .notice-band{
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 34%, rgba(182,51,38,.16), transparent 18%),
+        rgba(238,233,223,.03);
+      padding:26px;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:24px;
+      align-items:center;
+    }
+
+    .notice-band p{
+      margin:0;
+      max-width:920px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.32;
+    }
+
+    .pricing-cta{
+      padding: clamp(44px, 7vw, 110px) clamp(20px, 4vw, 58px);
+      background: var(--red);
+      color: var(--text);
+    }
+
+    .pricing-cta h2{
+      max-width:1160px;
+      margin:0 0 24px;
+      font-size: clamp(56px, 9vw, 160px);
+      line-height:.8;
+      letter-spacing:-.095em;
+      text-transform:uppercase;
+    }
+
+    .pricing-cta-line{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:24px;
+      align-items:center;
+      padding-top:18px;
+      border-top:1px solid rgba(238,233,223,.34);
+    }
+
+    .pricing-cta-line p{
+      margin:0;
+      max-width:660px;
+      color:rgba(238,233,223,.82);
+      line-height:1.3;
+    }
+
+    @media (max-width: 1120px){
+      .pricing-hero,
+      .section-head,
+      .notice-band,
+      .pricing-cta-line{
+        grid-template-columns:1fr;
+      }
+
+      .hero-buttons{
+        justify-content:flex-start;
+      }
+
+      .section-head p:last-child{
+        text-align:left;
+      }
+
+      .tile-row{
+        grid-auto-columns:minmax(290px, 48vw);
+      }
+    }
+
+    @media (max-width: 760px){
+      .pricing-hero,
+      .pricing-section,
+      .pricing-cta{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .tile-row{
+        grid-auto-columns:84vw;
+      }
+
+      .price-tile{
+        min-height:420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="pricing-hero">
+      <div class="hero-copy">
+        <div>
+          <p class="page-kicker">Pricing</p>
+          <h1>Support at the level you need.</h1>
+        </div>
+
+        <div>
+          <p>Marketing and distribution are tiered by involvement. Pre-Matter and Post-Matter use simpler fixed starting rates. If the project is more specific than that, Matter can quote it directly.</p>
+          <div class="hero-actions">
+            <a class="button" href="#marketing">Marketing</a>
+            <a class="button" href="#distribution">Distribution</a>
+            <a class="button" href="#fixed">Fixed Rates</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="consult-panel">
+        <div class="consult-meta">
+          <span>Free consultation</span>
+          <span>Zoom / Google Meet</span>
+        </div>
+        <h2>Not sure what fits?</h2>
+        <p>Set up a free 30–40 minute consultation call by messaging charliecooperfilms@gmail.com so Matter can help figure out the best plan for your project.</p>
+        <div class="tile-actions">
+          <a class="button" href="mailto:charliecooperfilms@gmail.com">Email Charlie</a>
+        </div>
+        <div class="consult-meta">
+          <span>30–40 minutes</span>
+          <span>Start with clarity</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="pricing-section" id="marketing">
+      <div class="section-head">
+        <p class="page-kicker">Marketing</p>
+        <h2>Choose your level of marketing support.</h2>
+        <p>From strategy only to full campaign management.</p>
+      </div>
+
+      <div class="tile-row">
+        <article class="price-tile">
+          <div class="art art-consultant"></div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 1</span>
+            <h3>Consultant</h3>
+            <div class="tile-price">$150 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who want guidance, direction, and feedback while handling execution themselves.</p>
+            <ul>
+              <li>Strategy and consultation</li>
+              <li>Calls and communication</li>
+              <li>Feedback on rollout and assets</li>
+              <li>Tools, resources, and next steps</li>
+            </ul>
+            <p class="tile-note">You execute. Matter guides.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-partner">
+            <div class="node1"></div><div class="node2"></div><div class="node3"></div>
+          </div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 2</span>
+            <h3>Partner</h3>
+            <div class="tile-price">$250 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who want strategy plus hands-on support with execution and asset development.</p>
+            <ul>
+              <li>Everything in Consultant</li>
+              <li>Support with execution</li>
+              <li>Assist with asset creation</li>
+              <li>Refinement of messaging and campaign direction</li>
+            </ul>
+            <p class="tile-note">You work with Matter. Matter works with you.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-manager"></div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 3</span>
+            <h3>Manager</h3>
+            <div class="tile-price">$500 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who want Matter to handle the heavy lift and build the marketing system around the project.</p>
+            <ul>
+              <li>Everything in Consultant and Partner</li>
+              <li>Full marketing system management</li>
+              <li>Asset creation handled by Matter</li>
+              <li>Campaign planning and rollout oversight</li>
+            </ul>
+            <p class="tile-note">Matter executes. You stay focused on the work.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="distribution">
+      <div class="section-head">
+        <p class="page-kicker">Distribution</p>
+        <h2>Choose your level of release support.</h2>
+        <p>From guidance only to full release involvement.</p>
+      </div>
+
+      <div class="tile-row">
+        <article class="price-tile">
+          <div class="art art-path"></div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 1</span>
+            <h3>Consultant</h3>
+            <div class="tile-price">$100 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who want distribution guidance while leading the submission or release process themselves.</p>
+            <ul>
+              <li>Release strategy guidance</li>
+              <li>Positioning and market fit clarity</li>
+              <li>Timeline planning</li>
+              <li>Submission guidance</li>
+            </ul>
+            <p class="tile-note">You move it forward. Matter helps map the path.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-placement"></div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 2</span>
+            <h3>Placement</h3>
+            <div class="tile-price">$300 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who need stronger packaging, submissions, and strategic help throughout the process.</p>
+            <ul>
+              <li>Everything in Consultant</li>
+              <li>Project packaging support</li>
+              <li>Submission and outreach support</li>
+              <li>Ongoing strategy refinement</li>
+            </ul>
+            <p class="tile-note">Matter helps strengthen placement opportunities.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-release"><div class="ring3"></div></div>
+          <div class="tile-top">
+            <span class="tile-label">Tier 3</span>
+            <h3>Release</h3>
+            <div class="tile-price">$800 / month</div>
+          </div>
+          <div class="tile-copy">
+            <p>For creators who want Matter deeply involved in packaging, outreach, and release planning.</p>
+            <ul>
+              <li>Everything in Consultant and Placement</li>
+              <li>Full packaging and positioning support</li>
+              <li>Outreach support</li>
+              <li>Release management involvement</li>
+            </ul>
+            <p class="tile-note">Matter becomes part of the release process.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="fixed">
+      <div class="section-head">
+        <p class="page-kicker">Fixed Rates</p>
+        <h2>Pre-Matter and Post-Matter.</h2>
+        <p>Starting rates for screenplay work and editing projects.</p>
+      </div>
+
+      <div class="tile-row">
+        <article class="price-tile">
+          <div class="art art-editing"><div class="mark"></div></div>
+          <div class="tile-top">
+            <span class="tile-label">Pre-Matter</span>
+            <h3>Script Editing</h3>
+            <div class="tile-price">$5 / page</div>
+          </div>
+          <div class="tile-copy">
+            <p>For partial or completed scripts that need notes, polish, tightening, structure work, or a cleaner draft.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-writing"><div class="caret"></div></div>
+          <div class="tile-top">
+            <span class="tile-label">Pre-Matter</span>
+            <h3>Script Writing</h3>
+            <div class="tile-price">$10 / page</div>
+          </div>
+          <div class="tile-copy">
+            <p>For ideas, outlines, scenes, or pages that need to be written, expanded, or brought into screenplay form.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-music">
+            <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><div class="bar b4"></div><div class="bar b5"></div>
+          </div>
+          <div class="tile-top">
+            <span class="tile-label">Post-Matter</span>
+            <h3>Music Video</h3>
+            <div class="tile-price">$300</div>
+          </div>
+          <div class="tile-copy">
+            <p>Editing for a music video.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-mini"></div>
+          <div class="tile-top">
+            <span class="tile-label">Post-Matter</span>
+            <h3>Mini Short</h3>
+            <div class="tile-price">$500</div>
+          </div>
+          <div class="tile-copy">
+            <p>Editing for a smaller short-form project.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-standard">
+            <div class="frame f1"></div><div class="frame f2"></div><div class="frame f3"></div>
+          </div>
+          <div class="tile-top">
+            <span class="tile-label">Post-Matter</span>
+            <h3>Standard Short</h3>
+            <div class="tile-price">$600</div>
+          </div>
+          <div class="tile-copy">
+            <p>Editing for a standard short film or comparable narrative project.</p>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-feature"></div>
+          <div class="tile-top">
+            <span class="tile-label">Post-Matter</span>
+            <h3>Feature</h3>
+            <div class="tile-price">$1,000</div>
+          </div>
+          <div class="tile-copy">
+            <p>Editing for a feature-length project. Larger or more complex needs may require a custom quote.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="custom">
+      <div class="section-head">
+        <p class="page-kicker">Custom Quotes</p>
+        <h2>For revisions, hybrids, and project-specific scope.</h2>
+        <p>When the work needs a closer look, Matter can quote it directly.</p>
+      </div>
+
+      <div class="tile-row">
+        <article class="price-tile">
+          <div class="art art-quote"></div>
+          <div class="tile-top">
+            <span class="tile-label">Custom</span>
+            <h3>Marketing+</h3>
+            <div class="tile-price">Quote</div>
+          </div>
+          <div class="tile-copy">
+            <p>For larger campaigns, extra assets, expanded rollout needs, or project-specific marketing support.</p>
+            <div class="tile-actions">
+              <a class="button" href="../contact/index.html">Get quote</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-quote"></div>
+          <div class="tile-top">
+            <span class="tile-label">Custom</span>
+            <h3>Distribution+</h3>
+            <div class="tile-price">Quote</div>
+          </div>
+          <div class="tile-copy">
+            <p>For deeper packaging, release planning, outreach support, or project-specific distribution needs.</p>
+            <div class="tile-actions">
+              <a class="button" href="../contact/index.html">Get quote</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-quote"></div>
+          <div class="tile-top">
+            <span class="tile-label">Custom</span>
+            <h3>Revisions</h3>
+            <div class="tile-price">Quote</div>
+          </div>
+          <div class="tile-copy">
+            <p>Additional script passes, editing passes, campaign revisions, or expanded asset changes are quoted by scope.</p>
+            <div class="tile-actions">
+              <a class="button" href="../contact/index.html">Get quote</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="price-tile">
+          <div class="art art-quote"></div>
+          <div class="tile-top">
+            <span class="tile-label">Custom</span>
+            <h3>Hybrid Project</h3>
+            <div class="tile-price">Quote</div>
+          </div>
+          <div class="tile-copy">
+            <p>For projects that need a mix of writing, editing, marketing, and distribution support under one plan.</p>
+            <div class="tile-actions">
+              <a class="button" href="../contact/index.html">Get quote</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-section">
+      <div class="notice-band">
+        <p>Current prices reflect Matter’s current stage and may evolve as the company grows. If you are unsure where your project fits, the free consultation call is the best place to start.</p>
+        <a class="button" href="mailto:charliecooperfilms@gmail.com">Set up consultation</a>
+      </div>
+    </section>
+
+    <section class="pricing-cta">
+      <p class="page-kicker">Next Step</p>
+      <h2>Let’s find the right plan.</h2>
+      <div class="pricing-cta-line">
+        <p>Message charliecooperfilms@gmail.com to set up a free 30–40 minute consultation call over Zoom or Google Meet.</p>
+        <a class="button" href="mailto:charliecooperfilms@gmail.com">Email Charlie</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="../contact/index.html">Contact</a></div>
+  </footer>
+</body>
+</html>

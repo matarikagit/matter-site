@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    :root {
+      --black: #070707;
+      --cream: #eee9df;
+      --muted: #6f6a61;
+      --line: rgba(7,7,7,.18);
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .contact-page {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: clamp(28px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-main {
+      display: grid;
+      align-content: center;
+      gap: clamp(34px, 5vw, 72px);
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 1200px;
+      font-size: clamp(70px, 12vw, 220px);
+      line-height: .78;
+      letter-spacing: -.1em;
+      text-transform: uppercase;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      max-width: 760px;
+      font-size: clamp(22px, 3vw, 48px);
+      line-height: .94;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .contact-list a,
+    .contact-list span {
+      width: fit-content;
+    }
+
+    .contact-list a:hover {
+      color: var(--muted);
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .socials a:hover {
+      color: var(--muted);
+    }
+
+    .bottom-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 720px) {
+      .contact-page {
+        padding: 24px 18px;
+      }
+
+      .bottom-note {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <section class="contact-main">
+      <p class="eyebrow">Contact</p>
+
+      <h1>Get in touch.</h1>
+
+      <div class="contact-list">
+        <a href="mailto:charliecooperfilms@gmail.com">charliecooperfilms@gmail.com</a>
+        <a href="tel:+16095007251">609 500 7251</a>
+        <span>Philadelphia, PA</span>
+      </div>
+
+      <div class="socials">
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+      </div>
+    </section>
+
+    <div class="bottom-note">
+      <span>Matter Marketing & Distribution</span>
+      <span>Email / Call / DM</span>
+    </div>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="mailto:charliecooperfilms@gmail.com">Email</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    :root {
+      --black: #070707;
+      --cream: #eee9df;
+      --paper: #f6f1e8;
+      --red: #b63326;
+      --muted: #736d62;
+      --line: rgba(7, 7, 7, .18);
+      --line-light: rgba(246, 241, 232, .22);
+    }
+
+    body {
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.035) 0 1px, transparent 1px),
+        linear-gradient(180deg, rgba(7,7,7,.028) 0 1px, transparent 1px),
+        var(--cream);
+      background-size: 48px 48px;
+      color: var(--black);
+    }
+
+    .blog-kicker {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .blog-hero {
+      min-height: calc(100vh - 82px);
+      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      align-content: space-between;
+      gap: 46px;
+    }
+
+    .hero-top {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-top h1 {
+      margin: 0;
+      max-width: 1100px;
+      font-size: clamp(72px, 11vw, 210px);
+      line-height: .78;
+      letter-spacing: -.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 720px) 1fr;
+      gap: 24px;
+      align-items: end;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .hero-bottom p {
+      margin: 0;
+      max-width: 720px;
+      color: #3d3831;
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+    }
+
+    .blog-section {
+      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .category-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+
+    .category-bar button {
+      appearance: none;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--black);
+      padding: 8px 12px 7px;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .category-bar button:hover,
+    .category-bar button.active {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(38px, 5vw, 96px);
+      line-height: .84;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .featured-card {
+      position: relative;
+      min-height: 520px;
+      padding: clamp(26px, 4vw, 50px);
+      border: 1px solid var(--line-light);
+      background:
+        radial-gradient(circle at 74% 22%, rgba(238,233,223,.18), transparent 18%),
+        linear-gradient(135deg, rgba(182,51,38,.58), rgba(7,7,7,.36) 38%, rgba(5,5,5,.98)),
+        #101010;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .featured-card::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(238,233,223,.18);
+      pointer-events: none;
+    }
+
+    .featured-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(238,233,223,.14);
+      box-shadow:
+        0 0 0 38px rgba(238,233,223,.025),
+        0 0 0 76px rgba(238,233,223,.014);
+      pointer-events: none;
+    }
+
+    .featured-card h3 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(48px, 7vw, 138px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .featured-card p {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0;
+      color: rgba(238,233,223,.72);
+      line-height: 1.3;
+      font-size: 16px;
+    }
+
+    .feature-meta {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(238,233,223,.66);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .post-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 27vw);
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+
+    .post-row::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .post-row::-webkit-scrollbar-thumb {
+      background: rgba(7,7,7,.18);
+      border-radius: 999px;
+    }
+
+    .post-card {
+      min-height: 430px;
+      border: 1px solid var(--line);
+      background: rgba(246,241,232,.62);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      scroll-snap-align: start;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .post-card:hover {
+      background: var(--black);
+      color: var(--cream);
+      transform: translateY(-4px);
+    }
+
+    .post-card:hover .blog-kicker,
+    .post-card:hover p {
+      color: rgba(238,233,223,.68);
+    }
+
+    .post-thumb {
+      min-height: 180px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 70% 24%, rgba(238,233,223,.22), transparent 18%),
+        linear-gradient(135deg, rgba(182,51,38,.38), rgba(7,7,7,.16)),
+        #171717;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-card:hover .post-thumb {
+      border-bottom-color: var(--line-light);
+    }
+
+    .post-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(238,233,223,.16);
+    }
+
+    .post-body {
+      padding: 20px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .post-card h3 {
+      margin: 0;
+      font-size: clamp(30px, 3.5vw, 68px);
+      line-height: .84;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .post-card p {
+      margin: 0;
+      color: #3d3831;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+
+    .post-footer {
+      padding: 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .post-card:hover .post-footer {
+      color: rgba(238,233,223,.58);
+    }
+
+    .blog-note {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(246,241,232,.58);
+      margin-top: 30px;
+    }
+
+    .blog-note p {
+      max-width: 760px;
+      margin: 0;
+      color: #3d3831;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-bottom,
+      .section-head,
+      .blog-note {
+        grid-template-columns: 1fr;
+      }
+
+      .post-row {
+        grid-auto-columns: minmax(280px, 54vw);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .blog-hero,
+      .blog-section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .post-row {
+        grid-auto-columns: 86vw;
+      }
+
+      .featured-card {
+        min-height: 430px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="hero-top">
+        <p class="blog-kicker">Blog</p>
+        <h1>Notes on the work around the work.</h1>
+      </div>
+
+      <div class="hero-bottom">
+        <p>Marketing, distribution, pre-production, post-production, and industry notes for indie film and TV creators.</p>
+      </div>
+    </section>
+
+    <section class="blog-section">
+      <div class="category-bar" aria-label="Blog categories">
+        <button class="active" type="button">All</button>
+        <button type="button">Marketing</button>
+        <button type="button">Distribution</button>
+        <button type="button">Pre-Production</button>
+        <button type="button">Post-Production</button>
+        <button type="button">Industry</button>
+      </div>
+
+      <div class="section-head">
+        <p class="blog-kicker">Featured</p>
+        <h2>Featured blog.</h2>
+        <span></span>
+      </div>
+
+      <a class="featured-card" href="#">
+        <div class="feature-meta">
+          <span>Featured Blog</span>
+          <span>Start here</span>
+        </div>
+        <h3>What project health means before release.</h3>
+        <p>Use this featured space for the newest or most important Matter article.</p>
+        <div class="feature-meta">
+          <span>Marketing / Distribution</span>
+          <span>Read →</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="blog-section">
+      <div class="section-head">
+        <p class="blog-kicker">Posts</p>
+        <h2>Browse by topic.</h2>
+        <a class="button" href="../education/index.html">Education</a>
+      </div>
+
+      <div class="post-row">
+        <a class="post-card" href="#" data-category="marketing">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <p class="blog-kicker">Marketing</p>
+            <h3>Why marketing starts before the trailer.</h3>
+            <p>A short post about positioning, audience clarity, and why the story around the project matters.</p>
+          </div>
+          <div class="post-footer">
+            <span>Read</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="#" data-category="distribution">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <p class="blog-kicker">Distribution</p>
+            <h3>Release paths for indie films.</h3>
+            <p>A plain-language breakdown of options creators can consider before choosing a release route.</p>
+          </div>
+          <div class="post-footer">
+            <span>Read</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="#" data-category="pre-production">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <p class="blog-kicker">Pre-Production</p>
+            <h3>What a script needs before production.</h3>
+            <p>Notes on story clarity, structure, and preparing the project before the camera turns on.</p>
+          </div>
+          <div class="post-footer">
+            <span>Read</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="#" data-category="post-production">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <p class="blog-kicker">Post-Production</p>
+            <h3>Editing for feeling, not just order.</h3>
+            <p>A post about rhythm, tone, image, and how post-production shapes the viewer’s response.</p>
+          </div>
+          <div class="post-footer">
+            <span>Read</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="#" data-category="industry">
+          <div class="post-thumb"></div>
+          <div class="post-body">
+            <p class="blog-kicker">Industry</p>
+            <h3>What indie creators should watch.</h3>
+            <p>Industry notes, trends, and practical observations without the hype.</p>
+          </div>
+          <div class="post-footer">
+            <span>Read</span>
+            <span>→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-note">
+        <p>Replace the placeholder cards with live articles as the blog grows. Categories can stay simple so readers can find what they need fast.</p>
+        <a class="button" href="../contact/index.html">Suggest a topic</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="../contact/index.html">Contact</a></div>
+  </footer>
+</body>
+</html>

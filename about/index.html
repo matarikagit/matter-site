@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Matter Marketing & Distribution</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    :root {
+      --about-black: #070707;
+      --about-cream: #eee9df;
+      --about-paper: #f6f1e8;
+      --about-red: #b63326;
+      --about-muted: rgba(7,7,7,.62);
+      --about-line: rgba(7,7,7,.18);
+      --about-light-line: rgba(238,233,223,.22);
+    }
+
+    body {
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.035) 0 1px, transparent 1px),
+        linear-gradient(180deg, rgba(7,7,7,.028) 0 1px, transparent 1px),
+        var(--about-cream);
+      background-size: 54px 54px;
+      color: var(--about-black);
+    }
+
+    .about-kicker {
+      margin: 0;
+      color: var(--about-muted);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .about-hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .about-hero-left {
+      padding: clamp(38px, 5vw, 82px) clamp(24px, 4vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 54px;
+      border-right: 1px solid var(--about-line);
+    }
+
+    .about-hero-left h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(60px, 8vw, 150px);
+      line-height: .8;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .about-hero-bottom {
+      padding-top: 22px;
+      border-top: 1px solid var(--about-line);
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-hero-bottom p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--about-muted);
+      font-size: clamp(18px, 2vw, 28px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+    }
+
+    .about-hero-right {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: var(--about-black);
+      color: var(--about-cream);
+    }
+
+    .philosophy-board {
+      position: relative;
+      min-height: 100%;
+      padding: clamp(28px, 4vw, 54px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 74% 22%, rgba(238,233,223,.18), transparent 18%),
+        linear-gradient(135deg, rgba(182,51,38,.55), rgba(7,7,7,.3) 36%, rgba(5,5,5,.98)),
+        #0b0b0b;
+    }
+
+    .philosophy-board::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(238,233,223,.22);
+      pointer-events: none;
+    }
+
+    .philosophy-board::after {
+      content: "4P";
+      position: absolute;
+      right: -4vw;
+      bottom: -6vw;
+      font-size: clamp(180px, 26vw, 520px);
+      line-height: .75;
+      font-weight: 900;
+      letter-spacing: -.14em;
+      color: rgba(238,233,223,.055);
+      pointer-events: none;
+    }
+
+    .philosophy-board h2 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(48px, 6vw, 118px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .board-meta {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(238,233,223,.66);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .about-nav-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--about-light-line);
+    }
+
+    .about-nav-item {
+      min-height: 118px;
+      padding: 18px;
+      border-right: 1px solid var(--about-light-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background .22s ease;
+    }
+
+    .about-nav-item:last-child {
+      border-right: 0;
+    }
+
+    .about-nav-item:hover {
+      background: #171717;
+    }
+
+    .about-nav-item strong {
+      font-size: clamp(22px, 2.5vw, 42px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .about-section {
+      padding: clamp(42px, 6vw, 92px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .story-panel {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      border: 1px solid var(--about-line);
+      background: rgba(246,241,232,.58);
+    }
+
+    .story-title {
+      min-height: 480px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--about-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at 38% 24%, rgba(182,51,38,.14), transparent 18%),
+        var(--about-paper);
+    }
+
+    .story-title h2 {
+      margin: 0;
+      font-size: clamp(46px, 6vw, 118px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .story-copy {
+      min-height: 480px;
+      padding: clamp(24px, 4vw, 52px);
+      display: grid;
+      align-content: center;
+      gap: 26px;
+    }
+
+    .story-copy p {
+      max-width: 900px;
+      margin: 0;
+      color: #3d3831;
+      font-size: clamp(22px, 2.6vw, 42px);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+    }
+
+    .framework-section {
+      background: var(--about-black);
+      color: var(--about-cream);
+      border-bottom-color: var(--about-light-line);
+    }
+
+    .framework-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .framework-head h2 {
+      margin: 0;
+      max-width: 1080px;
+      font-size: clamp(42px, 5.8vw, 116px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .fourp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--about-light-line);
+      border-left: 1px solid var(--about-light-line);
+    }
+
+    .p-card {
+      min-height: 420px;
+      padding: 22px;
+      border-right: 1px solid var(--about-light-line);
+      border-bottom: 1px solid var(--about-light-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .22s ease, background .22s ease;
+    }
+
+    .p-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(238,233,223,.16);
+      opacity: 0;
+      transform: scale(.96);
+      transition: opacity .22s ease, transform .22s ease;
+      pointer-events: none;
+    }
+
+    .p-card::after {
+      position: absolute;
+      right: -8px;
+      bottom: -18px;
+      font-size: 180px;
+      line-height: .75;
+      font-weight: 900;
+      letter-spacing: -.12em;
+      color: rgba(238,233,223,.04);
+      z-index: -1;
+    }
+
+    .p-card:nth-child(1)::after { content: "P1"; }
+    .p-card:nth-child(2)::after { content: "P2"; }
+    .p-card:nth-child(3)::after { content: "P3"; }
+    .p-card:nth-child(4)::after { content: "P4"; }
+
+    .p-card:hover {
+      transform: translateY(-4px);
+      background:
+        radial-gradient(circle at 50% 24%, rgba(182,51,38,.22), transparent 22%),
+        #111;
+    }
+
+    .p-card:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .p-card h3 {
+      margin: 0;
+      font-size: clamp(34px, 4.2vw, 78px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .p-card p {
+      margin: 0;
+      color: rgba(238,233,223,.72);
+      font-size: 15px;
+      line-height: 1.32;
+    }
+
+    .charlie-section {
+      padding: 0;
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .charlie-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 720px;
+    }
+
+    .charlie-portrait {
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--about-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(135deg, rgba(182,51,38,.18), transparent 34%),
+        var(--about-paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .charlie-portrait::after {
+      content: "CHARLIE";
+      position: absolute;
+      left: -18px;
+      bottom: -18px;
+      font-size: clamp(100px, 15vw, 260px);
+      line-height: .74;
+      font-weight: 900;
+      letter-spacing: -.12em;
+      color: rgba(7,7,7,.055);
+      pointer-events: none;
+    }
+
+    .charlie-portrait h2 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(48px, 6vw, 120px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .charlie-copy {
+      padding: clamp(24px, 4vw, 52px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 38px;
+    }
+
+    .charlie-copy p {
+      max-width: 780px;
+      margin: 0;
+      color: #3d3831;
+      font-size: clamp(20px, 2vw, 32px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .bio-facts {
+      display: grid;
+      border-top: 1px solid var(--about-line);
+    }
+
+    .bio-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--about-line);
+    }
+
+    .bio-row p {
+      font-size: 16px;
+      line-height: 1.28;
+      letter-spacing: -.015em;
+    }
+
+    .values-panel {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      border: 1px solid var(--about-line);
+      background: rgba(246,241,232,.6);
+    }
+
+    .values-left {
+      min-height: 500px;
+      padding: clamp(24px, 4vw, 52px);
+      border-right: 1px solid var(--about-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .values-left h2 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(46px, 5.8vw, 112px);
+      line-height: .8;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .values-right {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .value-row {
+      padding: 24px;
+      border-bottom: 1px solid var(--about-line);
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .value-row:last-child {
+      border-bottom: 0;
+    }
+
+    .value-row h3 {
+      margin: 0;
+      font-size: clamp(28px, 3.2vw, 62px);
+      line-height: .82;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .value-row p {
+      max-width: 620px;
+      margin: 0;
+      color: #3d3831;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .about-cta {
+      padding: clamp(44px, 7vw, 110px) clamp(24px, 4vw, 58px);
+      background: var(--about-red);
+      color: var(--about-cream);
+    }
+
+    .about-cta h2 {
+      max-width: 1160px;
+      margin: 0 0 24px;
+      font-size: clamp(56px, 9vw, 160px);
+      line-height: .8;
+      letter-spacing: -.095em;
+      text-transform: uppercase;
+    }
+
+    .about-cta-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(238,233,223,.34);
+    }
+
+    .about-cta-line p {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(238,233,223,.82);
+      line-height: 1.3;
+    }
+
+    .about-cta .button:hover {
+      background: var(--about-cream);
+      color: var(--about-black);
+    }
+
+    @media (max-width: 1050px) {
+      .about-hero,
+      .story-panel,
+      .framework-head,
+      .charlie-grid,
+      .values-panel,
+      .about-cta-line {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero-left,
+      .story-title,
+      .charlie-portrait,
+      .values-left {
+        border-right: 0;
+        border-bottom: 1px solid var(--about-line);
+      }
+
+      .fourp-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-nav-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .about-hero-left,
+      .about-section,
+      .charlie-copy,
+      .about-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .fourp-grid,
+      .about-nav-strip,
+      .bio-row,
+      .value-row {
+        grid-template-columns: 1fr;
+      }
+
+      .p-card {
+        min-height: 320px;
+      }
+
+      .story-title,
+      .story-copy,
+      .charlie-portrait,
+      .values-left {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="about-hero-left">
+        <div>
+          <p class="about-kicker">About Matter</p>
+          <h1>Marketing starts with human connection.</h1>
+        </div>
+
+        <div class="about-hero-bottom">
+          <p>Matter exists to help indie film and TV creators understand the story behind the project before asking an audience to care.</p>
+          <div>
+            <a class="button" href="#framework">The 4 P’s</a>
+            <a class="button" href="#founder">Founder</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="about-hero-right">
+        <div class="philosophy-board">
+          <div class="board-meta">
+            <span>Framework</span>
+            <span>Project Health</span>
+          </div>
+          <h2>The release does not begin at the upload button.</h2>
+          <div class="board-meta">
+            <span>People / Process / Product / Participation</span>
+            <span>Placement follows</span>
+          </div>
+        </div>
+
+        <div class="about-nav-strip">
+          <a class="about-nav-item" href="#story">
+            <span class="board-meta">01</span>
+            <strong>Story</strong>
+          </a>
+          <a class="about-nav-item" href="#framework">
+            <span class="board-meta">02</span>
+            <strong>4 P’s</strong>
+          </a>
+          <a class="about-nav-item" href="#founder">
+            <span class="board-meta">03</span>
+            <strong>Charlie</strong>
+          </a>
+          <a class="about-nav-item" href="#values">
+            <span class="board-meta">04</span>
+            <strong>Values</strong>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="about-section" id="story">
+      <div class="story-panel">
+        <div class="story-title">
+          <p class="about-kicker">Philosophy</p>
+          <h2>The story is the strategy.</h2>
+          <p class="about-kicker">Before assets. Before rollout.</p>
+        </div>
+
+        <div class="story-copy">
+          <p>Most projects do not only need more promotion. They need a clearer emotional reason for people to pay attention.</p>
+          <p>Matter looks at the people, the process, the work itself, and the ways an audience can participate before building toward release.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section framework-section" id="framework">
+      <div class="framework-head">
+        <p class="about-kicker">The 4 P’s</p>
+        <h2>A framework for project health.</h2>
+      </div>
+
+      <div class="fourp-grid">
+        <article class="p-card">
+          <span class="about-kicker">01</span>
+          <h3>People</h3>
+          <p>The human heart behind the project. Who made it, who it speaks to, and why it matters now.</p>
+        </article>
+
+        <article class="p-card">
+          <span class="about-kicker">02</span>
+          <h3>Process</h3>
+          <p>The creation story. The decisions, challenges, breakthroughs, and context that make the work feel alive.</p>
+        </article>
+
+        <article class="p-card">
+          <span class="about-kicker">03</span>
+          <h3>Product</h3>
+          <p>The finished presentation. The trailer, poster, cut, copy, visuals, and materials that shape first impressions.</p>
+        </article>
+
+        <article class="p-card">
+          <span class="about-kicker">04</span>
+          <h3>Participation</h3>
+          <p>The audience pathway. How people discover the project, engage with it, share it, attend it, or support it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="charlie-section" id="founder">
+      <div class="charlie-grid">
+        <div class="charlie-portrait">
+          <p class="about-kicker">Founder</p>
+          <h2>Charlie Cooper</h2>
+          <p class="about-kicker">Filmmaker / Editor / Creative Strategist</p>
+        </div>
+
+        <div class="charlie-copy">
+          <p>Charlie Cooper is a Philadelphia-based filmmaker, editor, and creative professional whose work is shaped by storytelling, emotion, and human connection.</p>
+          <p>His background spans video production, editing, creative direction, social media, writing, music, and independent filmmaking. Matter grew from that mix: a company built for creators who need their work understood, not just advertised.</p>
+
+          <div class="bio-facts">
+            <div class="bio-row">
+              <span class="about-kicker">Base</span>
+              <p>Philadelphia, PA</p>
+            </div>
+            <div class="bio-row">
+              <span class="about-kicker">Focus</span>
+              <p>Film, TV, video production, editing, positioning, and creator-led release strategy.</p>
+            </div>
+            <div class="bio-row">
+              <span class="about-kicker">Perspective</span>
+              <p>Story first. Human connection first. Marketing follows clarity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="values">
+      <div class="values-panel">
+        <div class="values-left">
+          <p class="about-kicker">Values</p>
+          <h2>Built for creators who care about the work.</h2>
+          <p class="about-kicker">No empty hype.</p>
+        </div>
+
+        <div class="values-right">
+          <div class="value-row">
+            <span class="about-kicker">01</span>
+            <div>
+              <h3>Clarity</h3>
+              <p>Matter helps define what the project is before trying to sell it.</p>
+            </div>
+          </div>
+
+          <div class="value-row">
+            <span class="about-kicker">02</span>
+            <div>
+              <h3>Care</h3>
+              <p>The project should feel handled with respect, not forced into a generic campaign shape.</p>
+            </div>
+          </div>
+
+          <div class="value-row">
+            <span class="about-kicker">03</span>
+            <div>
+              <h3>Realism</h3>
+              <p>Matter does not promise outcomes it cannot control. The goal is stronger positioning, better materials, and a clearer path.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <p class="about-kicker">Work with Matter</p>
+      <h2>Have a project that needs clarity?</h2>
+      <div class="about-cta-line">
+        <p>Send the project, its current stage, and what you are trying to make happen next.</p>
+        <a class="button" href="../contact/index.html">Contact Matter</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="../contact/index.html">Contact</a></div>
+  </footer>
+</body>
+</html>
