@@ -454,6 +454,97 @@ education_html = r'''<!DOCTYPE html>
         grid-auto-columns: 84vw;
       }
     }
+
+        .tiktok-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(340px, 24vw);
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      border-top: 1px solid var(--edu-line);
+      border-left: 1px solid var(--edu-line);
+      background: rgba(238,233,223,.025);
+      padding-bottom: 10px;
+    }
+
+    .tiktok-row::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .tiktok-row::-webkit-scrollbar-thumb {
+      background: rgba(238,233,223,.18);
+      border-radius: 999px;
+    }
+
+    .tiktok-card {
+      min-height: 760px;
+      padding: 18px;
+      border-right: 1px solid var(--edu-line);
+      border-bottom: 1px solid var(--edu-line);
+      background:
+        linear-gradient(90deg, rgba(238,233,223,.045) 0 1px, transparent 1px),
+        repeating-linear-gradient(0deg, transparent 0 28px, rgba(238,233,223,.045) 28px 29px),
+        #090909;
+      background-size: 72px 100%, 100% 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: space-between;
+      scroll-snap-align: start;
+      overflow: hidden;
+    }
+
+    .tiktok-card-copy {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tiktok-card-copy h3 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 54px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .tiktok-card-copy p {
+      margin: 0;
+      color: var(--edu-muted);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .tiktok-embed-wrap {
+      width: 100%;
+      min-height: 600px;
+      display: grid;
+      place-items: start center;
+      overflow: hidden;
+    }
+
+    .tiktok-embed-wrap .tiktok-embed {
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      min-width: 300px !important;
+    }
+
+    @media (max-width: 1050px) {
+      .tiktok-row {
+        grid-auto-columns: minmax(330px, 46vw);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .tiktok-row {
+        grid-auto-columns: 86vw;
+      }
+
+      .tiktok-card {
+        min-height: 720px;
+      }
+    }
+
   </style>
 </head>
 
@@ -496,55 +587,7 @@ education_html = r'''<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="edu-section" id="screenwriting">
-      <div class="section-head">
-        <p class="edu-kicker">Written by Charlie</p>
-        <h2>Screenwriting education.</h2>
-        <p class="section-note">Live now on TikTok.</p>
-      </div>
-
-      <div class="edu-row">
-        <article class="lesson-card screenwriting-card">
-          <div class="lesson-top">
-            <div class="lesson-token">TikTok</div>
-            <h3>Writing the page.</h3>
-          </div>
-          <div>
-            <p>Screenwriting notes from Written by Charlie. Structure, scene work, character, and the craft of getting ideas onto the page.</p>
-            <div class="lesson-actions">
-              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">View channel</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="lesson-card screenwriting-card">
-          <div class="lesson-top">
-            <div class="lesson-token">TikTok</div>
-            <h3>Script craft.</h3>
-          </div>
-          <div>
-            <p>Lessons for writers building scenes, tightening drafts, and learning how story choices shape the final project.</p>
-            <div class="lesson-actions">
-              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Watch posts</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="lesson-card screenwriting-card">
-          <div class="lesson-top">
-            <div class="lesson-token">TikTok</div>
-            <h3>From idea to draft.</h3>
-          </div>
-          <div>
-            <p>Practical writing guidance for moving from loose concept to pages that can be shaped, edited, and finished.</p>
-            <div class="lesson-actions">
-              <a class="button" href="https://www.tiktok.com/@writtenbycharlie2" target="_blank" rel="noreferrer">Open TikTok</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
+      <section class="edu-section" id="screenwriting">
     <section class="edu-section" id="marketing-distribution">
       <div class="section-head">
         <p class="edu-kicker">Matter TikTok</p>
@@ -711,6 +754,128 @@ education_html = r'''<!DOCTYPE html>
     <div>Philadelphia, PA</div>
     <div><a href="../contact/index.html">Contact</a></div>
   </footer>
+
+  <script>
+    const screenwritingTikToks = [
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535842659047410999",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535842513282665783",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535444955217677582",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535444182534475022",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535443595843685646",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535246053491117367",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535244703311121719",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7535244536725916983",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534343654660410638",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534342922188229902",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534342735919189261",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534120578823785758",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534113135729347870",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7534112982012349727",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7530265737055784247",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7530265169981705486",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7530264853890600206",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529909153918160183",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529909026356825399",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529908983197404429",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529502800355642637",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529502843372424462",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529501797984046350",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529192375684435255",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7529191227351256375",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528867157564853559",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528866923191356686",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528866602608020749",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528547474676387102",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528461132919524622",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528382834659052813",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528065206606433549",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528064004812655927",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7528064001960381709",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7527639737725766926",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7527639438793493815",
+      "https://www.tiktok.com/@writtenbycharlie2/video/7527639248095169805"
+    ];
+
+    const screenwritingDescriptions = [
+      "A screenwriting lesson from Written by Charlie.",
+      "A craft note for writers building stronger pages.",
+      "A practical writing post for indie creators."
+    ];
+
+    function getTikTokVideoId(url) {
+      const match = url.match(/video\/(\d+)/);
+      return match ? match[1] : "";
+    }
+
+    function buildTikTokCarousel(containerId, links, label) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const uniqueLinks = [...new Set(links)];
+
+      uniqueLinks.forEach((url, index) => {
+        const videoId = getTikTokVideoId(url);
+        const card = document.createElement("article");
+        card.className = "tiktok-card";
+
+        const embedWrap = document.createElement("div");
+        embedWrap.className = "tiktok-embed-wrap";
+
+        const blockquote = document.createElement("blockquote");
+        blockquote.className = "tiktok-embed";
+        blockquote.cite = url;
+        blockquote.dataset.videoId = videoId;
+
+        const section = document.createElement("section");
+        const fallbackLink = document.createElement("a");
+        fallbackLink.href = url;
+        fallbackLink.target = "_blank";
+        fallbackLink.rel = "noreferrer";
+        fallbackLink.textContent = "Watch on TikTok";
+
+        section.appendChild(fallbackLink);
+        blockquote.appendChild(section);
+        embedWrap.appendChild(blockquote);
+
+        const copy = document.createElement("div");
+        copy.className = "tiktok-card-copy";
+
+        const kicker = document.createElement("p");
+        kicker.className = "edu-kicker";
+        kicker.textContent = label;
+
+        const title = document.createElement("h3");
+        title.textContent = `Screenwriting post ${String(index + 1).padStart(2, "0")}.`;
+
+        const description = document.createElement("p");
+        description.textContent = screenwritingDescriptions[index % screenwritingDescriptions.length];
+
+        const actions = document.createElement("div");
+        actions.className = "lesson-actions";
+
+        const button = document.createElement("a");
+        button.className = "button";
+        button.href = url;
+        button.target = "_blank";
+        button.rel = "noreferrer";
+        button.textContent = "Open post";
+
+        actions.appendChild(button);
+        copy.appendChild(kicker);
+        copy.appendChild(title);
+        copy.appendChild(description);
+        copy.appendChild(actions);
+
+        card.appendChild(embedWrap);
+        card.appendChild(copy);
+        container.appendChild(card);
+      });
+    }
+
+    buildTikTokCarousel("screenwritingTikTokRow", screenwritingTikToks, "Written by Charlie");
+  </script>
+
+  <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
 '''
