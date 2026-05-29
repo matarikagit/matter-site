@@ -600,46 +600,7 @@
         <p class="section-note">Short-form lessons from Matter.</p>
       </div>
 
-      <div class="edu-row">
-        <article class="lesson-card matter-card">
-          <div class="lesson-top">
-            <div class="lesson-token">Matter</div>
-            <h3>Project health.</h3>
-          </div>
-          <div>
-            <p>Short lessons on checking the project before building the campaign around it.</p>
-            <div class="lesson-actions">
-              <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">View Matter TikTok</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="lesson-card matter-card">
-          <div class="lesson-top">
-            <div class="lesson-token">Matter</div>
-            <h3>Release planning.</h3>
-          </div>
-          <div>
-            <p>Notes on rollout, positioning, audience clarity, and the decisions that shape an independent release.</p>
-            <div class="lesson-actions">
-              <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">Watch lessons</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="lesson-card matter-card">
-          <div class="lesson-top">
-            <div class="lesson-token">Matter</div>
-            <h3>The 4 P’s.</h3>
-          </div>
-          <div>
-            <p>Matter’s framework for reading the story, process, product, and audience path before release.</p>
-            <div class="lesson-actions">
-              <a class="button" href="../about/index.html#framework">Learn framework</a>
-            </div>
-          </div>
-        </article>
-      </div>
+      <div class="tiktok-row" id="matterTikTokRow" aria-label="Matter TikTok education carousel"></div>
     </section>
 
     <section class="edu-section">
@@ -761,66 +722,249 @@
   </footer>
 
   <script>
-        const screenwritingTikToks = [
+           const screenwritingTikToks = [
       {
-        title: "Start With the Core Idea.",
-        description: "A screenwriting lesson on clarifying what the story is actually about before building the draft.",
-        category: "Concept",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535842659047410999"
       },
       {
-        title: "The Page Comes First.",
-        description: "A writing note about treating the script as the foundation for the entire project.",
-        category: "Drafting",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535842513282665783"
       },
       {
-        title: "Scene Work.",
-        description: "A craft post for thinking through what each scene needs to do.",
-        category: "Scenes",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535444955217677582"
       },
       {
-        title: "Character Choices.",
-        description: "A screenwriting post about how character decisions shape story momentum.",
-        category: "Character",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535444182534475022"
       },
       {
-        title: "Build the Draft.",
-        description: "A practical lesson for getting ideas out of your head and onto the page.",
-        category: "Drafting",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535443595843685646"
       },
       {
-        title: "Tighten the Writing.",
-        description: "A post about cutting, focusing, and making the draft cleaner.",
-        category: "Revision",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535246053491117367"
       },
       {
-        title: "Write With Intention.",
-        description: "A craft note on making story choices feel deliberate.",
-        category: "Craft",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535244703311121719"
       },
       {
-        title: "From Idea to Script.",
-        description: "A writing lesson for moving from a loose concept into screenplay form.",
-        category: "Process",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7535244536725916983"
       },
       {
-        title: "Make the Scene Matter.",
-        description: "A screenwriting note about making every scene earn its place.",
-        category: "Scenes",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7534343654660410638"
       },
       {
-        title: "Find the Story Engine.",
-        description: "A lesson on what keeps the script moving forward.",
-        category: "Structure",
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
         url: "https://www.tiktok.com/@writtenbycharlie2/video/7534342922188229902"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534342735919189261"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534120578823785758"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534113135729347870"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7534112982012349727"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7530265737055784247"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7530265169981705486"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7530264853890600206"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529909153918160183"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529909026356825399"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529908983197404429"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529502800355642637"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529502843372424462"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529501797984046350"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529192375684435255"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7529191227351256375"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528867157564853559"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528866923191356686"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528866602608020749"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528547474676387102"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528461132919524622"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528382834659052813"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528065206606433549"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528064004812655927"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7528064001960381709"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7527639737725766926"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7527639438793493815"
+      },
+      {
+        title: "Screenwriting Lesson.",
+        description: "A screenwriting education post from Written by Charlie.",
+        category: "Screenwriting",
+        url: "https://www.tiktok.com/@writtenbycharlie2/video/7527639248095169805"
+      }
+    ];
+
+        const matterTikToks = [
+      {
+        title: "Marketing Starts Before Release.",
+        description: "A Matter post about preparing the project before the campaign begins.",
+        category: "Marketing",
+        url: "https://www.tiktok.com/@matter.distribution/video/7636559441688595725"
+      },
+      {
+        title: "Distribution Needs Positioning.",
+        description: "A short lesson on how positioning affects the release path.",
+        category: "Distribution",
+        url: "https://www.tiktok.com/@matter.distribution/video/7628401335884401934"
+      },
+      {
+        title: "Project Health Comes First.",
+        description: "A Matter education post on checking the work before building the rollout.",
+        category: "Project Health",
+        url: "https://www.tiktok.com/@matter.distribution/video/7626406123926605069"
       }
     ];
 
@@ -899,7 +1043,8 @@
     }
 
     buildTikTokCarousel("screenwritingTikTokRow", screenwritingTikToks, "Written by Charlie");
-  </script>
+    buildTikTokCarousel("matterTikTokRow", matterTikToks, "Matter");
+      </script>
 
   <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
