@@ -621,6 +621,22 @@
         grid-auto-columns: 86vw;
       }
     }
+        .coming-soon-panel .episode-copy h3,
+    .coming-soon-card h3 {
+      max-width: 860px;
+    }
+
+    .coming-soon-card {
+      background:
+        radial-gradient(circle at 50% 24%, rgba(185,154,91,.16), transparent 22%),
+        linear-gradient(180deg, rgba(238,233,223,.045), transparent 48%),
+        #090909;
+    }
+
+    .guest-board-soon .guest-rail {
+      grid-auto-columns: minmax(360px, 50%);
+    }
+    
   </style>
 </head>
 
@@ -677,74 +693,59 @@
     <section class="podcast-section">
       <div class="section-head">
         <p class="podcast-kicker">Latest Episode</p>
-        <h2>Featured conversation.</h2>
+        <h2>Coming soon.</h2>
       </div>
 
-      <article class="latest-episode">
+      <article class="latest-episode coming-soon-panel">
         <div class="episode-copy">
           <div>
-            <p class="podcast-kicker">Episode Feature</p>
-            <h3>Replace this with the newest podcast episode.</h3>
+            <p class="podcast-kicker">Matter: The Podcast</p>
+            <h3>Episodes are currently in development.</h3>
           </div>
-          <p>Use this area for the latest guest, their project, the episode topic, and where viewers can watch or listen.</p>
+          <p>The latest episode will appear here when Matter: The Podcast begins releasing conversations.</p>
           <div class="episode-actions">
-            <a class="button" href="#">Watch episode</a>
-            <a class="button" href="#">Guest project</a>
-            <a class="button" href="../blog/index.html">Related post</a>
+            <a class="button" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">Apply to be a guest</a>
+            <a class="button" href="mailto:charliecooperfilms@gmail.com">Email inquiries</a>
           </div>
         </div>
 
         <div class="episode-window">
           <div class="episode-placeholder">
-            <p class="podcast-kicker">Episode Slot</p>
-            <h3>Video embed / cover art</h3>
-            <p>Place the latest podcast video, thumbnail, or episode cover here.</p>
+            <p class="podcast-kicker">Coming Soon</p>
+            <h3>First episode in progress.</h3>
+            <p>Check back for the first featured conversation.</p>
           </div>
         </div>
       </article>
     </section>
 
     <section class="podcast-section">
-      <div class="guest-board">
+      <div class="guest-board guest-board-soon">
         <div class="guest-board-intro">
           <p class="podcast-kicker">Guests / Projects</p>
-          <h2>Explore the people behind the conversations.</h2>
-          <p>Use this as a living showcase for guests, episodes, projects, and ways to support their work.</p>
+          <h2>Guest showcase coming soon.</h2>
+          <p>Once episodes begin releasing, this section will feature guests, projects, and ways to support their work.</p>
         </div>
 
-        <div class="guest-rail" aria-label="Podcast guest showcase carousel">
-          <article class="guest-card">
-            <div class="guest-token">Guest</div>
+        <div class="guest-rail" aria-label="Podcast guest showcase coming soon">
+          <article class="guest-card coming-soon-card">
+            <div class="guest-token">Soon</div>
             <div>
-              <h3>Guest Name</h3>
-              <p>Short description of who they are, what they do, and what project they brought to the conversation.</p>
+              <h3>Guest features in progress.</h3>
+              <p>Matter is currently building the first round of conversations.</p>
               <div class="episode-actions">
-                <a class="button" href="#">Episode</a>
-                <a class="button" href="#">Project</a>
+                <a class="button" href="https://tally.so/r/Pd8e6e" target="_blank" rel="noreferrer">Apply</a>
               </div>
             </div>
           </article>
 
-          <article class="guest-card">
-            <div class="guest-token">Project</div>
+          <article class="guest-card coming-soon-card">
+            <div class="guest-token">Soon</div>
             <div>
-              <h3>Creator Name</h3>
-              <p>Keep guests discoverable after their episode is no longer the newest feature.</p>
+              <h3>Project cards coming soon.</h3>
+              <p>Featured projects will appear here after confirmed episodes are published.</p>
               <div class="episode-actions">
-                <a class="button" href="#">Episode</a>
-                <a class="button" href="#">Support</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="guest-card">
-            <div class="guest-token">Film</div>
-            <div>
-              <h3>Film Title</h3>
-              <p>Feature a film, series, short, organization, or creative body of work connected to the guest.</p>
-              <div class="episode-actions">
-                <a class="button" href="#">Learn more</a>
-                <a class="button" href="#">Watch</a>
+                <a class="button" href="mailto:charliecooperfilms@gmail.com">Inquire</a>
               </div>
             </div>
           </article>
@@ -788,9 +789,10 @@
         </div>
 
         <div class="community-links">
-          <a class="button" href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok</a>
-          <a class="button" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="button" href="https://www.youtube.com/@MATTER_FILM" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="button" href="https://www.tiktok.com/@matter.distribution" target="_blank" rel="noreferrer">TikTok</a>
+          <a class="button" href="https://www.facebook.com/profile.php?id=61579291183632" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="button" href="https://www.linkedin.com/company/matter-film-marketing-distribution/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a class="button" href="../education/index.html">Education</a>
           <a class="button" href="../blog/index.html">Blog</a>
         </div>
