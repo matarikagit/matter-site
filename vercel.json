@@ -1,5 +1,39 @@
 {
   "redirects": [
-  
+    {
+      "source": "/process/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/2026/04/09/how-to-get-your-film-on-tubi/",
+      "destination": "/blog/post.html?slug=how-to-get-your-film-on-tubi",
+      "permanent": true
+    },
+    {
+      "source": "/2026/03/25/sales-agent-vs-distributor-vs-aggregator-who-actually-does-what/",
+      "destination": "/blog/post.html?slug=sales-agent-vs-distributor-vs-aggregator-who-actually-does-what",
+      "permanent": true
+    },
+    {
+      "source": "/2026/03/26/7-red-flags-in-a-film-distribution-agreement-before-you-sign/",
+      "destination": "/blog/post.html?slug=7-red-flags-in-a-film-distribution-agreement-before-you-sign",
+      "permanent": true
+    },
+    {
+      "source": "/2026/03/25/how-to-build-a-film-press-kit-that-actually-helps-your-project-move/",
+      "destination": "/blog/post.html?slug=how-to-build-a-film-press-kit-that-actually-helps-your-project-move",
+      "permanent": true
+    },
+    {
+      "source": "/2026/03/26/film-metadata-is-marketing-how-tags-keywords-and-synopses-help-your-project-get-found/",
+      "destination": "/blog/post.html?slug=film-metadata-is-marketing-how-tags-keywords-and-synopses-help-your-project-get-found",
+      "permanent": true
+    },
+    {
+      "source": "/2026/03/23/why-most-films-fail-before-theyre-even-released-and-how-to-fix-it/",
+      "destination": "/blog/post.html?slug=why-most-films-fail-before-theyre-even-released-and-how-to-fix-it",
+      "permanent": true
+    }
   ]
 }
