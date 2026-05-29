@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Article | Matter Marketing & Distribution</title>
+
+  <title id="pageTitle">Article | Matter Marketing & Distribution</title>
+  <meta id="metaDescription" name="description" content="Read Matter articles on indie film marketing, distribution, release strategy, project positioning, and creator education." />
+
+  <link id="canonicalLink" rel="canonical" href="https://www.matterdistribution.com/blog/post.html" />
+
+  <meta property="og:site_name" content="Matter Marketing & Distribution" />
+  <meta id="ogTitle" property="og:title" content="Article | Matter Marketing & Distribution" />
+  <meta id="ogDescription" property="og:description" content="Read Matter articles on indie film marketing, distribution, release strategy, project positioning, and creator education." />
+  <meta id="ogUrl" property="og:url" content="https://www.matterdistribution.com/blog/post.html" />
+  <meta property="og:type" content="article" />
+  <meta id="ogImage" property="og:image" content="https://www.matterdistribution.com/assets/images/og-blog.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="twitterTitle" name="twitter:title" content="Article | Matter Marketing & Distribution" />
+  <meta id="twitterDescription" name="twitter:description" content="Read Matter articles on indie film marketing, distribution, release strategy, project positioning, and creator education." />
+  <meta id="twitterImage" name="twitter:image" content="https://www.matterdistribution.com/assets/images/og-blog.jpg" />
+
   <link rel="stylesheet" href="../assets/css/style.css" />
 
   <style>
@@ -260,8 +277,70 @@
 
     let post = null;
 
+    const siteUrl = "https://www.matterdistribution.com";
+    const defaultShareImage = `${siteUrl}/assets/images/og-blog.jpg`;
+
+    function setMetaContent(id, value) {
+      const tag = document.getElementById(id);
+      if (tag && value) tag.setAttribute("content", value);
+    }
+
+    function setCanonical(value) {
+      const tag = document.getElementById("canonicalLink");
+      if (tag && value) tag.setAttribute("href", value);
+    }
+
+    function absoluteUrl(path) {
+      if (!path) return defaultShareImage;
+      if (path.startsWith("http://") || path.startsWith("https://")) return path;
+      return new URL(path, window.location.href).href;
+    }
+
+    function updateArticleMetadata(post) {
+      const title = `${post.title} | Matter Blog`;
+      const description = post.blurb || "Read Matter articles on indie film marketing, distribution, release strategy, project positioning, and creator education.";
+      const articleUrl = `${siteUrl}/blog/post.html?slug=${encodeURIComponent(post.slug)}`;
+      const imageUrl = absoluteUrl(post.thumbnail);
+
+      document.title = title;
+
+      const pageTitle = document.getElementById("pageTitle");
+      if (pageTitle) pageTitle.textContent = title;
+
+      setMetaContent("metaDescription", description);
+      setCanonical(articleUrl);
+
+      setMetaContent("ogTitle", title);
+      setMetaContent("ogDescription", description);
+      setMetaContent("ogUrl", articleUrl);
+      setMetaContent("ogImage", imageUrl);
+
+      setMetaContent("twitterTitle", title);
+      setMetaContent("twitterDescription", description);
+      setMetaContent("twitterImage", imageUrl);
+    }
+
     function renderNotFound() {
-      document.title = "Article Not Found | Matter";
+      const title = "Article Not Found | Matter";
+      const description = "This Matter article may have moved or may not be published yet.";
+      const url = `${siteUrl}/blog/`;
+
+      document.title = title;
+
+      const pageTitle = document.getElementById("pageTitle");
+      if (pageTitle) pageTitle.textContent = title;
+
+      setMetaContent("metaDescription", description);
+      setCanonical(url);
+
+      setMetaContent("ogTitle", title);
+      setMetaContent("ogDescription", description);
+      setMetaContent("ogUrl", url);
+      setMetaContent("ogImage", defaultShareImage);
+
+      setMetaContent("twitterTitle", title);
+      setMetaContent("twitterDescription", description);
+      setMetaContent("twitterImage", defaultShareImage);
 
       articleRoot.innerHTML = `
         <section class="article-hero">
@@ -299,7 +378,7 @@
     }
 
     function renderPost(post) {
-      document.title = `${post.title} | Matter Blog`;
+      updateArticleMetadata(post);
 
       const heroClass = post.thumbnail ? "article-hero has-image" : "article-hero";
       const heroStyle = post.thumbnail ? `style="background-image:url('${post.thumbnail}')"` : "";
