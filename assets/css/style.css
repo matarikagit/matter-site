@@ -519,3 +519,16 @@ footer div:nth-child(3) { text-align: right; }
   .hero-actions, .price-grid, .editorial, .cta-line, footer { grid-template-columns: 1fr; }
   footer div:nth-child(2), footer div:nth-child(3) { text-align: left; }
 }
+
+.hero-solo {
+  grid-template-columns: 1fr;
+}
+
+.hero-solo .hero-title {
+  border-right: 0;
+  max-width: none;
+}
+
+.hero-solo .hero-copy {
+  max-width: 760px;
+}
