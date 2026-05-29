@@ -793,8 +793,23 @@
 
         .pricing-hero {
       grid-template-columns: 1fr;
+      place-items: center;
     }
-    
+
+    .pricing-hero .hero-copy {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .pricing-hero .hero-copy h1 {
+      max-width: 1120px;
+    }
+
+    .pricing-hero .hero-copy > div:last-child {
+      max-width: 720px;
+      margin-left: auto;
+    }
+
   </style>
 </head>
 <body>
