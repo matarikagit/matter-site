@@ -526,7 +526,149 @@
       border-right: 0;
     }
 
+    .filmstrip-section {
+      padding: clamp(34px, 5vw, 72px) clamp(24px, 4vw, 58px);
+      border-bottom: 1px solid var(--line);
+      background: var(--black);
+      color: var(--cream);
+      overflow: hidden;
+    }
 
+    .filmstrip-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .filmstrip-head h2 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(38px, 5vw, 96px);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-transform: uppercase;
+    }
+
+    .filmstrip-wrap {
+      position: relative;
+      border-top: 1px solid var(--line-light);
+      border-bottom: 1px solid var(--line-light);
+      padding: 34px 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      cursor: grab;
+    }
+
+    .filmstrip-wrap:active {
+      cursor: grabbing;
+    }
+
+    .filmstrip-wrap::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .filmstrip-wrap::-webkit-scrollbar-thumb {
+      background: rgba(238, 233, 223, .22);
+      border-radius: 999px;
+    }
+
+    .filmstrip-wrap::before,
+    .filmstrip-wrap::after {
+      content: "";
+      position: sticky;
+      left: 0;
+      right: 0;
+      display: block;
+      height: 18px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(238, 233, 223, .18) 0 16px,
+          transparent 16px 32px
+        );
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .filmstrip-wrap::before {
+      top: 0;
+      margin-bottom: 18px;
+    }
+
+    .filmstrip-wrap::after {
+      bottom: 0;
+      margin-top: 18px;
+    }
+
+    .filmstrip-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(320px, 38vw);
+      gap: 14px;
+      width: max-content;
+      animation: filmDrift 34s linear infinite;
+    }
+
+    .filmstrip-wrap:hover .filmstrip-track {
+      animation-play-state: paused;
+    }
+
+    .film-frame {
+      margin: 0;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(238, 233, 223, .2);
+      background: #101010;
+      overflow: hidden;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .film-frame::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(238, 233, 223, .12);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .film-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.04);
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .film-frame:hover img {
+      transform: scale(1.035);
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    @keyframes filmDrift {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-22%);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .filmstrip-head {
+        grid-template-columns: 1fr;
+      }
+
+      .filmstrip-track {
+        grid-auto-columns: 82vw;
+        animation: none;
+      }
+    }
+    
   </style>
 </head>
 
@@ -587,6 +729,49 @@
       </div>
 
       <p class="post-text">Post-Matter is for projects that need more than a clean timeline. The goal is to shape rhythm, tone, image, and feeling until the piece lands with the viewer.</p>
+    </section>
+
+    <section class="filmstrip-section" aria-label="Post-Matter stills carousel">
+      <div class="filmstrip-head">
+        <p class="eyebrow">Stills</p>
+        <h2>Images from the cut.</h2>
+      </div>
+
+      <div class="filmstrip-wrap">
+        <div class="filmstrip-track">
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-1.jpg" alt="Post-Matter project still 01">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-2.jpg" alt="Post-Matter project still 02">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-3.jpg" alt="Post-Matter project still 03">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-4.jpg" alt="Post-Matter project still 04">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-5.jpg" alt="Post-Matter project still 05">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-6.jpg" alt="Post-Matter project still 06">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-7.jpg" alt="Post-Matter project still 07">
+          </figure>
+
+          <figure class="film-frame">
+            <img src="../assets/img/post-stills/still-8.jpg" alt="Post-Matter project still 08">
+          </figure>
+        </div>
+      </div>
     </section>
 
     <section class="post-section">
