@@ -532,3 +532,161 @@ footer div:nth-child(3) { text-align: right; }
 .hero-solo .hero-copy {
   max-width: 760px;
 }
+
+/* Homepage centered solo hero refresh */
+
+.hero-solo {
+  grid-template-columns: 1fr;
+  min-height: calc(100vh - 82px);
+  display: grid;
+  place-items: center;
+  padding: clamp(28px, 4vw, 64px);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-solo::before {
+  content: "";
+  position: absolute;
+  width: min(48vw, 620px);
+  height: min(48vw, 620px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(182, 51, 38, .16), transparent 68%);
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  opacity: .9;
+  animation: matterPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-solo::after {
+  content: "";
+  position: absolute;
+  inset: clamp(18px, 3vw, 48px);
+  border: 1px solid rgba(7, 7, 7, .12);
+  pointer-events: none;
+  opacity: .85;
+}
+
+.hero-solo .hero-title {
+  width: min(1180px, 100%);
+  min-height: auto;
+  border-right: 0;
+  max-width: none;
+  padding: 0;
+  display: grid;
+  gap: clamp(80px, 12vh, 160px);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-solo .hero-title > div:first-child {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.hero-solo .hero-title h1 {
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(64px, 9vw, 168px);
+  line-height: .78;
+  letter-spacing: -.095em;
+  animation: titleSettle .9s ease both;
+}
+
+.hero-solo .eyebrow {
+  animation: fadeUp .7s ease both;
+}
+
+.hero-solo .hero-copy {
+  width: min(760px, 100%);
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 22px;
+  border-top: 1px solid rgba(7, 7, 7, .16);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+  animation: fadeUp .9s ease .16s both;
+}
+
+.hero-solo .hero-copy p {
+  margin: 0;
+}
+
+.hero-solo .hero-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@keyframes matterPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(.92);
+    opacity: .55;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: .95;
+  }
+}
+
+@keyframes titleSettle {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 850px) {
+  .hero-solo {
+    place-items: start center;
+    padding-top: 70px;
+  }
+
+  .hero-solo .hero-title {
+    gap: 80px;
+  }
+
+  .hero-solo .hero-title > div:first-child {
+    text-align: left;
+    justify-items: start;
+  }
+
+  .hero-solo .hero-title h1 {
+    text-align: left;
+  }
+
+  .hero-solo .hero-copy {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .hero-solo .hero-buttons {
+    justify-content: flex-start;
+  }
+}
