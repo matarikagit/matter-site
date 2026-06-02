@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Pricing | Film Marketing, Distribution & Editing Rates | Matter</title>
-  <meta name="description" content="Use Matter's budget-qualified pricing builder to estimate indie film and TV marketing, distribution, screenplay, and editing support based on project budget and scope." />
+  <meta name="description" content="Build a budget-qualified Matter estimate for indie film and TV marketing, distribution, script work, and post-production editing services." />
 
   <link rel="canonical" href="https://www.matterdistribution.com/pricing/" />
   <link rel="icon" href="/assets/images/favicon.ico">
@@ -21,525 +21,531 @@
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Pricing | Film Marketing, Distribution & Editing Rates | Matter" />
-  <meta name="twitter:description" content="Build a budget-qualified Matter pricing estimate for marketing, distribution, script, and editing support." />
+  <meta name="twitter:description" content="Use Matter's budget-qualified pricing builder to estimate marketing, distribution, script, and editing support." />
 
   <link rel="stylesheet" href="../assets/css/style.css" />
+
   <style>
     :root{
-      --bg:#080808;
-      --bg-soft:#111111;
-      --panel:#121212;
-      --line:rgba(238,233,223,.16);
-      --line-strong:rgba(238,233,223,.28);
-      --text:#eee9df;
-      --muted:rgba(238,233,223,.68);
-      --faint:rgba(238,233,223,.45);
-      --gold:#b99a5b;
-      --red:#b63326;
-      --blue:#335f8c;
-      --green:#55775b;
-    }
-
-    *{
-      box-sizing:border-box;
+      --matter-black:#080808;
+      --matter-ink:#11100e;
+      --matter-muted:rgba(17,16,14,.66);
+      --matter-soft:#f4efe5;
+      --matter-paper:#fffaf0;
+      --matter-panel:#f8f2e8;
+      --matter-line:rgba(17,16,14,.16);
+      --matter-line-strong:rgba(17,16,14,.28);
+      --matter-red:#b63326;
+      --matter-gold:#a98643;
+      --matter-blue:#335f8c;
+      --matter-green:#55775b;
     }
 
     body{
-      background:
-        radial-gradient(circle at 16% 0%, rgba(182,51,38,.14), transparent 24%),
-        radial-gradient(circle at 85% 10%, rgba(51,95,140,.12), transparent 22%),
-        linear-gradient(180deg, #080808, #0a0a0a 45%, #060606);
-      color: var(--text);
+      background:var(--matter-black);
     }
 
     header{
-      background: rgba(8,8,8,.92);
-      border-bottom: 1px solid var(--line);
+      background:rgba(8,8,8,.94);
+      border-bottom:1px solid rgba(238,233,223,.14);
     }
 
     footer{
-      border-top: 1px solid var(--line);
+      background:#080808;
+      color:#eee9df;
+      border-top:1px solid rgba(238,233,223,.14);
     }
 
-    .button:hover,
-    button.button:hover{
-      background: var(--text);
-      color: var(--bg);
+    .pricing-page{
+      background:
+        radial-gradient(circle at 10% 0%, rgba(182,51,38,.10), transparent 26%),
+        radial-gradient(circle at 88% 10%, rgba(51,95,140,.10), transparent 24%),
+        linear-gradient(180deg, #fffaf0 0%, #f4efe5 48%, #efe7da 100%);
+      color:var(--matter-ink);
+      overflow:hidden;
     }
 
-    button.button{
-      cursor:pointer;
-      font:inherit;
-    }
-
-    .page-kicker{
+    .pricing-page .page-kicker{
       margin:0;
-      color:rgba(238,233,223,.58);
+      color:rgba(17,16,14,.54);
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
+      font-weight:700;
     }
 
-    .pricing-hero{
-      min-height: calc(100vh - 82px);
-      padding: clamp(32px, 5vw, 72px) clamp(20px, 4vw, 58px);
-      border-bottom:1px solid var(--line);
-      display:grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
-      gap: 18px;
-      align-items:stretch;
-    }
-
-    .hero-copy{
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:40px;
-      width:100%;
-    }
-
-    .hero-copy h1{
-      margin:0;
-      max-width:1120px;
-      font-size: clamp(58px, 8vw, 140px);
-      line-height:.8;
-      letter-spacing:-.09em;
+    .pricing-page .button,
+    .builder-action,
+    .remove-service,
+    .ghost-button{
+      appearance:none;
+      border:1px solid rgba(17,16,14,.44);
+      background:transparent;
+      color:var(--matter-ink);
+      border-radius:999px;
+      padding:10px 18px;
+      text-decoration:none;
       text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:13px;
+      line-height:1;
+      cursor:pointer;
+      transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
     }
 
-    .hero-copy p{
-      margin:0;
-      max-width:760px;
-      color:var(--muted);
-      font-size: clamp(18px, 2vw, 28px);
-      line-height:1.12;
-      letter-spacing:-.03em;
+    .pricing-page .button:hover,
+    .builder-action:hover,
+    .remove-service:hover,
+    .ghost-button:hover{
+      background:var(--matter-ink);
+      color:var(--matter-paper);
+      border-color:var(--matter-ink);
+      transform:translateY(-1px);
+    }
+
+    .pricing-page .button.primary,
+    .builder-action.primary{
+      background:var(--matter-ink);
+      color:var(--matter-paper);
+      border-color:var(--matter-ink);
+    }
+
+    .pricing-hero-simple{
+      min-height:calc(72vh - 82px);
+      padding:clamp(54px, 8vw, 128px) clamp(20px, 5vw, 76px) clamp(40px, 7vw, 92px);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      position:relative;
+      border-bottom:1px solid var(--matter-line);
+    }
+
+    .pricing-hero-simple::before{
+      content:"";
+      position:absolute;
+      inset:clamp(16px, 3vw, 42px);
+      border:1px solid rgba(17,16,14,.10);
+      pointer-events:none;
+    }
+
+    .pricing-hero-simple::after{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:999px;
+      right:-180px;
+      top:-180px;
+      border:1px solid rgba(182,51,38,.16);
+      box-shadow:0 0 0 42px rgba(182,51,38,.045), 0 0 0 84px rgba(182,51,38,.025);
+      animation:pricingOrbit 12s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      max-width:1260px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-inner h1{
+      margin:12px auto 22px;
+      max-width:1120px;
+      font-size:clamp(62px, 10.5vw, 178px);
+      line-height:.78;
+      letter-spacing:-.105em;
+      text-transform:uppercase;
+      color:var(--matter-ink);
+    }
+
+    .hero-inner p:not(.page-kicker){
+      margin:0 auto;
+      max-width:820px;
+      color:var(--matter-muted);
+      font-size:clamp(18px, 2vw, 28px);
+      line-height:1.13;
+      letter-spacing:-.035em;
     }
 
     .hero-actions{
       display:flex;
-      gap:10px;
+      justify-content:center;
       flex-wrap:wrap;
-      margin-top:24px;
+      gap:10px;
+      margin-top:26px;
     }
 
-    .hero-system-card{
-      min-height:560px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 72% 18%, rgba(185,154,91,.18), transparent 24%),
-        radial-gradient(circle at 16% 80%, rgba(182,51,38,.18), transparent 22%),
-        linear-gradient(135deg, rgba(238,233,223,.07), rgba(238,233,223,.018)),
-        #101010;
-      padding: clamp(22px, 3vw, 38px);
+    .pricing-section{
+      padding:clamp(42px, 6vw, 92px) clamp(20px, 5vw, 76px);
+      border-bottom:1px solid var(--matter-line);
+      position:relative;
+    }
+
+    .section-intro{
       display:grid;
-      align-content:space-between;
-      gap:22px;
+      grid-template-columns:minmax(0, .95fr) minmax(280px, .55fr);
+      gap:28px;
+      align-items:end;
+      margin-bottom:28px;
+    }
+
+    .section-intro h2{
+      margin:8px 0 0;
+      max-width:1000px;
+      font-size:clamp(42px, 7vw, 118px);
+      line-height:.82;
+      letter-spacing:-.09em;
+      text-transform:uppercase;
+    }
+
+    .section-intro p:last-child{
+      margin:0;
+      color:var(--matter-muted);
+      font-size:16px;
+      line-height:1.35;
+      max-width:560px;
+    }
+
+    .how-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .level-panel,
+    .category-panel,
+    .builder-shell,
+    .estimate-panel{
+      border:1px solid var(--matter-line);
+      background:rgba(255,250,240,.70);
+      box-shadow:0 22px 70px rgba(17,16,14,.055);
       position:relative;
       overflow:hidden;
-      isolation:isolate;
     }
 
-    .hero-system-card::before{
+    .level-panel{
+      min-height:310px;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:26px;
+    }
+
+    .level-panel::before,
+    .category-panel::before,
+    .builder-shell::before,
+    .estimate-panel::before{
       content:"";
       position:absolute;
-      inset:18px;
-      border:1px solid rgba(238,233,223,.12);
+      inset:16px;
+      border:1px solid rgba(17,16,14,.07);
       pointer-events:none;
+    }
+
+    .level-panel::after{
+      content:"";
+      position:absolute;
+      right:-48px;
+      top:-48px;
+      width:150px;
+      height:150px;
+      border-radius:999px;
+      border:1px solid rgba(169,134,67,.20);
+      box-shadow:0 0 0 28px rgba(169,134,67,.045);
+      pointer-events:none;
+    }
+
+    .level-panel .level-number{
+      color:rgba(17,16,14,.48);
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .level-panel h3{
+      margin:10px 0 12px;
+      font-size:clamp(34px, 4vw, 64px);
+      line-height:.82;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+    }
+
+    .level-panel p{
+      margin:0;
+      color:var(--matter-muted);
+      line-height:1.35;
+      font-size:15px;
+    }
+
+    .level-panel ul,
+    .category-panel ul,
+    .service-detail ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:9px;
+    }
+
+    .level-panel li,
+    .category-panel li,
+    .service-detail li{
+      color:rgba(17,16,14,.72);
+      line-height:1.3;
+      font-size:14px;
+    }
+
+    .level-panel li::before,
+    .category-panel li::before,
+    .service-detail li::before{
+      content:"• ";
+      color:var(--matter-gold);
+      font-weight:900;
+    }
+
+    .category-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .category-panel{
+      padding:22px;
+      min-height:210px;
+    }
+
+    .category-panel h3{
+      margin:0 0 10px;
+      font-size:clamp(24px, 3vw, 42px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      text-transform:uppercase;
+    }
+
+    .category-panel p{
+      margin:0 0 16px;
+      color:var(--matter-muted);
+      line-height:1.32;
+      font-size:14px;
+    }
+
+    .builder-section{
+      background:
+        radial-gradient(circle at 20% 0%, rgba(169,134,67,.11), transparent 28%),
+        radial-gradient(circle at 84% 10%, rgba(51,95,140,.12), transparent 30%),
+        linear-gradient(180deg, #f7f0e4, #fffaf0 52%, #f4efe5);
+    }
+
+    .builder-layout{
+      display:grid;
+      grid-template-columns:minmax(0, 1.38fr) minmax(360px, .72fr);
+      gap:16px;
+      align-items:start;
+    }
+
+    .builder-shell,
+    .estimate-panel{
+      padding:24px;
+    }
+
+    .builder-controls{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:minmax(260px, 420px) 1fr auto;
+      gap:14px;
+      align-items:end;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--matter-line);
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    .field span,
+    .field-label{
+      color:rgba(17,16,14,.55);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .builder-help{
+      margin:0;
+      color:var(--matter-muted);
+      line-height:1.32;
+      font-size:14px;
+      max-width:560px;
+    }
+
+    input,
+    select{
+      width:100%;
+      border:1px solid rgba(17,16,14,.18);
+      background:rgba(255,250,240,.82);
+      color:var(--matter-ink);
+      padding:14px 13px;
+      font:inherit;
+      font-size:15px;
+      border-radius:0;
+      outline:none;
+    }
+
+    input:focus,
+    select:focus{
+      border-color:rgba(169,134,67,.72);
+      box-shadow:0 0 0 3px rgba(169,134,67,.15);
+    }
+
+    .service-stack{
+      position:relative;
+      z-index:2;
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .service-card{
+      border:1px solid var(--matter-line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.60), rgba(255,250,240,.32)),
+        rgba(255,250,240,.68);
+      padding:16px;
+      display:grid;
+      gap:14px;
+      position:relative;
+      animation:serviceIn .28s ease both;
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      left:-1px;
+      top:-1px;
+      bottom:-1px;
+      width:3px;
+      background:linear-gradient(180deg, var(--matter-gold), var(--matter-red));
+    }
+
+    .service-inputs{
+      display:grid;
+      grid-template-columns:44px minmax(200px, 1.2fr) minmax(180px, .86fr) minmax(150px, .66fr) minmax(140px, .50fr);
+      gap:10px;
+      align-items:end;
+    }
+
+    .service-number,
+    .remove-service{
+      height:48px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--matter-line);
+      font-size:12px;
+      letter-spacing:.12em;
+      background:rgba(255,250,240,.64);
+    }
+
+    .remove-service{
+      margin-top:8px;
+      width:44px;
+      padding:0;
+      border-radius:0;
+      font-size:18px;
+      line-height:1;
+    }
+
+    .price-chip{
+      min-height:48px;
+      border:1px solid var(--matter-line);
+      background:rgba(17,16,14,.92);
+      color:var(--matter-paper);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+      font-weight:900;
+      font-size:18px;
+      letter-spacing:-.04em;
+      white-space:nowrap;
+    }
+
+    .service-detail{
+      display:grid;
+      grid-template-columns:minmax(220px, .52fr) 1fr;
+      gap:16px;
+      padding-top:14px;
+      border-top:1px solid var(--matter-line);
+    }
+
+    .service-detail h3{
+      margin:0 0 10px;
+      font-size:clamp(28px, 3.5vw, 54px);
+      line-height:.84;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+    }
+
+    .service-detail p{
+      margin:0;
+      color:var(--matter-muted);
+      line-height:1.35;
+      font-size:15px;
+    }
+
+    .detail-points{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:8px;
+    }
+
+    .detail-points li{
+      border:1px solid rgba(17,16,14,.10);
+      background:rgba(255,250,240,.46);
+      padding:12px;
+    }
+
+    .estimate-panel{
+      position:sticky;
+      top:104px;
       z-index:2;
     }
 
-    .hero-system-card::after{
-      content:"";
-      position:absolute;
-      right:-90px;
-      top:-90px;
-      width:280px;
-      height:280px;
-      border-radius:999px;
-      border:1px solid rgba(185,154,91,.18);
-      box-shadow:
-        0 0 0 38px rgba(185,154,91,.035),
-        0 0 0 76px rgba(185,154,91,.018);
-      animation: rateOrb 8s ease-in-out infinite;
-      z-index:0;
-    }
-
-    .system-grid{
-      position:absolute;
-      inset:0;
-      z-index:0;
-      opacity:.3;
-      background:
-        linear-gradient(rgba(238,233,223,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(238,233,223,.055) 1px, transparent 1px);
-      background-size:48px 48px;
-      mask-image: radial-gradient(circle at 52% 45%, black, transparent 72%);
-    }
-
-    .system-scan{
-      position:absolute;
-      left:0;
-      right:0;
-      top:-20%;
-      height:26%;
-      z-index:1;
-      background:linear-gradient(180deg, transparent, rgba(185,154,91,.08), transparent);
-      animation: scanPass 6.5s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .hero-system-card > *:not(.system-grid):not(.system-scan){
-      position:relative;
-      z-index:3;
-    }
-
-    .system-card-top h2{
-      margin:8px 0 12px;
-      max-width:560px;
-      font-size: clamp(42px, 4.8vw, 82px);
+    .estimate-panel h2{
+      margin:8px 0 10px;
+      font-size:clamp(44px, 5vw, 88px);
       line-height:.82;
       letter-spacing:-.085em;
       text-transform:uppercase;
     }
 
-    .system-card-top p:last-child{
-      margin:0;
-      max-width:540px;
-      color:var(--muted);
+    .budget-band-copy{
+      margin:0 0 18px;
+      color:var(--matter-muted);
+      line-height:1.35;
       font-size:14px;
-      line-height:1.32;
     }
 
-    .budget-band-readout{
-      border:1px solid rgba(238,233,223,.16);
-      background:
-        linear-gradient(180deg, rgba(238,233,223,.055), rgba(238,233,223,.025)),
-        rgba(8,8,8,.45);
-      padding:22px;
-      display:grid;
-      gap:16px;
-    }
-
-    .budget-band-readout strong{
-      display:block;
-      font-size: clamp(44px, 5vw, 96px);
-      line-height:.8;
-      letter-spacing:-.085em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-
-    .budget-band-readout p{
-      margin:0;
-      max-width:520px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.32;
-    }
-
-    .hero-system-meta{
-      border-top:1px solid rgba(238,233,223,.14);
-      padding-top:14px;
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      color:rgba(238,233,223,.58);
-      font-size:11px;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-
-    .pricing-section{
-      padding: clamp(34px, 5vw, 72px) clamp(20px, 4vw, 58px);
-      border-bottom:1px solid var(--line);
-    }
-
-    .section-head{
-      display:grid;
-      grid-template-columns: 180px minmax(0, 1fr) minmax(260px, 420px);
-      gap:24px;
-      align-items:end;
-      margin-bottom:22px;
-    }
-
-    .section-head h2{
-      margin:0;
-      max-width:980px;
-      font-size: clamp(38px, 5vw, 96px);
-      line-height:.84;
-      letter-spacing:-.08em;
-      text-transform:uppercase;
-    }
-
-    .section-head p:last-child{
-      margin:0;
-      color:var(--muted);
-      max-width:420px;
-      font-size:14px;
-      line-height:1.28;
-      text-align:right;
-    }
-
-    .pricing-builder{
-      display:grid;
-      grid-template-columns:minmax(0, 1.25fr) minmax(330px, .75fr);
-      gap:14px;
-      align-items:start;
-    }
-
-    .builder-panel,
-    .summary-panel,
-    .info-panel,
-    .notice-band{
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 18% 34%, rgba(182,51,38,.12), transparent 18%),
-        linear-gradient(180deg, rgba(238,233,223,.04), rgba(238,233,223,.018));
-      position:relative;
-      overflow:hidden;
-    }
-
-    .builder-panel{
-      min-height:640px;
-      padding:18px;
-    }
-
-    .summary-panel{
-      position:sticky;
-      top:96px;
-      padding:20px;
-      display:grid;
-      gap:14px;
-    }
-
-    .builder-controls{
-      display:grid;
-      grid-template-columns:minmax(220px, .7fr) 1fr auto;
-      gap:12px;
-      align-items:end;
-      padding-bottom:16px;
-      border-bottom:1px solid rgba(238,233,223,.14);
-      margin-bottom:16px;
-    }
-
-    .builder-controls label,
-    .service-line label{
-      display:grid;
-      gap:8px;
-      color:rgba(238,233,223,.58);
-      font-size:11px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-
-    .builder-controls input,
-    .service-line input,
-    .service-line select{
-      width:100%;
-      border:1px solid rgba(238,233,223,.18);
-      background:rgba(8,8,8,.72);
-      color:var(--text);
-      padding:14px 12px;
-      font:inherit;
-      font-size:14px;
-      letter-spacing:0;
-      text-transform:none;
-      outline:none;
-      border-radius:0;
-    }
-
-    .builder-controls input:focus,
-    .service-line input:focus,
-    .service-line select:focus{
-      border-color:rgba(185,154,91,.62);
-      box-shadow:0 0 0 3px rgba(185,154,91,.10);
-    }
-
-    .builder-microcopy{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.3;
-      max-width:560px;
-      margin:0;
-    }
-
-    .service-stack{
-      display:grid;
-      gap:12px;
-    }
-
-    .service-line{
-      border:1px solid rgba(238,233,223,.14);
-      background:
-        linear-gradient(90deg, rgba(185,154,91,.055), transparent 42%),
-        rgba(8,8,8,.34);
-      padding:14px;
-      display:grid;
-      gap:14px;
-      position:relative;
-      overflow:hidden;
-      animation: cardEnter .28s ease both;
-    }
-
-    .service-line::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:0;
-      bottom:0;
-      width:2px;
-      background:linear-gradient(180deg, var(--gold), var(--red));
-      opacity:.78;
-    }
-
-    .service-line-top{
-      display:grid;
-      grid-template-columns: 42px minmax(180px, 1.1fr) minmax(160px, .8fr) minmax(130px, .55fr) auto;
-      gap:10px;
-      align-items:end;
-    }
-
-    .line-number{
-      width:42px;
-      height:42px;
-      border:1px solid rgba(238,233,223,.18);
-      display:grid;
-      place-items:center;
-      color:rgba(238,233,223,.62);
-      font-size:11px;
-      letter-spacing:.12em;
-      margin-bottom:0;
-      background:rgba(238,233,223,.025);
-    }
-
-    .line-price{
-      border:1px solid rgba(238,233,223,.12);
-      padding:12px;
-      min-height:42px;
-      display:grid;
-      align-content:center;
-      color:var(--text);
-      font-size:18px;
-      line-height:1;
-      letter-spacing:-.04em;
-      background:rgba(238,233,223,.035);
-      white-space:nowrap;
-    }
-
-    .remove-service{
-      width:42px;
-      height:42px;
-      border:1px solid rgba(238,233,223,.18);
-      background:rgba(238,233,223,.035);
-      color:var(--text);
-      cursor:pointer;
-      font-size:18px;
-      line-height:1;
-    }
-
-    .remove-service:hover{
-      background:rgba(182,51,38,.32);
-      border-color:rgba(182,51,38,.7);
-    }
-
-    .service-detail{
-      display:grid;
-      grid-template-columns:minmax(0, .8fr) minmax(0, 1.2fr);
-      gap:12px;
-      border-top:1px solid rgba(238,233,223,.12);
-      padding-top:12px;
-    }
-
-    .detail-copy h3{
-      margin:0 0 8px;
-      font-size: clamp(24px, 3vw, 46px);
-      line-height:.9;
-      letter-spacing:-.065em;
-      text-transform:uppercase;
-    }
-
-    .detail-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.32;
-      max-width:620px;
-    }
-
-    .detail-list{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:8px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .detail-list li{
-      border:1px solid rgba(238,233,223,.1);
-      padding:10px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.25;
-      background:rgba(238,233,223,.025);
-    }
-
-    .detail-list li::before{
-      content:"";
-      display:inline-block;
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      background:var(--gold);
-      margin-right:8px;
-      vertical-align:1px;
-    }
-
-    .add-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      padding-top:14px;
-    }
-
-    .summary-top{
-      display:grid;
-      gap:10px;
-    }
-
-    .summary-top h3{
-      margin:0;
-      font-size: clamp(34px, 4vw, 72px);
-      line-height:.84;
-      letter-spacing:-.08em;
-      text-transform:uppercase;
-    }
-
-    .summary-top p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.3;
-    }
-
-    .total-box{
-      border:1px solid rgba(238,233,223,.16);
-      background:rgba(8,8,8,.46);
+    .estimate-totals{
+      border:1px solid var(--matter-line);
+      background:rgba(255,250,240,.64);
       padding:16px;
       display:grid;
-      gap:12px;
+      gap:14px;
     }
 
     .total-row{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      align-items:baseline;
-      border-bottom:1px solid rgba(238,233,223,.09);
-      padding-bottom:10px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:end;
+      border-bottom:1px solid rgba(17,16,14,.10);
+      padding-bottom:12px;
     }
 
     .total-row:last-child{
@@ -547,261 +553,148 @@
       padding-bottom:0;
     }
 
-    .total-row span{
-      color:rgba(238,233,223,.58);
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
-    .total-row strong{
-      font-size: clamp(26px, 3vw, 48px);
-      line-height:.86;
-      letter-spacing:-.07em;
-      text-transform:uppercase;
-      text-align:right;
-    }
-
-    .cart-list{
-      display:grid;
-      gap:8px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .cart-list li{
-      border:1px solid rgba(238,233,223,.1);
-      padding:10px;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:12px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.2;
-      background:rgba(238,233,223,.024);
-    }
-
-    .cart-list b{
-      color:var(--text);
-      font-weight:600;
-    }
-
-    .quote-warning{
-      border:1px solid rgba(182,51,38,.44);
-      background:rgba(182,51,38,.13);
-      padding:12px;
-      color:rgba(238,233,223,.8);
-      font-size:13px;
-      line-height:1.3;
-      display:none;
-    }
-
-    .quote-warning.is-visible{
-      display:block;
-    }
-
-    .summary-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .info-panel{
-      margin-top:14px;
-      padding:18px;
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:24px;
-      align-items:start;
-    }
-
-    .info-panel h3{
-      margin:0;
-      font-size: clamp(30px, 3.6vw, 68px);
-      line-height:.84;
-      letter-spacing:-.075em;
-      text-transform:uppercase;
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:10px;
-    }
-
-    .info-card{
-      border:1px solid rgba(238,233,223,.12);
-      padding:14px;
-      background:rgba(8,8,8,.35);
-      min-height:150px;
-      display:grid;
-      align-content:space-between;
-      gap:16px;
-    }
-
-    .info-card span{
-      color:rgba(238,233,223,.56);
+    .total-row span:first-child{
+      color:rgba(17,16,14,.56);
       font-size:11px;
       letter-spacing:.16em;
       text-transform:uppercase;
+      font-weight:800;
     }
 
-    .info-card strong{
-      display:block;
-      font-size:22px;
-      line-height:.9;
-      letter-spacing:-.055em;
-      text-transform:uppercase;
+    .total-row strong{
+      font-size:clamp(34px, 4.5vw, 70px);
+      line-height:.82;
+      letter-spacing:-.07em;
     }
 
-    .info-card p{
-      margin:0;
-      color:var(--muted);
+    .cart-list{
+      list-style:none;
+      margin:14px 0 0;
+      padding:0;
+      display:grid;
+      gap:8px;
+    }
+
+    .cart-list li{
+      border:1px solid rgba(17,16,14,.12);
+      background:rgba(255,250,240,.50);
+      padding:11px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
       font-size:13px;
-      line-height:1.28;
+      color:rgba(17,16,14,.70);
+    }
+
+    .cart-list b{
+      color:var(--matter-ink);
+      font-size:14px;
+    }
+
+    .estimate-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .proof-disclaimer{
+      margin:12px 0 0;
+      padding-top:12px;
+      border-top:1px solid rgba(17,16,14,.12);
+      color:rgba(17,16,14,.58);
+      font-size:12px;
+      line-height:1.35;
     }
 
     .notice-band{
-      padding:26px;
+      margin-top:16px;
+      border:1px solid var(--matter-line);
+      background:rgba(255,250,240,.65);
+      padding:22px;
       display:grid;
-      grid-template-columns: 1fr auto;
-      gap:24px;
+      grid-template-columns:1fr auto;
+      gap:18px;
       align-items:center;
     }
 
     .notice-band p{
       margin:0;
-      max-width:920px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.32;
+      color:var(--matter-muted);
+      line-height:1.35;
+      max-width:980px;
     }
 
-    .pricing-cta{
-      padding: clamp(44px, 7vw, 110px) clamp(20px, 4vw, 58px);
-      background: var(--red);
-      color: var(--text);
+    @keyframes pricingOrbit{
+      0%,100%{ transform:translate(0,0) scale(1); }
+      50%{ transform:translate(-30px, 24px) scale(1.04); }
     }
 
-    .pricing-cta h2{
-      max-width:1160px;
-      margin:0 0 24px;
-      font-size: clamp(56px, 9vw, 160px);
-      line-height:.8;
-      letter-spacing:-.095em;
-      text-transform:uppercase;
-    }
-
-    .pricing-cta-line{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:24px;
-      align-items:center;
-      padding-top:18px;
-      border-top:1px solid rgba(238,233,223,.34);
-    }
-
-    .pricing-cta-line p{
-      margin:0;
-      max-width:660px;
-      color:rgba(238,233,223,.82);
-      line-height:1.3;
-    }
-
-    .visually-hidden{
-      position:absolute;
-      width:1px;
-      height:1px;
-      padding:0;
-      margin:-1px;
-      overflow:hidden;
-      clip:rect(0,0,0,0);
-      white-space:nowrap;
-      border:0;
-    }
-
-    @keyframes rateOrb{
-      0%,100%{ transform:translate(0,0) scale(1); opacity:.82; }
-      50%{ transform:translate(-16px,18px) scale(1.05); opacity:1; }
-    }
-
-    @keyframes scanPass{
-      0%{ transform:translateY(-80%); opacity:0; }
-      18%{ opacity:1; }
-      52%{ opacity:.8; }
-      100%{ transform:translateY(520%); opacity:0; }
-    }
-
-    @keyframes cardEnter{
-      from{ opacity:0; transform:translateY(12px); }
+    @keyframes serviceIn{
+      from{ opacity:0; transform:translateY(10px); }
       to{ opacity:1; transform:translateY(0); }
     }
 
-    @media (max-width: 1120px){
-      .pricing-hero,
-      .pricing-builder,
-      .section-head,
-      .notice-band,
-      .pricing-cta-line,
-      .info-panel{
+    @media (max-width:1180px){
+      .section-intro,
+      .builder-layout,
+      .builder-controls,
+      .notice-band{
         grid-template-columns:1fr;
       }
 
-      .summary-panel{
+      .estimate-panel{
         position:relative;
         top:auto;
       }
 
-      .section-head p:last-child{
-        text-align:left;
-      }
-
-      .builder-controls,
-      .service-line-top{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .line-number,
-      .remove-service{
-        width:100%;
-      }
-
-      .line-price{
-        min-height:50px;
+      .category-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 760px){
-      .pricing-hero,
-      .pricing-section,
-      .pricing-cta{
+    @media (max-width:900px){
+      .how-grid,
+      .service-detail,
+      .detail-points{
+        grid-template-columns:1fr;
+      }
+
+      .service-inputs{
+        grid-template-columns:44px 1fr;
+      }
+
+      .service-inputs .field,
+      .service-inputs .price-chip{
+        grid-column:1 / -1;
+      }
+    }
+
+    @media (max-width:680px){
+      .pricing-hero-simple,
+      .pricing-section{
         padding-left:18px;
         padding-right:18px;
       }
 
-      .hero-system-card{
-        min-height:auto;
-      }
-
-      .builder-controls,
-      .service-line-top,
-      .service-detail,
-      .detail-list,
-      .info-grid{
+      .category-grid{
         grid-template-columns:1fr;
       }
 
-      .cart-list li{
-        grid-template-columns:1fr;
+      .hero-inner h1{
+        font-size:clamp(54px, 17vw, 92px);
+      }
+
+      .section-intro h2{
+        font-size:clamp(46px, 15vw, 74px);
       }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .hero-system-card::after,
-      .system-scan,
-      .service-line{
+    @media (prefers-reduced-motion:reduce){
+      *, *::before, *::after{
         animation:none !important;
+        transition:none !important;
       }
     }
   </style>
@@ -827,149 +720,172 @@
     </div>
   </header>
 
-  <main>
-    <section class="pricing-hero">
-      <div class="hero-copy">
-        <div>
-          <p class="page-kicker">Pricing</p>
-          <h1>Build the scope before the price.</h1>
-        </div>
-
-        <div>
-          <p>Matter uses budget-qualified pricing so microbudget creators keep access to entry rates, while larger productions are quoted at the level their scope requires.</p>
-          <div class="hero-actions">
-            <a class="button" href="#rate-finder">Build Estimate</a>
-            <a class="button" href="#pricing-logic">How it works</a>
-            <a class="button" href="../contact/index.html">Contact</a>
-          </div>
+  <main class="pricing-page">
+    <section class="pricing-hero-simple">
+      <div class="hero-inner">
+        <p class="page-kicker">Pricing</p>
+        <h1>Build the scope before the price.</h1>
+        <p>Choose your project budget, stack the services you need, and get a starting estimate or quote direction.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#how-pricing-works">How pricing works</a>
+          <a class="button" href="#rate-finder">Build estimate</a>
+          <a class="button" href="../contact/index.html">Contact</a>
         </div>
       </div>
-
-      <aside class="hero-system-card" aria-labelledby="system-title">
-        <div class="system-grid"></div>
-        <div class="system-scan"></div>
-
-        <div class="system-card-top">
-          <p class="page-kicker">Budget-Qualified System</p>
-          <h2 id="system-title">Stack services. See the estimate.</h2>
-          <p>Select marketing, distribution, script, and editing support in one builder. The tool separates monthly support from one-time work.</p>
-        </div>
-
-        <div class="budget-band-readout">
-          <span class="page-kicker">Current Budget Band</span>
-          <strong id="heroBandName">Microbudget Access</strong>
-          <p id="heroBandCopy">For projects with total budgets from $0 to $9,999. These are Matter’s access rates for no-budget and microbudget productions.</p>
-        </div>
-
-        <div class="hero-system-meta">
-          <span>Project Budget</span>
-          <span>Service Stack</span>
-          <span>Scope Check</span>
-        </div>
-      </aside>
     </section>
 
-    <section class="pricing-section" id="rate-finder">
-      <div class="section-head">
-        <p class="page-kicker">Rate Finder</p>
-        <h2>Build a service stack.</h2>
-        <p>Add the services you need, review what each one includes, and see whether your project gets an estimate or requires a quote.</p>
+    <section class="pricing-section" id="how-pricing-works">
+      <div class="section-intro">
+        <div>
+          <p class="page-kicker">How Pricing Works</p>
+          <h2>Simple levels. Clear scope.</h2>
+        </div>
+        <p>Matter uses budget-qualified pricing. Microbudget access rates stay available for true low-budget creators, while larger productions are priced at the level their scope requires.</p>
       </div>
 
-      <div class="pricing-builder">
-        <div class="builder-panel">
+      <div class="how-grid" aria-label="Service levels">
+        <article class="level-panel">
+          <div>
+            <span class="level-number">Level 1</span>
+            <h3>Consultant</h3>
+            <p>For creators who want guidance, direction, and feedback while handling execution themselves.</p>
+          </div>
+          <ul>
+            <li>Strategy and consultation</li>
+            <li>Calls and communication</li>
+            <li>Feedback on rollout and assets</li>
+            <li>Tools, resources, and next steps</li>
+          </ul>
+        </article>
+
+        <article class="level-panel">
+          <div>
+            <span class="level-number">Level 2</span>
+            <h3>Partner</h3>
+            <p>For creators who want strategy plus hands-on support with execution, packaging, or asset development.</p>
+          </div>
+          <ul>
+            <li>Everything in Consultant</li>
+            <li>Support with execution</li>
+            <li>Asset or packaging support</li>
+            <li>Refinement of messaging and direction</li>
+          </ul>
+        </article>
+
+        <article class="level-panel">
+          <div>
+            <span class="level-number">Level 3</span>
+            <h3>Manager</h3>
+            <p>For creators who want Matter deeply involved in building and managing the system around the project.</p>
+          </div>
+          <ul>
+            <li>Everything in Consultant and Partner</li>
+            <li>Marketing or release system management</li>
+            <li>Asset creation handled by Matter</li>
+            <li>Rollout oversight and active involvement</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="category-grid" aria-label="Service categories">
+        <article class="category-panel">
+          <p class="page-kicker">Marketing</p>
+          <h3>Campaign Support</h3>
+          <p>For positioning, messaging, assets, rollout planning, and audience-building.</p>
+          <ul>
+            <li>Consultant, Partner, or Manager</li>
+            <li>Monthly support</li>
+          </ul>
+        </article>
+
+        <article class="category-panel">
+          <p class="page-kicker">Distribution</p>
+          <h3>Release Support</h3>
+          <p>For packaging, submission planning, release direction, and platform strategy.</p>
+          <ul>
+            <li>Consultant, Partner, or Manager</li>
+            <li>Monthly support</li>
+          </ul>
+        </article>
+
+        <article class="category-panel">
+          <p class="page-kicker">Pre-Matter</p>
+          <h3>Script Work</h3>
+          <p>For screenplay editing, writing, structure, polish, and page development.</p>
+          <ul>
+            <li>Priced by page count</li>
+            <li>Budget-qualified per-page rate</li>
+          </ul>
+        </article>
+
+        <article class="category-panel">
+          <p class="page-kicker">Post-Matter</p>
+          <h3>Editing Work</h3>
+          <p>For music videos, shorts, and feature-length projects that need post support.</p>
+          <ul>
+            <li>Priced by project type</li>
+            <li>Minutes help estimate scope</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing-section builder-section" id="rate-finder">
+      <div class="section-intro">
+        <div>
+          <p class="page-kicker">Rate Finder</p>
+          <h2>Build a service stack.</h2>
+        </div>
+        <p>Add the services you need, review what each one includes, and see whether your project receives a starting estimate or needs a direct quote.</p>
+      </div>
+
+      <div class="builder-layout">
+        <section class="builder-shell" aria-label="Matter service estimate builder">
           <div class="builder-controls">
-            <label>
+            <label class="field">
               <span>Total project budget</span>
               <input id="projectBudget" type="number" min="0" step="100" value="9000" inputmode="numeric" />
             </label>
-
-            <p class="builder-microcopy">Use the full project budget, not just the amount left for marketing or post. This keeps access pricing reserved for true microbudget work.</p>
-
-            <button class="button" type="button" id="addService">Add Service</button>
+            <p class="builder-help">Use the full project budget, not only the amount left for marketing or post. This keeps access pricing reserved for true microbudget work.</p>
+            <button class="builder-action primary" type="button" id="addService">Add Service</button>
           </div>
 
           <div class="service-stack" id="serviceStack" aria-live="polite"></div>
+        </section>
 
-          <div class="add-row">
-            <button class="button" type="button" id="addServiceBottom">Add Another Service</button>
-            <a class="button" href="../contact/index.html">Ask About Scope</a>
-          </div>
-        </div>
+        <aside class="estimate-panel" aria-label="Estimate summary">
+          <p class="page-kicker">Estimate</p>
+          <h2>Your stack.</h2>
+          <p class="budget-band-copy" id="budgetBandCopy">Microbudget Access: $0 to $9,999 total project budget.</p>
 
-        <aside class="summary-panel" aria-labelledby="estimate-title">
-          <div class="summary-top">
-            <p class="page-kicker">Estimate</p>
-            <h3 id="estimate-title">Your stack.</h3>
-            <p id="summaryBand">Microbudget Access: $0 to $9,999 total project budget.</p>
-          </div>
-
-          <div class="total-box">
+          <div class="estimate-totals">
             <div class="total-row">
-              <span>Monthly Support</span>
+              <span>Monthly support</span>
               <strong id="monthlyTotal">$0</strong>
             </div>
             <div class="total-row">
-              <span>One-Time Work</span>
+              <span>One-time work</span>
               <strong id="oneTimeTotal">$0</strong>
             </div>
             <div class="total-row">
-              <span>Services Added</span>
+              <span>Services added</span>
               <strong id="serviceCount">0</strong>
             </div>
           </div>
 
-          <div class="quote-warning" id="quoteWarning">Projects at $100,000 or more require a custom quote. The builder can still organize the scope, but Matter should price it directly.</div>
-
           <ul class="cart-list" id="cartList"></ul>
 
-          <div class="summary-actions">
-            <button class="button" type="button" id="copyEstimate">Copy Estimate</button>
+          <div class="estimate-actions">
+            <button class="builder-action primary" type="button" id="copyEstimate">Copy Estimate</button>
             <a class="button" href="../contact/index.html">Start Consultation</a>
           </div>
+
+          <p class="proof-disclaimer">For select projects, Matter may ask for proof or evidence of budgeting to validate the project budget and confirm access-rate eligibility.</p>
         </aside>
       </div>
 
-      <div class="info-panel" id="pricing-logic">
-        <div>
-          <p class="page-kicker">How Pricing Works</p>
-          <h3>Simple levels. Clear scope.</h3>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <span>Level 1</span>
-            <strong>Consultant</strong>
-            <p>You execute. Matter guides the strategy, direction, feedback, next steps, and decision-making.</p>
-          </div>
-
-          <div class="info-card">
-            <span>Level 2</span>
-            <strong>Partner</strong>
-            <p>You work with Matter. Matter helps with execution, packaging, campaign direction, assets, and refinement.</p>
-          </div>
-
-          <div class="info-card">
-            <span>Level 3</span>
-            <strong>Manager</strong>
-            <p>Matter handles the heavier lift, manages the system, and becomes more directly involved in rollout or release planning.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pricing-section">
       <div class="notice-band">
-        <p>Rates are budget-qualified. Microbudget access rates are reserved for projects with total budgets under $10,000. Matter may request basic budget verification before confirming access pricing.</p>
-        <a class="button" href="../contact/index.html">Set up consultation</a>
-      </div>
-    </section>
-
-    <section class="pricing-cta">
-      <p class="page-kicker">Next Step</p>
-      <h2>Bring the scope. We’ll price the path.</h2>
-      <div class="pricing-cta-line">
-        <p>Message charliecooperfilms@gmail.com to set up a free 30–40 minute consultation call over Zoom or Google Meet.</p>
+        <p>Estimates are starting points. Final pricing may change based on deadlines, footage volume, revision needs, deliverables, outreach volume, paid media needs, and overall project complexity.</p>
         <a class="button" href="mailto:charliecooperfilms@gmail.com">Email Charlie</a>
       </div>
     </section>
@@ -985,162 +901,156 @@
     const matterRates = {
       marketing: {
         label: "Marketing",
-        billing: "monthly",
+        kind: "monthly",
         levels: ["consultant", "partner", "manager"],
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", consultant: 150, partner: 250, manager: 500 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", consultant: 500, partner: 650, manager: 800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", consultant: 800, partner: 950, manager: 1150 }
-        ],
-        descriptions: {
-          consultant: {
-            title: "Marketing Consultant",
-            summary: "For creators who want guidance, direction, and feedback while handling execution themselves.",
-            bullets: ["Strategy and consultation", "Calls and communication", "Feedback on rollout and assets", "Tools, resources, and next steps"],
-            note: "You execute. Matter guides."
-          },
-          partner: {
-            title: "Marketing Partner",
-            summary: "For creators who want strategy plus hands-on support with execution and asset development.",
-            bullets: ["Everything in Consultant", "Support with execution", "Asset creation assistance", "Messaging and campaign refinement"],
-            note: "You work with Matter. Matter works with you."
-          },
-          manager: {
-            title: "Marketing Manager",
-            summary: "For creators who want Matter to handle the heavy lift and build the marketing system around the project.",
-            bullets: ["Everything in Consultant and Partner", "Marketing system management", "Asset creation handled by Matter", "Campaign planning and rollout oversight"],
-            note: "Matter executes. You stay focused on the work."
-          }
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", consultant: 150, partner: 250, manager: 500 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", consultant: 500, partner: 650, manager: 800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", consultant: 800, partner: 950, manager: 1150 }
+        ]
       },
-
       distribution: {
         label: "Distribution",
-        billing: "monthly",
+        kind: "monthly",
         levels: ["consultant", "partner", "manager"],
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", consultant: 100, partner: 300, manager: 800 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", consultant: 400, partner: 600, manager: 1000 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", consultant: 700, partner: 900, manager: 1350 }
-        ],
-        descriptions: {
-          consultant: {
-            title: "Distribution Consultant",
-            summary: "For creators who want release guidance while leading the submission or release process themselves.",
-            bullets: ["Release strategy guidance", "Positioning and market fit clarity", "Timeline planning", "Submission guidance"],
-            note: "You move it forward. Matter maps the path."
-          },
-          partner: {
-            title: "Distribution Partner",
-            summary: "For creators who need stronger packaging, submissions, and strategic help throughout the process.",
-            bullets: ["Everything in Consultant", "Project packaging support", "Submission and outreach support", "Ongoing strategy refinement"],
-            note: "Matter helps strengthen release opportunities."
-          },
-          manager: {
-            title: "Distribution Manager",
-            summary: "For creators who want Matter deeply involved in packaging, outreach, and release planning.",
-            bullets: ["Everything in Consultant and Partner", "Full packaging and positioning support", "Outreach support", "Release management involvement"],
-            note: "Matter becomes part of the release process."
-          }
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", consultant: 100, partner: 300, manager: 800 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", consultant: 400, partner: 600, manager: 1000 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", consultant: 700, partner: 900, manager: 1350 }
+        ]
       },
-
       scriptEditing: {
         label: "Script Editing",
-        billing: "page",
+        kind: "page",
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 5 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 8 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 12 }
-        ],
-        description: {
-          title: "Script Editing",
-          summary: "For partial or completed scripts that need notes, polish, tightening, structure work, or a cleaner draft.",
-          bullets: ["Script notes", "Scene and structure cleanup", "Character and dialogue feedback", "Revision direction"],
-          note: "Priced per page."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 5 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 8 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 12 }
+        ]
       },
-
       scriptWriting: {
         label: "Script Writing",
-        billing: "page",
+        kind: "page",
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 10 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 15 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 25 }
-        ],
-        description: {
-          title: "Script Writing",
-          summary: "For ideas, outlines, scenes, or pages that need to be written, expanded, or brought into screenplay form.",
-          bullets: ["New pages", "Scene expansion", "Dialogue and structure", "Screenplay formatting"],
-          note: "Priced per page."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 10 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 15 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 25 }
+        ]
       },
-
       musicVideo: {
         label: "Music Video Editing",
-        billing: "flat",
+        kind: "minute",
+        baseMinutes: 4,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 300 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 500 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 800 }
-        ],
-        description: {
-          title: "Music Video Editing",
-          summary: "Editing for a music video or performance-driven visual.",
-          bullets: ["Assembly edit", "Rhythm and pacing", "Basic polish", "Delivery file"],
-          note: "Final price depends on footage volume and revisions."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 300 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 500 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 800 }
+        ]
       },
-
       miniShort: {
         label: "Mini Short Editing",
-        billing: "flat",
+        kind: "minute",
+        baseMinutes: 5,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 500 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 1200 }
-        ],
-        description: {
-          title: "Mini Short Editing",
-          summary: "Editing for a smaller short-form project.",
-          bullets: ["Narrative assembly", "Pacing and continuity", "Basic sound and picture polish", "Delivery file"],
-          note: "Best for compact projects."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 500 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1200 }
+        ]
       },
-
       standardShort: {
         label: "Standard Short Editing",
-        billing: "flat",
+        kind: "minute",
+        baseMinutes: 15,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 600 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 1000 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 1500 }
-        ],
-        description: {
-          title: "Standard Short Editing",
-          summary: "Editing for a standard short film or comparable narrative project.",
-          bullets: ["Story edit", "Pacing and structure", "Revision pass", "Delivery file"],
-          note: "Scope may change based on runtime and footage volume."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 600 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1000 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1500 }
+        ]
       },
-
       featureEdit: {
         label: "Feature Editing",
-        billing: "flat",
+        kind: "minute",
+        baseMinutes: 75,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 1000 },
-          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 1800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 3000 }
-        ],
-        description: {
-          title: "Feature Editing",
-          summary: "Editing for a feature-length project. Larger or more complex needs may require a custom quote.",
-          bullets: ["Feature assembly", "Structure and pacing", "Revision pass", "Delivery planning"],
-          note: "Feature edits are especially scope-sensitive."
-        }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 1000 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 3000 }
+        ]
       }
     };
+
+    const serviceDetails = {
+      marketing: {
+        consultant: {
+          title: "Marketing Consultant",
+          description: "For creators who want guidance, direction, and feedback while handling execution themselves. You execute. Matter guides.",
+          points: ["Strategy and consultation", "Calls and communication", "Feedback on rollout and assets", "Tools, resources, and next steps"]
+        },
+        partner: {
+          title: "Marketing Partner",
+          description: "For creators who want strategy plus hands-on support with execution and asset development. You work with Matter. Matter works with you.",
+          points: ["Everything in Consultant", "Support with execution", "Assist with asset creation", "Messaging and campaign direction"]
+        },
+        manager: {
+          title: "Marketing Manager",
+          description: "For creators who want Matter to handle the heavy lift and build the marketing system around the project.",
+          points: ["Everything in Consultant and Partner", "Full marketing system management", "Asset creation handled by Matter", "Campaign planning and rollout oversight"]
+        }
+      },
+      distribution: {
+        consultant: {
+          title: "Distribution Consultant",
+          description: "For creators who want release guidance while leading the submission or release process themselves. You move it forward. Matter maps the path.",
+          points: ["Release strategy guidance", "Positioning and market fit clarity", "Timeline planning", "Submission guidance"]
+        },
+        partner: {
+          title: "Distribution Partner",
+          description: "For creators who need stronger packaging, submission support, and strategic help throughout the process.",
+          points: ["Everything in Consultant", "Project packaging support", "Submission and outreach support", "Ongoing strategy refinement"]
+        },
+        manager: {
+          title: "Distribution Manager",
+          description: "For creators who want Matter deeply involved in packaging, outreach, and release planning.",
+          points: ["Everything in Consultant and Partner", "Full packaging and positioning support", "Outreach support", "Release management involvement"]
+        }
+      },
+      scriptEditing: {
+        title: "Script Editing",
+        description: "For partial or completed scripts that need notes, polish, tightening, structure work, or a cleaner draft.",
+        points: ["Structure and clarity notes", "Line-level polish", "Scene and pacing feedback", "Revision path"]
+      },
+      scriptWriting: {
+        title: "Script Writing",
+        description: "For ideas, outlines, scenes, or pages that need to be written, expanded, or brought into screenplay form.",
+        points: ["New pages or scenes", "Outline-to-page development", "Dialogue and scene work", "Screenplay formatting"]
+      },
+      musicVideo: {
+        title: "Music Video Editing",
+        description: "Editing for a music video. Minutes help estimate runtime scope. Heavy footage volume, VFX, or fast deadlines may require a direct quote.",
+        points: ["Performance or concept edit", "Music timing", "Basic pacing and polish", "Base estimate covers up to 4 minutes"]
+      },
+      miniShort: {
+        title: "Mini Short Editing",
+        description: "Editing for a smaller short-form project. Minutes help estimate runtime scope and keep the starting rate realistic.",
+        points: ["Short-form story edit", "Scene pacing", "Basic polish", "Base estimate covers up to 5 minutes"]
+      },
+      standardShort: {
+        title: "Standard Short Editing",
+        description: "Editing for a standard short film or comparable narrative project.",
+        points: ["Narrative assembly", "Scene rhythm", "Story clarity", "Base estimate covers up to 15 minutes"]
+      },
+      featureEdit: {
+        title: "Feature Editing",
+        description: "Editing for a feature-length project. Larger or more complex needs may require a direct custom quote.",
+        points: ["Feature assembly", "Story structure support", "Pacing and polish", "Base estimate covers up to 75 minutes"]
+      }
+    };
+
+    const money = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    });
 
     const serviceOptions = [
       ["marketing", "Marketing"],
@@ -1153,299 +1063,306 @@
       ["featureEdit", "Feature Editing"]
     ];
 
-    const money = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0
-    });
+    const levelOptions = [
+      ["consultant", "Consultant"],
+      ["partner", "Partner"],
+      ["manager", "Manager"]
+    ];
 
-    let serviceId = 0;
-
-    const projectBudget = document.getElementById("projectBudget");
     const serviceStack = document.getElementById("serviceStack");
-    const addService = document.getElementById("addService");
-    const addServiceBottom = document.getElementById("addServiceBottom");
+    const projectBudget = document.getElementById("projectBudget");
     const monthlyTotal = document.getElementById("monthlyTotal");
     const oneTimeTotal = document.getElementById("oneTimeTotal");
     const serviceCount = document.getElementById("serviceCount");
     const cartList = document.getElementById("cartList");
-    const quoteWarning = document.getElementById("quoteWarning");
-    const summaryBand = document.getElementById("summaryBand");
-    const heroBandName = document.getElementById("heroBandName");
-    const heroBandCopy = document.getElementById("heroBandCopy");
+    const budgetBandCopy = document.getElementById("budgetBandCopy");
+    const addService = document.getElementById("addService");
     const copyEstimate = document.getElementById("copyEstimate");
 
-    function getBand(bands, budget){
+    let services = [
+      { id: crypto.randomUUID(), type: "marketing", level: "consultant", quantity: 90 },
+      { id: crypto.randomUUID(), type: "distribution", level: "consultant", quantity: 90 }
+    ];
+
+    function getBudget(){
+      return Math.max(0, Number(projectBudget.value || 0));
+    }
+
+    function getBand(bands){
+      const budget = getBudget();
       return bands.find((band) => budget <= band.max) || null;
     }
 
-    function getGlobalBand(budget){
+    function getBudgetBandName(){
+      const budget = getBudget();
       if (budget >= 100000){
         return {
           name: "Custom Quote Required",
-          range: "$100,000+",
-          copy: "Projects at this level are priced directly by scope, timeline, release goals, deliverables, and level of Matter involvement."
+          copy: "Projects at $100,000+ require a direct Matter quote based on scope, deliverables, deadlines, release goals, and level of involvement."
         };
       }
+      if (budget >= 55000){
+        return { name: "Elevated Indie Budget", copy: "Elevated Indie Budget: $55,000 to $99,999 total project budget." };
+      }
+      if (budget >= 10000){
+        return { name: "Independent Budget", copy: "Independent Budget: $10,000 to $54,999 total project budget." };
+      }
+      return { name: "Microbudget Access", copy: "Microbudget Access: $0 to $9,999 total project budget." };
+    }
 
-      if (budget <= 9999){
+    function getServicePrice(item){
+      const service = matterRates[item.type];
+      const budget = getBudget();
+
+      if (budget >= 100000){
+        return { amount: 0, quoted: true, label: "Quote", cadence: service.kind === "monthly" ? "Monthly" : "One-time" };
+      }
+
+      const band = getBand(service.bands);
+
+      if (service.kind === "monthly"){
         return {
-          name: "Microbudget Access",
-          range: "$0 to $9,999",
-          copy: "For no-budget and microbudget productions. These rates are designed to keep professional support accessible."
+          amount: band[item.level],
+          quoted: false,
+          label: `${money.format(band[item.level])} / month`,
+          cadence: "Monthly"
         };
       }
 
-      if (budget <= 54999){
+      if (service.kind === "page"){
+        const pages = Math.max(1, Number(item.quantity || 1));
+        const total = band.rate * pages;
         return {
-          name: "Independent Budget",
-          range: "$10,000 to $54,999",
-          copy: "For funded indie projects that need stronger support without moving into full custom pricing."
+          amount: total,
+          quoted: false,
+          label: `${money.format(total)} est.`,
+          cadence: "One-time"
         };
       }
 
+      const minutes = Math.max(1, Number(item.quantity || 1));
+      const multiplier = Math.max(1, minutes / service.baseMinutes);
+      const total = Math.ceil(band.rate * multiplier);
       return {
-        name: "Elevated Indie Budget",
-        range: "$55,000 to $99,999",
-        copy: "For higher-budget independent productions with more serious scope, timeline, and deliverable needs."
+        amount: total,
+        quoted: false,
+        label: `${money.format(total)} est.`,
+        cadence: "One-time"
       };
     }
 
-    function levelLabel(level){
-      if (level === "consultant") return "Consultant";
-      if (level === "partner") return "Partner";
-      return "Manager";
+    function getQuantityLabel(type){
+      const kind = matterRates[type].kind;
+      if (kind === "page") return "Pages";
+      if (kind === "minute") return "Minutes";
+      return null;
     }
 
-    function serviceSelectMarkup(selected){
-      return serviceOptions.map(([value, label]) => {
-        return `<option value="${value}" ${value === selected ? "selected" : ""}>${label}</option>`;
-      }).join("");
+    function getQuantityDefault(type){
+      const service = matterRates[type];
+      if (service.kind === "page") return 90;
+      if (service.kind === "minute") return service.baseMinutes;
+      return 0;
     }
 
-    function levelSelectMarkup(selected){
-      return ["consultant", "partner", "manager"].map((value) => {
-        return `<option value="${value}" ${value === selected ? "selected" : ""}>${levelLabel(value)}</option>`;
-      }).join("");
-    }
-
-    function addServiceRow(defaultService = "marketing", defaultLevel = "consultant"){
-      serviceId += 1;
-
-      const row = document.createElement("article");
-      row.className = "service-line";
-      row.dataset.id = String(serviceId);
-
-      row.innerHTML = `
-        <div class="service-line-top">
-          <div class="line-number">${String(serviceId).padStart(2, "0")}</div>
-
-          <label>
-            <span>Service</span>
-            <select class="service-type">${serviceSelectMarkup(defaultService)}</select>
-          </label>
-
-          <label class="level-field">
-            <span>Level</span>
-            <select class="service-level">${levelSelectMarkup(defaultLevel)}</select>
-          </label>
-
-          <label class="page-field" hidden>
-            <span>Pages</span>
-            <input class="service-pages" type="number" min="1" step="1" value="90" inputmode="numeric" />
-          </label>
-
-          <div class="line-price">$0</div>
-
-          <button class="remove-service" type="button" aria-label="Remove service">×</button>
-        </div>
-
-        <div class="service-detail">
-          <div class="detail-copy">
-            <h3></h3>
-            <p></p>
-          </div>
-          <ul class="detail-list"></ul>
-        </div>
-      `;
-
-      serviceStack.appendChild(row);
-      renumberRows();
-
-      row.querySelectorAll("select, input").forEach((field) => {
-        field.addEventListener("input", updateBuilder);
-        field.addEventListener("change", updateBuilder);
-      });
-
-      row.querySelector(".remove-service").addEventListener("click", () => {
-        row.remove();
-        renumberRows();
-        updateBuilder();
-      });
-
-      updateBuilder();
-    }
-
-    function renumberRows(){
-      [...serviceStack.querySelectorAll(".service-line")].forEach((row, index) => {
-        row.querySelector(".line-number").textContent = String(index + 1).padStart(2, "0");
-      });
-    }
-
-    function getRowData(row, budget){
-      const serviceType = row.querySelector(".service-type").value;
-      const group = matterRates[serviceType];
-      const levelField = row.querySelector(".level-field");
-      const pageField = row.querySelector(".page-field");
-      const levelSelect = row.querySelector(".service-level");
-      const pagesInput = row.querySelector(".service-pages");
-
-      const isMonthly = group.billing === "monthly";
-      const isPage = group.billing === "page";
-      const quoteRequired = budget >= 100000;
-
-      levelField.hidden = !isMonthly;
-      pageField.hidden = !isPage;
-
-      let price = 0;
-      let priceLabel = "Quote";
-      let title = group.label;
-      let summary = "";
-      let bullets = [];
-      let note = "";
-      let billing = group.billing;
-      let band = null;
-
-      if (isMonthly){
-        const level = levelSelect.value;
-        const details = group.descriptions[level];
-        title = details.title;
-        summary = details.summary;
-        bullets = details.bullets;
-        note = details.note;
-        band = getBand(group.bands, budget);
-
-        if (!quoteRequired && band){
-          price = band[level];
-          priceLabel = `${money.format(price)} / month`;
-        }
-      } else {
-        const details = group.description;
-        title = details.title;
-        summary = details.summary;
-        bullets = details.bullets;
-        note = details.note;
-        band = getBand(group.bands, budget);
-
-        if (!quoteRequired && band){
-          if (isPage){
-            const pages = Math.max(1, Number(pagesInput.value || 1));
-            price = band.rate * pages;
-            priceLabel = `${money.format(price)} est.`;
-          } else {
-            price = band.rate;
-            priceLabel = money.format(price);
-          }
-        }
+    function getDetail(item){
+      if (item.type === "marketing" || item.type === "distribution"){
+        return serviceDetails[item.type][item.level];
       }
-
-      return { serviceType, group, title, summary, bullets, note, billing, price, priceLabel, quoteRequired, band };
+      return serviceDetails[item.type];
     }
 
-    function updateBuilder(){
-      const budget = Number(projectBudget.value || 0);
-      const globalBand = getGlobalBand(budget);
-      const rows = [...serviceStack.querySelectorAll(".service-line")];
+    function optionMarkup(options, selected){
+      return options.map(([value, label]) => `<option value="${value}" ${value === selected ? "selected" : ""}>${label}</option>`).join("");
+    }
+
+    function renderServices(){
+      serviceStack.innerHTML = services.map((item, index) => {
+        const service = matterRates[item.type];
+        const price = getServicePrice(item);
+        const detail = getDetail(item);
+        const quantityLabel = getQuantityLabel(item.type);
+        const quantityField = quantityLabel ? `
+          <label class="field quantity-field">
+            <span>${quantityLabel}</span>
+            <input data-action="quantity" data-id="${item.id}" type="number" min="1" step="1" value="${item.quantity || getQuantityDefault(item.type)}" inputmode="numeric" />
+          </label>
+        ` : "";
+
+        const levelField = service.kind === "monthly" ? `
+          <label class="field level-field">
+            <span>Level</span>
+            <select data-action="level" data-id="${item.id}">
+              ${optionMarkup(levelOptions, item.level)}
+            </select>
+          </label>
+        ` : "";
+
+        return `
+          <article class="service-card">
+            <div class="service-inputs">
+              <div>
+                <div class="service-number">${String(index + 1).padStart(2, "0")}</div>
+                <button class="remove-service" type="button" data-action="remove" data-id="${item.id}" aria-label="Remove service">×</button>
+              </div>
+
+              <label class="field">
+                <span>Service</span>
+                <select data-action="type" data-id="${item.id}">
+                  ${optionMarkup(serviceOptions, item.type)}
+                </select>
+              </label>
+
+              ${levelField}
+              ${quantityField}
+
+              <div class="price-chip">${price.label}</div>
+            </div>
+
+            <div class="service-detail">
+              <div>
+                <h3>${detail.title}</h3>
+                <p>${detail.description}</p>
+              </div>
+              <ul class="detail-points">
+                ${detail.points.map((point) => `<li>${point}</li>`).join("")}
+              </ul>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      updateSummary();
+    }
+
+    function updateSummary(){
+      const band = getBudgetBandName();
+      budgetBandCopy.textContent = band.copy;
 
       let monthly = 0;
       let oneTime = 0;
-      let hasQuote = budget >= 100000;
-
-      summaryBand.textContent = `${globalBand.name}: ${globalBand.range} total project budget.`;
-      heroBandName.textContent = globalBand.name;
-      heroBandCopy.textContent = globalBand.copy;
+      let hasQuote = getBudget() >= 100000;
 
       cartList.innerHTML = "";
 
-      rows.forEach((row) => {
-        const data = getRowData(row, budget);
+      services.forEach((item) => {
+        const service = matterRates[item.type];
+        const price = getServicePrice(item);
+        const detail = getDetail(item);
+        const li = document.createElement("li");
 
-        row.querySelector(".line-price").textContent = data.priceLabel;
-        row.querySelector(".detail-copy h3").textContent = data.title;
-        row.querySelector(".detail-copy p").textContent = `${data.summary} ${data.note}`;
-        row.querySelector(".detail-list").innerHTML = data.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
-
-        if (data.quoteRequired){
+        if (price.quoted){
           hasQuote = true;
-        } else if (data.billing === "monthly"){
-          monthly += data.price;
+        } else if (service.kind === "monthly"){
+          monthly += price.amount;
         } else {
-          oneTime += data.price;
+          oneTime += price.amount;
         }
 
-        const li = document.createElement("li");
-        li.innerHTML = `<span><b>${data.title}</b><br>${data.quoteRequired ? "Custom quote required" : data.priceLabel}</span><span>${data.billing === "monthly" ? "Monthly" : "One-time"}</span>`;
+        li.innerHTML = `<span><b>${detail.title}</b><br>${price.label}</span><span>${price.cadence}</span>`;
         cartList.appendChild(li);
       });
 
+      if (!services.length){
+        const li = document.createElement("li");
+        li.innerHTML = "<span><b>No services added</b><br>Add a service to build an estimate.</span><span>Empty</span>";
+        cartList.appendChild(li);
+      }
+
       monthlyTotal.textContent = hasQuote ? "Quote" : money.format(monthly);
       oneTimeTotal.textContent = hasQuote ? "Quote" : money.format(oneTime);
-      serviceCount.textContent = String(rows.length);
-      quoteWarning.classList.toggle("is-visible", hasQuote);
-
-      if (rows.length === 0){
-        cartList.innerHTML = "<li><span><b>No services added</b><br>Add a service to build an estimate.</span><span>Empty</span></li>";
-      }
+      serviceCount.textContent = services.length;
     }
 
-    function buildEstimateText(){
-      const budget = Number(projectBudget.value || 0);
-      const globalBand = getGlobalBand(budget);
-      const rows = [...serviceStack.querySelectorAll(".service-line")];
+    serviceStack.addEventListener("change", (event) => {
+      const id = event.target.dataset.id;
+      const action = event.target.dataset.action;
+      if (!id || !action) return;
 
-      const lines = [
-        "Matter Pricing Estimate",
-        `Project budget: ${money.format(budget)}`,
-        `Budget band: ${globalBand.name}`,
-        ""
-      ];
+      services = services.map((item) => {
+        if (item.id !== id) return item;
 
-      rows.forEach((row, index) => {
-        const data = getRowData(row, budget);
-        lines.push(`${index + 1}. ${data.title} - ${data.priceLabel}`);
+        if (action === "type"){
+          const nextType = event.target.value;
+          const nextService = matterRates[nextType];
+          return {
+            ...item,
+            type: nextType,
+            level: nextService.kind === "monthly" ? (item.level || "consultant") : "consultant",
+            quantity: getQuantityDefault(nextType)
+          };
+        }
+
+        if (action === "level"){
+          return { ...item, level: event.target.value };
+        }
+
+        return item;
       });
 
-      lines.push("");
-      lines.push(`Monthly support: ${monthlyTotal.textContent}`);
-      lines.push(`One-time work: ${oneTimeTotal.textContent}`);
+      renderServices();
+    });
 
-      if (budget >= 100000){
-        lines.push("Note: This project requires a custom quote.");
-      }
+    serviceStack.addEventListener("input", (event) => {
+      const id = event.target.dataset.id;
+      const action = event.target.dataset.action;
+      if (!id || action !== "quantity") return;
 
-      return lines.join("\n");
-    }
-
-    addService.addEventListener("click", () => addServiceRow());
-    addServiceBottom.addEventListener("click", () => addServiceRow());
-    projectBudget.addEventListener("input", updateBuilder);
-    projectBudget.addEventListener("change", updateBuilder);
-
-    copyEstimate.addEventListener("click", async () => {
-      const text = buildEstimateText();
-
-      try{
-        await navigator.clipboard.writeText(text);
-        copyEstimate.textContent = "Copied";
-        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1400);
-      } catch(error){
-        copyEstimate.textContent = "Copy failed";
-        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1400);
+      services = services.map((item) => item.id === id ? { ...item, quantity: Math.max(1, Number(event.target.value || 1)) } : item);
+      updateSummary();
+      const card = event.target.closest(".service-card");
+      const item = services.find((service) => service.id === id);
+      if (card && item){
+        card.querySelector(".price-chip").textContent = getServicePrice(item).label;
       }
     });
 
-    addServiceRow("marketing", "consultant");
-    addServiceRow("distribution", "consultant");
+    serviceStack.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-action='remove']");
+      if (!button) return;
+      services = services.filter((item) => item.id !== button.dataset.id);
+      renderServices();
+    });
+
+    projectBudget.addEventListener("input", renderServices);
+    projectBudget.addEventListener("change", renderServices);
+
+    addService.addEventListener("click", () => {
+      services.push({ id: crypto.randomUUID(), type: "marketing", level: "consultant", quantity: 0 });
+      renderServices();
+    });
+
+    copyEstimate.addEventListener("click", async () => {
+      const band = getBudgetBandName();
+      const lines = [
+        "Matter Pricing Estimate",
+        `Project budget: ${money.format(getBudget())}`,
+        `Budget band: ${band.name}`,
+        `Monthly support: ${monthlyTotal.textContent}`,
+        `One-time work: ${oneTimeTotal.textContent}`,
+        "",
+        "Services:"
+      ];
+
+      services.forEach((item, index) => {
+        const detail = getDetail(item);
+        const price = getServicePrice(item);
+        lines.push(`${index + 1}. ${detail.title} — ${price.label}`);
+      });
+
+      lines.push("", "Note: Final pricing may change based on scope, deadlines, revisions, deliverables, and budget verification where applicable.");
+
+      try{
+        await navigator.clipboard.writeText(lines.join("\n"));
+        copyEstimate.textContent = "Copied";
+        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1600);
+      } catch(error){
+        copyEstimate.textContent = "Copy Failed";
+        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1600);
+      }
+    });
+
+    renderServices();
   </script>
 </body>
 </html>
