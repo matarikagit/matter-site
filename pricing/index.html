@@ -1392,12 +1392,13 @@
       <div class="hero-copy">
         <div>
           <p class="page-kicker">Pricing</p>
-          <h1>Support at the level you need.</h1>
+          <h1>Budget-qualified support.</h1>
         </div>
 
         <div>
-          <p>Marketing and distribution are tiered by involvement. Pre-Matter and Post-Matter use simpler fixed starting rates. If the project is more specific than that, Matter can quote it directly.</p>
+          <p>Matter keeps entry-level access rates available for no-budget and microbudget filmmakers. Larger projects are priced by project budget, service level, and scope.</p>
           <div class="hero-actions">
+            <a class="button" href="#rate-finder">Rate Finder</a>
             <a class="button" href="#marketing">Marketing</a>
             <a class="button" href="#distribution">Distribution</a>
             <a class="button" href="#fixed">Fixed Rates</a>
@@ -1405,7 +1406,61 @@
         </div>
       </div>
 
+      <aside class="budget-rate-tool" id="rate-finder" aria-labelledby="rate-finder-title">
+        <div class="rate-tool-top">
+          <p class="page-kicker">Rate Finder</p>
+          <h2 id="rate-finder-title">Find the right starting rate.</h2>
+          <p>Use your total project budget, not just what is left after production. Final pricing may change if the scope changes.</p>
+        </div>
 
+        <form class="rate-form">
+          <label>
+            <span>Project budget</span>
+            <input id="projectBudget" type="number" min="0" step="100" value="9000" inputmode="numeric" />
+          </label>
+
+          <label>
+            <span>Service</span>
+            <select id="serviceType">
+              <option value="marketing">Marketing</option>
+              <option value="distribution">Distribution</option>
+              <option value="scriptEditing">Script Editing</option>
+              <option value="scriptWriting">Script Writing</option>
+              <option value="musicVideo">Music Video Editing</option>
+              <option value="miniShort">Mini Short Editing</option>
+              <option value="standardShort">Standard Short Editing</option>
+              <option value="featureEdit">Feature Editing</option>
+            </select>
+          </label>
+
+          <label id="tierField">
+            <span>Service level</span>
+            <select id="serviceTier">
+              <option value="consultant">Consultant</option>
+              <option value="partner">Partner / Placement</option>
+              <option value="manager">Manager / Release</option>
+            </select>
+          </label>
+
+          <label id="pagesField" hidden>
+            <span>Page count</span>
+            <input id="pageCount" type="number" min="1" step="1" value="90" inputmode="numeric" />
+          </label>
+        </form>
+
+        <div class="rate-output" aria-live="polite">
+          <div>
+            <span class="rate-label" id="rateBand">Microbudget Access</span>
+            <strong id="ratePrice">$150 / month</strong>
+          </div>
+          <p id="rateDescription">For projects with budgets from $0–$9,999. These are Matter’s access rates for no-budget and microbudget productions.</p>
+        </div>
+
+        <div class="budget-proof-note">
+          <span>Budget verification may be requested for microbudget access rates.</span>
+          <a href="../contact/index.html">Start with a consult</a>
+        </div>
+      </aside>
     </section>
 
     <section class="pricing-section" id="marketing">
@@ -1595,7 +1650,7 @@
           <div class="tile-top">
             <span class="tile-label">Post-Matter</span>
             <h3>Mini Short</h3>
-            <div class="tile-price">$500</div>
+            <div class="tile-price">From $500</div>
           </div>
           <div class="tile-copy">
             <p>Editing for a smaller short-form project.</p>
@@ -1609,7 +1664,7 @@
           <div class="tile-top">
             <span class="tile-label">Post-Matter</span>
             <h3>Standard Short</h3>
-            <div class="tile-price">$600</div>
+            <div class="tile-price">From $600</div>
           </div>
           <div class="tile-copy">
             <p>Editing for a standard short film or comparable narrative project.</p>
