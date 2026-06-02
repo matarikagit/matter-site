@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Pricing | Film Marketing, Distribution & Editing Rates | Matter</title>
-  <meta name="description" content="View Matter pricing for indie film and TV marketing support, distribution guidance, screenplay writing, script editing, video editing, custom quotes, and consultation-based work." />
+  <meta name="description" content="Use Matter's budget-qualified pricing builder to estimate indie film and TV marketing, distribution, screenplay, and editing support based on project budget and scope." />
 
   <link rel="canonical" href="https://www.matterdistribution.com/pricing/" />
   <link rel="icon" href="/assets/images/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <meta property="og:site_name" content="Matter Marketing & Distribution" />
   <meta property="og:title" content="Pricing | Film Marketing, Distribution & Editing Rates | Matter" />
-  <meta property="og:description" content="View Matter pricing for marketing support, distribution guidance, screenplay writing, script editing, video editing, custom quotes, and consultation-based work." />
+  <meta property="og:description" content="Use Matter's budget-qualified pricing builder to estimate marketing, distribution, script, and editing support." />
   <meta property="og:url" content="https://www.matterdistribution.com/pricing/" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Pricing | Film Marketing, Distribution & Editing Rates | Matter" />
-  <meta name="twitter:description" content="View Matter pricing for indie film and TV marketing, distribution, script work, editing, custom quotes, and consultations." />
+  <meta name="twitter:description" content="Build a budget-qualified Matter pricing estimate for marketing, distribution, script, and editing support." />
 
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
@@ -30,12 +30,18 @@
       --bg-soft:#111111;
       --panel:#121212;
       --line:rgba(238,233,223,.16);
+      --line-strong:rgba(238,233,223,.28);
       --text:#eee9df;
       --muted:rgba(238,233,223,.68);
+      --faint:rgba(238,233,223,.45);
       --gold:#b99a5b;
       --red:#b63326;
       --blue:#335f8c;
       --green:#55775b;
+    }
+
+    *{
+      box-sizing:border-box;
     }
 
     body{
@@ -55,9 +61,15 @@
       border-top: 1px solid var(--line);
     }
 
-    .button:hover{
+    .button:hover,
+    button.button:hover{
       background: var(--text);
       color: var(--bg);
+    }
+
+    button.button{
+      cursor:pointer;
+      font:inherit;
     }
 
     .page-kicker{
@@ -73,8 +85,9 @@
       padding: clamp(32px, 5vw, 72px) clamp(20px, 4vw, 58px);
       border-bottom:1px solid var(--line);
       display:grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
       gap: 18px;
+      align-items:stretch;
     }
 
     .hero-copy{
@@ -82,11 +95,12 @@
       flex-direction:column;
       justify-content:space-between;
       gap:40px;
+      width:100%;
     }
 
     .hero-copy h1{
       margin:0;
-      max-width:1000px;
+      max-width:1120px;
       font-size: clamp(58px, 8vw, 140px);
       line-height:.8;
       letter-spacing:-.09em;
@@ -95,7 +109,7 @@
 
     .hero-copy p{
       margin:0;
-      max-width:700px;
+      max-width:760px;
       color:var(--muted);
       font-size: clamp(18px, 2vw, 28px);
       line-height:1.12;
@@ -109,71 +123,131 @@
       margin-top:24px;
     }
 
-    .consult-panel{
+    .hero-system-card{
+      min-height:560px;
       border:1px solid var(--line);
       background:
-        radial-gradient(circle at 72% 24%, rgba(238,233,223,.16), transparent 18%),
-        linear-gradient(135deg, rgba(182,51,38,.48), rgba(8,8,8,.58) 40%, rgba(8,8,8,.96)),
-        #111;
-      padding: clamp(22px, 4vw, 44px);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+        radial-gradient(circle at 72% 18%, rgba(185,154,91,.18), transparent 24%),
+        radial-gradient(circle at 16% 80%, rgba(182,51,38,.18), transparent 22%),
+        linear-gradient(135deg, rgba(238,233,223,.07), rgba(238,233,223,.018)),
+        #101010;
+      padding: clamp(22px, 3vw, 38px);
+      display:grid;
+      align-content:space-between;
+      gap:22px;
       position:relative;
       overflow:hidden;
+      isolation:isolate;
     }
 
-    .consult-panel::before{
+    .hero-system-card::before{
       content:"";
       position:absolute;
       inset:18px;
-      border:1px solid rgba(238,233,223,.18);
+      border:1px solid rgba(238,233,223,.12);
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .hero-system-card::after{
+      content:"";
+      position:absolute;
+      right:-90px;
+      top:-90px;
+      width:280px;
+      height:280px;
+      border-radius:999px;
+      border:1px solid rgba(185,154,91,.18);
+      box-shadow:
+        0 0 0 38px rgba(185,154,91,.035),
+        0 0 0 76px rgba(185,154,91,.018);
+      animation: rateOrb 8s ease-in-out infinite;
+      z-index:0;
+    }
+
+    .system-grid{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      opacity:.3;
+      background:
+        linear-gradient(rgba(238,233,223,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238,233,223,.055) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image: radial-gradient(circle at 52% 45%, black, transparent 72%);
+    }
+
+    .system-scan{
+      position:absolute;
+      left:0;
+      right:0;
+      top:-20%;
+      height:26%;
+      z-index:1;
+      background:linear-gradient(180deg, transparent, rgba(185,154,91,.08), transparent);
+      animation: scanPass 6.5s ease-in-out infinite;
       pointer-events:none;
     }
 
-    .consult-panel::after{
-      content:"30–40";
-      position:absolute;
-      right:-10px;
-      bottom:-20px;
-      font-size: clamp(86px, 12vw, 200px);
-      font-weight:900;
-      line-height:.78;
-      letter-spacing:-.12em;
-      color: rgba(238,233,223,.05);
+    .hero-system-card > *:not(.system-grid):not(.system-scan){
+      position:relative;
+      z-index:3;
     }
 
-    .consult-panel h2{
-      position:relative;
-      z-index:2;
-      margin:0;
+    .system-card-top h2{
+      margin:8px 0 12px;
       max-width:560px;
-      font-size: clamp(44px, 5vw, 96px);
+      font-size: clamp(42px, 4.8vw, 82px);
       line-height:.82;
       letter-spacing:-.085em;
       text-transform:uppercase;
     }
 
-    .consult-panel p{
-      position:relative;
-      z-index:2;
-      max-width:540px;
+    .system-card-top p:last-child{
       margin:0;
-      color:rgba(238,233,223,.74);
-      line-height:1.3;
-      font-size:16px;
+      max-width:540px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.32;
     }
 
-    .consult-meta{
-      position:relative;
-      z-index:2;
+    .budget-band-readout{
+      border:1px solid rgba(238,233,223,.16);
+      background:
+        linear-gradient(180deg, rgba(238,233,223,.055), rgba(238,233,223,.025)),
+        rgba(8,8,8,.45);
+      padding:22px;
+      display:grid;
+      gap:16px;
+    }
+
+    .budget-band-readout strong{
+      display:block;
+      font-size: clamp(44px, 5vw, 96px);
+      line-height:.8;
+      letter-spacing:-.085em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .budget-band-readout p{
+      margin:0;
+      max-width:520px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.32;
+    }
+
+    .hero-system-meta{
+      border-top:1px solid rgba(238,233,223,.14);
+      padding-top:14px;
       display:flex;
       justify-content:space-between;
       gap:14px;
       flex-wrap:wrap;
-      color:rgba(238,233,223,.62);
+      color:rgba(238,233,223,.58);
       font-size:11px;
-      letter-spacing:.16em;
+      letter-spacing:.13em;
       text-transform:uppercase;
     }
 
@@ -184,7 +258,7 @@
 
     .section-head{
       display:grid;
-      grid-template-columns: 180px 1fr auto;
+      grid-template-columns: 180px minmax(0, 1fr) minmax(260px, 420px);
       gap:24px;
       align-items:end;
       margin-bottom:22px;
@@ -192,7 +266,7 @@
 
     .section-head h2{
       margin:0;
-      max-width:920px;
+      max-width:980px;
       font-size: clamp(38px, 5vw, 96px);
       line-height:.84;
       letter-spacing:-.08em;
@@ -208,593 +282,50 @@
       text-align:right;
     }
 
-    .tile-row{
+    .pricing-builder{
       display:grid;
-      grid-auto-flow:column;
-      grid-auto-columns:minmax(290px, 28vw);
+      grid-template-columns:minmax(0, 1.25fr) minmax(330px, .75fr);
       gap:14px;
-      overflow-x:auto;
-      padding-bottom:6px;
-      scroll-snap-type:x mandatory;
+      align-items:start;
     }
 
-    .tile-row::-webkit-scrollbar{
-      height:10px;
-    }
-
-    .tile-row::-webkit-scrollbar-thumb{
-      background:rgba(238,233,223,.16);
-      border-radius:999px;
-    }
-
-    .price-tile{
-      min-height:460px;
+    .builder-panel,
+    .summary-panel,
+    .info-panel,
+    .notice-band{
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(238,233,223,.04), rgba(238,233,223,.02));
+      background:
+        radial-gradient(circle at 18% 34%, rgba(182,51,38,.12), transparent 18%),
+        linear-gradient(180deg, rgba(238,233,223,.04), rgba(238,233,223,.018));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .builder-panel{
+      min-height:640px;
+      padding:18px;
+    }
+
+    .summary-panel{
+      position:sticky;
+      top:96px;
       padding:20px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      position:relative;
-      overflow:hidden;
-      scroll-snap-align:start;
-      transition: transform .22s ease, background .22s ease, border-color .22s ease;
-      isolation:isolate;
-    }
-
-    .price-tile:hover{
-      transform: translateY(-4px);
-      border-color: rgba(238,233,223,.28);
-      background: linear-gradient(180deg, rgba(238,233,223,.07), rgba(238,233,223,.03));
-    }
-
-    .tile-top{
-      display:grid;
-      gap:10px;
-    }
-
-    .tile-label{
-      color:rgba(238,233,223,.56);
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-
-    .price-tile h3{
-      margin:0;
-      font-size: clamp(34px, 4vw, 72px);
-      line-height:.82;
-      letter-spacing:-.08em;
-      text-transform:uppercase;
-      max-width:420px;
-      position:relative;
-      z-index:2;
-    }
-
-    .tile-price{
-      font-size: clamp(34px, 4.4vw, 78px);
-      line-height:.84;
-      letter-spacing:-.08em;
-      text-transform:uppercase;
-      position:relative;
-      z-index:2;
-    }
-
-    .tile-copy{
-      position:relative;
-      z-index:2;
       display:grid;
       gap:14px;
     }
 
-    .tile-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.3;
-      max-width:420px;
-    }
-
-    .tile-copy ul{
-      margin:0;
-      padding:0;
-      list-style:none;
+    .builder-controls{
       display:grid;
-      gap:8px;
-    }
-
-    .tile-copy li{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.25;
-    }
-
-    .tile-copy li::before{
-      content:"• ";
-      color:rgba(238,233,223,.8);
-    }
-
-    .tile-note{
-      color:rgba(238,233,223,.56);
-      font-size:12px;
-      line-height:1.25;
-      font-style:italic;
-    }
-
-    .tile-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      position:relative;
-      z-index:2;
-    }
-
-    /* shared animated art layer */
-    .art{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      opacity:.92;
-    }
-
-    /* consultant */
-    .art-consultant::before,
-    .art-consultant::after{
-      content:"";
-      position:absolute;
-      border-radius:999px;
-      border:1px solid rgba(185,154,91,.22);
-      transition:transform .6s ease, opacity .4s ease;
-    }
-    .art-consultant::before{
-      width:140px;height:140px;right:28px;top:38px;
-      box-shadow:0 0 0 24px rgba(185,154,91,.04),0 0 0 48px rgba(185,154,91,.02);
-    }
-    .art-consultant::after{
-      width:9px;height:9px;right:94px;top:104px;background:rgba(185,154,91,.72);border:0;
-    }
-    .price-tile:hover .art-consultant::before{ transform:scale(1.08) rotate(12deg); }
-
-    /* partner */
-    .art-partner::before,
-    .art-partner::after{
-      content:"";
-      position:absolute;
-      background:linear-gradient(90deg, transparent, rgba(51,95,140,.52), transparent);
-      transition:transform .5s ease;
-    }
-    .art-partner::before{ width:150px;height:1px;left:34px;top:118px; }
-    .art-partner::after{ width:1px;height:150px;left:110px;top:44px; background:linear-gradient(180deg, transparent, rgba(51,95,140,.52), transparent); }
-    .art-partner .node1, .art-partner .node2, .art-partner .node3{
-      position:absolute; width:10px;height:10px;border-radius:50%; background:rgba(51,95,140,.75);
-    }
-    .art-partner .node1{ left:34px; top:113px; }
-    .art-partner .node2{ left:105px; top:113px; }
-    .art-partner .node3{ left:105px; top:44px; }
-    .price-tile:hover .art-partner::before{ transform:translateX(16px); }
-    .price-tile:hover .art-partner::after{ transform:translateY(16px); }
-
-    /* manager */
-    .art-manager::before{
-      content:"";
-      position:absolute;
-      right:26px; top:34px;
-      width:160px; height:110px;
-      border:1px solid rgba(182,51,38,.28);
-      box-shadow: 0 0 0 12px rgba(182,51,38,.06);
-    }
-    .art-manager::after{
-      content:"";
-      position:absolute;
-      right:48px; top:58px;
-      width:116px; height:12px;
-      background:linear-gradient(90deg, rgba(182,51,38,.85) 0 22%, rgba(238,233,223,.18) 22% 46%, rgba(182,51,38,.85) 46% 60%, rgba(238,233,223,.18) 60% 100%);
-      transition:transform .45s ease;
-    }
-    .price-tile:hover .art-manager::after{ transform:scaleX(1.1); }
-
-    /* distribution consultant */
-    .art-path::before,
-    .art-path::after{
-      content:"";
-      position:absolute;
-      border:1px dashed rgba(85,119,91,.35);
-      border-radius:999px;
-      transition:transform .6s ease;
-    }
-    .art-path::before{ width:160px;height:92px; right:24px; top:34px; border-radius:100px; }
-    .art-path::after{ width:9px;height:9px; right:92px; top:74px; background:rgba(85,119,91,.82); border:0; }
-    .price-tile:hover .art-path::before{ transform:rotate(8deg) scale(1.06); }
-
-    /* placement */
-    .art-placement::before{
-      content:"";
-      position:absolute;
-      right:50px; top:34px;
-      width:82px; height:82px;
-      border-radius:50% 50% 50% 0;
-      transform:rotate(-45deg);
-      border:1px solid rgba(185,154,91,.38);
-      box-shadow:0 0 0 14px rgba(185,154,91,.05);
-      transition:transform .5s ease;
-    }
-    .art-placement::after{
-      content:"";
-      position:absolute;
-      right:78px; top:62px;
-      width:18px;height:18px;border-radius:50%;
-      background:rgba(185,154,91,.72);
-    }
-    .price-tile:hover .art-placement::before{ transform:rotate(-45deg) translateY(8px); }
-
-    /* release */
-    .art-release::before,
-    .art-release::after{
-      content:"";
-      position:absolute;
-      right:44px; top:50px;
-      border-radius:50%;
-      border:1px solid rgba(238,233,223,.22);
-      transition:transform .55s ease, opacity .55s ease;
-    }
-    .art-release::before{ width:44px;height:44px; }
-    .art-release::after{ width:100px;height:100px; right:16px; top:22px; }
-    .art-release .ring3{
-      position:absolute; right:-10px; top:-4px; width:160px;height:160px; border-radius:50%; border:1px solid rgba(238,233,223,.1);
-      transition:transform .55s ease, opacity .55s ease;
-    }
-    .price-tile:hover .art-release::before,
-    .price-tile:hover .art-release::after,
-    .price-tile:hover .art-release .ring3{ transform:scale(1.08); }
-
-    /* script editing: redline/cut markup, no text */
-    .art-editing::before{
-      content:"";
-      position:absolute;
-      left:28px;
-      top:34px;
-      width:178px;
-      height:118px;
-      border:1px solid rgba(238,233,223,.13);
-      background:
-        linear-gradient(90deg, rgba(182,51,38,.45) 0 2px, transparent 2px),
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0 20px,
-          rgba(238,233,223,.10) 20px 21px
-        );
-      background-size: 100% 100%;
-      transform:rotate(-1.5deg);
-      transition:transform .45s ease, box-shadow .45s ease;
-    }
-    .art-editing::after{
-      content:"";
-      position:absolute;
-      left:48px;
-      top:76px;
-      width:148px;
-      height:3px;
-      background:rgba(182,51,38,.92);
-      box-shadow:
-        0 32px 0 rgba(182,51,38,.72),
-        46px -18px 0 rgba(182,51,38,.62);
-      transform:scaleX(.46);
-      transform-origin:left;
-      transition:transform .45s ease;
-    }
-    .art-editing .mark{
-      position:absolute;
-      left:158px;
-      top:50px;
-      width:44px;
-      height:44px;
-      border:2px solid rgba(182,51,38,.72);
-      border-left:0;
-      border-bottom:0;
-      transform:rotate(18deg) scale(.72);
-      transition:transform .45s ease;
-    }
-    .price-tile:hover .art-editing::before{
-      transform:rotate(-3deg) translateY(-4px);
-      box-shadow:14px 14px 0 rgba(182,51,38,.08);
-    }
-    .price-tile:hover .art-editing::after{
-      transform:scaleX(1);
-    }
-    .price-tile:hover .art-editing .mark{
-      transform:rotate(18deg) scale(1);
-    }
-
-    /* script writing: typed page / cursor / new lines, no text */
-    .art-writing::before{
-      content:"";
-      position:absolute;
-      left:30px;
-      top:34px;
-      width:176px;
-      height:122px;
-      border:1px solid rgba(238,233,223,.15);
-      background:
-        linear-gradient(90deg, rgba(182,51,38,.36) 0 1px, transparent 1px),
-        repeating-linear-gradient(
-          to bottom,
-          transparent 0 18px,
-          rgba(238,233,223,.12) 18px 19px
-        );
-      box-shadow: 12px 12px 0 rgba(238,233,223,.035);
-      transition:transform .45s ease;
-    }
-    .art-writing::after{
-      content:"";
-      position:absolute;
-      left:58px;
-      top:66px;
-      width:118px;
-      height:38px;
-      background:
-        linear-gradient(90deg, rgba(238,233,223,.78), rgba(238,233,223,.78)) 0 0 / 44px 2px no-repeat,
-        linear-gradient(90deg, rgba(238,233,223,.62), rgba(238,233,223,.62)) 0 16px / 82px 2px no-repeat,
-        linear-gradient(90deg, rgba(238,233,223,.48), rgba(238,233,223,.48)) 0 32px / 62px 2px no-repeat;
-      transform:scaleX(.45);
-      transform-origin:left;
-      transition:transform .55s ease;
-    }
-    .art-writing .caret{
-      position:absolute;
-      left:146px;
-      top:94px;
-      width:2px;
-      height:26px;
-      background:rgba(238,233,223,.9);
-      opacity:.95;
-      animation: blink 1.1s steps(1) infinite;
-      transition:transform .45s ease;
-    }
-    .price-tile:hover .art-writing::before{
-      transform:translateY(-4px) rotate(1.5deg);
-    }
-    .price-tile:hover .art-writing::after{
-      transform:scaleX(1);
-    }
-    .price-tile:hover .art-writing .caret{
-      transform:translateX(32px);
-    }
-    @keyframes blink { 50% { opacity:.12; } }
-
-    /* music video: audio wave + cut pulse, no text */
-    .art-music::before{
-      content:"";
-      position:absolute;
-      left:30px;
-      right:30px;
-      top:66px;
-      height:1px;
-      background:rgba(238,233,223,.16);
-    }
-    .art-music .bar{
-      position:absolute;
-      bottom:auto;
-      top:42px;
-      width:10px;
-      border-radius:999px;
-      background:linear-gradient(180deg, rgba(51,95,140,.88), rgba(182,51,38,.74));
-      transition:height .32s ease, transform .32s ease;
-    }
-    .art-music .b1{ left:38px; height:46px; }
-    .art-music .b2{ left:58px; height:82px; top:24px; }
-    .art-music .b3{ left:78px; height:34px; top:48px; }
-    .art-music .b4{ left:98px; height:92px; top:20px; }
-    .art-music .b5{ left:118px; height:54px; top:38px; }
-    .art-music::after{
-      content:"";
-      position:absolute;
-      left:156px;
-      top:34px;
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      border:1px solid rgba(51,95,140,.34);
-      box-shadow:0 0 0 16px rgba(51,95,140,.05);
-      transition:transform .35s ease;
-    }
-    .price-tile:hover .art-music .b1{ height:76px; top:28px; }
-    .price-tile:hover .art-music .b2{ height:40px; top:46px; }
-    .price-tile:hover .art-music .b3{ height:92px; top:18px; }
-    .price-tile:hover .art-music .b4{ height:48px; top:42px; }
-    .price-tile:hover .art-music .b5{ height:104px; top:12px; }
-    .price-tile:hover .art-music::after{ transform:scale(1.08); }
-
-    /* mini short: compact timeline blocks, no text */
-    .art-mini::before{
-      content:"";
-      position:absolute;
-      right:28px;
-      top:38px;
-      width:172px;
-      height:98px;
-      border:1px solid rgba(238,233,223,.14);
-      background:
-        linear-gradient(90deg, rgba(182,51,38,.78) 0 18%, transparent 18% 20%, rgba(238,233,223,.18) 20% 38%, transparent 38% 40%, rgba(51,95,140,.58) 40% 58%, transparent 58% 60%, rgba(238,233,223,.18) 60% 78%, transparent 78% 80%, rgba(182,51,38,.58) 80% 100%);
-      background-size:180px 28px;
-      background-position:0 50%;
-      background-repeat:no-repeat;
-      transition:background-position .45s ease, transform .45s ease;
-    }
-    .art-mini::after{
-      content:"";
-      position:absolute;
-      right:112px;
-      top:30px;
-      width:1px;
-      height:116px;
-      background:rgba(238,233,223,.55);
-      transition:transform .45s ease;
-    }
-    .price-tile:hover .art-mini::before{
-      background-position:-24px 50%;
-      transform:translateY(-3px);
-    }
-    .price-tile:hover .art-mini::after{
-      transform:translateX(-24px);
-    }
-
-    /* standard short: stacked scene frames, no text */
-    .art-standard .frame{
-      position:absolute;
-      width:76px;
-      height:50px;
-      border:1px solid rgba(185,154,91,.28);
-      background:
-        radial-gradient(circle at 70% 30%, rgba(238,233,223,.12), transparent 20%),
-        rgba(185,154,91,.055);
-      transition:transform .45s ease, background .45s ease;
-    }
-    .art-standard .f1{ right:122px; top:34px; transform:rotate(-5deg); }
-    .art-standard .f2{ right:78px; top:66px; transform:rotate(3deg); }
-    .art-standard .f3{ right:34px; top:98px; transform:rotate(-2deg); }
-    .art-standard::after{
-      content:"";
-      position:absolute;
-      right:48px;
-      top:48px;
-      width:154px;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(185,154,91,.42), transparent);
-      transform:rotate(22deg);
-      opacity:.5;
-      transition:opacity .45s ease;
-    }
-    .price-tile:hover .art-standard .f1{ transform:translate(-12px, 8px) rotate(-8deg); }
-    .price-tile:hover .art-standard .f2{ transform:translate(-6px, 2px) rotate(0deg); }
-    .price-tile:hover .art-standard .f3{ transform:translate(8px, -8px) rotate(5deg); }
-    .price-tile:hover .art-standard::after{ opacity:1; }
-
-    /* feature: widescreen aspect frame / long timeline, no text */
-    .art-feature::before{
-      content:"";
-      position:absolute;
-      left:28px;
-      top:34px;
-      width:196px;
-      height:110px;
-      border:1px solid rgba(238,233,223,.16);
-      background:
-        linear-gradient(180deg, rgba(8,8,8,.8) 0 12%, transparent 12% 88%, rgba(8,8,8,.8) 88% 100%),
-        radial-gradient(circle at 70% 34%, rgba(185,154,91,.22), transparent 18%),
-        linear-gradient(135deg, rgba(182,51,38,.18), rgba(51,95,140,.12));
-      box-shadow: 0 0 24px rgba(185,154,91,.08);
-      transition:transform .45s ease, box-shadow .45s ease;
-    }
-    .art-feature::after{
-      content:"";
-      position:absolute;
-      left:32px;
-      top:160px;
-      width:188px;
-      height:8px;
-      background:
-        linear-gradient(90deg, rgba(238,233,223,.12) 0 20%, transparent 20% 23%, rgba(185,154,91,.6) 23% 42%, transparent 42% 45%, rgba(238,233,223,.12) 45% 70%, transparent 70% 73%, rgba(182,51,38,.55) 73% 100%);
-      transition:background-position .45s ease, transform .45s ease;
-      background-size:240px 8px;
-    }
-    .price-tile:hover .art-feature::before{
-      transform:scale(1.04);
-      box-shadow:0 0 34px rgba(185,154,91,.14);
-    }
-    .price-tile:hover .art-feature::after{
-      background-position:-34px 0;
-      transform:translateY(4px);
-    }
-
-    /* quote */
-    .art-quote::before,
-    .art-quote::after{
-      content:"";
-      position:absolute;
-      width:70px;height:70px;
-      border:1px solid rgba(238,233,223,.14);
-      transition:transform .45s ease;
-    }
-    .art-quote::before{ right:48px; top:38px; }
-    .art-quote::after{ right:22px; top:64px; }
-    .price-tile:hover .art-quote::before{ transform:translate(-8px, 8px); }
-    .price-tile:hover .art-quote::after{ transform:translate(8px, -8px); }
-
-
-    /* budget-qualified pricing tool */
-    .budget-rate-tool{
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 72% 18%, rgba(185,154,91,.18), transparent 24%),
-        radial-gradient(circle at 16% 80%, rgba(182,51,38,.18), transparent 22%),
-        linear-gradient(135deg, rgba(238,233,223,.07), rgba(238,233,223,.018)),
-        #101010;
-      min-height: 560px;
-      padding: clamp(22px, 3vw, 38px);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:22px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .budget-rate-tool::before{
-      content:"";
-      position:absolute;
-      inset:18px;
-      border:1px solid rgba(238,233,223,.12);
-      pointer-events:none;
-    }
-
-    .budget-rate-tool::after{
-      content:"";
-      position:absolute;
-      right:-74px;
-      top:-74px;
-      width:240px;
-      height:240px;
-      border-radius:999px;
-      border:1px solid rgba(185,154,91,.18);
-      box-shadow:
-        0 0 0 38px rgba(185,154,91,.035),
-        0 0 0 76px rgba(185,154,91,.018);
-      animation: rateOrb 8s ease-in-out infinite;
-    }
-
-    .rate-tool-top,
-    .rate-form,
-    .rate-output,
-    .budget-proof-note{
-      position:relative;
-      z-index:2;
-    }
-
-    .rate-tool-top h2{
-      margin:8px 0 12px;
-      max-width:560px;
-      font-size: clamp(42px, 4.8vw, 82px);
-      line-height:.82;
-      letter-spacing:-.085em;
-      text-transform:uppercase;
-    }
-
-    .rate-tool-top p:last-child{
-      margin:0;
-      max-width:540px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.32;
-    }
-
-    .rate-form{
-      display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:minmax(220px, .7fr) 1fr auto;
       gap:12px;
+      align-items:end;
+      padding-bottom:16px;
+      border-bottom:1px solid rgba(238,233,223,.14);
+      margin-bottom:16px;
     }
 
-    .rate-form label{
+    .builder-controls label,
+    .service-line label{
       display:grid;
       gap:8px;
       color:rgba(238,233,223,.58);
@@ -803,12 +334,9 @@
       text-transform:uppercase;
     }
 
-    .rate-form label[hidden]{
-      display:none;
-    }
-
-    .rate-form input,
-    .rate-form select{
+    .builder-controls input,
+    .service-line input,
+    .service-line select{
       width:100%;
       border:1px solid rgba(238,233,223,.18);
       background:rgba(8,8,8,.72);
@@ -822,87 +350,319 @@
       border-radius:0;
     }
 
-    .rate-form input:focus,
-    .rate-form select:focus{
+    .builder-controls input:focus,
+    .service-line input:focus,
+    .service-line select:focus{
       border-color:rgba(185,154,91,.62);
       box-shadow:0 0 0 3px rgba(185,154,91,.10);
     }
 
-    .rate-output{
-      border:1px solid rgba(238,233,223,.16);
-      background:
-        linear-gradient(180deg, rgba(238,233,223,.055), rgba(238,233,223,.025)),
-        rgba(8,8,8,.45);
-      padding:22px;
-      display:grid;
-      gap:16px;
-      min-height:174px;
-    }
-
-    .rate-output > div{
-      display:grid;
-      gap:8px;
-    }
-
-    .rate-label{
-      color:rgba(238,233,223,.58);
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-
-    .rate-output strong{
-      font-size: clamp(42px, 5vw, 88px);
-      line-height:.82;
-      letter-spacing:-.08em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-
-    .rate-output p{
-      margin:0;
-      max-width:560px;
+    .builder-microcopy{
       color:var(--muted);
-      font-size:14px;
-      line-height:1.32;
+      font-size:13px;
+      line-height:1.3;
+      max-width:560px;
+      margin:0;
     }
 
-    .budget-proof-note{
-      border-top:1px solid rgba(238,233,223,.14);
-      padding-top:14px;
-      display:flex;
-      justify-content:space-between;
+    .service-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .service-line{
+      border:1px solid rgba(238,233,223,.14);
+      background:
+        linear-gradient(90deg, rgba(185,154,91,.055), transparent 42%),
+        rgba(8,8,8,.34);
+      padding:14px;
+      display:grid;
       gap:14px;
-      align-items:center;
-      color:rgba(238,233,223,.58);
-      font-size:11px;
-      letter-spacing:.13em;
-      text-transform:uppercase;
+      position:relative;
+      overflow:hidden;
+      animation: cardEnter .28s ease both;
     }
 
-    .budget-proof-note a{
+    .service-line::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:linear-gradient(180deg, var(--gold), var(--red));
+      opacity:.78;
+    }
+
+    .service-line-top{
+      display:grid;
+      grid-template-columns: 42px minmax(180px, 1.1fr) minmax(160px, .8fr) minmax(130px, .55fr) auto;
+      gap:10px;
+      align-items:end;
+    }
+
+    .line-number{
+      width:42px;
+      height:42px;
+      border:1px solid rgba(238,233,223,.18);
+      display:grid;
+      place-items:center;
+      color:rgba(238,233,223,.62);
+      font-size:11px;
+      letter-spacing:.12em;
+      margin-bottom:0;
+      background:rgba(238,233,223,.025);
+    }
+
+    .line-price{
+      border:1px solid rgba(238,233,223,.12);
+      padding:12px;
+      min-height:42px;
+      display:grid;
+      align-content:center;
       color:var(--text);
-      text-decoration:none;
-      border-bottom:1px solid rgba(238,233,223,.4);
+      font-size:18px;
+      line-height:1;
+      letter-spacing:-.04em;
+      background:rgba(238,233,223,.035);
       white-space:nowrap;
     }
 
-    .budget-proof-note a:hover{
-      color:var(--gold);
-      border-color:var(--gold);
+    .remove-service{
+      width:42px;
+      height:42px;
+      border:1px solid rgba(238,233,223,.18);
+      background:rgba(238,233,223,.035);
+      color:var(--text);
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
     }
 
-    @keyframes rateOrb{
-      0%,100%{ transform:translate(0,0) scale(1); opacity:.82; }
-      50%{ transform:translate(-16px,18px) scale(1.05); opacity:1; }
+    .remove-service:hover{
+      background:rgba(182,51,38,.32);
+      border-color:rgba(182,51,38,.7);
     }
 
+    .service-detail{
+      display:grid;
+      grid-template-columns:minmax(0, .8fr) minmax(0, 1.2fr);
+      gap:12px;
+      border-top:1px solid rgba(238,233,223,.12);
+      padding-top:12px;
+    }
+
+    .detail-copy h3{
+      margin:0 0 8px;
+      font-size: clamp(24px, 3vw, 46px);
+      line-height:.9;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+    }
+
+    .detail-copy p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.32;
+      max-width:620px;
+    }
+
+    .detail-list{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .detail-list li{
+      border:1px solid rgba(238,233,223,.1);
+      padding:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.25;
+      background:rgba(238,233,223,.025);
+    }
+
+    .detail-list li::before{
+      content:"";
+      display:inline-block;
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--gold);
+      margin-right:8px;
+      vertical-align:1px;
+    }
+
+    .add-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      padding-top:14px;
+    }
+
+    .summary-top{
+      display:grid;
+      gap:10px;
+    }
+
+    .summary-top h3{
+      margin:0;
+      font-size: clamp(34px, 4vw, 72px);
+      line-height:.84;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+    }
+
+    .summary-top p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.3;
+    }
+
+    .total-box{
+      border:1px solid rgba(238,233,223,.16);
+      background:rgba(8,8,8,.46);
+      padding:16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .total-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:baseline;
+      border-bottom:1px solid rgba(238,233,223,.09);
+      padding-bottom:10px;
+    }
+
+    .total-row:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+    }
+
+    .total-row span{
+      color:rgba(238,233,223,.58);
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .total-row strong{
+      font-size: clamp(26px, 3vw, 48px);
+      line-height:.86;
+      letter-spacing:-.07em;
+      text-transform:uppercase;
+      text-align:right;
+    }
+
+    .cart-list{
+      display:grid;
+      gap:8px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .cart-list li{
+      border:1px solid rgba(238,233,223,.1);
+      padding:10px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.2;
+      background:rgba(238,233,223,.024);
+    }
+
+    .cart-list b{
+      color:var(--text);
+      font-weight:600;
+    }
+
+    .quote-warning{
+      border:1px solid rgba(182,51,38,.44);
+      background:rgba(182,51,38,.13);
+      padding:12px;
+      color:rgba(238,233,223,.8);
+      font-size:13px;
+      line-height:1.3;
+      display:none;
+    }
+
+    .quote-warning.is-visible{
+      display:block;
+    }
+
+    .summary-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .info-panel{
+      margin-top:14px;
+      padding:18px;
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .info-panel h3{
+      margin:0;
+      font-size: clamp(30px, 3.6vw, 68px);
+      line-height:.84;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+
+    .info-card{
+      border:1px solid rgba(238,233,223,.12);
+      padding:14px;
+      background:rgba(8,8,8,.35);
+      min-height:150px;
+      display:grid;
+      align-content:space-between;
+      gap:16px;
+    }
+
+    .info-card span{
+      color:rgba(238,233,223,.56);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .info-card strong{
+      display:block;
+      font-size:22px;
+      line-height:.9;
+      letter-spacing:-.055em;
+      text-transform:uppercase;
+    }
+
+    .info-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.28;
+    }
 
     .notice-band{
-      border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 18% 34%, rgba(182,51,38,.16), transparent 18%),
-        rgba(238,233,223,.03);
       padding:26px;
       display:grid;
       grid-template-columns: 1fr auto;
@@ -949,24 +709,66 @@
       line-height:1.3;
     }
 
+    .visually-hidden{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @keyframes rateOrb{
+      0%,100%{ transform:translate(0,0) scale(1); opacity:.82; }
+      50%{ transform:translate(-16px,18px) scale(1.05); opacity:1; }
+    }
+
+    @keyframes scanPass{
+      0%{ transform:translateY(-80%); opacity:0; }
+      18%{ opacity:1; }
+      52%{ opacity:.8; }
+      100%{ transform:translateY(520%); opacity:0; }
+    }
+
+    @keyframes cardEnter{
+      from{ opacity:0; transform:translateY(12px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
     @media (max-width: 1120px){
       .pricing-hero,
+      .pricing-builder,
       .section-head,
       .notice-band,
-      .pricing-cta-line{
+      .pricing-cta-line,
+      .info-panel{
         grid-template-columns:1fr;
       }
 
-      .hero-buttons{
-        justify-content:flex-start;
+      .summary-panel{
+        position:relative;
+        top:auto;
       }
 
       .section-head p:last-child{
         text-align:left;
       }
 
-      .tile-row{
-        grid-auto-columns:minmax(290px, 48vw);
+      .builder-controls,
+      .service-line-top{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .line-number,
+      .remove-service{
+        width:100%;
+      }
+
+      .line-price{
+        min-height:50px;
       }
     }
 
@@ -978,392 +780,30 @@
         padding-right:18px;
       }
 
-      .tile-row{
-        grid-auto-columns:84vw;
+      .hero-system-card{
+        min-height:auto;
       }
 
-      .price-tile{
-        min-height:420px;
-      }
-    }
-
-    .pricing-hero {
-      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
-      align-items: center;
-      place-items: stretch;
-    }
-
-    .pricing-hero .hero-copy {
-      width: 100%;
-      margin: 0;
-    }
-
-    .pricing-hero .hero-copy h1 {
-      max-width: 1120px;
-    }
-
-    .pricing-hero .hero-copy > div:last-child {
-      max-width: 720px;
-      margin-left: 0;
-    }
-
-    .pricing-money-wrap {
-      width: 100%;
-      min-height: 430px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at 18% 24%, rgba(182,51,38,.20), transparent 26%),
-        linear-gradient(135deg, rgba(238,233,223,.06), rgba(238,233,223,.018)),
-        #101010;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pricing-money-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(238,233,223,.12);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .pricing-money-art {
-      position: relative;
-      height: 430px;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .wallet {
-      position: absolute;
-      left: 50%;
-      bottom: 72px;
-      width: 300px;
-      height: 150px;
-      transform: translateX(-50%);
-      border: 1px solid rgba(185,154,91,.38);
-      border-radius: 22px;
-      background:
-        linear-gradient(145deg, rgba(238,233,223,.13), rgba(185,154,91,.08)),
-        rgba(185,154,91,.08);
-      box-shadow:
-        0 28px 60px rgba(0,0,0,.24),
-        inset 0 1px 0 rgba(238,233,223,.14);
-      z-index: 4;
-    }
-
-    .wallet-flap {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      top: 20px;
-      height: 56px;
-      border: 1px solid rgba(238,233,223,.12);
-      border-radius: 18px;
-      background: rgba(7,7,7,.18);
-    }
-
-    .wallet-pocket {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 82px;
-      border-top: 1px solid rgba(238,233,223,.12);
-      background:
-        linear-gradient(180deg, rgba(238,233,223,.05), transparent),
-        rgba(7,7,7,.12);
-    }
-
-    .wallet-button {
-      position: absolute;
-      right: 34px;
-      top: 58px;
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(185,154,91,.72);
-      box-shadow: 0 0 18px rgba(185,154,91,.16);
-    }
-
-    .bill {
-      position: absolute;
-      width: 210px;
-      height: 92px;
-      border: 1px solid rgba(238,233,223,.22);
-      border-radius: 10px;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(185,154,91,.20), transparent 22%),
-        linear-gradient(90deg, rgba(238,233,223,.12), rgba(238,233,223,.04)),
-        rgba(185,154,91,.06);
-      box-shadow: 0 18px 44px rgba(0,0,0,.18);
-      z-index: 2;
-    }
-
-    .bill::before,
-    .bill::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(238,233,223,.13);
-      border-radius: 7px;
-    }
-
-    .bill span {
-      position: absolute;
-      left: 28px;
-      top: 26px;
-      width: 54px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(238,233,223,.18);
-    }
-
-    .bill i {
-      position: absolute;
-      right: 28px;
-      bottom: 26px;
-      width: 42px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(238,233,223,.14);
-    }
-
-    .bill-one {
-      left: 12%;
-      top: 90px;
-      transform: rotate(-8deg);
-      animation: billFloatOne 5.8s ease-in-out infinite;
-    }
-
-    .bill-two {
-      right: 10%;
-      top: 118px;
-      transform: rotate(7deg);
-      animation: billFloatTwo 6.2s ease-in-out infinite;
-    }
-
-    .coin {
-      position: absolute;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(185,154,91,.48);
-      background:
-        radial-gradient(circle at 34% 30%, rgba(238,233,223,.28), transparent 24%),
-        radial-gradient(circle at 50% 50%, rgba(185,154,91,.30), rgba(185,154,91,.08));
-      box-shadow: 0 0 26px rgba(185,154,91,.08);
-      z-index: 5;
-    }
-
-    .coin::after {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(238,233,223,.14);
-    }
-
-    .coin-one {
-      left: 22%;
-      bottom: 168px;
-      animation: coinDropOne 4.4s ease-in-out infinite;
-    }
-
-    .coin-two {
-      right: 23%;
-      bottom: 192px;
-      animation: coinDropTwo 4.9s ease-in-out infinite;
-    }
-
-    .coin-three {
-      left: 50%;
-      top: 74px;
-      transform: translateX(-50%);
-      animation: coinHover 5.4s ease-in-out infinite;
-    }
-
-    .coin-stack {
-      position: absolute;
-      bottom: 54px;
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 5px;
-      z-index: 6;
-    }
-
-    .coin-stack span {
-      display: block;
-      width: 76px;
-      height: 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(185,154,91,.42);
-      background:
-        linear-gradient(180deg, rgba(238,233,223,.18), rgba(185,154,91,.12)),
-        rgba(185,154,91,.10);
-    }
-
-    .stack-left {
-      left: 15%;
-      animation: stackLift 4.8s ease-in-out infinite;
-    }
-
-    .stack-right {
-      right: 15%;
-      animation: stackLift 5.2s ease-in-out infinite reverse;
-    }
-
-    .receipt {
-      position: absolute;
-      right: 13%;
-      bottom: 78px;
-      width: 116px;
-      height: 150px;
-      border: 1px solid rgba(238,233,223,.18);
-      background:
-        linear-gradient(180deg, rgba(238,233,223,.12), rgba(238,233,223,.04)),
-        rgba(238,233,223,.035);
-      transform: rotate(5deg);
-      z-index: 3;
-      animation: receiptTilt 5.6s ease-in-out infinite;
-    }
-
-    .receipt::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -1px;
-      height: 10px;
-      background:
-        linear-gradient(135deg, transparent 25%, rgba(238,233,223,.10) 25% 50%, transparent 50% 75%, rgba(238,233,223,.10) 75%);
-      background-size: 16px 10px;
-    }
-
-    .receipt span {
-      position: absolute;
-      left: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: rgba(238,233,223,.22);
-    }
-
-    .receipt span:nth-child(1) { top: 38px; width: 74px; }
-    .receipt span:nth-child(2) { top: 62px; width: 52px; }
-    .receipt span:nth-child(3) { top: 86px; width: 82px; }
-    .receipt span:nth-child(4) { top: 116px; width: 58px; }
-
-    @keyframes billFloatOne {
-      0%, 100% { transform: rotate(-8deg) translateY(0); }
-      50% { transform: rotate(-5deg) translateY(-10px); }
-    }
-
-    @keyframes billFloatTwo {
-      0%, 100% { transform: rotate(7deg) translateY(0); }
-      50% { transform: rotate(4deg) translateY(-12px); }
-    }
-
-    @keyframes coinDropOne {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(12deg); }
-    }
-
-    @keyframes coinDropTwo {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-14px) rotate(-10deg); }
-    }
-
-    @keyframes coinHover {
-      0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      50% { transform: translateX(-50%) translateY(-12px) rotate(10deg); }
-    }
-
-    @keyframes stackLift {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes receiptTilt {
-      0%, 100% { transform: rotate(5deg) translateY(0); }
-      50% { transform: rotate(3deg) translateY(-8px); }
-    }
-
-    @media (max-width: 1120px) {
-      .pricing-hero {
-        grid-template-columns: 1fr;
+      .builder-controls,
+      .service-line-top,
+      .service-detail,
+      .detail-list,
+      .info-grid{
+        grid-template-columns:1fr;
       }
 
-      .pricing-money-wrap {
-        max-width: 760px;
+      .cart-list li{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 760px) {
-      .pricing-money-wrap {
-        min-height: 320px;
-      }
-
-      .pricing-money-art {
-        height: 320px;
-      }
-
-      .wallet {
-        width: 230px;
-        height: 118px;
-        bottom: 54px;
-      }
-
-      .bill {
-        width: 150px;
-        height: 68px;
-      }
-
-      .bill-one {
-        left: 8%;
-        top: 72px;
-      }
-
-      .bill-two {
-        right: 7%;
-        top: 88px;
-      }
-
-      .receipt {
-        width: 88px;
-        height: 118px;
-        right: 10%;
-        bottom: 58px;
-      }
-
-      .coin {
-        width: 34px;
-        height: 34px;
-      }
-
-      .coin-stack span {
-        width: 58px;
-        height: 11px;
-      }
-
-      .stack-left {
-        left: 10%;
-      }
-
-      .stack-right {
-        right: 10%;
+    @media (prefers-reduced-motion: reduce){
+      .hero-system-card::after,
+      .system-scan,
+      .service-line{
+        animation:none !important;
       }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bill,
-      .coin,
-      .coin-stack,
-      .receipt {
-        animation: none !important;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -1392,366 +832,129 @@
       <div class="hero-copy">
         <div>
           <p class="page-kicker">Pricing</p>
-          <h1>Budget-qualified support.</h1>
+          <h1>Build the scope before the price.</h1>
         </div>
 
         <div>
-          <p>Matter keeps entry-level access rates available for no-budget and microbudget filmmakers. Larger projects are priced by project budget, service level, and scope.</p>
+          <p>Matter uses budget-qualified pricing so microbudget creators keep access to entry rates, while larger productions are quoted at the level their scope requires.</p>
           <div class="hero-actions">
-            <a class="button" href="#rate-finder">Rate Finder</a>
-            <a class="button" href="#marketing">Marketing</a>
-            <a class="button" href="#distribution">Distribution</a>
-            <a class="button" href="#fixed">Fixed Rates</a>
+            <a class="button" href="#rate-finder">Build Estimate</a>
+            <a class="button" href="#pricing-logic">How it works</a>
+            <a class="button" href="../contact/index.html">Contact</a>
           </div>
         </div>
       </div>
 
-      <aside class="budget-rate-tool" id="rate-finder" aria-labelledby="rate-finder-title">
-        <div class="rate-tool-top">
-          <p class="page-kicker">Rate Finder</p>
-          <h2 id="rate-finder-title">Find the right starting rate.</h2>
-          <p>Use your total project budget, not just what is left after production. Final pricing may change if the scope changes.</p>
+      <aside class="hero-system-card" aria-labelledby="system-title">
+        <div class="system-grid"></div>
+        <div class="system-scan"></div>
+
+        <div class="system-card-top">
+          <p class="page-kicker">Budget-Qualified System</p>
+          <h2 id="system-title">Stack services. See the estimate.</h2>
+          <p>Select marketing, distribution, script, and editing support in one builder. The tool separates monthly support from one-time work.</p>
         </div>
 
-        <form class="rate-form">
-          <label>
-            <span>Project budget</span>
-            <input id="projectBudget" type="number" min="0" step="100" value="9000" inputmode="numeric" />
-          </label>
-
-          <label>
-            <span>Service</span>
-            <select id="serviceType">
-              <option value="marketing">Marketing</option>
-              <option value="distribution">Distribution</option>
-              <option value="scriptEditing">Script Editing</option>
-              <option value="scriptWriting">Script Writing</option>
-              <option value="musicVideo">Music Video Editing</option>
-              <option value="miniShort">Mini Short Editing</option>
-              <option value="standardShort">Standard Short Editing</option>
-              <option value="featureEdit">Feature Editing</option>
-            </select>
-          </label>
-
-          <label id="tierField">
-            <span>Service level</span>
-            <select id="serviceTier">
-              <option value="consultant">Consultant</option>
-              <option value="partner">Partner / Placement</option>
-              <option value="manager">Manager / Release</option>
-            </select>
-          </label>
-
-          <label id="pagesField" hidden>
-            <span>Page count</span>
-            <input id="pageCount" type="number" min="1" step="1" value="90" inputmode="numeric" />
-          </label>
-        </form>
-
-        <div class="rate-output" aria-live="polite">
-          <div>
-            <span class="rate-label" id="rateBand">Microbudget Access</span>
-            <strong id="ratePrice">$150 / month</strong>
-          </div>
-          <p id="rateDescription">For projects with budgets from $0–$9,999. These are Matter’s access rates for no-budget and microbudget productions.</p>
+        <div class="budget-band-readout">
+          <span class="page-kicker">Current Budget Band</span>
+          <strong id="heroBandName">Microbudget Access</strong>
+          <p id="heroBandCopy">For projects with total budgets from $0 to $9,999. These are Matter’s access rates for no-budget and microbudget productions.</p>
         </div>
 
-        <div class="budget-proof-note">
-          <span>Budget verification may be requested for microbudget access rates.</span>
-          <a href="../contact/index.html">Start with a consult</a>
+        <div class="hero-system-meta">
+          <span>Project Budget</span>
+          <span>Service Stack</span>
+          <span>Scope Check</span>
         </div>
       </aside>
     </section>
 
-    <section class="pricing-section" id="marketing">
+    <section class="pricing-section" id="rate-finder">
       <div class="section-head">
-        <p class="page-kicker">Marketing</p>
-        <h2>Choose your level of marketing support.</h2>
-        <p>Listed tiles show microbudget access rates. Use the Rate Finder for budget-qualified pricing.</p>
+        <p class="page-kicker">Rate Finder</p>
+        <h2>Build a service stack.</h2>
+        <p>Add the services you need, review what each one includes, and see whether your project gets an estimate or requires a quote.</p>
       </div>
 
-      <div class="tile-row">
-        <article class="price-tile">
-          <div class="art art-consultant"></div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 1</span>
-            <h3>Consultant</h3>
-            <div class="tile-price">From $150 / month</div>
-          </div>
-          <div class="tile-copy">
-            <p>For creators who want guidance, direction, and feedback while handling execution themselves.</p>
-            <ul>
-              <li>Strategy and consultation</li>
-              <li>Calls and communication</li>
-              <li>Feedback on rollout and assets</li>
-              <li>Tools, resources, and next steps</li>
-            </ul>
-            <p class="tile-note">You execute. Matter guides.</p>
-          </div>
-        </article>
+      <div class="pricing-builder">
+        <div class="builder-panel">
+          <div class="builder-controls">
+            <label>
+              <span>Total project budget</span>
+              <input id="projectBudget" type="number" min="0" step="100" value="9000" inputmode="numeric" />
+            </label>
 
-        <article class="price-tile">
-          <div class="art art-partner">
-            <div class="node1"></div><div class="node2"></div><div class="node3"></div>
-          </div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 2</span>
-            <h3>Partner</h3>
-            <div class="tile-price">From $250 / month</div>
-          </div>
-          <div class="tile-copy">
-            <p>For creators who want strategy plus hands-on support with execution and asset development.</p>
-            <ul>
-              <li>Everything in Consultant</li>
-              <li>Support with execution</li>
-              <li>Assist with asset creation</li>
-              <li>Refinement of messaging and campaign direction</li>
-            </ul>
-            <p class="tile-note">You work with Matter. Matter works with you.</p>
-          </div>
-        </article>
+            <p class="builder-microcopy">Use the full project budget, not just the amount left for marketing or post. This keeps access pricing reserved for true microbudget work.</p>
 
-        <article class="price-tile">
-          <div class="art art-manager"></div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 3</span>
-            <h3>Manager</h3>
-            <div class="tile-price">From $500 / month</div>
+            <button class="button" type="button" id="addService">Add Service</button>
           </div>
-          <div class="tile-copy">
-            <p>For creators who want Matter to handle the heavy lift and build the marketing system around the project.</p>
-            <ul>
-              <li>Everything in Consultant and Partner</li>
-              <li>Full marketing system management</li>
-              <li>Asset creation handled by Matter</li>
-              <li>Campaign planning and rollout oversight</li>
-            </ul>
-            <p class="tile-note">Matter executes. You stay focused on the work.</p>
-          </div>
-        </article>
-      </div>
-    </section>
 
-    <section class="pricing-section" id="distribution">
-      <div class="section-head">
-        <p class="page-kicker">Distribution</p>
-        <h2>Choose your level of release support.</h2>
-        <p>Listed tiles show microbudget access rates. Use the Rate Finder for budget-qualified pricing.</p>
-      </div>
+          <div class="service-stack" id="serviceStack" aria-live="polite"></div>
 
-      <div class="tile-row">
-        <article class="price-tile">
-          <div class="art art-path"></div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 1</span>
-            <h3>Consultant</h3>
-            <div class="tile-price">From $100 / month</div>
+          <div class="add-row">
+            <button class="button" type="button" id="addServiceBottom">Add Another Service</button>
+            <a class="button" href="../contact/index.html">Ask About Scope</a>
           </div>
-          <div class="tile-copy">
-            <p>For creators who want distribution guidance while leading the submission or release process themselves.</p>
-            <ul>
-              <li>Release strategy guidance</li>
-              <li>Positioning and market fit clarity</li>
-              <li>Timeline planning</li>
-              <li>Submission guidance</li>
-            </ul>
-            <p class="tile-note">You move it forward. Matter helps map the path.</p>
-          </div>
-        </article>
+        </div>
 
-        <article class="price-tile">
-          <div class="art art-placement"></div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 2</span>
-            <h3>Placement</h3>
-            <div class="tile-price">From $300 / month</div>
+        <aside class="summary-panel" aria-labelledby="estimate-title">
+          <div class="summary-top">
+            <p class="page-kicker">Estimate</p>
+            <h3 id="estimate-title">Your stack.</h3>
+            <p id="summaryBand">Microbudget Access: $0 to $9,999 total project budget.</p>
           </div>
-          <div class="tile-copy">
-            <p>For creators who need stronger packaging, submissions, and strategic help throughout the process.</p>
-            <ul>
-              <li>Everything in Consultant</li>
-              <li>Project packaging support</li>
-              <li>Submission and outreach support</li>
-              <li>Ongoing strategy refinement</li>
-            </ul>
-            <p class="tile-note">Matter helps strengthen placement opportunities.</p>
-          </div>
-        </article>
 
-        <article class="price-tile">
-          <div class="art art-release"><div class="ring3"></div></div>
-          <div class="tile-top">
-            <span class="tile-label">Tier 3</span>
-            <h3>Release</h3>
-            <div class="tile-price">From $800 / month</div>
-          </div>
-          <div class="tile-copy">
-            <p>For creators who want Matter deeply involved in packaging, outreach, and release planning.</p>
-            <ul>
-              <li>Everything in Consultant and Placement</li>
-              <li>Full packaging and positioning support</li>
-              <li>Outreach support</li>
-              <li>Release management involvement</li>
-            </ul>
-            <p class="tile-note">Matter becomes part of the release process.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="pricing-section" id="fixed">
-      <div class="section-head">
-        <p class="page-kicker">Fixed Rates</p>
-        <h2>Pre-Matter and Post-Matter.</h2>
-        <p>Listed tiles show microbudget access rates. Larger projects are priced by project budget and scope.</p>
-      </div>
-
-      <div class="tile-row">
-        <article class="price-tile">
-          <div class="art art-editing"><div class="mark"></div></div>
-          <div class="tile-top">
-            <span class="tile-label">Pre-Matter</span>
-            <h3>Script Editing</h3>
-            <div class="tile-price">From $5 / page</div>
-          </div>
-          <div class="tile-copy">
-            <p>For partial or completed scripts that need notes, polish, tightening, structure work, or a cleaner draft.</p>
-          </div>
-        </article>
-
-        <article class="price-tile">
-          <div class="art art-writing"><div class="caret"></div></div>
-          <div class="tile-top">
-            <span class="tile-label">Pre-Matter</span>
-            <h3>Script Writing</h3>
-            <div class="tile-price">From $10 / page</div>
-          </div>
-          <div class="tile-copy">
-            <p>For ideas, outlines, scenes, or pages that need to be written, expanded, or brought into screenplay form.</p>
-          </div>
-        </article>
-
-        <article class="price-tile">
-          <div class="art art-music">
-            <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div><div class="bar b4"></div><div class="bar b5"></div>
-          </div>
-          <div class="tile-top">
-            <span class="tile-label">Post-Matter</span>
-            <h3>Music Video</h3>
-            <div class="tile-price">From $300</div>
-          </div>
-          <div class="tile-copy">
-            <p>Editing for a music video.</p>
-          </div>
-        </article>
-
-        <article class="price-tile">
-          <div class="art art-mini"></div>
-          <div class="tile-top">
-            <span class="tile-label">Post-Matter</span>
-            <h3>Mini Short</h3>
-            <div class="tile-price">From $500</div>
-          </div>
-          <div class="tile-copy">
-            <p>Editing for a smaller short-form project.</p>
-          </div>
-        </article>
-
-        <article class="price-tile">
-          <div class="art art-standard">
-            <div class="frame f1"></div><div class="frame f2"></div><div class="frame f3"></div>
-          </div>
-          <div class="tile-top">
-            <span class="tile-label">Post-Matter</span>
-            <h3>Standard Short</h3>
-            <div class="tile-price">From $600</div>
-          </div>
-          <div class="tile-copy">
-            <p>Editing for a standard short film or comparable narrative project.</p>
-          </div>
-        </article>
-
-        <article class="price-tile">
-          <div class="art art-feature"></div>
-          <div class="tile-top">
-            <span class="tile-label">Post-Matter</span>
-            <h3>Feature</h3>
-            <div class="tile-price">From $1,000</div>
-          </div>
-          <div class="tile-copy">
-            <p>Editing for a feature-length project. Larger or more complex needs may require a custom quote.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="pricing-section" id="custom">
-      <div class="section-head">
-        <p class="page-kicker">Custom Quotes</p>
-        <h2>For revisions, hybrids, and project-specific scope.</h2>
-        <p>When the work needs a closer look, Matter can quote it directly.</p>
-      </div>
-
-      <div class="tile-row">
-        <article class="price-tile">
-          <div class="art art-quote"></div>
-          <div class="tile-top">
-            <span class="tile-label">Custom</span>
-            <h3>Marketing+</h3>
-            <div class="tile-price">Quote</div>
-          </div>
-          <div class="tile-copy">
-            <p>For larger campaigns, extra assets, expanded rollout needs, or project-specific marketing support.</p>
-            <div class="tile-actions">
-              <a class="button" href="../contact/index.html">Get quote</a>
+          <div class="total-box">
+            <div class="total-row">
+              <span>Monthly Support</span>
+              <strong id="monthlyTotal">$0</strong>
+            </div>
+            <div class="total-row">
+              <span>One-Time Work</span>
+              <strong id="oneTimeTotal">$0</strong>
+            </div>
+            <div class="total-row">
+              <span>Services Added</span>
+              <strong id="serviceCount">0</strong>
             </div>
           </div>
-        </article>
 
-        <article class="price-tile">
-          <div class="art art-quote"></div>
-          <div class="tile-top">
-            <span class="tile-label">Custom</span>
-            <h3>Distribution+</h3>
-            <div class="tile-price">Quote</div>
-          </div>
-          <div class="tile-copy">
-            <p>For deeper packaging, release planning, outreach support, or project-specific distribution needs.</p>
-            <div class="tile-actions">
-              <a class="button" href="../contact/index.html">Get quote</a>
-            </div>
-          </div>
-        </article>
+          <div class="quote-warning" id="quoteWarning">Projects at $100,000 or more require a custom quote. The builder can still organize the scope, but Matter should price it directly.</div>
 
-        <article class="price-tile">
-          <div class="art art-quote"></div>
-          <div class="tile-top">
-            <span class="tile-label">Custom</span>
-            <h3>Revisions</h3>
-            <div class="tile-price">Quote</div>
-          </div>
-          <div class="tile-copy">
-            <p>Additional script passes, editing passes, campaign revisions, or expanded asset changes are quoted by scope.</p>
-            <div class="tile-actions">
-              <a class="button" href="../contact/index.html">Get quote</a>
-            </div>
-          </div>
-        </article>
+          <ul class="cart-list" id="cartList"></ul>
 
-        <article class="price-tile">
-          <div class="art art-quote"></div>
-          <div class="tile-top">
-            <span class="tile-label">Custom</span>
-            <h3>Hybrid Project</h3>
-            <div class="tile-price">Quote</div>
+          <div class="summary-actions">
+            <button class="button" type="button" id="copyEstimate">Copy Estimate</button>
+            <a class="button" href="../contact/index.html">Start Consultation</a>
           </div>
-          <div class="tile-copy">
-            <p>For projects that need a mix of writing, editing, marketing, and distribution support under one plan.</p>
-            <div class="tile-actions">
-              <a class="button" href="../contact/index.html">Get quote</a>
-            </div>
+        </aside>
+      </div>
+
+      <div class="info-panel" id="pricing-logic">
+        <div>
+          <p class="page-kicker">How Pricing Works</p>
+          <h3>Simple levels. Clear scope.</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <span>Level 1</span>
+            <strong>Consultant</strong>
+            <p>You execute. Matter guides the strategy, direction, feedback, next steps, and decision-making.</p>
           </div>
-        </article>
+
+          <div class="info-card">
+            <span>Level 2</span>
+            <strong>Partner</strong>
+            <p>You work with Matter. Matter helps with execution, packaging, campaign direction, assets, and refinement.</p>
+          </div>
+
+          <div class="info-card">
+            <span>Level 3</span>
+            <strong>Manager</strong>
+            <p>Matter handles the heavier lift, manages the system, and becomes more directly involved in rollout or release planning.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1764,7 +967,7 @@
 
     <section class="pricing-cta">
       <p class="page-kicker">Next Step</p>
-      <h2>Let’s find the right plan.</h2>
+      <h2>Bring the scope. We’ll price the path.</h2>
       <div class="pricing-cta-line">
         <p>Message charliecooperfilms@gmail.com to set up a free 30–40 minute consultation call over Zoom or Google Meet.</p>
         <a class="button" href="mailto:charliecooperfilms@gmail.com">Email Charlie</a>
@@ -1782,79 +985,173 @@
     const matterRates = {
       marketing: {
         label: "Marketing",
-        monthly: true,
+        billing: "monthly",
+        levels: ["consultant", "partner", "manager"],
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", consultant: 150, partner: 250, manager: 500 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", consultant: 500, partner: 650, manager: 800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", consultant: 800, partner: 950, manager: 1150 }
-        ]
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", consultant: 150, partner: 250, manager: 500 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", consultant: 500, partner: 650, manager: 800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", consultant: 800, partner: 950, manager: 1150 }
+        ],
+        descriptions: {
+          consultant: {
+            title: "Marketing Consultant",
+            summary: "For creators who want guidance, direction, and feedback while handling execution themselves.",
+            bullets: ["Strategy and consultation", "Calls and communication", "Feedback on rollout and assets", "Tools, resources, and next steps"],
+            note: "You execute. Matter guides."
+          },
+          partner: {
+            title: "Marketing Partner",
+            summary: "For creators who want strategy plus hands-on support with execution and asset development.",
+            bullets: ["Everything in Consultant", "Support with execution", "Asset creation assistance", "Messaging and campaign refinement"],
+            note: "You work with Matter. Matter works with you."
+          },
+          manager: {
+            title: "Marketing Manager",
+            summary: "For creators who want Matter to handle the heavy lift and build the marketing system around the project.",
+            bullets: ["Everything in Consultant and Partner", "Marketing system management", "Asset creation handled by Matter", "Campaign planning and rollout oversight"],
+            note: "Matter executes. You stay focused on the work."
+          }
+        }
       },
+
       distribution: {
         label: "Distribution",
-        monthly: true,
+        billing: "monthly",
+        levels: ["consultant", "partner", "manager"],
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", consultant: 100, partner: 300, manager: 800 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", consultant: 400, partner: 600, manager: 1000 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", consultant: 700, partner: 900, manager: 1350 }
-        ]
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", consultant: 100, partner: 300, manager: 800 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", consultant: 400, partner: 600, manager: 1000 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", consultant: 700, partner: 900, manager: 1350 }
+        ],
+        descriptions: {
+          consultant: {
+            title: "Distribution Consultant",
+            summary: "For creators who want release guidance while leading the submission or release process themselves.",
+            bullets: ["Release strategy guidance", "Positioning and market fit clarity", "Timeline planning", "Submission guidance"],
+            note: "You move it forward. Matter maps the path."
+          },
+          partner: {
+            title: "Distribution Partner",
+            summary: "For creators who need stronger packaging, submissions, and strategic help throughout the process.",
+            bullets: ["Everything in Consultant", "Project packaging support", "Submission and outreach support", "Ongoing strategy refinement"],
+            note: "Matter helps strengthen release opportunities."
+          },
+          manager: {
+            title: "Distribution Manager",
+            summary: "For creators who want Matter deeply involved in packaging, outreach, and release planning.",
+            bullets: ["Everything in Consultant and Partner", "Full packaging and positioning support", "Outreach support", "Release management involvement"],
+            note: "Matter becomes part of the release process."
+          }
+        }
       },
-      fixed: {
-        scriptEditing: {
-          label: "Script Editing",
-          type: "page",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 5 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 8 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 12 }
-          ]
-        },
-        scriptWriting: {
-          label: "Script Writing",
-          type: "page",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 10 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 15 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 25 }
-          ]
-        },
-        musicVideo: {
-          label: "Music Video Editing",
-          type: "flat",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 300 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 500 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 800 }
-          ]
-        },
-        miniShort: {
-          label: "Mini Short Editing",
-          type: "flat",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 500 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 800 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1200 }
-          ]
-        },
-        standardShort: {
-          label: "Standard Short Editing",
-          type: "flat",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 600 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1000 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1500 }
-          ]
-        },
-        featureEdit: {
-          label: "Feature Editing",
-          type: "flat",
-          bands: [
-            { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 1000 },
-            { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1800 },
-            { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 3000 }
-          ]
+
+      scriptEditing: {
+        label: "Script Editing",
+        billing: "page",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 5 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 8 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 12 }
+        ],
+        description: {
+          title: "Script Editing",
+          summary: "For partial or completed scripts that need notes, polish, tightening, structure work, or a cleaner draft.",
+          bullets: ["Script notes", "Scene and structure cleanup", "Character and dialogue feedback", "Revision direction"],
+          note: "Priced per page."
+        }
+      },
+
+      scriptWriting: {
+        label: "Script Writing",
+        billing: "page",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 10 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 15 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 25 }
+        ],
+        description: {
+          title: "Script Writing",
+          summary: "For ideas, outlines, scenes, or pages that need to be written, expanded, or brought into screenplay form.",
+          bullets: ["New pages", "Scene expansion", "Dialogue and structure", "Screenplay formatting"],
+          note: "Priced per page."
+        }
+      },
+
+      musicVideo: {
+        label: "Music Video Editing",
+        billing: "flat",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 300 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 500 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 800 }
+        ],
+        description: {
+          title: "Music Video Editing",
+          summary: "Editing for a music video or performance-driven visual.",
+          bullets: ["Assembly edit", "Rhythm and pacing", "Basic polish", "Delivery file"],
+          note: "Final price depends on footage volume and revisions."
+        }
+      },
+
+      miniShort: {
+        label: "Mini Short Editing",
+        billing: "flat",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 500 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 1200 }
+        ],
+        description: {
+          title: "Mini Short Editing",
+          summary: "Editing for a smaller short-form project.",
+          bullets: ["Narrative assembly", "Pacing and continuity", "Basic sound and picture polish", "Delivery file"],
+          note: "Best for compact projects."
+        }
+      },
+
+      standardShort: {
+        label: "Standard Short Editing",
+        billing: "flat",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 600 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 1000 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 1500 }
+        ],
+        description: {
+          title: "Standard Short Editing",
+          summary: "Editing for a standard short film or comparable narrative project.",
+          bullets: ["Story edit", "Pacing and structure", "Revision pass", "Delivery file"],
+          note: "Scope may change based on runtime and footage volume."
+        }
+      },
+
+      featureEdit: {
+        label: "Feature Editing",
+        billing: "flat",
+        bands: [
+          { max: 9999, name: "Microbudget Access", range: "$0 to $9,999", rate: 1000 },
+          { max: 54999, name: "Independent Budget", range: "$10,000 to $54,999", rate: 1800 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000 to $99,999", rate: 3000 }
+        ],
+        description: {
+          title: "Feature Editing",
+          summary: "Editing for a feature-length project. Larger or more complex needs may require a custom quote.",
+          bullets: ["Feature assembly", "Structure and pacing", "Revision pass", "Delivery planning"],
+          note: "Feature edits are especially scope-sensitive."
         }
       }
     };
+
+    const serviceOptions = [
+      ["marketing", "Marketing"],
+      ["distribution", "Distribution"],
+      ["scriptEditing", "Script Editing"],
+      ["scriptWriting", "Script Writing"],
+      ["musicVideo", "Music Video Editing"],
+      ["miniShort", "Mini Short Editing"],
+      ["standardShort", "Standard Short Editing"],
+      ["featureEdit", "Feature Editing"]
+    ];
 
     const money = new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -1862,68 +1159,293 @@
       maximumFractionDigits: 0
     });
 
-    function getBudgetBand(bands, budget){
+    let serviceId = 0;
+
+    const projectBudget = document.getElementById("projectBudget");
+    const serviceStack = document.getElementById("serviceStack");
+    const addService = document.getElementById("addService");
+    const addServiceBottom = document.getElementById("addServiceBottom");
+    const monthlyTotal = document.getElementById("monthlyTotal");
+    const oneTimeTotal = document.getElementById("oneTimeTotal");
+    const serviceCount = document.getElementById("serviceCount");
+    const cartList = document.getElementById("cartList");
+    const quoteWarning = document.getElementById("quoteWarning");
+    const summaryBand = document.getElementById("summaryBand");
+    const heroBandName = document.getElementById("heroBandName");
+    const heroBandCopy = document.getElementById("heroBandCopy");
+    const copyEstimate = document.getElementById("copyEstimate");
+
+    function getBand(bands, budget){
       return bands.find((band) => budget <= band.max) || null;
     }
 
-    function updateMatterRate(){
-      const budget = Number(document.getElementById("projectBudget").value || 0);
-      const serviceType = document.getElementById("serviceType").value;
-      const serviceTier = document.getElementById("serviceTier").value;
-      const pageCount = Math.max(1, Number(document.getElementById("pageCount").value || 1));
-      const tierField = document.getElementById("tierField");
-      const pagesField = document.getElementById("pagesField");
-      const rateBand = document.getElementById("rateBand");
-      const ratePrice = document.getElementById("ratePrice");
-      const rateDescription = document.getElementById("rateDescription");
-
-      const isMonthly = serviceType === "marketing" || serviceType === "distribution";
-      const isPageRate = serviceType === "scriptEditing" || serviceType === "scriptWriting";
-
-      tierField.hidden = !isMonthly;
-      pagesField.hidden = !isPageRate;
-
+    function getGlobalBand(budget){
       if (budget >= 100000){
-        rateBand.textContent = "Custom Quote Required";
-        ratePrice.textContent = "Quote";
-        rateDescription.textContent = "Projects with total budgets of $100,000 or more are priced by scope, release goals, deliverables, timeline, paid media needs, and level of Matter involvement.";
-        return;
+        return {
+          name: "Custom Quote Required",
+          range: "$100,000+",
+          copy: "Projects at this level are priced directly by scope, timeline, release goals, deliverables, and level of Matter involvement."
+        };
       }
 
-      if (isMonthly){
-        const group = matterRates[serviceType];
-        const band = getBudgetBand(group.bands, budget);
-        const price = band[serviceTier];
-
-        rateBand.textContent = band.name;
-        ratePrice.textContent = `${money.format(price)} / month`;
-        rateDescription.textContent = `${group.label} ${serviceTier === "partner" ? "Partner / Placement" : serviceTier === "manager" ? "Manager / Release" : "Consultant"} pricing for projects in the ${band.range} budget range.`;
-        return;
+      if (budget <= 9999){
+        return {
+          name: "Microbudget Access",
+          range: "$0 to $9,999",
+          copy: "For no-budget and microbudget productions. These rates are designed to keep professional support accessible."
+        };
       }
 
-      const group = matterRates.fixed[serviceType];
-      const band = getBudgetBand(group.bands, budget);
-
-      if (group.type === "page"){
-        const total = band.rate * pageCount;
-        rateBand.textContent = band.name;
-        ratePrice.textContent = `${money.format(total)} est.`;
-        rateDescription.textContent = `${group.label} is ${money.format(band.rate)} per page for projects in the ${band.range} budget range. Estimate based on ${pageCount} pages.`;
-        return;
+      if (budget <= 54999){
+        return {
+          name: "Independent Budget",
+          range: "$10,000 to $54,999",
+          copy: "For funded indie projects that need stronger support without moving into full custom pricing."
+        };
       }
 
-      rateBand.textContent = band.name;
-      ratePrice.textContent = money.format(band.rate);
-      rateDescription.textContent = `${group.label} starting rate for projects in the ${band.range} budget range. Final price depends on runtime, footage volume, deadlines, revisions, and delivery needs.`;
+      return {
+        name: "Elevated Indie Budget",
+        range: "$55,000 to $99,999",
+        copy: "For higher-budget independent productions with more serious scope, timeline, and deliverable needs."
+      };
     }
 
-    ["projectBudget", "serviceType", "serviceTier", "pageCount"].forEach((id) => {
-      document.getElementById(id).addEventListener("input", updateMatterRate);
-      document.getElementById(id).addEventListener("change", updateMatterRate);
+    function levelLabel(level){
+      if (level === "consultant") return "Consultant";
+      if (level === "partner") return "Partner";
+      return "Manager";
+    }
+
+    function serviceSelectMarkup(selected){
+      return serviceOptions.map(([value, label]) => {
+        return `<option value="${value}" ${value === selected ? "selected" : ""}>${label}</option>`;
+      }).join("");
+    }
+
+    function levelSelectMarkup(selected){
+      return ["consultant", "partner", "manager"].map((value) => {
+        return `<option value="${value}" ${value === selected ? "selected" : ""}>${levelLabel(value)}</option>`;
+      }).join("");
+    }
+
+    function addServiceRow(defaultService = "marketing", defaultLevel = "consultant"){
+      serviceId += 1;
+
+      const row = document.createElement("article");
+      row.className = "service-line";
+      row.dataset.id = String(serviceId);
+
+      row.innerHTML = `
+        <div class="service-line-top">
+          <div class="line-number">${String(serviceId).padStart(2, "0")}</div>
+
+          <label>
+            <span>Service</span>
+            <select class="service-type">${serviceSelectMarkup(defaultService)}</select>
+          </label>
+
+          <label class="level-field">
+            <span>Level</span>
+            <select class="service-level">${levelSelectMarkup(defaultLevel)}</select>
+          </label>
+
+          <label class="page-field" hidden>
+            <span>Pages</span>
+            <input class="service-pages" type="number" min="1" step="1" value="90" inputmode="numeric" />
+          </label>
+
+          <div class="line-price">$0</div>
+
+          <button class="remove-service" type="button" aria-label="Remove service">×</button>
+        </div>
+
+        <div class="service-detail">
+          <div class="detail-copy">
+            <h3></h3>
+            <p></p>
+          </div>
+          <ul class="detail-list"></ul>
+        </div>
+      `;
+
+      serviceStack.appendChild(row);
+      renumberRows();
+
+      row.querySelectorAll("select, input").forEach((field) => {
+        field.addEventListener("input", updateBuilder);
+        field.addEventListener("change", updateBuilder);
+      });
+
+      row.querySelector(".remove-service").addEventListener("click", () => {
+        row.remove();
+        renumberRows();
+        updateBuilder();
+      });
+
+      updateBuilder();
+    }
+
+    function renumberRows(){
+      [...serviceStack.querySelectorAll(".service-line")].forEach((row, index) => {
+        row.querySelector(".line-number").textContent = String(index + 1).padStart(2, "0");
+      });
+    }
+
+    function getRowData(row, budget){
+      const serviceType = row.querySelector(".service-type").value;
+      const group = matterRates[serviceType];
+      const levelField = row.querySelector(".level-field");
+      const pageField = row.querySelector(".page-field");
+      const levelSelect = row.querySelector(".service-level");
+      const pagesInput = row.querySelector(".service-pages");
+
+      const isMonthly = group.billing === "monthly";
+      const isPage = group.billing === "page";
+      const quoteRequired = budget >= 100000;
+
+      levelField.hidden = !isMonthly;
+      pageField.hidden = !isPage;
+
+      let price = 0;
+      let priceLabel = "Quote";
+      let title = group.label;
+      let summary = "";
+      let bullets = [];
+      let note = "";
+      let billing = group.billing;
+      let band = null;
+
+      if (isMonthly){
+        const level = levelSelect.value;
+        const details = group.descriptions[level];
+        title = details.title;
+        summary = details.summary;
+        bullets = details.bullets;
+        note = details.note;
+        band = getBand(group.bands, budget);
+
+        if (!quoteRequired && band){
+          price = band[level];
+          priceLabel = `${money.format(price)} / month`;
+        }
+      } else {
+        const details = group.description;
+        title = details.title;
+        summary = details.summary;
+        bullets = details.bullets;
+        note = details.note;
+        band = getBand(group.bands, budget);
+
+        if (!quoteRequired && band){
+          if (isPage){
+            const pages = Math.max(1, Number(pagesInput.value || 1));
+            price = band.rate * pages;
+            priceLabel = `${money.format(price)} est.`;
+          } else {
+            price = band.rate;
+            priceLabel = money.format(price);
+          }
+        }
+      }
+
+      return { serviceType, group, title, summary, bullets, note, billing, price, priceLabel, quoteRequired, band };
+    }
+
+    function updateBuilder(){
+      const budget = Number(projectBudget.value || 0);
+      const globalBand = getGlobalBand(budget);
+      const rows = [...serviceStack.querySelectorAll(".service-line")];
+
+      let monthly = 0;
+      let oneTime = 0;
+      let hasQuote = budget >= 100000;
+
+      summaryBand.textContent = `${globalBand.name}: ${globalBand.range} total project budget.`;
+      heroBandName.textContent = globalBand.name;
+      heroBandCopy.textContent = globalBand.copy;
+
+      cartList.innerHTML = "";
+
+      rows.forEach((row) => {
+        const data = getRowData(row, budget);
+
+        row.querySelector(".line-price").textContent = data.priceLabel;
+        row.querySelector(".detail-copy h3").textContent = data.title;
+        row.querySelector(".detail-copy p").textContent = `${data.summary} ${data.note}`;
+        row.querySelector(".detail-list").innerHTML = data.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
+
+        if (data.quoteRequired){
+          hasQuote = true;
+        } else if (data.billing === "monthly"){
+          monthly += data.price;
+        } else {
+          oneTime += data.price;
+        }
+
+        const li = document.createElement("li");
+        li.innerHTML = `<span><b>${data.title}</b><br>${data.quoteRequired ? "Custom quote required" : data.priceLabel}</span><span>${data.billing === "monthly" ? "Monthly" : "One-time"}</span>`;
+        cartList.appendChild(li);
+      });
+
+      monthlyTotal.textContent = hasQuote ? "Quote" : money.format(monthly);
+      oneTimeTotal.textContent = hasQuote ? "Quote" : money.format(oneTime);
+      serviceCount.textContent = String(rows.length);
+      quoteWarning.classList.toggle("is-visible", hasQuote);
+
+      if (rows.length === 0){
+        cartList.innerHTML = "<li><span><b>No services added</b><br>Add a service to build an estimate.</span><span>Empty</span></li>";
+      }
+    }
+
+    function buildEstimateText(){
+      const budget = Number(projectBudget.value || 0);
+      const globalBand = getGlobalBand(budget);
+      const rows = [...serviceStack.querySelectorAll(".service-line")];
+
+      const lines = [
+        "Matter Pricing Estimate",
+        `Project budget: ${money.format(budget)}`,
+        `Budget band: ${globalBand.name}`,
+        ""
+      ];
+
+      rows.forEach((row, index) => {
+        const data = getRowData(row, budget);
+        lines.push(`${index + 1}. ${data.title} - ${data.priceLabel}`);
+      });
+
+      lines.push("");
+      lines.push(`Monthly support: ${monthlyTotal.textContent}`);
+      lines.push(`One-time work: ${oneTimeTotal.textContent}`);
+
+      if (budget >= 100000){
+        lines.push("Note: This project requires a custom quote.");
+      }
+
+      return lines.join("\n");
+    }
+
+    addService.addEventListener("click", () => addServiceRow());
+    addServiceBottom.addEventListener("click", () => addServiceRow());
+    projectBudget.addEventListener("input", updateBuilder);
+    projectBudget.addEventListener("change", updateBuilder);
+
+    copyEstimate.addEventListener("click", async () => {
+      const text = buildEstimateText();
+
+      try{
+        await navigator.clipboard.writeText(text);
+        copyEstimate.textContent = "Copied";
+        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1400);
+      } catch(error){
+        copyEstimate.textContent = "Copy failed";
+        setTimeout(() => copyEstimate.textContent = "Copy Estimate", 1400);
+      }
     });
 
-    updateMatterRate();
+    addServiceRow("marketing", "consultant");
+    addServiceRow("distribution", "consultant");
   </script>
-
 </body>
 </html>
