@@ -45,15 +45,37 @@
       background:var(--matter-black);
     }
 
-    header{
-      background:rgba(8,8,8,.94);
-      border-bottom:1px solid rgba(238,233,223,.14);
+    body > header{
+      background:rgba(8,8,8,.96) !important;
+      border-bottom:1px solid rgba(238,233,223,.16) !important;
+    }
+
+    body > header a,
+    body > header nav a,
+    body > header .brand,
+    body > header .header-right a{
+      color:#eee9df !important;
+    }
+
+    body > header .button{
+      color:#eee9df !important;
+      border-color:rgba(238,233,223,.48) !important;
+      background:transparent !important;
+    }
+
+    body > header .button:hover{
+      background:#eee9df !important;
+      color:#080808 !important;
     }
 
     footer{
       background:#080808;
       color:#eee9df;
       border-top:1px solid rgba(238,233,223,.14);
+    }
+
+    footer a{
+      color:#eee9df;
     }
 
     .pricing-page{
@@ -77,7 +99,8 @@
     .pricing-page .button,
     .builder-action,
     .remove-service,
-    .ghost-button{
+    .ghost-button,
+    .update-price{
       appearance:none;
       border:1px solid rgba(17,16,14,.44);
       background:transparent;
@@ -96,7 +119,8 @@
     .pricing-page .button:hover,
     .builder-action:hover,
     .remove-service:hover,
-    .ghost-button:hover{
+    .ghost-button:hover,
+    .update-price:hover{
       background:var(--matter-ink);
       color:var(--matter-paper);
       border-color:var(--matter-ink);
@@ -111,7 +135,7 @@
     }
 
     .pricing-hero-simple{
-      min-height:calc(72vh - 82px);
+      min-height:calc(68vh - 82px);
       padding:clamp(54px, 8vw, 128px) clamp(20px, 5vw, 76px) clamp(40px, 7vw, 92px);
       display:grid;
       place-items:center;
@@ -212,13 +236,22 @@
       gap:14px;
     }
 
+    .category-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:14px;
+    }
+
     .level-panel,
-    .category-panel,
-    .builder-shell,
-    .estimate-panel{
-      border:1px solid var(--matter-line);
-      background:rgba(255,250,240,.70);
-      box-shadow:0 22px 70px rgba(17,16,14,.055);
+    .category-panel{
+      border:1px solid rgba(238,233,223,.18);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(169,134,67,.15), transparent 28%),
+        linear-gradient(135deg, rgba(182,51,38,.12), rgba(8,8,8,.98) 46%, rgba(8,8,8,.94)),
+        #0b0b0a;
+      color:var(--matter-soft);
+      box-shadow:0 28px 80px rgba(8,8,8,.20);
       position:relative;
       overflow:hidden;
     }
@@ -232,6 +265,11 @@
       gap:26px;
     }
 
+    .category-panel{
+      padding:22px;
+      min-height:210px;
+    }
+
     .level-panel::before,
     .category-panel::before,
     .builder-shell::before,
@@ -239,7 +277,7 @@
       content:"";
       position:absolute;
       inset:16px;
-      border:1px solid rgba(17,16,14,.07);
+      border:1px solid rgba(238,233,223,.10);
       pointer-events:none;
     }
 
@@ -256,27 +294,43 @@
       pointer-events:none;
     }
 
-    .level-panel .level-number{
-      color:rgba(17,16,14,.48);
+    .level-panel .level-number,
+    .category-panel .page-kicker{
+      color:rgba(238,233,223,.55);
       font-size:12px;
       letter-spacing:.18em;
       text-transform:uppercase;
       font-weight:800;
     }
 
-    .level-panel h3{
+    .level-panel h3,
+    .category-panel h3{
       margin:10px 0 12px;
+      color:var(--matter-soft);
       font-size:clamp(34px, 4vw, 64px);
       line-height:.82;
       letter-spacing:-.075em;
       text-transform:uppercase;
     }
 
-    .level-panel p{
+    .category-panel h3{
+      margin:0 0 10px;
+      font-size:clamp(24px, 3vw, 42px);
+      line-height:.86;
+      letter-spacing:-.06em;
+    }
+
+    .level-panel p,
+    .category-panel p{
       margin:0;
-      color:var(--matter-muted);
+      color:rgba(238,233,223,.70);
       line-height:1.35;
       font-size:15px;
+    }
+
+    .category-panel p{
+      margin:0 0 16px;
+      font-size:14px;
     }
 
     .level-panel ul,
@@ -292,7 +346,7 @@
     .level-panel li,
     .category-panel li,
     .service-detail li{
-      color:rgba(17,16,14,.72);
+      color:rgba(238,233,223,.72);
       line-height:1.3;
       font-size:14px;
     }
@@ -303,33 +357,6 @@
       content:"• ";
       color:var(--matter-gold);
       font-weight:900;
-    }
-
-    .category-grid{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:14px;
-    }
-
-    .category-panel{
-      padding:22px;
-      min-height:210px;
-    }
-
-    .category-panel h3{
-      margin:0 0 10px;
-      font-size:clamp(24px, 3vw, 42px);
-      line-height:.86;
-      letter-spacing:-.06em;
-      text-transform:uppercase;
-    }
-
-    .category-panel p{
-      margin:0 0 16px;
-      color:var(--matter-muted);
-      line-height:1.32;
-      font-size:14px;
     }
 
     .builder-section{
@@ -348,7 +375,17 @@
 
     .builder-shell,
     .estimate-panel{
+      border:1px solid var(--matter-line);
+      background:rgba(255,250,240,.76);
+      box-shadow:0 22px 70px rgba(17,16,14,.055);
       padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .builder-shell::before,
+    .estimate-panel::before{
+      border-color:rgba(17,16,14,.07);
     }
 
     .builder-controls{
@@ -412,10 +449,13 @@
     }
 
     .service-card{
-      border:1px solid var(--matter-line);
+      border:1px solid rgba(238,233,223,.18);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.60), rgba(255,250,240,.32)),
-        rgba(255,250,240,.68);
+        radial-gradient(circle at 92% 0%, rgba(169,134,67,.16), transparent 26%),
+        linear-gradient(135deg, rgba(182,51,38,.10), rgba(8,8,8,.98) 42%, rgba(8,8,8,.94)),
+        #0b0b0a;
+      color:var(--matter-soft);
+      box-shadow:0 22px 60px rgba(8,8,8,.18);
       padding:16px;
       display:grid;
       gap:14px;
@@ -435,7 +475,7 @@
 
     .service-inputs{
       display:grid;
-      grid-template-columns:44px minmax(200px, 1.2fr) minmax(180px, .86fr) minmax(150px, .66fr) minmax(140px, .50fr);
+      grid-template-columns:44px minmax(200px, 1.2fr) minmax(170px, .78fr) minmax(140px, .58fr) minmax(130px, .46fr) minmax(140px, .50fr);
       gap:10px;
       align-items:end;
     }
@@ -445,10 +485,11 @@
       height:48px;
       display:grid;
       place-items:center;
-      border:1px solid var(--matter-line);
+      border:1px solid rgba(238,233,223,.16);
       font-size:12px;
       letter-spacing:.12em;
-      background:rgba(255,250,240,.64);
+      background:rgba(238,233,223,.045);
+      color:rgba(238,233,223,.75);
     }
 
     .remove-service{
@@ -460,11 +501,53 @@
       line-height:1;
     }
 
+    .remove-service:hover{
+      background:var(--matter-soft);
+      color:var(--matter-black);
+      border-color:var(--matter-soft);
+    }
+
+    .service-card .field span,
+    .service-card .field-label{
+      color:rgba(238,233,223,.55);
+    }
+
+    .service-card input,
+    .service-card select{
+      border-color:rgba(238,233,223,.18);
+      background:rgba(8,8,8,.72);
+      color:var(--matter-soft);
+    }
+
+    .service-card input:focus,
+    .service-card select:focus{
+      border-color:rgba(169,134,67,.72);
+      box-shadow:0 0 0 3px rgba(169,134,67,.18);
+    }
+
+    .update-price{
+      min-height:48px;
+      width:100%;
+      border-radius:0;
+      background:var(--matter-red);
+      color:#fffaf0;
+      border-color:var(--matter-red);
+      font-weight:900;
+      padding:10px 12px;
+      white-space:nowrap;
+    }
+
+    .update-price:hover{
+      background:#8f251b;
+      color:#fffaf0;
+      border-color:#8f251b;
+    }
+
     .price-chip{
       min-height:48px;
-      border:1px solid var(--matter-line);
-      background:rgba(17,16,14,.92);
-      color:var(--matter-paper);
+      border:1px solid var(--matter-soft);
+      background:var(--matter-soft);
+      color:var(--matter-black);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -480,11 +563,12 @@
       grid-template-columns:minmax(220px, .52fr) 1fr;
       gap:16px;
       padding-top:14px;
-      border-top:1px solid var(--matter-line);
+      border-top:1px solid rgba(238,233,223,.14);
     }
 
     .service-detail h3{
       margin:0 0 10px;
+      color:var(--matter-soft);
       font-size:clamp(28px, 3.5vw, 54px);
       line-height:.84;
       letter-spacing:-.075em;
@@ -493,7 +577,7 @@
 
     .service-detail p{
       margin:0;
-      color:var(--matter-muted);
+      color:rgba(238,233,223,.70);
       line-height:1.35;
       font-size:15px;
     }
@@ -505,8 +589,8 @@
     }
 
     .detail-points li{
-      border:1px solid rgba(17,16,14,.10);
-      background:rgba(255,250,240,.46);
+      border:1px solid rgba(238,233,223,.12);
+      background:rgba(238,233,223,.045);
       padding:12px;
     }
 
@@ -608,111 +692,6 @@
       line-height:1.35;
     }
 
-    /* dark readable cards inside the light pricing page */
-    .level-panel,
-    .category-panel{
-      background:
-        radial-gradient(circle at 90% 0%, rgba(169,134,67,.15), transparent 28%),
-        linear-gradient(135deg, rgba(182,51,38,.12), rgba(8,8,8,.98) 46%, rgba(8,8,8,.94)),
-        #0b0b0a;
-      color:var(--matter-soft);
-      border-color:rgba(238,233,223,.18);
-      box-shadow:0 28px 80px rgba(8,8,8,.20);
-    }
-
-    .level-panel::before,
-    .category-panel::before{
-      border-color:rgba(238,233,223,.10);
-    }
-
-    .level-panel .level-number,
-    .category-panel .page-kicker{
-      color:rgba(238,233,223,.55);
-    }
-
-    .level-panel h3,
-    .category-panel h3{
-      color:var(--matter-soft);
-    }
-
-    .level-panel p,
-    .category-panel p{
-      color:rgba(238,233,223,.70);
-    }
-
-    .level-panel li,
-    .category-panel li{
-      color:rgba(238,233,223,.72);
-    }
-
-    .service-card{
-      border-color:rgba(238,233,223,.18);
-      background:
-        radial-gradient(circle at 92% 0%, rgba(169,134,67,.16), transparent 26%),
-        linear-gradient(135deg, rgba(182,51,38,.10), rgba(8,8,8,.98) 42%, rgba(8,8,8,.94)),
-        #0b0b0a;
-      color:var(--matter-soft);
-      box-shadow:0 22px 60px rgba(8,8,8,.18);
-    }
-
-    .service-card .field span,
-    .service-card .field-label{
-      color:rgba(238,233,223,.55);
-    }
-
-    .service-card input,
-    .service-card select{
-      border-color:rgba(238,233,223,.18);
-      background:rgba(8,8,8,.72);
-      color:var(--matter-soft);
-    }
-
-    .service-card input:focus,
-    .service-card select:focus{
-      border-color:rgba(169,134,67,.72);
-      box-shadow:0 0 0 3px rgba(169,134,67,.18);
-    }
-
-    .service-number,
-    .service-card .remove-service{
-      border-color:rgba(238,233,223,.16);
-      background:rgba(238,233,223,.045);
-      color:rgba(238,233,223,.75);
-    }
-
-    .service-card .remove-service:hover{
-      background:var(--matter-soft);
-      color:var(--matter-black);
-      border-color:var(--matter-soft);
-    }
-
-    .service-detail{
-      border-top-color:rgba(238,233,223,.14);
-    }
-
-    .service-detail h3{
-      color:var(--matter-soft);
-    }
-
-    .service-detail p{
-      color:rgba(238,233,223,.70);
-    }
-
-    .service-detail li{
-      color:rgba(238,233,223,.72);
-    }
-
-    .detail-points li{
-      border-color:rgba(238,233,223,.12);
-      background:rgba(238,233,223,.045);
-    }
-
-    .price-chip{
-      background:var(--matter-soft);
-      color:var(--matter-black);
-      border-color:var(--matter-soft);
-    }
-
     .notice-band{
       margin-top:16px;
       border:1px solid var(--matter-line);
@@ -745,112 +724,7 @@
       .section-intro,
       .builder-layout,
       .builder-controls,
-      /* dark readable cards inside the light pricing page */
-    .level-panel,
-    .category-panel{
-      background:
-        radial-gradient(circle at 90% 0%, rgba(169,134,67,.15), transparent 28%),
-        linear-gradient(135deg, rgba(182,51,38,.12), rgba(8,8,8,.98) 46%, rgba(8,8,8,.94)),
-        #0b0b0a;
-      color:var(--matter-soft);
-      border-color:rgba(238,233,223,.18);
-      box-shadow:0 28px 80px rgba(8,8,8,.20);
-    }
-
-    .level-panel::before,
-    .category-panel::before{
-      border-color:rgba(238,233,223,.10);
-    }
-
-    .level-panel .level-number,
-    .category-panel .page-kicker{
-      color:rgba(238,233,223,.55);
-    }
-
-    .level-panel h3,
-    .category-panel h3{
-      color:var(--matter-soft);
-    }
-
-    .level-panel p,
-    .category-panel p{
-      color:rgba(238,233,223,.70);
-    }
-
-    .level-panel li,
-    .category-panel li{
-      color:rgba(238,233,223,.72);
-    }
-
-    .service-card{
-      border-color:rgba(238,233,223,.18);
-      background:
-        radial-gradient(circle at 92% 0%, rgba(169,134,67,.16), transparent 26%),
-        linear-gradient(135deg, rgba(182,51,38,.10), rgba(8,8,8,.98) 42%, rgba(8,8,8,.94)),
-        #0b0b0a;
-      color:var(--matter-soft);
-      box-shadow:0 22px 60px rgba(8,8,8,.18);
-    }
-
-    .service-card .field span,
-    .service-card .field-label{
-      color:rgba(238,233,223,.55);
-    }
-
-    .service-card input,
-    .service-card select{
-      border-color:rgba(238,233,223,.18);
-      background:rgba(8,8,8,.72);
-      color:var(--matter-soft);
-    }
-
-    .service-card input:focus,
-    .service-card select:focus{
-      border-color:rgba(169,134,67,.72);
-      box-shadow:0 0 0 3px rgba(169,134,67,.18);
-    }
-
-    .service-number,
-    .service-card .remove-service{
-      border-color:rgba(238,233,223,.16);
-      background:rgba(238,233,223,.045);
-      color:rgba(238,233,223,.75);
-    }
-
-    .service-card .remove-service:hover{
-      background:var(--matter-soft);
-      color:var(--matter-black);
-      border-color:var(--matter-soft);
-    }
-
-    .service-detail{
-      border-top-color:rgba(238,233,223,.14);
-    }
-
-    .service-detail h3{
-      color:var(--matter-soft);
-    }
-
-    .service-detail p{
-      color:rgba(238,233,223,.70);
-    }
-
-    .service-detail li{
-      color:rgba(238,233,223,.72);
-    }
-
-    .detail-points li{
-      border-color:rgba(238,233,223,.12);
-      background:rgba(238,233,223,.045);
-    }
-
-    .price-chip{
-      background:var(--matter-soft);
-      color:var(--matter-black);
-      border-color:var(--matter-soft);
-    }
-
-    .notice-band{
+      .notice-band{
         grid-template-columns:1fr;
       }
 
@@ -876,7 +750,8 @@
       }
 
       .service-inputs .field,
-      .service-inputs .price-chip{
+      .service-inputs .price-chip,
+      .service-inputs .update-price{
         grid-column:1 / -1;
       }
     }
@@ -1155,9 +1030,9 @@
         maxMinutes: 7,
         quoteAboveMinutes: 7,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 300 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 500 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 800 }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", minRate: 300, maxRate: 450 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", minRate: 500, maxRate: 750 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", minRate: 800, maxRate: 1100 }
         ]
       },
       miniShort: {
@@ -1167,9 +1042,9 @@
         minMinutes: 1,
         maxMinutes: 10,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 500 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1200 }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", minRate: 500, maxRate: 575 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", minRate: 800, maxRate: 950 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", minRate: 1200, maxRate: 1400 }
         ]
       },
       standardShort: {
@@ -1179,9 +1054,9 @@
         minMinutes: 11,
         maxMinutes: 40,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 600 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1000 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 1500 }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", minRate: 600, maxRate: 950 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", minRate: 1000, maxRate: 1700 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", minRate: 1500, maxRate: 2800 }
         ]
       },
       featureEdit: {
@@ -1192,9 +1067,9 @@
         maxMinutes: 120,
         quoteAboveMinutes: 120,
         bands: [
-          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", rate: 1000 },
-          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", rate: 1800 },
-          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", rate: 3000 }
+          { max: 9999, name: "Microbudget Access", range: "$0–$9,999", minRate: 1000, maxRate: 2500 },
+          { max: 54999, name: "Independent Budget", range: "$10,000–$54,999", minRate: 1800, maxRate: 4000 },
+          { max: 99999, name: "Elevated Indie Budget", range: "$55,000–$99,999", minRate: 3000, maxRate: 7500 }
         ]
       }
     };
@@ -1246,22 +1121,22 @@
       },
       musicVideo: {
         title: "Music Video Editing",
-        description: "Editing for a music video. Runtime controls whether the project stays inside music-video scope or needs a direct quote. Heavy footage volume, VFX, or fast deadlines may still require review.",
+        description: "Editing for a music video. Pricing scales inside 1–7 minutes. Over 7 minutes requires a direct quote instead of pretending it fits music-video scope.",
         points: ["Performance or concept edit", "Music timing", "1–7 minutes", "Over 7 minutes requires a quote"]
       },
       miniShort: {
         title: "Mini Short Editing",
-        description: "Editing for a smaller short-form project. Runtime controls whether the project stays mini-short scope or automatically moves into standard-short pricing.",
+        description: "Editing for a smaller short-form project. Pricing scales from 1–10 minutes. At 11 minutes, the card automatically becomes Standard Short.",
         points: ["Short-form story edit", "Scene pacing", "1–10 minutes", "At 11 minutes, this becomes a Standard Short"]
       },
       standardShort: {
         title: "Standard Short Editing",
-        description: "Editing for a standard short film or comparable narrative project.",
+        description: "Editing for a standard short film or comparable narrative project. Pricing scales from 11–40 minutes.",
         points: ["Narrative assembly", "Scene rhythm", "11–40 minutes", "At 41 minutes, this becomes a Feature Edit"]
       },
       featureEdit: {
         title: "Feature Editing",
-        description: "Editing for a feature-length project. Larger or more complex needs may require a direct custom quote.",
+        description: "Editing for a feature-length project. Pricing scales from 41–120 minutes. Over 120 minutes requires a direct quote.",
         points: ["Feature assembly", "Story structure support", "41–120 minutes", "Over 120 minutes requires a quote"]
       }
     };
@@ -1314,11 +1189,11 @@
     }
 
     function normalizeRuntimeServiceType(type, quantity){
-      if (!["miniShort", "standardShort", "featureEdit"].includes(type)){
-        return type;
-      }
-
       const minutes = Math.max(1, Number(quantity || 1));
+
+      if (type === "musicVideo") return "musicVideo";
+      if (!["miniShort", "standardShort", "featureEdit"].includes(type)) return type;
+
       if (minutes <= 10) return "miniShort";
       if (minutes <= 40) return "standardShort";
       return "featureEdit";
@@ -1339,6 +1214,21 @@
         return { name: "Independent Budget", copy: "Independent Budget: $10,000 to $54,999 total project budget." };
       }
       return { name: "Microbudget Access", copy: "Microbudget Access: $0 to $9,999 total project budget." };
+    }
+
+    function roundToNearestTwentyFive(value){
+      return Math.round(value / 25) * 25;
+    }
+
+    function getMinuteScaledRate(service, band, minutes){
+      const minMinutes = service.minMinutes || 1;
+      const maxMinutes = service.maxMinutes || minMinutes;
+      const clamped = Math.min(Math.max(minutes, minMinutes), maxMinutes);
+      const span = Math.max(1, maxMinutes - minMinutes);
+      const progress = (clamped - minMinutes) / span;
+      const minRate = Number.isFinite(band.minRate) ? band.minRate : band.rate;
+      const maxRate = Number.isFinite(band.maxRate) ? band.maxRate : band.rate;
+      return roundToNearestTwentyFive(minRate + ((maxRate - minRate) * progress));
     }
 
     function getServicePrice(item){
@@ -1377,10 +1267,11 @@
         return { amount: 0, quoted: true, label: "Quote", cadence: "One-time" };
       }
 
+      const total = getMinuteScaledRate(service, band, minutes);
       return {
-        amount: band.rate,
+        amount: total,
         quoted: false,
-        label: `${money.format(band.rate)} est.`,
+        label: `${money.format(total)} est.`,
         cadence: "One-time"
       };
     }
@@ -1433,7 +1324,7 @@
         ` : "";
 
         return `
-          <article class="service-card">
+          <article class="service-card" data-id="${item.id}">
             <div class="service-inputs">
               <div>
                 <div class="service-number">${String(index + 1).padStart(2, "0")}</div>
@@ -1450,6 +1341,7 @@
               ${levelField}
               ${quantityField}
 
+              <button class="update-price" type="button" data-action="update" data-id="${item.id}">Update Price</button>
               <div class="price-chip">${price.label}</div>
             </div>
 
@@ -1510,10 +1402,37 @@
       serviceCount.textContent = services.length;
     }
 
+    function updateServiceFromCard(id){
+      const card = serviceStack.querySelector(`.service-card[data-id="${id}"]`);
+      if (!card) return;
+
+      const typeInput = card.querySelector("[data-action='type']");
+      const levelInput = card.querySelector("[data-action='level']");
+      const quantityInput = card.querySelector("[data-action='quantity']");
+
+      const selectedType = typeInput ? typeInput.value : "marketing";
+      const selectedService = matterRates[selectedType];
+      const rawQuantity = quantityInput ? Math.max(1, Number(quantityInput.value || 1)) : getQuantityDefault(selectedType);
+      const normalizedType = normalizeRuntimeServiceType(selectedType, rawQuantity);
+      const normalizedService = matterRates[normalizedType];
+
+      services = services.map((item) => {
+        if (item.id !== id) return item;
+        return {
+          ...item,
+          type: normalizedType,
+          level: normalizedService.kind === "monthly" ? (levelInput ? levelInput.value : item.level || "consultant") : "consultant",
+          quantity: normalizedService.kind === "monthly" ? 0 : rawQuantity
+        };
+      });
+
+      renderServices();
+    }
+
     serviceStack.addEventListener("change", (event) => {
       const id = event.target.dataset.id;
       const action = event.target.dataset.action;
-      if (!id || !action) return;
+      if (!id || !action || action === "quantity") return;
 
       services = services.map((item) => {
         if (item.id !== id) return item;
@@ -1539,43 +1458,19 @@
       renderServices();
     });
 
-    serviceStack.addEventListener("input", (event) => {
-      const id = event.target.dataset.id;
-      const action = event.target.dataset.action;
-      if (!id || action !== "quantity") return;
+    serviceStack.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
 
-      let shouldRerender = false;
-      services = services.map((item) => {
-        if (item.id !== id) return item;
-
-        const quantity = Math.max(1, Number(event.target.value || 1));
-        const nextType = normalizeRuntimeServiceType(item.type, quantity);
-        if (nextType !== item.type){
-          shouldRerender = true;
-          return { ...item, type: nextType, quantity };
-        }
-
-        return { ...item, quantity };
-      });
-
-      if (shouldRerender){
+      if (button.dataset.action === "remove"){
+        services = services.filter((item) => item.id !== button.dataset.id);
         renderServices();
         return;
       }
 
-      updateSummary();
-      const card = event.target.closest(".service-card");
-      const item = services.find((service) => service.id === id);
-      if (card && item){
-        card.querySelector(".price-chip").textContent = getServicePrice(item).label;
+      if (button.dataset.action === "update"){
+        updateServiceFromCard(button.dataset.id);
       }
-    });
-
-    serviceStack.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-action='remove']");
-      if (!button) return;
-      services = services.filter((item) => item.id !== button.dataset.id);
-      renderServices();
     });
 
     projectBudget.addEventListener("input", renderServices);
