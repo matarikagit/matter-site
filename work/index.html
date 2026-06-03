@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Work | Juniper & Matter Original Projects</title>
-  <meta name="description" content="Explore Matter original work, beginning with Juniper, an animated limited series currently in mid-production and seeking development, financing, and production support." />
+  <title>Work | Matter Project Library</title>
+  <meta name="description" content="Browse Matter originals, client projects, marketing work, distribution work, shorts, features, music videos, and active project showcases." />
 
   <link rel="canonical" href="https://www.matterdistribution.com/work/" />
   <link rel="icon" href="/assets/images/favicon.ico">
@@ -14,329 +14,467 @@
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
 
   <meta property="og:site_name" content="Matter Marketing & Distribution" />
-  <meta property="og:title" content="Work | Juniper & Matter Original Projects" />
-  <meta property="og:description" content="Matter’s current original project showcase begins with Juniper, an animated limited series nearly six years in the making." />
+  <meta property="og:title" content="Work | Matter Project Library" />
+  <meta property="og:description" content="Browse Matter originals, client projects, marketing work, distribution work, shorts, features, music videos, and active project showcases." />
   <meta property="og:url" content="https://www.matterdistribution.com/work/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.matterdistribution.com/assets/images/work/juniper/juniper-poster.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Work | Juniper & Matter Original Projects" />
-  <meta name="twitter:description" content="Explore Matter original work, beginning with Juniper." />
+  <meta name="twitter:title" content="Work | Matter Project Library" />
+  <meta name="twitter:description" content="Browse Matter originals, client projects, and active project showcases." />
 
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
     :root{
-      --work-black:#050505;
-      --work-ink:#10100d;
-      --work-cream:#eee9df;
-      --work-muted:rgba(238,233,223,.72);
-      --work-line:rgba(238,233,223,.18);
-      --work-gold:#ff9800;
-      --work-gold-soft:rgba(255,152,0,.18);
-      --work-green:#11251c;
+      --work-cream:#f5f0e6;
+      --work-paper:#fffaf0;
+      --work-ink:#0b0b0a;
+      --work-soft:#70685d;
+      --work-line:rgba(11,11,10,.15);
+      --work-line-strong:rgba(11,11,10,.28);
+      --work-orange:#ff9800;
+      --work-green:#133621;
       --work-red:#b63326;
     }
 
     body{
       background:
-        radial-gradient(circle at 18% 6%, rgba(255,152,0,.16), transparent 26%),
-        radial-gradient(circle at 84% 12%, rgba(238,233,223,.10), transparent 22%),
-        linear-gradient(180deg, #050505, #0a0a08 56%, #050505);
-      color:var(--work-cream);
+        radial-gradient(circle at 22px 22px, rgba(11,11,10,.07) 1.3px, transparent 1.4px) 0 0 / 18px 18px,
+        linear-gradient(180deg, var(--work-cream), #ede4d5 68%, var(--work-cream));
+      color:var(--work-ink);
     }
 
     header{
       background:rgba(5,5,5,.94);
-      border-bottom:1px solid rgba(255,152,0,.22);
+      border-bottom:1px solid rgba(255,152,0,.26);
     }
 
     header a,
     header nav a,
-    .header-right a{ color:var(--work-cream); }
+    .header-right a{ color:#eee9df; }
 
-    .button:hover{ background:var(--work-cream); color:var(--work-black); }
+    .button{
+      border-color:rgba(11,11,10,.36);
+      color:var(--work-ink);
+    }
+
+    header .button{
+      border-color:rgba(238,233,223,.42);
+      color:#eee9df;
+    }
+
+    .button:hover{
+      background:var(--work-ink);
+      color:var(--work-paper);
+    }
+
+    header .button:hover{
+      background:#eee9df;
+      color:#050505;
+    }
 
     .work-kicker{
       margin:0;
-      color:rgba(255,152,0,.88);
+      color:var(--work-orange);
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
+      font-weight:800;
     }
 
     .work-hero{
-      min-height:calc(100vh - 82px);
+      padding:clamp(34px,5vw,76px) clamp(22px,4vw,58px);
+      border-bottom:1px solid var(--work-line-strong);
+    }
+
+    .hero-shell{
       display:grid;
-      place-items:center;
-      text-align:center;
-      padding:clamp(46px,7vw,112px) clamp(22px,4vw,64px);
-      border-bottom:1px solid rgba(255,152,0,.22);
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 52% 24%, rgba(255,152,0,.18), transparent 20%),
-        linear-gradient(120deg, rgba(17,37,28,.88), rgba(5,5,5,.88) 48%, rgba(5,5,5,1));
+      grid-template-columns:minmax(0, 1fr) minmax(280px, 420px);
+      gap:28px;
+      align-items:end;
+      padding-bottom:24px;
+      border-bottom:1px solid var(--work-line);
     }
 
-    .work-hero::before{
-      content:"";
-      position:absolute;
-      inset:24px;
-      border:1px solid rgba(255,152,0,.22);
-      pointer-events:none;
-      z-index:2;
-    }
-
-    .work-hero::after{
-      content:"WORK";
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%, -50%);
-      font-size:clamp(190px,30vw,610px);
-      line-height:.7;
-      letter-spacing:-.12em;
-      font-weight:900;
-      color:rgba(238,233,223,.035);
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:3;
-      display:grid;
-      gap:30px;
-      justify-items:center;
-    }
-
-    .hero-inner h1{
-      max-width:1180px;
-      margin:0;
-      font-size:clamp(64px,9vw,172px);
-      line-height:.78;
-      letter-spacing:-.095em;
+    .hero-shell h1{
+      margin:10px 0 0;
+      max-width:1120px;
+      font-size:clamp(54px,8vw,138px);
+      line-height:.82;
+      letter-spacing:-.09em;
       text-transform:uppercase;
     }
 
-    .hero-inner p:not(.work-kicker){
-      max-width:820px;
+    .hero-shell p:not(.work-kicker){
       margin:0;
-      color:rgba(238,233,223,.78);
-      font-size:clamp(18px,2vw,28px);
-      line-height:1.14;
+      color:var(--work-soft);
+      font-size:clamp(17px,1.8vw,24px);
+      line-height:1.15;
       letter-spacing:-.035em;
     }
 
-    .hero-actions,
-    .project-actions,
-    .community-links{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
-
-    .work-section{
-      padding:clamp(42px,6vw,92px) clamp(22px,4vw,58px);
-      border-bottom:1px solid rgba(255,152,0,.22);
+    .library{
+      padding:clamp(28px,4vw,48px) clamp(22px,4vw,58px) clamp(50px,7vw,92px);
     }
 
-    .section-head{
+    .library-panel{
+      border:1px solid var(--work-line-strong);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.36)),
+        var(--work-paper);
+      box-shadow:0 18px 46px rgba(11,11,10,.06);
+    }
+
+    .library-top{
       display:grid;
-      grid-template-columns:220px 1fr;
-      gap:30px;
-      align-items:start;
-      margin-bottom:28px;
+      grid-template-columns:minmax(0, 1fr) auto;
+      gap:20px;
+      align-items:center;
+      padding:18px;
+      border-bottom:1px solid var(--work-line);
     }
 
-    .section-head h2{
-      margin:0;
-      max-width:1060px;
-      font-size:clamp(40px,5.3vw,104px);
+    .library-top h2{
+      margin:6px 0 0;
+      font-size:clamp(34px,4vw,72px);
       line-height:.84;
-      letter-spacing:-.085em;
+      letter-spacing:-.08em;
       text-transform:uppercase;
     }
 
-    .featured-project{
-      display:grid;
-      grid-template-columns:.92fr 1.08fr;
-      border:1px solid rgba(255,152,0,.28);
-      min-height:620px;
-      background:rgba(238,233,223,.035);
-      overflow:hidden;
+    .library-count{
+      border:1px solid var(--work-line);
+      background:#fff;
+      padding:12px 14px;
+      min-width:128px;
+      text-align:right;
+      font-size:12px;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--work-soft);
     }
 
-    .project-art{
-      position:relative;
-      min-height:620px;
-      border-right:1px solid rgba(255,152,0,.28);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72)),
-        radial-gradient(circle at 50% 26%, rgba(255,152,0,.18), transparent 24%),
-        #070707;
-      overflow:hidden;
-    }
-
-    .project-art img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .library-count strong{
       display:block;
-      opacity:.88;
-      filter:saturate(.96) contrast(1.06);
-      transition:transform .7s ease, opacity .7s ease;
+      color:var(--work-ink);
+      font-size:26px;
+      line-height:1;
+      letter-spacing:-.04em;
     }
 
-    .featured-project:hover .project-art img{ transform:scale(1.035); opacity:.96; }
+    .library-controls{
+      display:grid;
+      grid-template-columns:minmax(240px, 420px) 1fr;
+      gap:14px;
+      padding:18px;
+      border-bottom:1px solid var(--work-line);
+      background:rgba(255,255,255,.42);
+    }
 
-    .project-art.image-missing::before{
-      content:"Add Juniper poster at /assets/images/work/juniper/juniper-poster.jpg";
-      position:absolute;
-      inset:26px;
+    .work-search{
+      width:100%;
+      min-height:46px;
+      border:1px solid var(--work-line-strong);
+      background:#fff;
+      color:var(--work-ink);
+      padding:0 14px;
+      font:inherit;
+      outline:none;
+      border-radius:0;
+    }
+
+    .work-search:focus{
+      border-color:var(--work-orange);
+      box-shadow:0 0 0 3px rgba(255,152,0,.16);
+    }
+
+    .filter-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .filter-button{
+      border:1px solid var(--work-line-strong);
+      background:#fff;
+      color:var(--work-ink);
+      padding:11px 13px 10px;
+      cursor:pointer;
+      font:inherit;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      border-radius:999px;
+      transition:background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active{
+      background:var(--work-ink);
+      color:var(--work-paper);
+      border-color:var(--work-ink);
+    }
+
+    .project-list{
+      display:grid;
+    }
+
+    .project-row{
+      display:grid;
+      grid-template-columns:130px minmax(0, 1.2fr) minmax(260px, .8fr) auto;
+      gap:18px;
+      align-items:center;
+      min-height:146px;
+      padding:18px;
+      border-bottom:1px solid var(--work-line);
+      color:inherit;
+      text-decoration:none;
+      transition:background .2s ease, transform .2s ease;
+    }
+
+    .project-row:hover{
+      background:rgba(255,152,0,.08);
+      transform:translateX(4px);
+    }
+
+    .project-row[hidden]{
+      display:none;
+    }
+
+    .project-thumb{
+      width:130px;
+      height:92px;
+      border:1px solid var(--work-line);
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,152,0,.18), transparent 24%),
+        var(--work-green);
       display:grid;
       place-items:center;
-      border:1px dashed rgba(255,152,0,.42);
-      color:rgba(238,233,223,.62);
-      font-size:11px;
-      letter-spacing:.16em;
+      overflow:hidden;
+      color:#fff;
+      font-size:12px;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      text-align:center;
-      padding:24px;
-      z-index:2;
+      font-weight:800;
     }
 
-    .project-badge{
-      position:absolute;
-      left:24px;
-      top:24px;
-      z-index:3;
-      padding:9px 12px;
-      border:1px solid rgba(238,233,223,.32);
-      background:rgba(5,5,5,.72);
-      backdrop-filter:blur(12px);
-      color:var(--work-cream);
-      font-size:11px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
+    .project-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      background:#080808;
+      display:block;
     }
 
-    .project-info{
-      padding:clamp(24px,4vw,56px);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:34px;
-      background:
-        radial-gradient(circle at 82% 10%, rgba(255,152,0,.14), transparent 22%),
-        linear-gradient(145deg, rgba(17,37,28,.68), rgba(5,5,5,.82)),
-        #090909;
-    }
-
-    .project-info h3{
-      margin:10px 0 18px;
-      max-width:920px;
-      font-size:clamp(54px,7vw,132px);
-      line-height:.78;
-      letter-spacing:-.09em;
-      text-transform:uppercase;
-      color:var(--work-gold);
-    }
-
-    .project-info p{
-      margin:0;
-      max-width:760px;
-      color:var(--work-muted);
-      font-size:17px;
-      line-height:1.32;
-    }
-
-    .project-meta{
+    .project-main{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      border-top:1px solid rgba(255,152,0,.24);
-      border-left:1px solid rgba(255,152,0,.24);
+      gap:10px;
+      min-width:0;
     }
 
-    .project-meta div{
-      min-height:104px;
-      padding:18px;
-      border-right:1px solid rgba(255,152,0,.24);
-      border-bottom:1px solid rgba(255,152,0,.24);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:12px;
-    }
-
-    .project-meta span{ color:rgba(255,152,0,.85); font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
-    .project-meta strong{ font-size:18px; line-height:1.05; letter-spacing:-.04em; }
-
-    .community-panel{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      border:1px solid rgba(255,152,0,.28);
-      background:
-        radial-gradient(circle at 22% 26%, rgba(255,152,0,.16), transparent 24%),
-        rgba(238,233,223,.035);
-    }
-
-    .community-copy{
-      min-height:330px;
-      padding:clamp(24px,4vw,52px);
-      border-right:1px solid rgba(255,152,0,.28);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .community-copy h2{
+    .project-main h3{
       margin:0;
-      max-width:820px;
-      font-size:clamp(42px,5vw,96px);
-      line-height:.82;
-      letter-spacing:-.085em;
+      font-size:clamp(30px,3.2vw,58px);
+      line-height:.86;
+      letter-spacing:-.075em;
       text-transform:uppercase;
     }
 
-    .community-copy p{ max-width:620px; margin:0; color:var(--work-muted); line-height:1.32; }
+    .project-main p{
+      margin:0;
+      color:var(--work-soft);
+      line-height:1.25;
+      max-width:720px;
+      font-size:15px;
+    }
 
-    .community-links{ align-self:end; padding:24px; justify-content:flex-start; align-content:end; }
+    .project-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+    }
+
+    .tag{
+      display:inline-flex;
+      border:1px solid rgba(11,11,10,.18);
+      background:rgba(255,255,255,.72);
+      padding:6px 8px 5px;
+      color:#4c463f;
+      font-size:10px;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .project-status{
+      display:grid;
+      gap:8px;
+      color:var(--work-soft);
+      font-size:13px;
+      line-height:1.2;
+    }
+
+    .project-status strong{
+      color:var(--work-ink);
+      font-size:16px;
+      letter-spacing:-.03em;
+    }
+
+    .project-arrow{
+      width:44px;
+      height:44px;
+      border:1px solid var(--work-line-strong);
+      display:grid;
+      place-items:center;
+      font-size:22px;
+      line-height:1;
+      background:#fff;
+    }
+
+    .project-row:hover .project-arrow{
+      background:var(--work-orange);
+      color:var(--work-ink);
+      border-color:var(--work-orange);
+    }
+
+    .empty-state{
+      display:none;
+      padding:32px 18px;
+      color:var(--work-soft);
+      border-bottom:1px solid var(--work-line);
+    }
+
+    .empty-state.active{
+      display:block;
+    }
+
+    .library-note{
+      padding:16px 18px;
+      color:var(--work-soft);
+      font-size:13px;
+      line-height:1.3;
+      background:rgba(255,255,255,.36);
+    }
+
+    .library-note code{
+      background:#fff;
+      border:1px solid var(--work-line);
+      padding:2px 5px;
+      color:var(--work-ink);
+    }
 
     .work-footer-cta{
-      padding:clamp(44px,7vw,110px) clamp(22px,4vw,58px);
-      background:var(--work-red);
-      color:var(--work-cream);
-      border-top:1px solid rgba(238,233,223,.22);
+      padding:clamp(32px,5vw,70px) clamp(22px,4vw,58px);
+      background:var(--work-ink);
+      color:#eee9df;
+      border-top:1px solid rgba(255,152,0,.22);
     }
 
     .work-footer-cta h2{
-      max-width:1160px;
-      margin:0 0 24px;
-      font-size:clamp(56px,9vw,160px);
-      line-height:.8;
-      letter-spacing:-.095em;
+      margin:8px 0 18px;
+      max-width:880px;
+      font-size:clamp(44px,6vw,110px);
+      line-height:.82;
+      letter-spacing:-.085em;
       text-transform:uppercase;
     }
 
     .work-cta-line{
       display:grid;
       grid-template-columns:1fr auto;
-      gap:24px;
-      align-items:center;
-      padding-top:18px;
-      border-top:1px solid rgba(238,233,223,.34);
+      gap:22px;
+      align-items:end;
+      padding-top:16px;
+      border-top:1px solid rgba(238,233,223,.2);
     }
 
-    .work-cta-line p{ max-width:620px; margin:0; color:rgba(238,233,223,.82); line-height:1.3; }
-    footer{ border-top-color:rgba(255,152,0,.24); }
+    .work-cta-line p{
+      margin:0;
+      max-width:580px;
+      color:rgba(238,233,223,.72);
+      line-height:1.28;
+    }
+
+    .work-footer-cta .button{
+      color:#eee9df;
+      border-color:rgba(238,233,223,.42);
+    }
+
+    .work-footer-cta .button:hover{
+      background:#eee9df;
+      color:var(--work-ink);
+    }
+
+    footer{
+      border-top-color:rgba(11,11,10,.16);
+      color:var(--work-ink);
+    }
+
+    footer a{ color:var(--work-ink); }
 
     @media(max-width:1050px){
-      .section-head,.featured-project,.community-panel,.work-cta-line{ grid-template-columns:1fr; }
-      .project-art,.community-copy{ border-right:0; border-bottom:1px solid rgba(255,152,0,.28); }
-      .project-meta{ grid-template-columns:1fr; }
+      .hero-shell,
+      .library-top,
+      .library-controls,
+      .work-cta-line{
+        grid-template-columns:1fr;
+      }
+
+      .filter-row{
+        justify-content:flex-start;
+      }
+
+      .library-count{
+        text-align:left;
+      }
+
+      .project-row{
+        grid-template-columns:110px minmax(0, 1fr) auto;
+      }
+
+      .project-status{
+        grid-column:2 / span 2;
+      }
+
+      .project-thumb{
+        width:110px;
+        height:84px;
+      }
     }
 
     @media(max-width:720px){
-      .work-hero,.work-section,.work-footer-cta{ padding-left:18px; padding-right:18px; }
-      .hero-inner h1,.work-footer-cta h2{ font-size:clamp(54px,15vw,98px); }
-      .project-art{ min-height:420px; }
+      .work-hero,
+      .library,
+      .work-footer-cta{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .project-row{
+        grid-template-columns:1fr auto;
+        gap:12px;
+      }
+
+      .project-thumb{
+        width:100%;
+        height:160px;
+        grid-column:1 / -1;
+      }
+
+      .project-main{
+        grid-column:1 / -1;
+      }
+
+      .project-status{
+        grid-column:1 / -1;
+      }
+
+      .project-arrow{
+        display:none;
+      }
     }
   </style>
 </head>
@@ -363,71 +501,101 @@
 
   <main>
     <section class="work-hero">
-      <div class="hero-inner">
-        <p class="work-kicker">Matter Originals</p>
-        <h1>Projects with something to prove.</h1>
-        <p>Original work, active projects, and future case studies from Matter. The current showcase begins with <em>Juniper</em>.</p>
-        <div class="hero-actions">
-          <a class="button" href="#latest">Latest project</a>
-          <a class="button" href="../contact/index.html">Contact Matter</a>
+      <div class="hero-shell">
+        <div>
+          <p class="work-kicker">Work</p>
+          <h1>Project library.</h1>
         </div>
+        <p>A searchable index for Matter originals, client work, marketing support, distribution support, films, shorts, music videos, and future case studies.</p>
       </div>
     </section>
 
-    <section class="work-section" id="latest">
-      <div class="section-head">
-        <p class="work-kicker">Latest Original Project</p>
-        <h2>Juniper.</h2>
-      </div>
-
-      <article class="featured-project">
-        <a class="project-art" href="projects/juniper/index.html" aria-label="Open the Juniper project page">
-          <span class="project-badge">Matter Original / In Production</span>
-          <img src="../assets/images/work/juniper/juniper-poster.jpg" alt="Juniper project artwork" onerror="this.parentElement.classList.add('image-missing'); this.remove();" />
-        </a>
-
-        <div class="project-info">
+    <section class="library" aria-labelledby="libraryTitle">
+      <div class="library-panel">
+        <div class="library-top">
           <div>
-            <p class="work-kicker">Animated Series / 6 Episodes / 20-35 Mins Each</p>
-            <h3>Juniper</h3>
-            <p>After the death of his mother, an isolated young man joins a cross-country road trip with a former drug dealer, where buried trauma, fragile connections, and a dangerous past begin to close in.</p>
+            <p class="work-kicker">Browse</p>
+            <h2 id="libraryTitle">All work.</h2>
           </div>
-
-          <div class="project-meta" aria-label="Juniper project details">
-            <div><span>Status</span><strong>Mid-Production</strong></div>
-            <div><span>Seeking</span><strong>Development / Financing / Production</strong></div>
-            <div><span>Trailer</span><strong>Coming Soon</strong></div>
-          </div>
-
-          <div class="project-actions">
-            <a class="button" href="projects/juniper/index.html">Open project</a>
-            <a class="button" href="projects/juniper/index.html#trailer">Trailer coming soon</a>
-            <a class="button" href="projects/juniper/index.html#support">What we’re seeking</a>
+          <div class="library-count" aria-live="polite">
+            Showing
+            <strong id="visibleCount">1</strong>
           </div>
         </div>
-      </article>
-    </section>
 
-    <section class="work-section">
-      <div class="community-panel">
-        <div class="community-copy">
-          <p class="work-kicker">More Work</p>
-          <h2>Client work and future originals will live here.</h2>
-          <p>For now, the Work section is focused on <em>Juniper</em>. New Matter originals, case studies, and client projects can be added using the same project-page setup.</p>
+        <div class="library-controls">
+          <input class="work-search" id="workSearch" type="search" placeholder="Search projects, formats, services, status..." aria-label="Search work projects" />
+          <div class="filter-row" aria-label="Filter work projects">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="originals">Originals</button>
+            <button class="filter-button" type="button" data-filter="clients">Clients</button>
+            <button class="filter-button" type="button" data-filter="features">Features</button>
+            <button class="filter-button" type="button" data-filter="shorts">Shorts</button>
+            <button class="filter-button" type="button" data-filter="music-videos">Music Videos</button>
+            <button class="filter-button" type="button" data-filter="marketing">Marketing</button>
+            <button class="filter-button" type="button" data-filter="distribution">Distribution</button>
+          </div>
         </div>
-        <div class="community-links">
-          <a class="button" href="projects/juniper/index.html">View Juniper</a>
-          <a class="button" href="../services/index.html">Matter Services</a>
-          <a class="button" href="../contact/index.html">Contact</a>
+
+        <div class="project-list" id="projectList">
+          <a class="project-row"
+             href="projects/juniper/index.html"
+             data-title="Juniper"
+             data-search="juniper matter original animated series animation limited series grief identity chosen family road trip mid-production six episodes feature-style series"
+             data-tags="all originals features animation">
+            <div class="project-thumb">
+              <img src="../assets/images/work/juniper/juniper-poster.jpg" alt="Juniper project poster" onerror="this.parentElement.textContent='Juniper'; this.remove();" />
+            </div>
+
+            <div class="project-main">
+              <div class="project-tags">
+                <span class="tag">Matter Original</span>
+                <span class="tag">Animated Series</span>
+                <span class="tag">In Production</span>
+              </div>
+              <h3>Juniper</h3>
+              <p>An animated limited series about grief, identity, chosen family, and a cross-country road trip.</p>
+            </div>
+
+            <div class="project-status">
+              <span><strong>Format:</strong> 6 episodes, 20–35 mins each</span>
+              <span><strong>Status:</strong> Mid-production</span>
+              <span><strong>Trailer:</strong> Coming soon</span>
+            </div>
+
+            <div class="project-arrow" aria-hidden="true">→</div>
+          </a>
+
+          <!--
+          To add another project, duplicate the project-row above.
+
+          Update:
+          - href
+          - data-title
+          - data-search
+          - data-tags
+
+          Useful data-tags:
+          originals, clients, features, shorts, music-videos, marketing, distribution, animation
+
+          Example:
+          data-tags="all clients shorts marketing"
+          -->
+        </div>
+
+        <div class="empty-state" id="emptyState">No projects match that search or filter yet.</div>
+
+        <div class="library-note">
+          Add future projects by duplicating one <code>.project-row</code> and updating its <code>data-tags</code>. Filters work automatically.
         </div>
       </div>
     </section>
 
     <section class="work-footer-cta">
-      <p class="work-kicker">Next Step</p>
-      <h2>Have a project Matter should see?</h2>
+      <p class="work-kicker">Matter Work</p>
+      <h2>More entries will build the archive.</h2>
       <div class="work-cta-line">
-        <p>Send the project, status, and what kind of support you need.</p>
+        <p>This page is designed to scale as Matter adds originals, client work, marketing projects, distribution support, and finished case studies.</p>
         <a class="button" href="../contact/index.html">Contact Matter</a>
       </div>
     </section>
@@ -438,5 +606,52 @@
     <div>Philadelphia, PA</div>
     <div><a href="../contact/index.html">Contact</a></div>
   </footer>
+
+  <script>
+    const searchInput = document.getElementById("workSearch");
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projectRows = Array.from(document.querySelectorAll(".project-row"));
+    const visibleCount = document.getElementById("visibleCount");
+    const emptyState = document.getElementById("emptyState");
+
+    let activeFilter = "all";
+
+    function normalize(value){
+      return String(value || "").toLowerCase().trim();
+    }
+
+    function updateProjects(){
+      const query = normalize(searchInput.value);
+      let count = 0;
+
+      projectRows.forEach((row) => {
+        const tags = normalize(row.dataset.tags);
+        const haystack = normalize(`${row.dataset.title} ${row.dataset.search} ${row.textContent}`);
+        const matchesFilter = activeFilter === "all" || tags.split(/\s+/).includes(activeFilter);
+        const matchesSearch = !query || haystack.includes(query);
+        const visible = matchesFilter && matchesSearch;
+
+        row.hidden = !visible;
+        if (visible) count += 1;
+      });
+
+      visibleCount.textContent = count;
+      emptyState.classList.toggle("active", count === 0);
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter || "all";
+
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        updateProjects();
+      });
+    });
+
+    searchInput.addEventListener("input", updateProjects);
+    updateProjects();
+  </script>
 </body>
 </html>
