@@ -117,6 +117,15 @@
       z-index: 2;
     }
 
+
+    .episode-hero .hero-actions {
+      margin-top: 20px;
+    }
+
+    #watch {
+      padding-top: clamp(34px, 5vw, 74px);
+    }
+
     .hero-actions,
     .episode-actions,
     .social-links,
@@ -554,6 +563,8 @@
           <p>Charlie Cooper talks with Mikey Ragusa about microbudget filmmaking, queer storytelling, online release, organic distribution, and the audience momentum behind <em>Parallel Circuit</em>.</p>
           <div class="hero-actions">
             <a class="button" href="#watch">Watch episode</a>
+            <a class="button" href="#about">About episode</a>
+            <a class="button" href="https://www.youtube.com/watch?v=uKrzWvCcvmI" target="_blank" rel="noreferrer">Open on YouTube</a>
             <a class="button" href="https://www.youtube.com/@MATTER_FILM" target="_blank" rel="noreferrer">Subscribe to Matter</a>
             <a class="button" href="https://www.youtube.com/watch?v=9TPxVgfNVPY" target="_blank" rel="noreferrer">Watch Parallel Circuit</a>
           </div>
@@ -565,18 +576,13 @@
     </section>
 
     <section class="episode-section" id="watch">
-      <div class="section-head">
-        <p class="podcast-kicker">Watch</p>
-        <h2>Episode player.</h2>
-      </div>
-
       <div class="watch-shell">
         <div class="video-frame" id="episodeVideo" data-youtube-id="uKrzWvCcvmI">
           <div class="video-placeholder">
             <div>
-              <p class="podcast-kicker">Episode link coming soon</p>
-              <h3>Drop the YouTube ID into the code.</h3>
-              <p>Replace <strong>uKrzWvCcvmI</strong> with the YouTube video ID once the episode is uploaded.</p>
+              <p class="podcast-kicker">Episode scheduled</p>
+              <h3>Airing Friday at 6 PM EST.</h3>
+              <p>The embedded YouTube player is already connected. If it does not play yet, the episode is still waiting for its scheduled release time.</p>
             </div>
           </div>
         </div>
@@ -587,8 +593,9 @@
             <h2>Like, subscribe, and turn on notifications.</h2>
           </div>
           <p>Support Matter: The Podcast by watching the full episode, liking the video, subscribing to the Matter YouTube channel, turning on notifications, and sharing the conversation with another filmmaker.</p>
-          <div class="note-box">To add the episode: find <strong>uKrzWvCcvmI</strong> in this file and replace it with the YouTube video ID only, not the full link.</div>
+          <div class="note-box">This episode is scheduled to become available Friday at 6:00 PM EST. If the embedded player does not load yet, open it on YouTube or check back after the release time.</div>
           <div class="episode-actions">
+            <a class="button" href="https://www.youtube.com/watch?v=uKrzWvCcvmI" target="_blank" rel="noreferrer">Open on YouTube</a>
             <a class="button" href="https://www.youtube.com/@MATTER_FILM" target="_blank" rel="noreferrer">Subscribe</a>
             <a class="button" href="https://www.youtube.com/@MATTER_FILM?sub_confirmation=1" target="_blank" rel="noreferrer">Subscribe reminder</a>
           </div>
@@ -596,7 +603,7 @@
       </div>
     </section>
 
-    <section class="episode-section">
+    <section class="episode-section" id="about">
       <div class="section-head">
         <p class="podcast-kicker">About the episode</p>
         <h2>Specific stories can travel farther than general ones.</h2>
@@ -675,7 +682,7 @@
     <section class="episode-section">
       <div class="section-head">
         <p class="podcast-kicker">Assets</p>
-        <h2>Images for the episode page.</h2>
+        <h2>Project images.</h2>
       </div>
 
       <div class="assets-grid">
@@ -717,7 +724,7 @@
     const episodeVideo = document.getElementById("episodeVideo");
     const youtubeId = episodeVideo?.dataset.youtubeId?.trim();
 
-    if (youtubeId && youtubeId !== "uKrzWvCcvmI") {
+    if (youtubeId) {
       episodeVideo.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" title="Matter: The Podcast episode with Mikey Ragusa" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
     }
   </script>
