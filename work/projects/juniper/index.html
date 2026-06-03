@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Juniper | Matter Original Project</title>
-  <meta name="description" content="Juniper is a Matter original animated limited series nearly six years in the making. Explore the project outline, world, status, themes, and support needs." />
+  <meta name="description" content="A brief look at Juniper, a Matter original animated limited series about grief, identity, chosen family, and a cross-country road trip." />
 
   <link rel="canonical" href="https://www.matterdistribution.com/work/projects/juniper/" />
   <link rel="icon" href="/assets/images/favicon.ico">
@@ -15,31 +15,36 @@
 
   <meta property="og:site_name" content="Matter Marketing & Distribution" />
   <meta property="og:title" content="Juniper | Matter Original Project" />
-  <meta property="og:description" content="A grounded animated limited series about grief, identity, chosen family, and a cross-country road trip." />
+  <meta property="og:description" content="A grounded animated limited series about grief, identity, chosen family, and the past you cannot outrun." />
   <meta property="og:url" content="https://www.matterdistribution.com/work/projects/juniper/" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://www.matterdistribution.com/assets/images/work/juniper/juniper-poster.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Juniper | Matter Original Project" />
-  <meta name="twitter:description" content="A Matter original animated limited series nearly six years in the making." />
+  <meta name="twitter:description" content="A brief look at a Matter original animated limited series nearly six years in the making." />
 
   <link rel="stylesheet" href="../../../assets/css/style.css" />
   <style>
     :root{
       --jun-black:#050505;
+      --jun-panel:#0a0c0a;
+      --jun-panel-soft:#111610;
       --jun-cream:#eee9df;
       --jun-muted:rgba(238,233,223,.72);
+      --jun-faint:rgba(238,233,223,.48);
       --jun-line:rgba(255,152,0,.28);
+      --jun-line-soft:rgba(238,233,223,.13);
       --jun-orange:#ff9800;
       --jun-green:#11251c;
-      --jun-red:#b63326;
+      --jun-deep:#07110d;
     }
 
     body{
       background:
-        radial-gradient(circle at 50% -18%, rgba(255,152,0,.16), transparent 36%),
-        linear-gradient(180deg, #050505, #070807 58%, #050505);
+        radial-gradient(circle at 78% 4%, rgba(255,152,0,.14), transparent 24%),
+        radial-gradient(circle at 14% 10%, rgba(17,37,28,.92), transparent 30%),
+        linear-gradient(180deg, #050505, #080a08 54%, #050505);
       color:var(--jun-cream);
     }
 
@@ -56,75 +61,76 @@
 
     .juniper-kicker{
       margin:0;
-      color:rgba(255,152,0,.9);
+      color:rgba(255,152,0,.92);
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
     }
 
     .juniper-hero{
-      min-height:calc(100vh - 82px);
+      min-height:auto;
       display:grid;
-      grid-template-columns:1fr .78fr;
+      grid-template-columns:1.02fr .98fr;
+      gap:0;
       border-bottom:1px solid var(--jun-line);
       background:
-        radial-gradient(circle at 70% 20%, rgba(255,152,0,.14), transparent 22%),
-        linear-gradient(120deg, rgba(17,37,28,.84), rgba(5,5,5,.9) 48%, rgba(5,5,5,1));
+        radial-gradient(circle at 58% 14%, rgba(255,152,0,.11), transparent 20%),
+        linear-gradient(120deg, rgba(17,37,28,.88), rgba(5,5,5,.92) 50%, rgba(5,5,5,1));
       overflow:hidden;
     }
 
     .hero-copy{
-      padding:clamp(46px,7vw,112px) clamp(22px,4vw,64px);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:34px;
+      padding:clamp(40px,6vw,82px) clamp(22px,4vw,58px);
+      display:grid;
+      align-content:center;
+      gap:28px;
       position:relative;
     }
 
     .hero-copy::before{
       content:"";
       position:absolute;
-      inset:24px;
-      border:1px solid rgba(255,152,0,.22);
+      inset:22px;
+      border:1px solid rgba(255,152,0,.18);
       pointer-events:none;
     }
 
+    .hero-copy > *{ position:relative; z-index:2; }
+
     .hero-copy h1{
-      max-width:1120px;
-      margin:12px 0 0;
-      font-size:clamp(76px,11vw,190px);
-      line-height:.78;
-      letter-spacing:-.095em;
+      max-width:980px;
+      margin:10px 0 0;
+      font-size:clamp(74px,12vw,188px);
+      line-height:.76;
+      letter-spacing:-.1em;
       text-transform:uppercase;
       color:var(--jun-orange);
-      position:relative;
-      z-index:2;
     }
 
     .hero-copy p:not(.juniper-kicker){
       max-width:760px;
       margin:0;
       color:rgba(238,233,223,.78);
-      font-size:clamp(18px,1.8vw,26px);
+      font-size:clamp(18px,1.8vw,25px);
       line-height:1.16;
       letter-spacing:-.035em;
-      position:relative;
-      z-index:2;
     }
 
     .hero-actions,
     .project-links,
-    .social-links{ display:flex; flex-wrap:wrap; gap:10px; position:relative; z-index:2; }
+    .social-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
 
     .hero-art{
-      min-height:600px;
+      min-height:520px;
       position:relative;
       border-left:1px solid var(--jun-line);
       overflow:hidden;
-      background:
-        radial-gradient(circle at 50% 26%, rgba(255,152,0,.18), transparent 26%),
-        #070707;
+      background:radial-gradient(circle at 50% 26%, rgba(255,152,0,.18), transparent 26%), #070707;
     }
 
     .hero-art img{
@@ -132,8 +138,8 @@
       height:100%;
       object-fit:cover;
       display:block;
-      opacity:.88;
-      filter:saturate(.95) contrast(1.06);
+      opacity:.9;
+      filter:saturate(.96) contrast(1.05);
     }
 
     .hero-art.image-missing::before{
@@ -152,10 +158,10 @@
     }
 
     .hero-art::after{
-      content:"6 EPISODES";
+      content:"Matter Original";
       position:absolute;
-      left:24px;
-      bottom:24px;
+      left:20px;
+      bottom:20px;
       padding:10px 12px;
       border:1px solid rgba(238,233,223,.32);
       background:rgba(5,5,5,.72);
@@ -166,245 +172,264 @@
     }
 
     .juniper-section{
-      padding:clamp(42px,6vw,92px) clamp(22px,4vw,58px);
-      border-bottom:1px solid rgba(255,152,0,.22);
+      padding:clamp(34px,5vw,72px) clamp(22px,4vw,58px);
+      border-bottom:1px solid rgba(255,152,0,.2);
     }
 
     .section-head{
       display:grid;
-      grid-template-columns:220px 1fr;
-      gap:30px;
+      grid-template-columns:190px 1fr;
+      gap:26px;
       align-items:start;
-      margin-bottom:28px;
+      margin-bottom:22px;
     }
 
     .section-head h2{
       margin:0;
-      max-width:1120px;
-      font-size:clamp(40px,5.3vw,104px);
+      max-width:1040px;
+      font-size:clamp(38px,5.4vw,96px);
       line-height:.84;
       letter-spacing:-.085em;
       text-transform:uppercase;
     }
 
-    .watch-shell{
+    .snapshot-shell{
       display:grid;
-      grid-template-columns:1.2fr .8fr;
+      grid-template-columns:1fr 1fr;
       border:1px solid var(--jun-line);
       background:rgba(238,233,223,.035);
     }
 
-    .trailer-frame{
-      position:relative;
-      aspect-ratio:16/9;
-      min-height:420px;
-      border-right:1px solid var(--jun-line);
-      background:
-        radial-gradient(circle at center, rgba(255,152,0,.18), transparent 28%),
-        linear-gradient(145deg, rgba(17,37,28,.72), rgba(5,5,5,.92)),
-        #090909;
-      overflow:hidden;
-    }
-
-    .trailer-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-
-    .trailer-placeholder{
-      position:absolute;
-      inset:24px;
-      border:1px solid rgba(255,152,0,.28);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:24px;
-    }
-
-    .trailer-placeholder div{ max-width:520px; }
-
-    .trailer-placeholder h3{
-      margin:10px 0 14px;
-      font-size:clamp(38px,5vw,88px);
-      line-height:.82;
-      letter-spacing:-.085em;
-      text-transform:uppercase;
-    }
-
-    .trailer-placeholder p{ margin:0; color:rgba(238,233,223,.72); line-height:1.3; }
-
-    .watch-copy{
-      padding:clamp(24px,4vw,46px);
+    .overview-card,
+    .trailer-card{
+      min-height:360px;
+      padding:clamp(22px,4vw,44px);
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       gap:28px;
-      background:radial-gradient(circle at 88% 12%, rgba(255,152,0,.16), transparent 24%), #090909;
+      background:
+        radial-gradient(circle at 85% 12%, rgba(255,152,0,.13), transparent 24%),
+        #080908;
     }
 
-    .watch-copy h2{
-      margin:10px 0 0;
-      font-size:clamp(38px,4.6vw,86px);
-      line-height:.82;
-      letter-spacing:-.085em;
-      text-transform:uppercase;
-    }
-
-    .watch-copy p{ margin:0; color:rgba(238,233,223,.72); line-height:1.32; font-size:16px; }
-
-    .detail-grid{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      border:1px solid var(--jun-line);
-      background:rgba(238,233,223,.035);
-    }
-
-    .info-card,.description-card{
-      padding:clamp(24px,4vw,52px);
-      min-height:520px;
-    }
-
-    .info-card{
+    .overview-card{
       border-right:1px solid var(--jun-line);
-      background:linear-gradient(145deg, rgba(255,152,0,.12), transparent), #070707;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:24px;
     }
 
-    .info-card h2,.description-card h2{
-      margin:0;
-      font-size:clamp(42px,5vw,96px);
+    .overview-card h2,
+    .trailer-card h2{
+      margin:8px 0 0;
+      font-size:clamp(42px,5vw,92px);
       line-height:.82;
       letter-spacing:-.085em;
       text-transform:uppercase;
     }
 
-    .info-card p,.description-card p,.description-card li{ color:rgba(238,233,223,.72); line-height:1.35; font-size:16px; }
+    .overview-card p,
+    .trailer-card p{
+      margin:0;
+      max-width:720px;
+      color:var(--jun-muted);
+      line-height:1.34;
+      font-size:16px;
+    }
 
-    .description-card{ display:grid; gap:26px; }
-    .description-card p,.description-card ul{ margin:0; }
-    .description-card ul{ padding:0; list-style:none; display:grid; gap:10px; }
-    .description-card li::before{ content:"• "; color:var(--jun-orange); }
-
-    .stat-grid{
+    .quick-facts{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       border-top:1px solid var(--jun-line);
       border-left:1px solid var(--jun-line);
     }
 
-    .stat-card{
-      min-height:230px;
+    .fact-card{
+      min-height:128px;
+      padding:18px;
+      border-right:1px solid var(--jun-line);
+      border-bottom:1px solid var(--jun-line);
+      background:linear-gradient(180deg, rgba(238,233,223,.052), transparent 60%), #090909;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .fact-card span{
+      color:rgba(255,152,0,.86);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .fact-card strong{
+      font-size:clamp(24px,2.8vw,46px);
+      line-height:.9;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+    }
+
+    .story-board{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      border:1px solid var(--jun-line);
+      background:rgba(238,233,223,.035);
+    }
+
+    .story-main{
+      min-height:430px;
+      padding:clamp(24px,4vw,48px);
+      border-right:1px solid var(--jun-line);
+      background:
+        linear-gradient(145deg, rgba(17,37,28,.72), rgba(5,5,5,.76)),
+        #090909;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .story-main h2{
+      margin:0;
+      font-size:clamp(44px,6vw,112px);
+      line-height:.8;
+      letter-spacing:-.09em;
+      text-transform:uppercase;
+    }
+
+    .story-main p{
+      margin:0;
+      color:rgba(238,233,223,.76);
+      line-height:1.34;
+      font-size:17px;
+      max-width:820px;
+    }
+
+    .story-cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+
+    .small-card{
+      min-height:215px;
       padding:22px;
       border-right:1px solid var(--jun-line);
       border-bottom:1px solid var(--jun-line);
-      background:linear-gradient(180deg, rgba(238,233,223,.055), transparent 62%), #090909;
+      background:linear-gradient(180deg, rgba(238,233,223,.05), transparent 62%), #080808;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .small-card:nth-child(2n){ border-right:0; }
+    .small-card:nth-last-child(-n+2){ border-bottom:0; }
+
+    .small-card h3{
+      margin:0;
+      font-size:clamp(28px,3.4vw,58px);
+      line-height:.84;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+    }
+
+    .small-card p{
+      margin:0;
+      color:var(--jun-muted);
+      line-height:1.32;
+      font-size:15px;
+    }
+
+    .character-rail{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--jun-line);
+      border-left:1px solid var(--jun-line);
+    }
+
+    .character-card{
+      min-height:220px;
+      padding:22px;
+      border-right:1px solid var(--jun-line);
+      border-bottom:1px solid var(--jun-line);
+      background:linear-gradient(180deg, rgba(238,233,223,.052), transparent 64%), #090909;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
       gap:22px;
     }
 
-    .stat-card h3{
+    .character-card h3{
       margin:0;
-      font-size:clamp(30px,3.4vw,64px);
-      line-height:.84;
-      letter-spacing:-.075em;
+      font-size:clamp(30px,3.6vw,64px);
+      line-height:.82;
+      letter-spacing:-.08em;
       text-transform:uppercase;
+      color:var(--jun-orange);
     }
 
-    .stat-card p{ margin:0; color:rgba(238,233,223,.72); line-height:1.32; font-size:15px; }
+    .character-card p{
+      margin:0;
+      color:var(--jun-muted);
+      line-height:1.32;
+      font-size:15px;
+    }
 
-    .episode-grid{
+    .gallery-intro{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      border-top:1px solid var(--jun-line);
-      border-left:1px solid var(--jun-line);
-    }
-
-    .episode-card{
-      min-height:270px;
-      padding:22px;
-      border-right:1px solid var(--jun-line);
-      border-bottom:1px solid var(--jun-line);
-      background:linear-gradient(180deg, rgba(238,233,223,.055), transparent 62%), #090909;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      grid-template-columns:1fr auto;
       gap:20px;
+      align-items:end;
+      margin-bottom:22px;
     }
 
-    .episode-card h3{
+    .gallery-intro .section-head{
       margin:0;
-      font-size:clamp(28px,3vw,58px);
-      line-height:.86;
-      letter-spacing:-.075em;
-      text-transform:uppercase;
     }
 
-    .episode-card p{ margin:0; color:rgba(238,233,223,.72); line-height:1.32; font-size:15px; }
-
-    .visual-board{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    .visual-card{
-      min-height:460px;
-      border:1px solid var(--jun-line);
-      position:relative;
-      overflow:hidden;
-      background:radial-gradient(circle at 50% 24%, rgba(255,152,0,.18), transparent 24%), #080808;
-    }
-
-    .visual-card img{ width:100%; height:100%; min-height:460px; object-fit:cover; display:block; opacity:.88; }
-
-    .visual-card.image-missing::before{
-      content:attr(data-fallback);
-      position:absolute;
-      inset:20px;
-      border:1px dashed rgba(255,152,0,.44);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      color:rgba(238,233,223,.62);
-      font-size:11px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      padding:20px;
-    }
-
-    .visual-label{
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:16px;
-      z-index:3;
-      padding:12px;
-      border:1px solid rgba(238,233,223,.22);
-      background:rgba(5,5,5,.72);
-      color:rgba(238,233,223,.82);
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
+    .gallery-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
+      grid-template-columns:repeat(6,1fr);
+      gap:10px;
+      grid-auto-flow:dense;
     }
 
     .gallery-card{
-      min-height:260px;
+      min-height:210px;
       border:1px solid var(--jun-line);
       background:#090909;
       overflow:hidden;
       position:relative;
     }
 
-    .gallery-card img{ width:100%; height:100%; min-height:260px; object-fit:cover; display:block; opacity:.9; transition:transform .55s ease, opacity .55s ease; }
+    .gallery-card:nth-child(1),
+    .gallery-card:nth-child(8),
+    .gallery-card:nth-child(15),
+    .gallery-card:nth-child(26){
+      grid-column:span 2;
+      grid-row:span 2;
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:100%;
+      min-height:210px;
+      object-fit:cover;
+      display:block;
+      opacity:.9;
+      transition:transform .55s ease, opacity .55s ease;
+    }
+
     .gallery-card:hover img{ transform:scale(1.045); opacity:1; }
+
+    .gallery-card.is-extra{ display:none; }
+    .gallery-grid.expanded .gallery-card.is-extra{ display:block; }
 
     .gallery-empty{
       border:1px dashed rgba(255,152,0,.44);
@@ -415,23 +440,26 @@
       background:rgba(238,233,223,.035);
     }
 
-    .cta-band{
+    .follow-band{
       display:grid;
       grid-template-columns:1.1fr .9fr;
       border:1px solid var(--jun-line);
-      background:radial-gradient(circle at 22% 26%, rgba(255,152,0,.16), transparent 24%), rgba(238,233,223,.035);
+      background:
+        radial-gradient(circle at 22% 26%, rgba(255,152,0,.14), transparent 24%),
+        rgba(238,233,223,.035);
     }
 
-    .cta-copy{
-      min-height:360px;
-      padding:clamp(24px,4vw,52px);
+    .follow-copy{
+      min-height:300px;
+      padding:clamp(24px,4vw,48px);
       border-right:1px solid var(--jun-line);
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      gap:24px;
     }
 
-    .cta-copy h2{
+    .follow-copy h2{
       margin:0;
       max-width:820px;
       font-size:clamp(42px,5vw,96px);
@@ -440,22 +468,94 @@
       text-transform:uppercase;
     }
 
-    .cta-copy p{ max-width:620px; margin:0; color:rgba(238,233,223,.72); line-height:1.32; }
+    .follow-copy p{
+      max-width:660px;
+      margin:0;
+      color:rgba(238,233,223,.72);
+      line-height:1.32;
+    }
 
-    .cta-links{ align-self:end; padding:24px; display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-start; align-content:end; }
+    .follow-links{
+      align-self:end;
+      padding:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-start;
+      align-content:end;
+    }
 
     footer{ border-top-color:rgba(255,152,0,.24); }
 
-    @media(max-width:1050px){
-      .juniper-hero,.watch-shell,.detail-grid,.cta-band,.section-head{ grid-template-columns:1fr; }
-      .hero-art,.trailer-frame,.info-card,.cta-copy{ border-right:0; border-left:0; border-bottom:1px solid var(--jun-line); }
-      .stat-grid,.episode-grid,.gallery-grid{ grid-template-columns:1fr 1fr; }
+    @media(max-width:1100px){
+      .juniper-hero,
+      .snapshot-shell,
+      .story-board,
+      .follow-band,
+      .section-head,
+      .gallery-intro{
+        grid-template-columns:1fr;
+      }
+
+      .hero-art,
+      .overview-card,
+      .story-main,
+      .follow-copy{
+        border-left:0;
+        border-right:0;
+        border-bottom:1px solid var(--jun-line);
+      }
+
+      .quick-facts,
+      .character-rail{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .gallery-actions{
+        justify-content:flex-start;
+      }
     }
 
     @media(max-width:720px){
-      .hero-copy,.juniper-section{ padding-left:18px; padding-right:18px; }
-      .hero-copy h1{ font-size:clamp(64px,17vw,112px); }
-      .visual-board,.stat-grid,.episode-grid,.gallery-grid{ grid-template-columns:1fr; }
+      .hero-copy,
+      .juniper-section{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .hero-copy h1{
+        font-size:clamp(64px,17vw,112px);
+      }
+
+      .hero-art{
+        min-height:360px;
+      }
+
+      .quick-facts,
+      .story-cards,
+      .character-rail,
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .small-card,
+      .small-card:nth-child(2n),
+      .small-card:nth-last-child(-n+2){
+        border-right:1px solid var(--jun-line);
+        border-bottom:1px solid var(--jun-line);
+      }
+
+      .gallery-card:nth-child(1),
+      .gallery-card:nth-child(8),
+      .gallery-card:nth-child(15),
+      .gallery-card:nth-child(26){
+        grid-column:span 1;
+        grid-row:span 1;
+      }
     }
   </style>
 </head>
@@ -487,191 +587,145 @@
           <p class="juniper-kicker">Matter Original / Animated Limited Series</p>
           <h1>Juniper</h1>
         </div>
-        <div>
-          <p>A series nearly six years in the making. Six episodes, 20-35 minutes each, built around grief, identity, chosen family, and the past you cannot outrun.</p>
-          <div class="hero-actions">
-            <a class="button" href="#trailer">Trailer coming soon</a>
-            <a class="button" href="#about">About project</a>
-            <a class="button" href="#gallery">Project images</a>
-            <a class="button" href="#support">What we’re seeking</a>
-          </div>
+        <p>A nearly six-year animated road story about grief, identity, chosen family, and the past that keeps pace no matter how far you drive.</p>
+        <div class="hero-actions">
+          <a class="button" href="#overview">Brief Look</a>
+          <a class="button" href="#gallery">Project Images</a>
+          <a class="button" href="#trailer">Trailer Coming Soon</a>
+          <a class="button" href="../../index.html">Back to Work</a>
         </div>
       </div>
+
       <div class="hero-art">
         <img src="../../../assets/images/work/juniper/juniper-poster.jpg" alt="Juniper poster artwork" onerror="this.parentElement.classList.add('image-missing'); this.remove();" />
       </div>
     </section>
 
-    <section class="juniper-section" id="trailer">
+    <section class="juniper-section" id="overview">
       <div class="section-head">
-        <p class="juniper-kicker">Trailer</p>
-        <h2>Coming soon.</h2>
+        <p class="juniper-kicker">Project Snapshot</p>
+        <h2>A brief look into the world of Juniper.</h2>
       </div>
-      <div class="watch-shell">
-        <div class="trailer-frame" id="juniperTrailer" data-youtube-id="">
-          <div class="trailer-placeholder">
-            <div>
-              <p class="juniper-kicker">Trailer placeholder</p>
-              <h3>Trailer link goes here.</h3>
-              <p>When the trailer is ready, paste the YouTube video ID into <strong>data-youtube-id</strong> on this section.</p>
-            </div>
-          </div>
-        </div>
-        <aside class="watch-copy">
-          <div>
-            <p class="juniper-kicker">Current status</p>
-            <h2>Mid-production.</h2>
-          </div>
-          <p>Three episodes are developed, three additional episodes are written, and the project is seeking the right support to finish, package, position, and release the series.</p>
-          <div class="project-links">
-            <a class="button" href="#support">Support needs</a>
-            <a class="button" href="../../../contact/index.html">Contact Matter</a>
-          </div>
-        </aside>
-      </div>
-    </section>
 
-    <section class="juniper-section" id="about">
-      <div class="section-head">
-        <p class="juniper-kicker">About the project</p>
-        <h2>A cross-country road story about the family you choose.</h2>
-      </div>
-      <div class="detail-grid">
-        <article class="info-card">
+      <div class="snapshot-shell">
+        <article class="overview-card">
           <div>
             <p class="juniper-kicker">Logline</p>
-            <h2>Buried trauma. Fragile connection. A dangerous past.</h2>
+            <h2>You can’t outrun your past.</h2>
           </div>
           <p>After the death of his mother, an isolated young man joins a cross-country road trip with a former drug dealer, where buried trauma, fragile connections, and a dangerous past begin to close in.</p>
-          <div class="project-links">
-            <a class="button" href="#world">World</a>
-            <a class="button" href="#episodes">Episodes</a>
-          </div>
         </article>
-        <article class="description-card">
+
+        <article class="trailer-card" id="trailer">
           <div>
-            <p class="juniper-kicker">Synopsis</p>
-            <h2>Juniper and Cherry run toward something neither can name.</h2>
+            <p class="juniper-kicker">Trailer</p>
+            <h2>Coming soon.</h2>
           </div>
-          <p>After the death of his mother, an emotionally withdrawn young man finds himself pulled into a cross-country road trip with Cherry, a former drug dealer trying to outrun her past. As they move further from home, buried trauma and unspoken truths begin to surface, testing the limits of their connection.</p>
-          <p>But when a violent figure resurfaces, their journey toward healing becomes a fight to hold onto the only sense of family they’ve found.</p>
-          <ul>
-            <li>Format: animated limited series.</li>
-            <li>Scope: 6 episodes, 20-35 minutes each.</li>
-            <li>Genre: romance / drama with road trip and coming-of-age elements.</li>
-            <li>Tone: grounded, intimate, existential, human.</li>
-          </ul>
+          <p>This page is a public preview for followers and supporters of Matter. A trailer slot will appear here when the project is ready to show more.</p>
+          <div class="project-links">
+            <a class="button" href="#gallery">View Images</a>
+            <a class="button" href="../../../contact/index.html">Follow Updates</a>
+          </div>
         </article>
+      </div>
+
+      <div class="quick-facts" aria-label="Juniper quick facts">
+        <div class="fact-card"><span>Format</span><strong>Animated Series</strong></div>
+        <div class="fact-card"><span>Episodes</span><strong>6 Total</strong></div>
+        <div class="fact-card"><span>Runtime</span><strong>20–35 Min</strong></div>
+        <div class="fact-card"><span>Status</span><strong>Mid-Production</strong></div>
       </div>
     </section>
 
-    <section class="juniper-section" id="world">
-      <div class="section-head">
-        <p class="juniper-kicker">World / Tone</p>
-        <h2>Grounded animation with a live-action pulse.</h2>
-      </div>
-      <div class="stat-grid">
-        <article class="stat-card">
-          <p class="juniper-kicker">World</p>
-          <h3>Present-day America.</h3>
-          <p>Juniper unfolds across a grounded cross-country journey from New York to California.</p>
+    <section class="juniper-section">
+      <div class="story-board">
+        <article class="story-main">
+          <p class="juniper-kicker">Synopsis</p>
+          <h2>Juniper and Cherry move through grief, danger, and the possibility of family.</h2>
+          <p>After the death of his mother, Juniper is pulled into a cross-country road trip with Cherry, a former drug dealer trying to outrun her past. As the road stretches farther from home, buried trauma and unspoken truths surface, testing the limits of their connection.</p>
         </article>
-        <article class="stat-card">
-          <p class="juniper-kicker">Visual Style</p>
-          <h3>Real world, hand drawn.</h3>
-          <p>The style combines real-world photography with simplified hand-drawn characters.</p>
-        </article>
-        <article class="stat-card">
-          <p class="juniper-kicker">Comparables</p>
-          <h3>Indie, human, strange.</h3>
-          <p><em>Seeking a Friend for the End of the World</em>, <em>Into the Wild</em>, and <em>It’s Such a Beautiful Day</em>.</p>
-        </article>
-        <article class="stat-card">
-          <p class="juniper-kicker">Themes</p>
-          <h3>Grief and chosen family.</h3>
-          <p>The series centers loss, identity, connection, generational trauma, and the family people choose.</p>
-        </article>
+
+        <div class="story-cards">
+          <article class="small-card">
+            <p class="juniper-kicker">Tone</p>
+            <h3>Grounded. Human. Strange.</h3>
+            <p>Indie film realism shaped through a quiet, existential animated lens.</p>
+          </article>
+          <article class="small-card">
+            <p class="juniper-kicker">World</p>
+            <h3>New York to California.</h3>
+            <p>A present-day American road trip where each stop reveals more of the characters.</p>
+          </article>
+          <article class="small-card">
+            <p class="juniper-kicker">Visual Style</p>
+            <h3>Real world, hand drawn.</h3>
+            <p>Photography and simplified characters create a cinematic world filtered through vulnerability.</p>
+          </article>
+          <article class="small-card">
+            <p class="juniper-kicker">Themes</p>
+            <h3>Grief and chosen family.</h3>
+            <p>The story centers connection, identity, generational trauma, and healing.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="juniper-section">
       <div class="section-head">
         <p class="juniper-kicker">Characters</p>
-        <h2>The people at the center of the road.</h2>
+        <h2>The road is carried by four damaged people.</h2>
       </div>
-      <div class="stat-grid">
-        <article class="stat-card"><p class="juniper-kicker">Juniper</p><h3>Withdrawn.</h3><p>An emotionally withdrawn young man navigating grief and connection.</p></article>
-        <article class="stat-card"><p class="juniper-kicker">Cherry</p><h3>Guarded.</h3><p>A former drug dealer trying to outrun her past.</p></article>
-        <article class="stat-card"><p class="juniper-kicker">Lyla</p><h3>Protective.</h3><p>Cherry’s fiercely protective childhood best friend, still tied to her past.</p></article>
-        <article class="stat-card"><p class="juniper-kicker">Damian</p><h3>Obsessed.</h3><p>Cherry’s mentally tormented ex-boyfriend who refuses to let go.</p></article>
-      </div>
-    </section>
 
-    <section class="juniper-section" id="episodes">
-      <div class="section-head">
-        <p class="juniper-kicker">Episode Structure</p>
-        <h2>Six chapters across one emotional road.</h2>
-      </div>
-      <div class="episode-grid">
-        <article class="episode-card"><p class="juniper-kicker">Episode I</p><h3>The Door</h3><p>Juniper drifts through grief until crossing paths with Cherry, whose presence sparks an unexpected connection.</p></article>
-        <article class="episode-card"><p class="juniper-kicker">Episode II</p><h3>The Beginning</h3><p>Cherry’s past is revealed through her ties to Lyla and Damian as she and Juniper begin their journey on the road.</p></article>
-        <article class="episode-card"><p class="juniper-kicker">Episode III</p><h3>The End</h3><p>A remote festival pulls Juniper into Cherry’s dangerous past and draws Damian’s attention.</p></article>
-        <article class="episode-card"><p class="juniper-kicker">Episode IV</p><h3>TBA</h3><p>Trust fractures after the chaos, but a quiet bed and breakfast forces Juniper and Cherry to confront their choices.</p></article>
-        <article class="episode-card"><p class="juniper-kicker">Episode V</p><h3>TBA</h3><p>Juniper and Cherry reflect on their pasts while Lyla tries to reason with Damian as his instability spirals.</p></article>
-        <article class="episode-card"><p class="juniper-kicker">Episode VI</p><h3>TBA</h3><p>On the road to confront Juniper’s estranged father, Juniper and Cherry take in Micah as Damian closes in.</p></article>
-      </div>
-    </section>
-
-    <section class="juniper-section" id="support">
-      <div class="section-head">
-        <p class="juniper-kicker">What we’re seeking</p>
-        <h2>Development, financing, and production support.</h2>
-      </div>
-      <div class="detail-grid">
-        <article class="info-card">
-          <div>
-            <p class="juniper-kicker">Project Status</p>
-            <h2>Three developed. Three written.</h2>
-          </div>
-          <p>The project is currently mid-production with three episodes developed and three additional episodes written. Support would help move the series from long-term independent production into a focused completion and release window.</p>
-          <div class="project-links"><a class="button" href="../../../contact/index.html">Contact Matter</a></div>
+      <div class="character-rail">
+        <article class="character-card">
+          <p class="juniper-kicker">Juniper</p>
+          <h3>Withdrawn</h3>
+          <p>A young man navigating grief and connection.</p>
         </article>
-        <article class="description-card">
-          <div>
-            <p class="juniper-kicker">The Ask</p>
-            <h2>Finish it, package it, release it.</h2>
-          </div>
-          <ul>
-            <li>Final polish and completion of the existing episodes.</li>
-            <li>Accelerated production of the remaining episodes.</li>
-            <li>A focused production window to bring the series to completion.</li>
-            <li>Strategic packaging, positioning, and release support.</li>
-            <li>Production, post, and a coordinated marketing rollout designed to build and sustain audience engagement.</li>
-          </ul>
+        <article class="character-card">
+          <p class="juniper-kicker">Cherry</p>
+          <h3>Guarded</h3>
+          <p>A former drug dealer trying to outrun her past.</p>
+        </article>
+        <article class="character-card">
+          <p class="juniper-kicker">Lyla</p>
+          <h3>Protective</h3>
+          <p>Cherry’s childhood best friend, still tied to her past.</p>
+        </article>
+        <article class="character-card">
+          <p class="juniper-kicker">Damian</p>
+          <h3>Dangerous</h3>
+          <p>Cherry’s ex, whose obsession refuses to let go.</p>
         </article>
       </div>
     </section>
 
     <section class="juniper-section" id="gallery">
-      <div class="section-head">
-        <p class="juniper-kicker">Project Images</p>
-        <h2>Production gallery.</h2>
+      <div class="gallery-intro">
+        <div class="section-head">
+          <p class="juniper-kicker">Project Images</p>
+          <h2>A visual look at Juniper.</h2>
+        </div>
+        <div class="gallery-actions">
+          <button class="button" type="button" id="toggleGallery">Show More Images</button>
+        </div>
       </div>
+
       <div class="gallery-grid" id="juniperGallery"></div>
-      <div class="gallery-empty" id="galleryEmpty">Project images are being added. Drop files named <strong>juniper-1.jpg</strong> through <strong>juniper-47.jpg</strong> into <strong>/assets/images/work/juniper/</strong>. No leading zeroes needed.</div>
+      <div class="gallery-empty" id="galleryEmpty">Drop files named <strong>juniper-1.jpg</strong> through <strong>juniper-47.jpg</strong> into <strong>/assets/images/work/juniper/</strong>. No leading zeroes needed.</div>
     </section>
 
     <section class="juniper-section">
-      <div class="cta-band">
-        <div class="cta-copy">
-          <p class="juniper-kicker">Why now</p>
-          <h2>Grounded animation is ready for more human stories.</h2>
-          <p>Audiences are leaning into grounded, emotionally-driven storytelling. <em>Juniper</em> blends indie film realism with animation to tell a deeply human story about grief, identity, and chosen family.</p>
+      <div class="follow-band">
+        <div class="follow-copy">
+          <p class="juniper-kicker">Follow the project</p>
+          <h2>More from Juniper will come as the series develops.</h2>
+          <p>This page is meant as a public-facing window into a Matter original, not a full pitch deck. It gives supporters a quick look at the tone, story, and visual world while the project continues moving forward.</p>
         </div>
-        <div class="cta-links">
-          <a class="button" href="../../../contact/index.html">Contact Matter</a>
+        <div class="follow-links">
           <a class="button" href="../../index.html">Back to Work</a>
-          <a class="button" href="#trailer">Trailer coming soon</a>
+          <a class="button" href="../../../contact/index.html">Contact Matter</a>
+          <a class="button" href="../../../podcast/index.html">Matter Podcast</a>
         </div>
       </div>
     </section>
@@ -684,15 +738,9 @@
   </footer>
 
   <script>
-    const trailerFrame = document.getElementById('juniperTrailer');
-    const trailerId = trailerFrame?.dataset.youtubeId?.trim();
-
-    if (trailerId) {
-      trailerFrame.innerHTML = `<iframe src="https://www.youtube.com/embed/${trailerId}" title="Juniper trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-    }
-
     const gallery = document.getElementById('juniperGallery');
     const empty = document.getElementById('galleryEmpty');
+    const toggleGallery = document.getElementById('toggleGallery');
     const galleryBase = '../../../assets/images/work/juniper/';
     const totalGalleryImages = 47;
     let loadedImages = 0;
@@ -705,6 +753,7 @@
       const number = String(i);
       const card = document.createElement('figure');
       card.className = 'gallery-card';
+      if (i > 12) card.classList.add('is-extra');
 
       const img = document.createElement('img');
       const possibleSources = [
@@ -736,6 +785,11 @@
       card.appendChild(img);
       gallery.appendChild(card);
     }
+
+    toggleGallery.addEventListener('click', () => {
+      gallery.classList.toggle('expanded');
+      toggleGallery.textContent = gallery.classList.contains('expanded') ? 'Show Fewer Images' : 'Show More Images';
+    });
   </script>
 </body>
 </html>
