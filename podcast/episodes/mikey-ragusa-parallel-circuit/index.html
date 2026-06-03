@@ -571,12 +571,12 @@
       </div>
 
       <div class="watch-shell">
-        <div class="video-frame" id="episodeVideo" data-youtube-id="PASTE_EPISODE_YOUTUBE_ID_HERE">
+        <div class="video-frame" id="episodeVideo" data-youtube-id="uKrzWvCcvmI">
           <div class="video-placeholder">
             <div>
               <p class="podcast-kicker">Episode link coming soon</p>
               <h3>Drop the YouTube ID into the code.</h3>
-              <p>Replace <strong>PASTE_EPISODE_YOUTUBE_ID_HERE</strong> with the YouTube video ID once the episode is uploaded.</p>
+              <p>Replace <strong>uKrzWvCcvmI</strong> with the YouTube video ID once the episode is uploaded.</p>
             </div>
           </div>
         </div>
@@ -587,7 +587,7 @@
             <h2>Like, subscribe, and turn on notifications.</h2>
           </div>
           <p>Support Matter: The Podcast by watching the full episode, liking the video, subscribing to the Matter YouTube channel, turning on notifications, and sharing the conversation with another filmmaker.</p>
-          <div class="note-box">To add the episode: find <strong>PASTE_EPISODE_YOUTUBE_ID_HERE</strong> in this file and replace it with the YouTube video ID only, not the full link.</div>
+          <div class="note-box">To add the episode: find <strong>uKrzWvCcvmI</strong> in this file and replace it with the YouTube video ID only, not the full link.</div>
           <div class="episode-actions">
             <a class="button" href="https://www.youtube.com/@MATTER_FILM" target="_blank" rel="noreferrer">Subscribe</a>
             <a class="button" href="https://www.youtube.com/@MATTER_FILM?sub_confirmation=1" target="_blank" rel="noreferrer">Subscribe reminder</a>
@@ -717,7 +717,7 @@
     const episodeVideo = document.getElementById("episodeVideo");
     const youtubeId = episodeVideo?.dataset.youtubeId?.trim();
 
-    if (youtubeId && youtubeId !== "PASTE_EPISODE_YOUTUBE_ID_HERE") {
+    if (youtubeId && youtubeId !== "uKrzWvCcvmI") {
       episodeVideo.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" title="Matter: The Podcast episode with Mikey Ragusa" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
     }
   </script>
