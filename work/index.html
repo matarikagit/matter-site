@@ -224,8 +224,8 @@
 
     .project-row{
       display:grid;
-      grid-template-columns:130px minmax(0, 1.2fr) minmax(260px, .8fr) auto;
-      gap:18px;
+      grid-template-columns:172px minmax(0, 1.2fr) minmax(260px, .8fr) auto;
+      gap:20px;
       align-items:center;
       min-height:146px;
       padding:18px;
@@ -245,8 +245,9 @@
     }
 
     .project-thumb{
-      width:130px;
-      height:92px;
+      width:172px;
+      aspect-ratio:16 / 9;
+      height:auto;
       border:1px solid var(--work-line);
       background:
         radial-gradient(circle at 50% 24%, rgba(255,152,0,.18), transparent 24%),
@@ -264,7 +265,7 @@
     .project-thumb img{
       width:100%;
       height:100%;
-      object-fit:contain;
+      object-fit:cover;
       background:#080808;
       display:block;
     }
@@ -545,7 +546,7 @@
              data-search="juniper matter original animated series animation limited series grief identity chosen family road trip mid-production six episodes"
              data-tags="all originals series animation">
             <div class="project-thumb">
-              <img src="../assets/images/work/juniper/juniper-poster.jpg" alt="Juniper project poster" onerror="this.parentElement.textContent='Juniper'; this.remove();" />
+              <img src="../assets/images/work/juniper/juniper-3.jpg" alt="Juniper project still" onerror="this.onerror=null; this.src='../assets/images/work/juniper/juniper-1.jpg';" />
             </div>
 
             <div class="project-main">
