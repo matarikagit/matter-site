@@ -24,6 +24,62 @@
   <meta name="twitter:description" content="Matter helps independent film and TV creators position, market, and prepare projects for release using the 4 P’s." />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <style>
+  .home-paths {
+    padding: clamp(44px, 6vw, 84px) clamp(22px, 5vw, 72px);
+    text-align: center;
+    border-top: 1px solid rgba(7,7,7,.18);
+    border-bottom: 1px solid rgba(7,7,7,.18);
+  }
+
+  .path-list {
+    max-width: 980px;
+    margin: clamp(26px, 4vw, 46px) auto 0;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid rgba(7,7,7,.18);
+  }
+
+  .path-list a {
+    display: grid;
+    grid-template-columns: .6fr 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(7,7,7,.18);
+    text-align: left;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .path-list a:hover {
+    opacity: .62;
+    transform: translateX(6px);
+  }
+
+  .path-list span {
+    font-size: clamp(28px, 4vw, 54px);
+    line-height: .9;
+    letter-spacing: -.06em;
+    text-transform: uppercase;
+  }
+
+  .path-list small {
+    color: #6f6a61;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 720px) {
+    .path-list a {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>
+
+
 </head>
 <body>
   <div class="grain"></div>
@@ -47,24 +103,75 @@
     </div>
   </header>
 
-   <main id="top">
-    <section class="hero hero-solo">
-      <div class="hero-title">
-        <div>
-          <p class="eyebrow">Matter Marketing & Distribution</p>
-          <h1>The release starts with the story.</h1>
-        </div>
+ <main id="top">
+  <section class="hero hero-solo">
+    <div class="hero-title" style="text-align:center; margin:0 auto; align-items:center;">
+      <div>
+        <p class="eyebrow">Matter Marketing & Distribution</p>
+        <h1>The release starts with the story.</h1>
+      </div>
 
-        <div class="hero-copy">
-          <p>Matter helps indie film and TV creators understand project health before marketing and distribution begins using the 4 P’s.</p>
-          <div class="hero-buttons">
-            <a class="button" href="./about/index.html">What are the 4 P’s?</a>
-            <a class="button" href="./services/index.html">Services</a>
-          </div>
+      <div class="hero-copy" style="margin:0 auto; text-align:center;">
+        <p>Matter helps indie film and TV creators understand project health before marketing and distribution begins using the 4 P’s.</p>
+        <div class="hero-buttons" style="justify-content:center;">
+          <a class="button" href="./services/index.html">Start with Services</a>
+          <a class="button" href="./community/index.html">Join Updates</a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="home-paths">
+    <p class="eyebrow">Choose your starting point</p>
+
+    <div class="path-list">
+      <a href="./services/index.html">
+        <span>Services</span>
+        <small>Marketing, distribution, strategy, and campaign support.</small>
+      </a>
+
+      <a href="./pre-matter/index.html">
+        <span>Pre-Matter</span>
+        <small>Pre-production support, script help, and early positioning.</small>
+      </a>
+
+      <a href="./post-matter/index.html">
+        <span>Post-Matter</span>
+        <small>Post-production support, editing, polish, and finishing.</small>
+      </a>
+
+      <a href="./podcast/index.html">
+        <span>Podcast</span>
+        <small>Watch episodes or apply to be part of the conversation.</small>
+      </a>
+
+      <a href="./education/index.html">
+        <span>Education</span>
+        <small>Learn more about marketing, distribution, funding, and release strategy.</small>
+      </a>
+
+      <a href="./work/index.html">
+        <span>Work</span>
+        <small>See original projects, client work, and what Matter is building.</small>
+      </a>
+
+      <a href="./about/index.html">
+        <span>About</span>
+        <small>Learn the philosophy, the 4 P’s, and the way Matter thinks.</small>
+      </a>
+
+      <a href="./pricing/index.html">
+        <span>Pricing</span>
+        <small>Cut straight to the chase, build your plan, and get a quote.</small>
+      </a>
+
+      <a href="./community/index.html">
+        <span>Community</span>
+        <small>Sign up for Matter updates so you never miss the next move.</small>
+      </a>
+    </div>
+  </section>
+</main>
 
   <footer>
     <div>Matter Marketing & Distribution</div>
