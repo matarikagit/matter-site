@@ -1,0 +1,309 @@
+<!-- community/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Community | Matter Marketing & Distribution</title>
+  <meta name="description" content="Join the Matter Community for indie film marketing, distribution, funding, podcast, workshop, and project growth updates." />
+
+  <link rel="canonical" href="https://www.matterdistribution.com/community/" />
+  <link rel="icon" href="/assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    .community-page {
+      background: #eee9df;
+      color: #070707;
+      padding: clamp(28px, 5vw, 72px);
+      border-bottom: 1px solid rgba(7,7,7,.18);
+    }
+
+    .community-hero {
+      display: grid;
+      gap: 28px;
+      padding: clamp(48px, 8vw, 110px) 0;
+      border-bottom: 1px solid rgba(7,7,7,.18);
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: #6f6a61;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .community-hero h1 {
+      margin: 0;
+      max-width: 1200px;
+      font-size: clamp(62px, 11vw, 190px);
+      line-height: .78;
+      letter-spacing: -.09em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      font-size: clamp(18px, 2vw, 30px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      color: #24211d;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: clamp(32px, 5vw, 80px);
+      padding: clamp(42px, 6vw, 84px) 0;
+    }
+
+    .community-section {
+      display: grid;
+      gap: 22px;
+      align-content: start;
+    }
+
+    .community-section h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 82px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .offer-list {
+      display: grid;
+      border-top: 1px solid rgba(7,7,7,.18);
+    }
+
+    .offer-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(7,7,7,.18);
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .offer-list span:last-child {
+      color: #6f6a61;
+      text-align: right;
+    }
+
+    .matter-form {
+      display: grid;
+      gap: 14px;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(7,7,7,.18);
+      background: rgba(255,255,255,.18);
+    }
+
+    .matter-form h2 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: .9;
+      letter-spacing: -.065em;
+      text-transform: uppercase;
+    }
+
+    .matter-form label {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #6f6a61;
+    }
+
+    .matter-form input,
+    .matter-form select {
+      width: 100%;
+      padding: 13px 12px;
+      border: 1px solid rgba(7,7,7,.22);
+      background: transparent;
+      color: #070707;
+      font: inherit;
+    }
+
+    .checks {
+      display: grid;
+      gap: 10px;
+      margin: 4px 0 8px;
+    }
+
+    .checks label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #070707;
+      letter-spacing: .02em;
+      text-transform: none;
+      font-size: 14px;
+    }
+
+    .checks input {
+      width: auto;
+    }
+
+    .matter-form button {
+      margin-top: 10px;
+      padding: 14px 16px;
+      border: 1px solid #070707;
+      background: #070707;
+      color: #eee9df;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .matter-form button:hover {
+      background: transparent;
+      color: #070707;
+    }
+
+    .small-note {
+      margin: 0;
+      color: #6f6a61;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 860px) {
+      .community-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <header>
+    <a href="../index.html" class="brand">Matter</a>
+    <nav aria-label="Main navigation">
+      <a href="../services/index.html">Services</a>
+      <a href="../pre-matter/index.html">Pre-Matter</a>
+      <a href="../post-matter/index.html">Post-Matter</a>
+      <a href="../podcast/index.html">Podcast</a>
+      <a href="../education/index.html">Education</a>
+      <a href="../work/index.html">Work</a>
+      <a href="../about/index.html">About</a>
+      <a href="../pricing/index.html">Pricing</a>
+    </nav>
+    <div class="header-right">
+      <a href="../blog/index.html">Blog</a>
+      <a class="button" href="../contact/index.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="community-page">
+    <section class="community-hero">
+      <p class="eyebrow">Matter Community</p>
+      <h1>Stay close to the work.</h1>
+      <p class="hero-copy">
+        Join the Matter Community for independent film marketing, distribution, funding, podcast, workshop, and project growth updates.
+      </p>
+    </section>
+
+    <section class="community-grid">
+      <div class="community-section">
+        <p class="eyebrow">Why join</p>
+        <h2>Updates for filmmakers and supporters.</h2>
+
+        <div class="offer-list">
+          <div><span>Matter Newsletter</span><span>Field notes and updates</span></div>
+          <div><span>Film Marketing</span><span>Campaign strategy and positioning</span></div>
+          <div><span>Distribution</span><span>Release planning and guidance</span></div>
+          <div><span>Funding</span><span>Supporter and investor education</span></div>
+          <div><span>Podcast</span><span>New episodes and guest updates</span></div>
+          <div><span>Workshops</span><span>Sessions, panels, and resources</span></div>
+          <div><span>Collaboration</span><span>Opportunities across the indie space</span></div>
+        </div>
+      </div>
+
+      <form class="matter-form" action="https://matterdistribution.us12.list-manage.com/subscribe/post?u=d4a7baef4907e0ed451ac36ef&amp;id=a815a07e52&amp;f_id=00db1be9f0" method="post" target="_blank">
+        <h2>Join the list.</h2>
+        <p class="small-note">Tell Matter what you care about so future updates stay useful.</p>
+
+        <label for="mce-EMAIL">Email *</label>
+        <input type="email" name="EMAIL" id="mce-EMAIL" required>
+
+        <label for="mce-FNAME">First Name</label>
+        <input type="text" name="FNAME" id="mce-FNAME">
+
+        <label for="mce-MMERGE7">Role *</label>
+        <select name="MMERGE7" id="mce-MMERGE7" required>
+          <option value="">Select one</option>
+          <option value="Filmmaker">Filmmaker</option>
+          <option value="Producer">Producer</option>
+          <option value="Writer">Writer</option>
+          <option value="Actor">Actor</option>
+          <option value="Editor">Editor</option>
+          <option value="Composer">Composer</option>
+          <option value="Distributor">Distributor</option>
+          <option value="Investor">Investor</option>
+          <option value="Supporter">Supporter</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="mce-MMERGE8">Project Stage</label>
+        <select name="MMERGE8" id="mce-MMERGE8">
+          <option value="">Select one</option>
+          <option value="No Project Yet">No Project Yet</option>
+          <option value="Development">Development</option>
+          <option value="Pre-Production">Pre-Production</option>
+          <option value="Production">Production</option>
+          <option value="Post-Production">Post-Production</option>
+          <option value="Festival Run">Festival Run</option>
+          <option value="Distribution Ready">Distribution Ready</option>
+          <option value="Released">Released</option>
+        </select>
+
+        <label for="mce-MMERGE9">Website / Project Link</label>
+        <input type="url" name="MMERGE9" id="mce-MMERGE9">
+
+        <label for="mce-MMERGE10">Location</label>
+        <input type="text" name="MMERGE10" id="mce-MMERGE10">
+
+        <label>Matter Interests</label>
+        <div class="checks">
+          <label><input type="checkbox" name="group[54880][1]" value="1"> Film Marketing</label>
+          <label><input type="checkbox" name="group[54880][2]" value="1"> Distribution</label>
+          <label><input type="checkbox" name="group[54880][4]" value="1"> Funding</label>
+          <label><input type="checkbox" name="group[54880][8]" value="1"> Podcast</label>
+          <label><input type="checkbox" name="group[54880][16]" value="1"> Workshops & Events</label>
+          <label><input type="checkbox" name="group[54880][32]" value="1"> Screenwriting</label>
+          <label><input type="checkbox" name="group[54880][64]" value="1"> Post Production</label>
+          <label><input type="checkbox" name="group[54880][128]" value="1"> Collaboration Opportunities</label>
+        </div>
+
+        <input type="hidden" name="tags" value="12689429,12689436">
+
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+  <input type="text" name="b_d4a7baef4907e0ed451ac36ef_a815a07e52" tabindex="-1" value="">
+</div>
+
+        <button type="submit">Join the Community</button>
+
+        <p class="small-note">
+          Matter sends useful updates only. You can unsubscribe at any time.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div>Matter Marketing & Distribution</div>
+    <div>Philadelphia, PA</div>
+    <div><a href="mailto:charliecooperfilms@gmail.com">Email</a></div>
+  </footer>
+</body>
+</html>
